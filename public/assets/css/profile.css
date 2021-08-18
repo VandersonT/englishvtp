@@ -1,0 +1,276 @@
+.boxProfile{
+    width: 100vw;
+    max-width: 100%;
+    height: auto;
+    background-color: var(--defaultBackground2);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.photoProfile{
+    width: 200px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.photoProfile img{
+    width: 130px;
+    height: 130px;
+    padding: 10px;
+}
+
+.boxInfoProfile{
+    width: max-content;
+}
+
+.infoProfile{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.infoProfile h3{
+    margin-right: 5px;
+}
+
+.infoProfile p{
+    margin-right: 15px;
+    font-size: 18px;
+}
+
+.btn{
+    color: white;
+    padding: 4px 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.followColor{
+    background-color: rgb(21, 21, 189);
+}
+
+.blockColor{
+    background-color: rgb(167, 16, 16);
+}
+
+.chatColor{
+    background-color: rgb(112, 112, 112);
+}
+
+.btnConfig{
+    color: var(--menuBackground);
+    font-size: 16px !important;
+    background-color: rgb(0, 140, 255);
+}
+.btnConfig:hover{
+    background-color: rgb(3, 130, 233);
+}
+
+.btnFollow:hover{
+    background-color: rgb(1, 1, 221);
+    color: rgb(233, 233, 233);
+}
+
+.infoProfile2{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info2Single{
+    text-align: center;
+    margin-right: 20px;
+}
+
+@media screen and (max-width: 730px){
+    .infoProfile h3{
+        font-size: 16px;
+    }
+    .infoProfile p{
+        font-size: 16px;
+    }
+    .infoProfile a{
+        font-size: 12px;
+    }
+    .infoProfile2{
+        font-size: 16px;
+    }
+    .photoProfile img{
+        width: 100px;
+        height: 100px;
+        padding: 0;
+    }
+    .photoProfile{
+        width: 120px;
+        justify-content:flex-start;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .boxProfile{
+        flex-direction: column;
+    }
+    .photoProfile{
+        width: 100%;
+        justify-content: center;
+    }
+    .photoProfile img{
+        width: 130px;
+        height: 130px;
+        padding: 10px;
+    }
+    .boxInfoProfile{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .infoProfile{
+        width: 90%;
+        padding: 10px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .infoProfile p{
+        margin-bottom: 20px;
+    }
+    .infoProfile a{
+        border-radius: 2px;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 340px){
+    .infoProfile h3{
+        font-size: 14px;
+    }
+    .infoProfile p{
+        font-size: 14px;
+    }
+    .infoProfile a{
+        font-size: 12px !important;
+    }
+    .infoProfile2{
+        font-size: 14px;
+        width: 100%;
+    }
+    .photoProfile{
+        padding: 0;
+    }
+    .photoProfile img{
+        width: 100px;
+        height: 100px;
+    }
+}
+/***/
+.boxTrophies{
+    width: 100vw;
+    max-width: 100%;
+    background-color: var(--menuBackground2);
+    padding-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+    border: 2px solid var(--border);
+}
+
+.ThophieSingle{
+    max-width: 100px;
+    text-align: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.ThophieSingle img{
+    width: 50px;
+    height: 40px;
+    cursor: pointer;
+}
+/***/
+.boxActions{
+    width: 100vw;
+    max-width: 100%;
+    padding-bottom: 20px;
+}
+.box1{
+    width: 100%;
+    max-width: 100%;
+    background-color: rgb(2, 112, 255);
+    text-align: center;
+    margin: 10px 0;
+    padding: 10px;
+    text-transform: uppercase;
+    color:rgb(255, 255, 255);
+    font-weight: bold;
+    border: 1px solid var(--border);
+}
+
+.box2{
+    width: 100%;
+    max-width: 100%;
+    border: 1px solid var(--border);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    background-color: var(--defaultBackground2);
+    padding: 20px 10px;
+    margin-bottom: 10px;
+}
+
+.box2:hover{
+    background-color: var(--defaultBackgroundContent);
+}
+
+.box2 img{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.box2Info{
+    max-width: 600px;
+} 
+
+.box2Info h4{
+    margin-bottom: 5px;
+}
+
+.box2Info p{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 400px;
+}
+
+@media screen and (max-width: 750px) {
+    .box2Info p{
+        max-width: 400px;
+    }
+}
+
+@media screen and (max-width: 632px) {
+    .box1{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 585px) {
+    .box2Info p{
+        max-width: 200px;
+    }
+    .box2Info h4{
+        font-size: 14px;
+    }
+}

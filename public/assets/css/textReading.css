@@ -1,0 +1,414 @@
+body{
+    overflow-x: hidden;
+}
+.menuAction{
+    width: 100vw;
+    max-width: 100%;
+    height: 70px;
+    background-color: var(--menuBackground2);
+    border: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.menuAction a{
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-right: 10px;
+    font-weight: bold;
+    border: 1px solid var(--border2);
+}
+
+.btnGreen{
+    background-color: rgb(54, 204, 8);
+    color: white;
+}
+
+.btnGreen:hover{
+    background-color: rgb(49, 190, 6);
+}
+
+.btnOrange{
+    background-color: rgb(224, 102, 2);
+    color: white;
+}
+
+.btnOrange:hover{
+    background-color: rgb(202, 91, 0);
+}
+
+.btnReturn{
+    background-color: rgb(112, 19, 19);
+    color: white;
+}
+
+.btnReturn:hover{
+    background-color: rgb(95, 16, 16);
+}
+
+@media screen and (max-width: 420px){
+    .menuAction a{
+        font-size: 10px;
+    }
+}
+/***/
+
+.infoText{
+    width: 100vw;
+    max-width: 100%;
+    text-align: center;
+    border-bottom: 1px solid gray;
+    padding: 20px;
+    margin: 0 auto;
+    background-color: var(--menuBackground2);
+}
+
+.infoText h1{
+    margin-bottom: 10px;
+    font-weight: lighter;
+}
+
+.boxSubInfo{
+    width: max-content;
+    min-width: 200px;
+    margin: 0 auto;
+    text-align: left;
+    display: flex;
+}
+
+.boxSubInfo p{
+    margin-right: 15px;
+}
+
+@media screen and (max-width: 710px){
+    .boxSubInfo{
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 420px){
+    .infoText h1{
+        font-size: 18px;
+    }
+    .boxSubInfo{
+        font-size: 13px;
+    }
+}
+/***/
+
+.boxAudio{
+    width: 100vw;
+    max-width: 100%;
+    margin: 0 auto;
+    border-top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+}
+
+.title{
+    color: rgb(0, 162, 255);
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: lighter;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.boxAudio audio{
+    width: 700px;
+}
+
+@media screen and (max-width: 1000px){
+    .boxAudio audio{
+        width: 500px;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .boxAudio audio{
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 450px){
+    .boxAudio audio{
+        width: 90%;
+    }
+    .title{
+        font-size: 14px;
+    }
+}
+/***/
+
+.boxTexts{
+    width: 100vw;
+    max-width: 100%;
+    margin-bottom: 10px;
+}
+
+.spaceBottom{
+    margin-bottom: 10px;
+}
+
+.boxTextsSingle{
+    display: flex;
+    justify-content: center;
+}
+
+.boxTextsSingle div:nth-child(1){
+    border-right: 0;
+}
+
+.text{
+    width: 45%;
+    padding: 20px;
+    text-align: justify;
+    border: 1px solid var(--border3);
+}
+
+.text h1{
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--select);
+}
+
+@media screen and (max-width: 900px) {
+    .text{
+        width: 50%;
+        padding: 10px;
+    }
+    .text h1{
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .text h1{
+        font-size: 15px;
+    }
+}
+/***/
+.boxComments{
+    width: 89vw;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid var(--border3);
+    margin-bottom: 50px;
+}
+
+.boxComments-title{
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+
+.boxNewComment{
+    width: 100%;
+    display: flex;
+}
+
+.boxNewComment img{
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+.boxNewComment textarea{
+    width: 600px;
+    height: 100px;
+    resize: none;
+    border: 1px solid var(--border);
+    box-shadow: 0,0,0,0;
+    outline: 0;
+    padding: 10px;
+    color: var(--select);
+    border-radius: 10px;
+    background-color: var(--defaultBackground2);
+}
+
+.subNewComment{
+    display: none;
+    margin-left: 60px;
+}
+
+.subNewComment img{
+    width: 45px;
+    height: 45px;
+    border-radius: 5px;
+}
+
+.subNewComment textarea{
+    width: 400px;
+    height: 60px;
+    border-radius: 5px;
+}
+
+.boxCommentSingle{
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+}
+
+.boxCommentSingle img{
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+}
+
+.comment{
+    max-width: 70%;
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    word-wrap: break-word;
+}
+
+.comment h1{
+    font-size: 15px;
+    color:rgb(0, 162, 255);
+    margin-bottom: 5px;
+    cursor: pointer;
+    max-width: 100%;
+    width: max-content;
+    word-wrap: break-word;
+}
+
+.comment h1:hover{
+    color:rgb(0, 140, 221);
+}
+
+.commentRate{
+    width: max-content;
+    display: flex;
+}
+
+.commentRate a{
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.commentIcon{
+    color:var(--select);
+    cursor: pointer;
+}
+
+.btnActiveComment{
+    color:rgb(0, 162, 255);
+    font-weight: bold;
+}
+
+.btnActiveComment:hover{
+    color:rgb(0, 140, 221);
+}
+
+.liked{
+    color:rgb(0, 162, 255) !important;
+}
+
+.unliked{
+    color:rgb(221, 13, 13) !important;
+}
+
+.delete{
+    color: rgb(139, 14, 14);
+}
+
+.report{
+    color: rgb(46, 9, 9);
+}
+
+.subComment{
+    margin-left: 60px;
+    max-width: calc(90% - 60px);
+    word-wrap: break-word;
+}
+
+.subComment img{
+    width: 45px;
+    height: 45px;
+}
+
+.subComment h1{
+    font-size: 13px;
+}
+
+@media screen and (max-width: 900px) {
+    .boxComments{
+        width: 100vw;
+        max-width: 100%;
+    }
+}
+/***/
+.btnAssistent{
+    position: fixed;
+    bottom: 10px;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnAssistent .img{
+    width: 40px;
+    height: 40px;
+    background-image: url('../images/suggestion.png');
+    background-position: center;
+    background-size: 100% 100%;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.btnAssistent .img:hover{
+    width: 45px;
+    height: 45px;
+}
+
+.btnAssistent p{
+    font-weight: bold;
+    color: var(--defaultColor);
+    font-size: 13px;
+}
+
+.assistent{
+    display: none;
+    width: 150px;
+    height: 200px;
+    background-image: url('../images/assistent.png');
+    background-position: center;
+    background-size: 100% 100%;
+    position: fixed;
+    bottom: 80px;
+    right: 0;
+}
+
+.assistentTalk{
+    display: none;
+    position: fixed;
+    max-width: 200px;
+    max-height: 40%;
+    bottom: 200px;
+    right: 120px;
+    background-color: rgb(231, 231, 231);
+    word-wrap: break-word;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid var(--border3);
+    overflow-y: auto;
+}
+
+@media screen and (max-width: 350px){
+    .assistentTalk{
+        max-width: 90%;
+        bottom: 80vw;
+        right: 0;
+    }
+}
