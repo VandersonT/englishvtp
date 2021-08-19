@@ -41,11 +41,20 @@
             <i class="far fa-smile-beam"></i>
         </h1>
 
-        <form method="POST">
-            <input type="email" placeholder="Nome"/>
-            <input type="email" placeholder="E-mail"/>
-            <input id="pass" type="password" placeholder="Senha" />
-            <input id="confirmPass" type="password" placeholder="Confirme a senha" />
+        <form method="POST" action="{{url('cadastrar')}}">
+
+            <?php if($flash): ?>
+                <div class="error animate__animated animate__flash">
+                    <i class="fas fa-times"></i>
+                    <?= $flash;?>
+                </div>
+            <?php endif; ?>
+
+            @csrf
+            <input name="name" type="text" placeholder="Nome"/>
+            <input name="email" type="email" placeholder="E-mail"/>
+            <input name="password" id="pass" type="password" placeholder="Senha" />
+            <input name="confirmPassword" id="confirmPass" type="password" placeholder="Confirme a senha" />
 
             <div class="showPassword">
                 <input id="showPassword" type="checkbox" />
@@ -53,12 +62,12 @@
             </div>
 
             <button>Cadastrar</button>
-            <a href="{{url('/')}}" class="alreadyHaveAnAccount" href="#">Já tenho uma conta</a>
+            <a href="{{url('/login')}}" class="alreadyHaveAnAccount" href="#">Já tenho uma conta</a>
         </form>
 
     </section>
 
 
-    <script src="assets/js/register.js"></script>
+    <script src="{{url('assets/js/register.js')}}"></script>
 </body>
 </html>

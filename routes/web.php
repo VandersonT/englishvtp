@@ -15,7 +15,17 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+/*----------------------------------LOGIN--------------------------------*/
 Route::get('/inicio', [LoginController::class, 'initial']);
-Route::get('/login', [LoginController::class, 'login']);
-Route::get('/cadastrar', [LoginController::class, 'register']);
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/login', [LoginController::class, 'loginAction']);
+Route::get('/cadastrar', [LoginController::class, 'register'])->name('register');
+Route::post('/cadastrar', [LoginController::class, 'registerAction']);
+/*-----------------------------------------------------------------------*/
+
+
+/*----------------------------------HOME---------------------------------*/
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+//Route::get('/filtragem', [HomeController::class, 'textFilter']);
+/*-----------------------------------------------------------------------*/

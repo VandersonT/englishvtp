@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <title>Englishvtp - login</title>
+    <title>EnglishVtp - Login</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width,height=device-height" />
@@ -41,17 +41,26 @@
             <i class="far fa-smile-beam"></i>
         </h1>
 
-        <form method="POST">
-            <input type="email" placeholder="E-mail"/>
-            <input type="password" placeholder="Senha" />
+        <form method="POST" action="{{url('login')}}">
+
+            <?php if($flash): ?>
+                <div class="error animate__animated animate__flash">
+                    <i class="fas fa-times"></i>
+                    <?= $flash; ?>
+                </div>
+            <?php endif; ?>
+
+            @csrf
+            <input name="email" type="email" placeholder="E-mail"/>
+            <input name="password" type="password" placeholder="Senha" />
 
             <div class="keepConnected">
-                <input id="keepConnected" type="checkbox" />
+                <input name="keepConnected" id="keepConnected" type="checkbox" />
                 <label for="keepConnected">Manter conectado</label>
             </div>
 
             <button>Entrar</button>
-            <a class="forgetPass" href="{{url('/')}}">Esqueci minha senha</a>
+            <a class="iDontHaveAnAcount" href="{{url('/cadastrar')}}">Ainda não tenho uma conta</a>
         </form>
 
         <div class="box-alternateLogin">

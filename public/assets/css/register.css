@@ -96,6 +96,23 @@ body{
     color: #0445a5;
 }
 
+.error{
+    width: 90%;
+    padding: 10px;
+    background-color: rgb(156, 1, 1);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error i{
+    margin-right: 5px;
+}
+
 @media screen and (max-width: 530px) {
     .contentLogin form{
         width: 100%;

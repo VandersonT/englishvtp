@@ -88,11 +88,11 @@ body{
     margin-right: 6px;
 }
 
-.forgetPass{
+.iDontHaveAnAcount{
     color: #0071db;
 }
 
-.forgetPass:hover{
+.iDontHaveAnAcount:hover{
     color: #0445a5;
 }
 
@@ -123,6 +123,23 @@ body{
     width: 30px;
     height: 30px;
 } 
+
+.error{
+    width: 90%;
+    padding: 10px;
+    background-color: rgb(156, 1, 1);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error i{
+    margin-right: 5px;
+}
 
 @media screen and (max-width: 530px) {
     .contentLogin form{
