@@ -64,7 +64,7 @@
         </form>
 
         <div class="box-alternateLogin">
-            <a href="{{url('/')}}" class="alternateLogin">
+            <!--<a href="{{url('/')}}" class="alternateLogin">
                 <img src="{{url('assets/images/google.ico')}}" />
                 <p>Entrar com google</p>
             </a>
@@ -72,7 +72,7 @@
             <a href="{{url('/')}}" class="alternateLogin">
                 <img src="{{url('assets/images/facebook.png')}}" />
                 <p>Entrar com facebook</p>
-            </a>
+            </a>-->
         </div>
 
     </section>

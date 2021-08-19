@@ -1,0 +1,103 @@
+body{
+    background-color: black;
+}
+.background{
+    width: 100vw;
+    max-width: 100%;
+    height: 100vh;
+    max-height: 100%;
+    background-image: url('../images/background2.jpg');
+    background-size: 100% 100%;
+    background-position: center;
+    filter: blur(6px);
+    position: fixed;
+    z-index: 1;
+}
+.screen{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boxInfo{
+    width: 700px;
+    background-color: rgb(18, 18, 20);
+    border-radius: 5px;
+}
+
+.header{
+    background-color: rgb(187, 187, 187);
+    text-align: center;
+    padding: 5px;
+    font-family: 'Lato', sans-serif;
+    margin-bottom: 20px;
+}
+
+.header i{
+    color: rgb(204, 4, 4);
+    margin-right: 5px;
+}
+
+.body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgb(185, 185, 185);
+    font-size: 18px;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.body .title{
+    font-weight: lighter;
+    text-transform: uppercase;
+    background-color: rgb(41, 41, 41);
+    padding: 1px 10px 0 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.body p:not(.title){
+   margin-bottom: 20px;
+}
+
+.boxBtns{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.boxBtns a{
+    color: white;
+    padding: 10px 15px;
+    width: 140px;
+    margin-right: 10px;
+    text-align: center;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+.close{
+    background-color: brown;
+}
+
+.close:hover{
+    background-color: rgb(153, 36, 36);
+    color: rgb(235, 235, 235);
+}
+
+.disagree{
+    background-color: rgb(31, 48, 143);
+}
+.disagree:hover{
+    background-color: rgb(28, 42, 124);
+    color: rgb(235, 235, 235);
+}

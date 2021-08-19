@@ -81,7 +81,7 @@
 
 .boxInputRadio{
     display: flex;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .inputRadio{
@@ -93,6 +93,19 @@
 
 .inputRadio input[type=radio]{
     margin-right: 5px;
+}
+
+select{
+    width: 90%;
+    padding: 10px;
+    border-radius: 10px;
+    outline: 0;
+    font-size: 18px;
+    color: rgb(70, 70, 70);
+}
+
+.explanation{
+    margin-bottom: 20px;
 }
 
 @media screen and (max-width: 520px) {
