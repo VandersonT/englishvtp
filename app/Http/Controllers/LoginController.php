@@ -46,11 +46,13 @@ class LoginController extends Controller
             $token = LoginHandler::verifyLogin($email, $password);
 
             if($token){
-
                 $_SESSION['token'] = $token;
+
                 if($keepConnected){
-                    //armazena aqui no cookie também;
+                    $expiration = time() + (86400*30);
+                    setcookie('token', $token, $expiration);
                 }
+
                 return redirect()->route('home');
 
             }else{

@@ -26,6 +26,5 @@ Route::post('/cadastrar', [LoginController::class, 'registerAction']);
 
 /*----------------------------------HOME---------------------------------*/
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
-//Route::get('/filtragem', [HomeController::class, 'textFilter']);
+Route::get('/sair', [HomeController::class, 'logout']);
 /*-----------------------------------------------------------------------*/

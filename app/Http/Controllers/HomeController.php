@@ -53,9 +53,14 @@ class HomeController extends Controller{
 
     }
 
-    public function textFilter(Request $request){
-        $this->teste = 'oi';
-        redirect()->route('home')->send();
+    public function logout(){
+        $_SESSION['token'] = '';
+
+        if(isset($_COOKIE['token'])){
+            setcookie('token', '', time()-3600);
+        }
+
+        redirect()->route('login')->send();
     }
 
 }

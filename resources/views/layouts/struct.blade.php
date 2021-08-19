@@ -50,7 +50,7 @@
                         Perfil
                     </li></a>
 
-                    <a class="close" href="#"><li>
+                    <a onclick="return confirm('Você tem certeza que quer sair?')" href="{{url('sair')}}" class="close" ><li>
                         Sair
                     </li></a>
                     
@@ -131,7 +131,7 @@
                         Perfil
                     </li></a>
 
-                    <a class="" href="#"><li>
+                    <a onclick="return confirm('Você tem certeza que quer sair?')" href="{{url('sair')}}"><li>
                         Sair
                     </li></a>
                 </ul>

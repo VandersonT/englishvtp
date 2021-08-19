@@ -37,9 +37,26 @@ class LoginHandler{
             return false;
         }
 
-        /*
-        verifica aqui se tem um cookie com a seção, se tiver trate como se fosse uma section.
-        */
+        if(isset($_COOKIE['token'])){
+            $token = $_COOKIE['token'];
+
+            $data = User::where('token', $token)->first();
+
+            if($data){
+                $loggedUser = new User();
+                $loggedUser->id = $data['id'];
+                $loggedUser->name = $data['user_name'];
+                $loggedUser->email = $data['email'];
+                $loggedUser->password = $data['password'];
+                $loggedUser->status = $data['status'];
+                $loggedUser->token = $data['token'];
+                $loggedUser->tokenAdmin = $data['token_admin'];
+                $loggedUser->photo = $data['photo'];
+                $loggedUser->theme = $data['theme'];
+                return $loggedUser;
+            }
+            return false;
+        }
 
         return false;
     }
