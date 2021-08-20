@@ -70,6 +70,7 @@ EnglishVtp - <?=$text['englishTitle'];?>
             <img src="/media/avatars/<?=$user['photo'];?>" />
             <form>
                 <textarea placeholder="Digite um comentario"></textarea>
+                <div class="button">Enviar</div>
             </form>
         </div>
 
@@ -158,6 +159,7 @@ EnglishVtp - <?=$text['englishTitle'];?>
             <img src="/media/avatars/<?=$user['photo'];?>" />
             <form>
                 <textarea placeholder="Digite um comentario"></textarea>
+                <div class="button">Enviar</div>
             </form>
         </div>
 
@@ -194,6 +196,7 @@ EnglishVtp - <?=$text['englishTitle'];?>
             <img src="/media/avatars/<?=$user['photo'];?>" />
             <form>
                 <textarea autofocus placeholder="Digite um comentario"></textarea>
+                <div class="button">Enviar</div>
             </form>
         </div>
 
