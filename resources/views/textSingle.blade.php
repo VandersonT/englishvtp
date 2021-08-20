@@ -1,7 +1,9 @@
 @extends('layouts.struct')
 
 <!--Page title-->
-@section('title', 'EnglishVtp - texto+aúdio')
+@section('title')
+EnglishVtp - <?=$text['englishTitle'];?>
+@endsection
 
 
 <!--Links-->
@@ -79,13 +81,13 @@
                     Gostei muito
                 </p>  
                 <div class="commentRate">
-                    <a href="#" class="commentIcon liked">
-                        <i class="fas fa-thumbs-up"></i>
-                        6
+                    <a class="commentIcon">
+                        <i class="btnLike fas fa-thumbs-up"></i>
+                        <span class="numberLike">6</span>
                     </a>
-                    <a href="#" class="commentIcon">
-                        <i class="fas fa-thumbs-down"></i>
-                        0
+                    <a class="commentIcon">
+                        <i class="btnUnlike fas fa-thumbs-down"></i>
+                        <span class="numberUnlike">0</span>
                     </a>
                     <a href="#report" onClick="return confirm('Quer denunciar esse comentário aos administradores?')" class="commentIcon report">
                         <i class="fas fa-flag"></i>
@@ -108,13 +110,13 @@
                     Me ajudou muito!! é meu terceiro texto
                 </p>  
                 <div class="commentRate">
-                    <a href="" class="commentIcon liked">
-                        <i class="fas fa-thumbs-up"></i>
-                        2
+                    <a class="commentIcon">
+                        <i class="btnLike fas fa-thumbs-up"></i>
+                        <span class="numberLike">2</span>
                     </a>
-                    <a href="" class="commentIcon">
-                        <i class="fas fa-thumbs-down"></i>
-                        0
+                    <a class="commentIcon">
+                        <i class="btnUnlike fas fa-thumbs-down"></i>
+                        <span class="numberUnlike">0</span>
                     </a>
                     <a href="" onClick="return confirm('Quer denunciar esse comentário aos administradores?')" class="commentIcon report">
                         <i class="fas fa-flag"></i>
@@ -134,13 +136,13 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget mattis leo. Nulla sit amet nunc id justo scelerisque mollis at ac neque. Morbi commodo, risus sit amet pharetra interdum, sem metus consectetur neque, eget tristique nisi tortor et urna. Nullam elementum sollicitudin ornare. Etiam congue, tellus lacinia consectetur dictum, elit odio finibus lorem, viverra dignissim lorem eros et turpis. Proin dapibus dapibus lacus, sed aliquam libero. Etiam rhoncus orci eu massa gravida, in feugiat sapien cursus. Phasellus egestas enim vel imperdiet egestas.
                 </p>  
                 <div class="commentRate">
-                    <a href="" class="commentIcon">
-                        <i class="fas fa-thumbs-up"></i>
-                        2
+                    <a class="commentIcon">
+                        <i class="btnLike fas fa-thumbs-up"></i>
+                        <span class="numberLike">2</span>
                     </a>
-                    <a href="" class="commentIcon unliked">
-                        <i class="fas fa-thumbs-down"></i>
-                        1
+                    <a class="commentIcon">
+                        <i class="btnUnlike fas fa-thumbs-down"></i>
+                        <span class="numberUnlike">1</span>
                     </a>
                     <a href="" onClick="return confirm('Quer denunciar esse comentário aos administradores?')" class="commentIcon report">
                         <i class="fas fa-flag"></i>
@@ -167,13 +169,13 @@
                     Muito bom to evoluindo
                 </p>  
                 <div class="commentRate">
-                    <a href="" class="commentIcon">
-                        <i class="fas fa-thumbs-up"></i>
-                        6
+                    <a class="commentIcon">
+                        <i class="btnLike fas fa-thumbs-up"></i>
+                        <span class="numberLike">6</span>
                     </a>
-                    <a href="" class="commentIcon">
-                        <i class="fas fa-thumbs-down"></i>
-                        0
+                    <a class="commentIcon">
+                        <i class="btnUnlike fas fa-thumbs-down"></i>
+                        <span class="numberUnlike">0</span>
                     </a>
                     <a href="#d" onClick="return confirm('Quer denunciar esse comentário aos administradores?')" class="commentIcon report">
                         <i class="fas fa-flag"></i>
@@ -214,4 +216,5 @@
 <!--Scripts-->
 @section('scripts')
     <script src="{{url('assets/js/textReading.js')}}"></script>
+    <script src="{{url('assets/js/commentsInfo.js')}}"></script>
 @endsection

@@ -1,3 +1,4 @@
+/*-------------------------------------------ActiveSubComment--------------------------------------------------*/
 let btnSubComment = document.querySelectorAll('.btnActiveComment');
 let isOpen = [];
 
@@ -19,7 +20,9 @@ for(let i = 0; i < btnSubComment.length; i++){
     })
 
 }
-/***/
+/*-------------------------------------------------------------------------------------------------------------*/
+
+/*---------------------------------------------Assistent-------------------------------------------------------*/
 let btnSuggestion = document.querySelector('.btnAssistent');
 let assistentIsOpen = false;
 
@@ -36,3 +39,4 @@ btnSuggestion.addEventListener('click', function(){
     }
     assistentIsOpen = !assistentIsOpen;
 })
+/*-------------------------------------------------------------------------------------------------------------*/

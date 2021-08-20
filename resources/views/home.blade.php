@@ -1,5 +1,5 @@
 @extends('layouts.struct')
-@section('title', 'EnglishVtp')
+@section('title', 'EnglishVtp - Textos')
 
 @section('links')
     <link rel="stylesheet" href="{{url('assets/css/home.css')}}" />
@@ -12,7 +12,7 @@
 
             <div class="box-filter">
                 <div class="field">
-                    <h1>Tipo</h1>
+                    <h1>Inglês</h1>
 
                     <!--<label>
                         <input <?= ($filter['type'] == 'todos') ? 'checked' : '' ?> name="type" type="radio" value="todos" />
