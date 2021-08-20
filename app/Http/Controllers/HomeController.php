@@ -11,7 +11,6 @@ use App\Http\Handlers\HomeHandler;
 /*-----------------------------------------------------------------------------*/
 
 class HomeController extends Controller{
-    
     private $loggedUser;
     private $teste;
 

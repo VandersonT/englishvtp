@@ -74,7 +74,7 @@
                         
                         <b>Nivel:</b> <?=$text['level'];?>
                         <br/>
-                        <b>Por:</b> <?=$text['creatorName'];?>
+                        <b>Por:</b> <?=$text['user_name'];?>
                     </a>
                 <?php endforeach; ?>
             <?php else: ?>
@@ -84,6 +84,8 @@
         </div>
 
     </section>
+    
+    {{!! $texts->appends(['type' => $filter['type'], 'level1' => $filter['levels'][0], 'level2' => $filter['levels'][1], 'level3' => $filter['levels'][2], 'level4' => $filter['levels'][3]])->links() !!}}
 
     <div class="btnAssistent">
         <div class="img"></div>

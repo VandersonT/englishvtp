@@ -74,6 +74,10 @@ EnglishVtp - <?=$text['englishTitle'];?>
             </form>
         </div>
 
+        <div class="Featured">
+            
+        </div>
+
         <div class="boxCommentSingle">
             <img src="media/avatars/no-picture2.png" />
             <div class="comment">
@@ -218,6 +222,9 @@ EnglishVtp - <?=$text['englishTitle'];?>
 
 <!--Scripts-->
 @section('scripts')
+    <script>
+        const BASE = {{url('')}};
+    </script>
     <script src="{{url('assets/js/textReading.js')}}"></script>
     <script src="{{url('assets/js/commentsInfo.js')}}"></script>
 @endsection
