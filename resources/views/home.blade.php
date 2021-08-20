@@ -2,7 +2,7 @@
 @section('title', 'EnglishVtp')
 
 @section('links')
-    <link rel="stylesheet" href="assets/css/home.css" />
+    <link rel="stylesheet" href="{{url('assets/css/home.css')}}" />
 @endsection
 
 @section('content')
@@ -68,7 +68,7 @@
             
             <?php if(!empty($texts)): ?>
                 <?php foreach ($texts as $text):?>
-                    <a href="" class="textSingle">
+                    <a href="/texto/<?=$text['id'];?>" class="textSingle">
                         <img src="media/textCover/<?=$text['image'];?>" />
                         <h1><?=$text['title'];?></h1>
                         
@@ -99,5 +99,5 @@
 @endsection
 
 @section('scripts')
-    <script src="assets/js/home.js"></script>
+    <script src="{{url('assets/js/home.js')}}"></script>
 @endsection

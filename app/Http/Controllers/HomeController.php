@@ -63,4 +63,19 @@ class HomeController extends Controller{
         redirect()->route('login')->send();
     }
 
+    public function openText($textid){
+
+        $text = HomeHandler::getText($textid);
+
+        if(!$text){
+            redirect()->route('home')->send();//redireciona para o erro aqui
+        }
+
+        return view('textSingle',[
+            'user' => $this->loggedUser,
+            'text' => $text,
+            'selected' => 'none',
+        ]);
+    }
+
 }
