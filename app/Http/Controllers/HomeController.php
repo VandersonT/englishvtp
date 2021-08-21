@@ -12,7 +12,6 @@ use App\Http\Handlers\HomeHandler;
 
 class HomeController extends Controller{
     private $loggedUser;
-    private $teste;
 
     public function __construct(){
         $this->loggedUser = LoginHandler::checkLogin();
@@ -41,13 +40,26 @@ class HomeController extends Controller{
         }
         /*---------------------------------------------------------------------------------------------*/
 
-        $texts = HomeHandler::getTexts($filter);
+        $page = 1;
+        if(!empty($_GET['pg'])){
+            $page = addslashes($_GET['pg']);
+        }
+        
+        $perPage = 2;
+        
+        $texts = HomeHandler::getTexts($filter, $page, $perPage);
+
+        $totalTexts = HomeHandler::getAllText($filter);
+
+        $totalPage = ceil($totalTexts / $perPage);
 
         return view('home',[
             'selected' => 'home',
             'user' => $this->loggedUser,
             'texts' => $texts,
-            'filter' => $filter
+            'filter' => $filter,
+            'page' => $page,
+            'totalPage' => $totalPage
         ]);
 
     }

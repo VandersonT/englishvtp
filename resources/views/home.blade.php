@@ -10,6 +10,11 @@
     <section class="filter">
         <form method="GET">
 
+            <?php
+                $teste = $_SERVER["REQUEST_URI"];
+                echo 'Url Atual: '.$teste;    
+            ?>
+
             <div class="box-filter">
                 <div class="field">
                     <h1>Inglês</h1>
@@ -74,7 +79,7 @@
                         
                         <b>Nivel:</b> <?=$text['level'];?>
                         <br/>
-                        <b>Por:</b> <?=$text['user_name'];?>
+                        <b>Por:</b> <?=$text['creator'];?>
                     </a>
                 <?php endforeach; ?>
             <?php else: ?>
@@ -84,8 +89,12 @@
         </div>
 
     </section>
-    
-    {{!! $texts->appends(['type' => $filter['type'], 'level1' => $filter['levels'][0], 'level2' => $filter['levels'][1], 'level3' => $filter['levels'][2], 'level4' => $filter['levels'][3]])->links() !!}}
+
+    <ul>
+        <?php for($q=1; $q<=$totalPage; $q++): ?>
+        <li><a href="/?pg=<?=$q;?>"> <?=$q?> </a></li>
+        <?php endfor; ?>
+    </ul>
 
     <div class="btnAssistent">
         <div class="img"></div>
