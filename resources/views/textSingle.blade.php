@@ -40,7 +40,7 @@ EnglishVtp - <?=$text['englishTitle'];?>
     <section class="boxAudio">
         <h1 class="title">Aúdio do texto</h1>
         <audio controls>
-            <source src="/media/audio/<?=$text['audio'];?>" type="audio/mp3">
+            <source src="<?= $base_url;?>/media/audio/<?=$text['audio'];?>" type="audio/mp3">
         </audio>
     </section>
 
@@ -65,9 +65,8 @@ EnglishVtp - <?=$text['englishTitle'];?>
 
     <section class="boxComments">
         <h1 class="boxComments-title">Comentarios: {{$totalComments}}</h1>
-
         <div class="boxNewComment">
-            <img src="/media/avatars/<?=$user['photo'];?>" />
+            <img src="<?= $base_url;?>/media/avatars/<?= $user['photo']?>" />
             <form>
                 <textarea placeholder="Digite um comentario"></textarea>
                 <div class="button">Enviar</div>
@@ -80,7 +79,7 @@ EnglishVtp - <?=$text['englishTitle'];?>
 
         <?php foreach ($comments as $comment):?>
             <div class="boxCommentSingle">
-                <img src="/media/avatars/{{$comment['photo']}}" />
+                <img src="<?= $base_url;?>/media/avatars/<?= $comment['photo']?>" />
                 <div class="comment">
                     <h1><?= $comment['user_name'];?></h1>
                     <p>
@@ -88,7 +87,7 @@ EnglishVtp - <?=$text['englishTitle'];?>
                     </p>  
                     <div class="commentRate">
                         <a class="commentIcon">
-                            <i class="btnLike fas fa-thumbs-up <?= ($comment['userRated'] == 1) ? 'liked' : '' ?>"></i>
+                            <i class="btnLike fas fa-thumbs-up <?= ($comment['userRated'] == 1) ? 'liked' : ''; ?>"></i>
                             <span class="numberLike">{{$comment['likes']}}</span>
                         </a>
                         <a class="commentIcon">
@@ -115,9 +114,9 @@ EnglishVtp - <?=$text['englishTitle'];?>
             <?php foreach ($subComments as $subComment):?>
                 <?php if($subComment['comment_answered'] == $comment['id']): ?>
                     <div class="boxCommentSingle subComment">
-                        <img src="media/avatars/no-picture2.png" />
+                        <img src="<?= $base_url;?>/media/avatars/<?= $subComment['photo']?>" />
                         <div class="comment">
-                            <h1>Izabella Pimenta [20] - 1 hora atras</h1>
+                            <h1>{{$subComment['user_name']}}</h1>
                             <p>
                                 {{$subComment['comment']}}
                             </p>  
@@ -143,11 +142,11 @@ EnglishVtp - <?=$text['englishTitle'];?>
                             </div>  
                         </div>
                     </div>
-                    <?php endif; ?>
+                <?php endif; ?>
             <?php endforeach; ?>
 
             <div class="boxNewComment subNewComment">
-                <img src="/media/avatars/<?=$user['photo'];?>" />
+                <img src="<?= $base_url;?>/media/avatars/<?= $user['photo']?>" />
                 <form>
                     <textarea placeholder="Digite um comentario"></textarea>
                     <div class="button">Enviar</div>
@@ -173,9 +172,6 @@ EnglishVtp - <?=$text['englishTitle'];?>
 
 <!--Scripts-->
 @section('scripts')
-    <script>
-        const BASE = {{url('')}};
-    </script>
     <script src="{{url('assets/js/textReading.js')}}"></script>
     <script src="{{url('assets/js/commentsInfo.js')}}"></script>
 @endsection

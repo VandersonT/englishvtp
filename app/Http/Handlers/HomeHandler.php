@@ -171,6 +171,7 @@ class HomeHandler{
                 $userRated = 0;
             }
 
+
             $subcomment[] = array(
                 'id' => $subcommentSingle['id'],
                 'user_id' => $subcommentSingle['user_id'],
@@ -179,6 +180,7 @@ class HomeHandler{
                 'comment_answered' => $subcommentSingle['comment_answered'],
                 'last_update' => $subcommentSingle['last_update'],
                 'user_name' => $subcommentSingle['user_name'],
+                'photo' => $subcommentSingle['photo'],
                 'likes' => $likes,
                 'unlikes' => $unlikes,
                 'userRated' => $userRated

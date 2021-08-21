@@ -66,7 +66,7 @@
 
             <div class="notification">
                 <a href="#" class="notificationSingle notSeen">
-                    <img src="media/avatars/no-picture.png" />
+                    <img src="{{url('media/avatars/no-picture.png')}}" />
                     <div class="notificationInfo">
                         <p>PedroN respondeu ao seu comentario no texto "Como jantar bem" </p>
                         <p>99/99/9999 - 99:99</p>
@@ -74,7 +74,7 @@
                 </a>
 
                 <a href="#" class="notificationSingle">
-                    <img src="media/avatars/no-picture.png" />
+                    <img src="{{url('media/avatars/no-picture.png')}}" />
                     <div class="notificationInfo">
                         <p>PedroN curtiu o seu comentario no texto "Como jantar bem"</p>
                         <p>99/99/9999 - 99:99</p>
@@ -82,7 +82,7 @@
                 </a>
 
                 <a href="#" class="notificationSingle notSeen">
-                    <img src="media/avatars/no-picture.png" />
+                    <img src="{{url('media/avatars/no-picture.png')}}" />
                     <div class="notificationInfo">
                         <p>Ana Maria descurtiu o seu comentario no texto "Como jantar bem"</p>
                         <p>99/99/9999 - 99:99</p>
@@ -90,7 +90,7 @@
                 </a>
 
                 <a href="#" class="notificationSingle">
-                    <img src="media/avatars/no-picture.png" />
+                    <img src="{{url('media/avatars/no-picture.png')}}" />
                     <div class="notificationInfo">
                         <p>Ana Maria curtiu o seu comentario no texto "Aguias noturnas"</p>
                         <p>99/99/9999 - 99:99</p>
@@ -98,7 +98,7 @@
                 </a>
 
                 <a href="#" class="notificationSingle">
-                    <img src="media/avatars/no-picture.png" />
+                    <img src="{{url('media/avatars/no-picture.png')}}" />
                     <div class="notificationInfo">
                         <p>Ana Maria começou a te seguir.</p>
                         <p>99/99/9999 - 99:99</p>
