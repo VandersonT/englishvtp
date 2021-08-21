@@ -45,7 +45,7 @@ class HomeController extends Controller{
             $page = addslashes($_GET['pg']);
         }
         
-        $perPage = 2;
+        $perPage = 21;
         
         $texts = HomeHandler::getTexts($filter, $page, $perPage);
 

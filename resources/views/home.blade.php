@@ -10,11 +10,6 @@
     <section class="filter">
         <form method="GET">
 
-            <?php
-                $teste = $_SERVER["REQUEST_URI"];
-                echo 'Url Atual: '.$teste;    
-            ?>
-
             <div class="box-filter">
                 <div class="field">
                     <h1>Inglês</h1>
@@ -90,11 +85,17 @@
 
     </section>
 
+    <?php if($totalPage > 1): ?>
     <ul class="box-pagination">
         <?php for($q=1; $q<=$totalPage; $q++): ?>
-        <a href="/?pg=<?=$q;?>"><li class="<?=($q == $page) ? 'paginationSelected' : ''?>"> <?=$q?> </li></a>
+        <a href="/?<?php 
+        $currentUrl = $_GET;
+        $currentUrl['pg'] = $q;
+        echo http_build_query($currentUrl);
+        ?>"><li class="<?=($q == $page) ? 'paginationSelected' : ''?>"> <?=$q?> </li></a>
         <?php endfor; ?>
     </ul>
+    <?php endif; ?>
 
     <div class="btnAssistent">
         <div class="img"></div>
