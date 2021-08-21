@@ -90,9 +90,9 @@
 
     </section>
 
-    <ul>
+    <ul class="box-pagination">
         <?php for($q=1; $q<=$totalPage; $q++): ?>
-        <li><a href="/?pg=<?=$q;?>"> <?=$q?> </a></li>
+        <a href="/?pg=<?=$q;?>"><li class="<?=($q == $page) ? 'paginationSelected' : ''?>"> <?=$q?> </li></a>
         <?php endfor; ?>
     </ul>
 
