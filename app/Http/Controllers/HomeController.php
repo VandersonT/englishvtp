@@ -77,15 +77,22 @@ class HomeController extends Controller{
     public function openText($textid){
 
         $text = HomeHandler::getText($textid);
+        $comments = HomeHandler::getTextComments($textid, $this->loggedUser);
+        $subComments = HomeHandler::getTextSubComments($textid);
 
         if(!$text){
             redirect()->route('home')->send();//redireciona para o erro aqui
         }
 
+        $totalComments = count($comments) + count($subComments);
+
         return view('textSingle',[
             'user' => $this->loggedUser,
             'text' => $text,
-            'selected' => 'none',
+            'comments' => $comments,
+            'subComments ' => $subComments,
+            'totalComments' => $totalComments,
+            'selected' => 'none'
         ]);
     }
 

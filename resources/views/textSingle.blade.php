@@ -64,7 +64,7 @@ EnglishVtp - <?=$text['englishTitle'];?>
     </section>
 
     <section class="boxComments">
-        <h1 class="boxComments-title">Comentarios: 100</h1>
+        <h1 class="boxComments-title">Comentarios: {{$totalComments}}</h1>
 
         <div class="boxNewComment">
             <img src="/media/avatars/<?=$user['photo'];?>" />
@@ -78,131 +78,76 @@ EnglishVtp - <?=$text['englishTitle'];?>
             
         </div>
 
-        <div class="boxCommentSingle">
-            <img src="media/avatars/no-picture2.png" />
-            <div class="comment">
-                <h1>Sergio Dark [22] - 1 hora atras</h1>
-                <p>
-                    Gostei muito
-                </p>  
-                <div class="commentRate">
-                    <a class="commentIcon">
-                        <i class="btnLike fas fa-thumbs-up"></i>
-                        <span class="numberLike">6</span>
-                    </a>
-                    <a class="commentIcon">
-                        <i class="btnUnlike fas fa-thumbs-down"></i>
-                        <span class="numberUnlike">0</span>
-                    </a>
-                    <a href="#report" onClick="return confirm('Quer denunciar esse comentário aos administradores?')" class="commentIcon report">
-                        <i class="fas fa-flag"></i>
-                    </a>
-                    <a href="#" onClick="return confirm('Você quer realmente apagar esse comentário?')" class="commentIcon delete">
-                        <i class="fas fa-trash-alt"></i>
-                    </a>
-                    <a class="commentIcon btnActiveComment">
-                        responder
-                    </a>
-                </div>  
+        <?php foreach ($comments as $comment):?>
+            <div class="boxCommentSingle">
+                <img src="/media/avatars/{{$comment['photo']}}" />
+                <div class="comment">
+                    <h1><?= $comment['user_name'];?></h1>
+                    <p>
+                        {{$comment['comment']}}
+                    </p>  
+                    <div class="commentRate">
+                        <a class="commentIcon">
+                            <i class="btnLike fas fa-thumbs-up <?= ($comment['userRated'] == 1) ? 'liked' : '' ?>"></i>
+                            <span class="numberLike">{{$comment['likes']}}</span>
+                        </a>
+                        <a class="commentIcon">
+                            <i class="btnUnlike fas fa-thumbs-down <?= ($comment['userRated'] == -1) ? 'unliked' : '' ?>"></i>
+                            <span class="numberUnlike">{{$comment['unlikes']}}</span>
+                        </a>
+                        <a href="#comment" class="commentIcon">
+                            <i class="fas fa-comment-alt"></i>
+                            <span>{{$comment['subcomments']}}</span>
+                        </a>
+                        <a href="#report" onClick="return confirm('Quer denunciar esse comentário aos administradores?')" class="commentIcon report">
+                            <i class="fas fa-flag"></i>
+                        </a>
+                        <a href="#" onClick="return confirm('Você quer realmente apagar esse comentário?')" class="commentIcon delete">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                        <a class="commentIcon btnActiveComment">
+                            responder
+                        </a>
+                    </div>  
+                </div>
             </div>
-        </div>
 
-        <div class="boxCommentSingle subComment">
-            <img src="media/avatars/no-picture2.png" />
-            <div class="comment">
-                <h1>Izabella Pimenta [20] - 1 hora atras</h1>
-                <p>
-                    Me ajudou muito!! é meu terceiro texto
-                </p>  
-                <div class="commentRate">
-                    <a class="commentIcon">
-                        <i class="btnLike fas fa-thumbs-up"></i>
-                        <span class="numberLike">2</span>
-                    </a>
-                    <a class="commentIcon">
-                        <i class="btnUnlike fas fa-thumbs-down"></i>
-                        <span class="numberUnlike">0</span>
-                    </a>
-                    <a href="" onClick="return confirm('Quer denunciar esse comentário aos administradores?')" class="commentIcon report">
-                        <i class="fas fa-flag"></i>
-                    </a>
-                    <a href="" onClick="return confirm('Você quer realmente apagar esse comentário?')" class="commentIcon delete">
-                        <i class="fas fa-trash-alt"></i>
-                    </a>
-                </div>  
+            <div class="boxCommentSingle subComment">
+                <img src="media/avatars/no-picture2.png" />
+                <div class="comment">
+                    <h1>Izabella Pimenta [20] - 1 hora atras</h1>
+                    <p>
+                        Me ajudou muito!! é meu terceiro texto
+                    </p>  
+                    <div class="commentRate">
+                        <a class="commentIcon">
+                            <i class="btnLike fas fa-thumbs-up"></i>
+                            <span class="numberLike">
+                                2
+                            </span>
+                        </a>
+                        <a class="commentIcon">
+                            <i class="btnUnlike fas fa-thumbs-down"></i>
+                            <span class="numberUnlike">0</span>
+                        </a>
+                        <a href="" onClick="return confirm('Quer denunciar esse comentário aos administradores?')" class="commentIcon report">
+                            <i class="fas fa-flag"></i>
+                        </a>
+                        <a href="" onClick="return confirm('Você quer realmente apagar esse comentário?')" class="commentIcon delete">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </div>  
+                </div>
             </div>
-        </div>
 
-        <div class="boxCommentSingle subComment">
-            <img src="media/avatars/no-picture2.png" />
-            <div class="comment">
-                <h1>Amanda Pimenta [5] - 30 minutos atras</h1>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget mattis leo. Nulla sit amet nunc id justo scelerisque mollis at ac neque. Morbi commodo, risus sit amet pharetra interdum, sem metus consectetur neque, eget tristique nisi tortor et urna. Nullam elementum sollicitudin ornare. Etiam congue, tellus lacinia consectetur dictum, elit odio finibus lorem, viverra dignissim lorem eros et turpis. Proin dapibus dapibus lacus, sed aliquam libero. Etiam rhoncus orci eu massa gravida, in feugiat sapien cursus. Phasellus egestas enim vel imperdiet egestas.
-                </p>  
-                <div class="commentRate">
-                    <a class="commentIcon">
-                        <i class="btnLike fas fa-thumbs-up"></i>
-                        <span class="numberLike">2</span>
-                    </a>
-                    <a class="commentIcon">
-                        <i class="btnUnlike fas fa-thumbs-down"></i>
-                        <span class="numberUnlike">1</span>
-                    </a>
-                    <a href="" onClick="return confirm('Quer denunciar esse comentário aos administradores?')" class="commentIcon report">
-                        <i class="fas fa-flag"></i>
-                    </a>
-                    <a href="" onClick="return confirm('Você quer realmente apagar esse comentário?')" class="commentIcon delete">
-                        <i class="fas fa-trash-alt"></i>
-                    </a>
-                </div>  
+            <div class="boxNewComment subNewComment">
+                <img src="/media/avatars/<?=$user['photo'];?>" />
+                <form>
+                    <textarea placeholder="Digite um comentario"></textarea>
+                    <div class="button">Enviar</div>
+                </form>
             </div>
-        </div>
-
-        <div class="boxNewComment subNewComment">
-            <img src="/media/avatars/<?=$user['photo'];?>" />
-            <form>
-                <textarea placeholder="Digite um comentario"></textarea>
-                <div class="button">Enviar</div>
-            </form>
-        </div>
-
-        <div class="boxCommentSingle">
-            <img src="media/avatars/no-picture2.png" />
-            <div class="comment">
-                <h1>Isah Pimenta [2] - 5 hora atras</h1>
-                <p>
-                    Muito bom to evoluindo
-                </p>  
-                <div class="commentRate">
-                    <a class="commentIcon">
-                        <i class="btnLike fas fa-thumbs-up"></i>
-                        <span class="numberLike">6</span>
-                    </a>
-                    <a class="commentIcon">
-                        <i class="btnUnlike fas fa-thumbs-down"></i>
-                        <span class="numberUnlike">0</span>
-                    </a>
-                    <a href="#d" onClick="return confirm('Quer denunciar esse comentário aos administradores?')" class="commentIcon report">
-                        <i class="fas fa-flag"></i>
-                    </a>
-                    <a href="" onClick="return confirm('Você quer realmente apagar esse comentário?')" class="commentIcon delete">
-                        <i class="fas fa-trash-alt"></i>
-                    </a>
-                    <a class="commentIcon btnActiveComment">
-                        responder
-                    </a>
-                </div>  
-            </div>
-        </div>
-
-        <div class="boxNewComment subNewComment">
-            <img src="/media/avatars/<?=$user['photo'];?>" />
-            <form>
-                <textarea autofocus placeholder="Digite um comentario"></textarea>
-                <div class="button">Enviar</div>
-            </form>
-        </div>
+        <?php endforeach; ?>
 
     </section>
 

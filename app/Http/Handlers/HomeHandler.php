@@ -6,6 +6,9 @@ namespace App\Http\Handlers;
 use App\Models\Initial;
 use App\Models\User;
 use App\Models\Text;
+use App\Models\Comment;
+use App\Models\Subcomment;
+use App\Models\Comments_rating;
 /*-----------------------------------------------------------------------------*/
 
 class HomeHandler{
@@ -79,6 +82,97 @@ class HomeHandler{
         }else{
             return false;
         }
+    }
+
+    public static function getTextComments($textid, $user){
+        $datas = Comment::join('users', 'users.id', '=', 'comments.user_id')
+            ->select('comments.id', 'user_id', 'photo', 'comment', 'last_update', 'user_name')
+            ->where('commented_text', $textid)
+        ->get();
+
+        $comment = [];
+
+        foreach($datas as $commentSingle){
+            $likes = Comments_rating::
+                where('id_comment', $commentSingle['id'])
+                ->where('type', 'normal')
+                ->where('rate', 1)
+            ->count();
+
+            $unlikes = Comments_rating::
+                where('id_comment', $commentSingle['id'])
+                ->where('type', 'normal')
+                ->where('rate', -1)
+            ->count();
+
+            $userRated = Comments_rating::select('rate')
+                ->where('user_id', $user['id'])
+                ->where('id_comment', $commentSingle['id'])
+                ->where('type', 'normal')
+            ->first();
+
+            if($userRated){
+                $userRated = $userRated['rate'];
+            }else{
+                $userRated = 0;
+            }
+
+            $subcomments = Subcomment::
+                where('comment_answered', $commentSingle['id'])
+            ->count();
+
+            $comment[] = array(
+                'id' => $commentSingle['id'],
+                'user_id' => $commentSingle['user_id'],
+                'photo' => $commentSingle['photo'],
+                'comment' => $commentSingle['comment'],
+                'last_update' => $commentSingle['last_update'],
+                'user_name' => $commentSingle['user_name'],
+                'likes' => $likes,
+                'unlikes' => $unlikes,
+                'subcomments' => $subcomments,
+                'userRated' => $userRated
+            );
+        }
+
+        return $comment;
+    }
+
+    public static function getTextSubComments($textid){
+        $datas = Subcomment::join('users', 'users.id', '=', 'subcomments.user_id')
+            ->select('subcomments.id', 'user_id', 'photo', 'comment', 'last_update', 'user_name')
+            ->where('textid', $textid)
+        ->get();
+
+
+        $subcomment = [];
+
+        foreach($datas as $subcommentSingle){
+            $likes = Comments_rating::
+                where('id_comment', $subcommentSingle['id'])
+                ->where('type', 'sub')
+                ->where('rate', 1)
+            ->count();
+
+            $unlikes = Comments_rating::
+                where('id_comment', $subcommentSingle['id'])
+                ->where('type', 'sub')
+                ->where('rate', 0)
+            ->count();
+
+            $subcomment[] = array(
+                'id' => $subcommentSingle['id'],
+                'user_id' => $subcommentSingle['user_id'],
+                'photo' => $subcommentSingle['photo'],
+                'comment' => $subcommentSingle['comment'],
+                'last_update' => $subcommentSingle['last_update'],
+                'user_name' => $subcommentSingle['user_name'],
+                'likes' => $likes,
+                'unlikes' => $unlikes
+            );
+        }
+
+        return $subcomment;
     }
     
 }
