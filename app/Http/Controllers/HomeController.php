@@ -78,7 +78,7 @@ class HomeController extends Controller{
 
         $text = HomeHandler::getText($textid);
         $comments = HomeHandler::getTextComments($textid, $this->loggedUser);
-        $subComments = HomeHandler::getTextSubComments($textid);
+        $subComments = HomeHandler::getTextSubComments($textid, $this->loggedUser);
 
         if(!$text){
             redirect()->route('home')->send();//redireciona para o erro aqui
@@ -90,8 +90,8 @@ class HomeController extends Controller{
             'user' => $this->loggedUser,
             'text' => $text,
             'comments' => $comments,
-            'subComments ' => $subComments,
             'totalComments' => $totalComments,
+            'subComments' => $subComments,
             'selected' => 'none'
         ]);
     }

@@ -138,9 +138,8 @@ class HomeHandler{
         return $comment;
     }
 
-    public static function getTextSubComments($textid){
+    public static function getTextSubComments($textid, $user){
         $datas = Subcomment::join('users', 'users.id', '=', 'subcomments.user_id')
-            ->select('subcomments.id', 'user_id', 'photo', 'comment', 'last_update', 'user_name')
             ->where('textid', $textid)
         ->get();
 
@@ -157,18 +156,32 @@ class HomeHandler{
             $unlikes = Comments_rating::
                 where('id_comment', $subcommentSingle['id'])
                 ->where('type', 'sub')
-                ->where('rate', 0)
+                ->where('rate', -1)
             ->count();
+
+            $userRated = Comments_rating::select('rate')
+                ->where('user_id', $user['id'])
+                ->where('id_comment', $subcommentSingle['id'])
+                ->where('type', 'sub')
+            ->first();
+
+            if($userRated){
+                $userRated = $userRated['rate'];
+            }else{
+                $userRated = 0;
+            }
 
             $subcomment[] = array(
                 'id' => $subcommentSingle['id'],
                 'user_id' => $subcommentSingle['user_id'],
                 'photo' => $subcommentSingle['photo'],
                 'comment' => $subcommentSingle['comment'],
+                'comment_answered' => $subcommentSingle['comment_answered'],
                 'last_update' => $subcommentSingle['last_update'],
                 'user_name' => $subcommentSingle['user_name'],
                 'likes' => $likes,
-                'unlikes' => $unlikes
+                'unlikes' => $unlikes,
+                'userRated' => $userRated
             );
         }
 

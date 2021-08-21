@@ -111,34 +111,40 @@ EnglishVtp - <?=$text['englishTitle'];?>
                     </div>  
                 </div>
             </div>
-
-            <div class="boxCommentSingle subComment">
-                <img src="media/avatars/no-picture2.png" />
-                <div class="comment">
-                    <h1>Izabella Pimenta [20] - 1 hora atras</h1>
-                    <p>
-                        Me ajudou muito!! é meu terceiro texto
-                    </p>  
-                    <div class="commentRate">
-                        <a class="commentIcon">
-                            <i class="btnLike fas fa-thumbs-up"></i>
-                            <span class="numberLike">
-                                2
-                            </span>
-                        </a>
-                        <a class="commentIcon">
-                            <i class="btnUnlike fas fa-thumbs-down"></i>
-                            <span class="numberUnlike">0</span>
-                        </a>
-                        <a href="" onClick="return confirm('Quer denunciar esse comentário aos administradores?')" class="commentIcon report">
-                            <i class="fas fa-flag"></i>
-                        </a>
-                        <a href="" onClick="return confirm('Você quer realmente apagar esse comentário?')" class="commentIcon delete">
-                            <i class="fas fa-trash-alt"></i>
-                        </a>
-                    </div>  
-                </div>
-            </div>
+            
+            <?php foreach ($subComments as $subComment):?>
+                <?php if($subComment['comment_answered'] == $comment['id']): ?>
+                    <div class="boxCommentSingle subComment">
+                        <img src="media/avatars/no-picture2.png" />
+                        <div class="comment">
+                            <h1>Izabella Pimenta [20] - 1 hora atras</h1>
+                            <p>
+                                {{$subComment['comment']}}
+                            </p>  
+                            <div class="commentRate">
+                                <a class="commentIcon">
+                                    <i class="btnLike fas fa-thumbs-up <?= ($subComment['userRated'] == 1) ? 'liked' : '' ?>"></i>
+                                    <span class="numberLike">
+                                        {{$subComment['likes']}}
+                                    </span>
+                                </a>
+                                <a class="commentIcon">
+                                    <i class="btnUnlike fas fa-thumbs-down <?= ($subComment['userRated'] == -1) ? 'unliked' : '' ?>"></i>
+                                    <span class="numberUnlike">
+                                        {{$subComment['unlikes']}}
+                                    </span>
+                                </a>
+                                <a href="" onClick="return confirm('Quer denunciar esse comentário aos administradores?')" class="commentIcon report">
+                                    <i class="fas fa-flag"></i>
+                                </a>
+                                <a href="" onClick="return confirm('Você quer realmente apagar esse comentário?')" class="commentIcon delete">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </div>  
+                        </div>
+                    </div>
+                    <?php endif; ?>
+            <?php endforeach; ?>
 
             <div class="boxNewComment subNewComment">
                 <img src="/media/avatars/<?=$user['photo'];?>" />
