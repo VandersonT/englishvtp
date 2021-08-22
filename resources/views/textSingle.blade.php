@@ -78,7 +78,7 @@ EnglishVtp - <?=$text['englishTitle'];?>
         </div>
 
         <?php foreach ($comments as $comment):?>
-            <div class="boxCommentSingle">
+            <div class="boxCommentSingle" data-id="<?=$comment['id']?>" typec="normal">
                 <img src="<?= $base_url;?>/media/avatars/<?= $comment['photo']?>" />
                 <div class="comment">
                     <h1><?= $comment['user_name'];?></h1>
@@ -113,7 +113,7 @@ EnglishVtp - <?=$text['englishTitle'];?>
             
             <?php foreach ($subComments as $subComment):?>
                 <?php if($subComment['comment_answered'] == $comment['id']): ?>
-                    <div class="boxCommentSingle subComment">
+                    <div class="boxCommentSingle subComment" data-id="<?=$subComment['id']?>" typec="sub">
                         <img src="<?= $base_url;?>/media/avatars/<?= $subComment['photo']?>" />
                         <div class="comment">
                             <h1>{{$subComment['user_name']}}</h1>
@@ -172,6 +172,9 @@ EnglishVtp - <?=$text['englishTitle'];?>
 
 <!--Scripts-->
 @section('scripts')
+    <script type="text/javascript">
+        let base_url = '<?=$base_url;?>';
+    </script>
     <script src="{{url('assets/js/textReading.js')}}"></script>
     <script src="{{url('assets/js/commentsInfo.js')}}"></script>
 @endsection

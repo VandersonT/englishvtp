@@ -6,6 +6,9 @@ for(let i = 0; i < btnLike.length; i++){
     btnLike[i].addEventListener('click', function(e){
         e.preventDefault();
 
+        let id =  btnLike[i].closest('.boxCommentSingle').getAttribute('data-id');
+        let type =  btnLike[i].closest('.boxCommentSingle').getAttribute('typec');
+
         if(btnUnlike[i].classList.contains('unliked')){
             btnUnlike[i].click();
         }
@@ -21,6 +24,8 @@ for(let i = 0; i < btnLike.length; i++){
             numberLike[i].innerHTML = like + 1;
         }
 
+        fetch(base_url+'/ajax/rate/'+id+'/1/'+type);
+
     })
 }
 /*-------------------------------------------------------------------------------------------------------------*/
@@ -32,6 +37,9 @@ let numberUnlike  = document.querySelectorAll('.numberUnlike');
 for(let i = 0; i < btnLike.length; i++){
     btnUnlike[i].addEventListener('click', function(e){
         e.preventDefault();
+
+        let id =  btnLike[i].closest('.boxCommentSingle').getAttribute('data-id');
+        let type =  btnLike[i].closest('.boxCommentSingle').getAttribute('typec');
 
         unlike = numberUnlike[i].innerText;
         unlike = parseInt(unlike);
@@ -47,6 +55,8 @@ for(let i = 0; i < btnLike.length; i++){
             btnUnlike[i].classList.add('unliked');
             numberUnlike[i].innerHTML = unlike + 1;
         }
+
+        fetch(base_url+'/ajax/rate/'+id+'/-1/'+type);
 
     })
 }

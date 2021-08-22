@@ -55,7 +55,6 @@ class LoginHandler{
                 $loggedUser->theme = $data['theme'];
                 return $loggedUser;
             }
-            return false;
         }
 
         return false;

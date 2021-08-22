@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AjaxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +29,8 @@ Route::post('/cadastrar', [LoginController::class, 'registerAction']);
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/sair', [HomeController::class, 'logout']);
 Route::get('/texto/{textid}', [HomeController::class, 'openText']);
+/*-----------------------------------------------------------------------*/
+
+/*----------------------------------AJAX---------------------------------*/
+Route::get('/ajax/rate/{id}/{rate}/{type}', [AjaxController::class, 'like']);
 /*-----------------------------------------------------------------------*/
