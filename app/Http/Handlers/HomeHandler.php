@@ -85,29 +85,28 @@ class HomeHandler{
     }
 
     public static function getTextComments($textid, $user){
-        $datas = Comment::join('users', 'users.id', '=', 'comments.user_id')
+
+        $comments = Comment::join('users', 'users.id', '=', 'comments.user_id')
             ->select('comments.id', 'user_id', 'photo', 'comment', 'last_update', 'user_name')
             ->where('commented_text', $textid)
         ->get();
 
-        $comment = [];
-
-        foreach($datas as $commentSingle){
+        foreach($comments as $comment){
             $likes = Comments_rating::
-                where('id_comment', $commentSingle['id'])
+                where('id_comment', $comment['id'])
                 ->where('type', 'normal')
                 ->where('rate', 1)
             ->count();
 
             $unlikes = Comments_rating::
-                where('id_comment', $commentSingle['id'])
+                where('id_comment', $comment['id'])
                 ->where('type', 'normal')
                 ->where('rate', -1)
             ->count();
 
             $userRated = Comments_rating::select('rate')
                 ->where('user_id', $user['id'])
-                ->where('id_comment', $commentSingle['id'])
+                ->where('id_comment', $comment['id'])
                 ->where('type', 'normal')
             ->first();
 
@@ -118,50 +117,41 @@ class HomeHandler{
             }
 
             $subcomments = Subcomment::
-                where('comment_answered', $commentSingle['id'])
+                where('comment_answered', $comment['id'])
             ->count();
 
-            $comment[] = array(
-                'id' => $commentSingle['id'],
-                'user_id' => $commentSingle['user_id'],
-                'photo' => $commentSingle['photo'],
-                'comment' => $commentSingle['comment'],
-                'last_update' => $commentSingle['last_update'],
-                'user_name' => $commentSingle['user_name'],
-                'likes' => $likes,
-                'unlikes' => $unlikes,
-                'subcomments' => $subcomments,
-                'userRated' => $userRated
-            );
+            $comment['userRated'] = $userRated;
+            $comment['likes'] = $likes;
+            $comment['unlikes'] = $unlikes;
+            $comment['subcomments'] = $subcomments;
+            
         }
 
-        return $comment;
+        
+        return $comments;
     }
 
     public static function getTextSubComments($textid, $user){
-        $datas = Subcomment::join('users', 'users.id', '=', 'subcomments.user_id')
+        $subcomments = Subcomment::join('users', 'users.id', '=', 'subcomments.user_id')
             ->where('textid', $textid)
         ->get();
 
-
-        $subcomment = [];
-
-        foreach($datas as $subcommentSingle){
+        foreach($subcomments as $subcomment){
             $likes = Comments_rating::
-                where('id_comment', $subcommentSingle['id'])
+                where('id_comment', $subcomment['id'])
                 ->where('type', 'sub')
                 ->where('rate', 1)
             ->count();
 
             $unlikes = Comments_rating::
-                where('id_comment', $subcommentSingle['id'])
+                where('id_comment', $subcomment['id'])
                 ->where('type', 'sub')
                 ->where('rate', -1)
             ->count();
 
             $userRated = Comments_rating::select('rate')
                 ->where('user_id', $user['id'])
-                ->where('id_comment', $subcommentSingle['id'])
+                ->where('id_comment', $subcomment['id'])
                 ->where('type', 'sub')
             ->first();
 
@@ -171,23 +161,13 @@ class HomeHandler{
                 $userRated = 0;
             }
 
-
-            $subcomment[] = array(
-                'id' => $subcommentSingle['id'],
-                'user_id' => $subcommentSingle['user_id'],
-                'photo' => $subcommentSingle['photo'],
-                'comment' => $subcommentSingle['comment'],
-                'comment_answered' => $subcommentSingle['comment_answered'],
-                'last_update' => $subcommentSingle['last_update'],
-                'user_name' => $subcommentSingle['user_name'],
-                'photo' => $subcommentSingle['photo'],
-                'likes' => $likes,
-                'unlikes' => $unlikes,
-                'userRated' => $userRated
-            );
+            $subcomment['userRated'] = $userRated;
+            $subcomment['likes'] = $likes;
+            $subcomment['unlikes'] = $unlikes;
+            
         }
 
-        return $subcomment;
+        return $subcomments;
     }
     
 }

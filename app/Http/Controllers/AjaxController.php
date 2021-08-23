@@ -34,15 +34,12 @@ class AjaxController extends Controller{
         if($isRated){
 
             if($isRated == $rate){
-                echo 'ja foi avaliado e vc clicou para avaliar da msm forma ent remove';
                 AjaxHandler::deleteRated($idComment, $commentType, $this->loggedUser->id);
             }else{
-                echo 'ja foi avaliado e vc clicou em um botao diferente entao atualiza';
                 AjaxHandler::updateRated($idComment, $commentType, $this->loggedUser->id, $rate);
             }
 
         }else{
-            echo 'ainda nao foi avaliado, ent cria uma avaliação';
             AjaxHandler::addRated($idComment, $commentType, $this->loggedUser->id, $rate);
         }
 

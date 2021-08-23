@@ -84,6 +84,14 @@ class HomeController extends Controller{
             redirect()->route('home')->send();//redireciona para o erro aqui
         }
 
+
+        $page = 1;
+        if(!empty($_GET['pg'])){
+            $page = addslashes($_GET['pg']);
+        }
+        
+        $perPage = 21;
+
         $totalComments = count($comments) + count($subComments);
 
         return view('textSingle',[
