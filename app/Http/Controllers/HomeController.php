@@ -45,15 +45,13 @@ class HomeController extends Controller{
             $page = addslashes($_GET['pg']);
         }
         
-        $perPage = 2;
+        $perPage = 21;
         
         $texts = HomeHandler::getTexts($filter, $page, $perPage);
 
-        $totalTexts = HomeHandler::getAllText($filter);
+        $totalTextsWithFilter = HomeHandler::getAllTextWithFilter($filter);
 
-        echo $totalTexts;
-
-        $totalPage = ceil($totalTexts / $perPage);
+        $totalPage = ceil($totalTextsWithFilter / $perPage);
 
         return view('home',[
             'selected' => 'home',
@@ -61,7 +59,8 @@ class HomeController extends Controller{
             'texts' => $texts,
             'filter' => $filter,
             'page' => $page,
-            'totalPage' => $totalPage
+            'totalPage' => $totalPage,
+            'availableTexts' => $totalTextsWithFilter
         ]);
 
     }
@@ -96,9 +95,7 @@ class HomeController extends Controller{
 
         $totalComments = HomeHandler::countAllComments($textid);
 
-        $totalPages = $totalComments / $perPage;
-
-        echo $totalComments;
+        $totalPages = floor($totalComments / $perPage);
 
         return view('textSingle',[
             'user' => $this->loggedUser,

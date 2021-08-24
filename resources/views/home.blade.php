@@ -61,6 +61,11 @@
             
         </form>
     </section>
+    
+    <h1 class="manTitle">
+        <i class="fas fa-align-justify"></i>
+        Com esse filtro temos <?=$availableTexts;?> <?= ($availableTexts > 1) ? 'textos disponiveis' : 'texto disponivel' ?>
+    </h1>
 
     <section class="boxContent">
         

@@ -12,8 +12,8 @@ use App\Models\Comments_rating;
 /*-----------------------------------------------------------------------------*/
 
 class HomeHandler{
-    
-    public static function getAllText($filter){
+
+    public static function getAllTextWithFilter($filter){
         $data = Text::where('type_english', $filter['type'])
             ->where(function($query) use ($filter){
                 $query->where('texts.level', $filter['levels'][0])

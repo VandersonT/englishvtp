@@ -2,6 +2,17 @@ body{
     padding-bottom: 50px;
 }
 
+.manTitle{
+    text-align: center;
+    margin-bottom: 10px;
+    color: rgb(88, 88, 88);
+    font-size: 26px;
+}
+
+.manTitle i{
+    font-size: 20px;
+}
+
 .noText{
     text-align: center;
     margin: 10px;
@@ -71,6 +82,16 @@ body{
     color: rgb(228, 228, 228);
 }
 
+@media screen and (max-width: 600px){
+    .manTitle{
+        font-size: 20px;
+    }
+    
+    .manTitle i{
+        font-size: 18px;
+    }
+}
+
 @media screen and (max-width: 500px){
     .box-filter{
         flex-direction: column;
@@ -87,6 +108,16 @@ body{
     .field{
         width: 130px;
         padding-right: 0;
+    }
+}
+
+@media screen and (max-width: 410px){
+    .manTitle{
+        font-size: 14px;
+    }
+    
+    .manTitle i{
+        font-size: 12px;
     }
 }
 /***/
