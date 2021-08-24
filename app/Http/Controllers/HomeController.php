@@ -84,12 +84,16 @@ class HomeController extends Controller{
             $_SESSION['flash'] = '';
         }
         
+        /*Comments per page*/
         $page = 1;
         if(!empty($_GET['pg'])){
             $page = addslashes($_GET['pg']);
         }
-        
         $perPage = 20;
+
+        $totalComments = HomeHandler::countAllComments($textid);
+        $totalPages = ceil($totalComments / $perPage);
+        /***/
         
         $text = HomeHandler::getText($textid);
         $comments = HomeHandler::getTextComments($textid, $this->loggedUser,$page, $perPage);
@@ -98,10 +102,6 @@ class HomeController extends Controller{
         if(!$text){
             redirect()->route('home')->send();//redireciona para o erro aqui
         }
-
-        $totalComments = HomeHandler::countAllComments($textid);
-
-        $totalPages = ceil($totalComments / $perPage);
 
         return view('textSingle',[
             'user' => $this->loggedUser,

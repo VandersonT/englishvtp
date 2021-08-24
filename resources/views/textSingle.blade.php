@@ -77,7 +77,7 @@ EnglishVtp - <?=$text['englishTitle'];?>
         <div class="boxNewComment">
             <img src="<?= $base_url;?>/media/avatars/<?= $user['photo']?>" />
             <a name="form-anchor"></a>
-            <form method="POST" action="<?=$base_url;?>/efnvianovocomentario">
+            <form method="POST" action="<?=$base_url;?>/envianovocomentario">
                 @csrf
                 <input type="hidden" name="textid" value="<?=$text['id']?>" />
                 <textarea class="sendnewComment" name="newcomment" placeholder="Digite um comentario"></textarea>

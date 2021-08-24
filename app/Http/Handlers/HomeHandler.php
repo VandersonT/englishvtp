@@ -143,9 +143,11 @@ class HomeHandler{
     }
 
     public static function getTextSubComments($textid, $user){
+
         $subcomments = Subcomment::join('users', 'users.id', '=', 'subcomments.user_id')
             ->select('subcomments.id', 'comment_answered', 'user_id', 'photo', 'comment', 'last_update', 'user_name')
             ->where('textid', $textid)
+            ->orderByDesc('subcomments.id')
         ->get();
 
         foreach($subcomments as $subcomment){
@@ -183,10 +185,9 @@ class HomeHandler{
     }
 
     public static function countAllComments($textid){
-        $countSubComments = Subcomment::where('textid', $textid)->count();
         $countComments = Comment::where('commented_text', $textid)->count();
 
-        return $countSubComments + $countComments;
+        return $countComments;
     }
 
     public static function sendNewComment($message, $textid, $user_id){
