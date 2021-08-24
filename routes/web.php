@@ -35,4 +35,7 @@ Route::get('/texto/{textid}', [HomeController::class, 'openText'])->name('text')
 Route::get('/ajax/rate/{id}/{rate}/{type}', [AjaxController::class, 'like']);
 Route::post('/envianovocomentario', [HomeController::class, 'sendNewComment']);
 Route::get('/deletap/comentario/{id}', [HomeController::class, 'deleteComment']);
+
+Route::post('/envianovosubcomentario', [HomeController::class, 'sendNewSubComment']);
+Route::get('/deletap/subcomentario/{id}', [HomeController::class, 'deleteSubComment']);
 /*-----------------------------------------------------------------------*/

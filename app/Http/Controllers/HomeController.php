@@ -133,12 +133,30 @@ class HomeController extends Controller{
         $commentId = $request->id;
 
         if($commentId){
-            $deu = HomeHandler::deleteComment($commentId);
-
-            if(!$deu){
-                redirect()->route('home')->send();//redireciona para o erro aqui
-            }
+            HomeHandler::deleteComment($commentId);
             $_SESSION['flash'] = 'Comentário apagado com sucesso.';
+        }
+        echo "<script>window.history.back()</script>";
+    }
+
+    public function sendNewSubComment(){
+        $commentId = filter_input(INPUT_POST, 'comment');
+        $subComment = filter_input(INPUT_POST, 'newSubComment');
+        $textId = filter_input(INPUT_POST, 'text');
+        
+        if($commentId && $subComment && $textId){
+            HomeHandler::sendNewSubComment($commentId, $subComment, $textId, $this->loggedUser->id);
+            $_SESSION['flash'] = 'Comentário respondido com sucesso.';
+        }
+        echo "<script>window.history.back()</script>";
+    }
+
+    public function deleteSubComment(Request $request){
+        $subCommentId = $request->id;
+
+        if($subCommentId){
+            HomeHandler::deleteSubComment($subCommentId);
+            $_SESSION['flash'] = 'Resposta apagada com sucesso.';
         }
         echo "<script>window.history.back()</script>";
     }

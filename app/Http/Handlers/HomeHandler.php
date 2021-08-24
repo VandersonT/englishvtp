@@ -144,6 +144,7 @@ class HomeHandler{
 
     public static function getTextSubComments($textid, $user){
         $subcomments = Subcomment::join('users', 'users.id', '=', 'subcomments.user_id')
+            ->select('subcomments.id', 'comment_answered', 'user_id', 'photo', 'comment', 'last_update', 'user_name')
             ->where('textid', $textid)
         ->get();
 
@@ -199,12 +200,22 @@ class HomeHandler{
 
     public static function deleteComment($commentId){
         $commentToDelete = Comment::find($commentId);
+        $commentToDelete->delete();
+    }
 
-        if($commentToDelete){
-            $commentToDelete->delete();
-            return true;
-        }
-        return false;
+    public static function sendNewSubComment($commentId, $subComment, $textId, $user_id){
+        $newComment = new Subcomment;
+            $newComment->user_id = $user_id;
+            $newComment->comment = $subComment;
+            $newComment->last_update = time();
+            $newComment->comment_answered = $commentId;
+            $newComment->textid	 = $textId;
+        $newComment->save();
+    }
+
+    public static function deleteSubComment($subCommentId){
+        $subCommentToDelete = Subcomment::find($subCommentId);
+        $subCommentToDelete->delete();
     }
     
 }

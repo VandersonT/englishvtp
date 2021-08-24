@@ -50,17 +50,16 @@ if(closeFlash){
         document.querySelector('.flash').style.display = 'none';
     }) 
 }
+/*-------------------------------------------------------------------------------------------------------------*/
 
-let button = document.querySelectorAll('.button');
+/*--------------------------------------FILTER_EMPTY_MESSAGE---------------------------------------------------*/
+let button = document.querySelector('.mainComment');
 
-for(let i = 0; i < button.length; i++){
-    button[i].addEventListener('click', function(e){
-        let comment = document.querySelector('.sendnewComment').value;
-
-        if(comment == ''){
-            e.preventDefault();
-        }
-    })
-}
+button.addEventListener('click', function(e){
+    let msg = document.querySelector('.sendnewComment').value;
+    if(msg == ''){
+        e.preventDefault();
+    }
+})
 
 /*-------------------------------------------------------------------------------------------------------------*/

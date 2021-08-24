@@ -77,11 +77,11 @@ EnglishVtp - <?=$text['englishTitle'];?>
         <div class="boxNewComment">
             <img src="<?= $base_url;?>/media/avatars/<?= $user['photo']?>" />
             <a name="form-anchor"></a>
-            <form method="POST" action="<?=$base_url;?>/envianovocomentario">
+            <form method="POST" action="<?=$base_url;?>/efnvianovocomentario">
                 @csrf
                 <input type="hidden" name="textid" value="<?=$text['id']?>" />
                 <textarea class="sendnewComment" name="newcomment" placeholder="Digite um comentario"></textarea>
-                <button class="button">Enviar</button>
+                <button class="button mainComment">Enviar</button>
             </form>
         </div>
 
@@ -96,12 +96,10 @@ EnglishVtp - <?=$text['englishTitle'];?>
 
                     <div class="infoComment">
                         <a href="#"><?= $comment['user_name'];?></a>
-                        <span><?=date('d/m/Y - H:s', $comment['last_update']);?></span>
+                        <span><?=date('d/m/Y - H:i', $comment['last_update']);?></span>
                     </div>
                     
-                    <p>
-                        {{$comment['comment']}}
-                    </p>  
+                    <p>{{$comment['comment']}}</p>  
                     <div class="commentRate">
                         <a class="commentIcon">
                             <i class="btnLike fas fa-thumbs-up <?= ($comment['userRated'] == 1) ? 'liked' : ''; ?>"></i>
@@ -135,10 +133,14 @@ EnglishVtp - <?=$text['englishTitle'];?>
                     <div class="boxCommentSingle subComment" data-id="<?=$subComment['id']?>" typec="sub">
                         <img src="<?= $base_url;?>/media/avatars/<?= $subComment['photo']?>" />
                         <div class="comment">
-                            <h1>{{$subComment['user_name']}}</h1>
-                            <p>
-                                {{$subComment['comment']}}
-                            </p>  
+                            
+                            <div class="infoComment">
+                                <a href="#"><?= $subComment['user_name'];?></a>
+                                <span><?=date('d/m/Y - H:i', $subComment['last_update']);?></span>
+                            </div>
+                            
+                            <p>{{$subComment['comment']}}</p> 
+
                             <div class="commentRate">
                                 <a class="commentIcon">
                                     <i class="btnLike fas fa-thumbs-up <?= ($subComment['userRated'] == 1) ? 'liked' : '' ?>"></i>
@@ -155,9 +157,11 @@ EnglishVtp - <?=$text['englishTitle'];?>
                                 <a href="" onClick="return confirm('Quer denunciar esse comentário aos administradores?')" class="commentIcon report">
                                     <i class="fas fa-flag"></i>
                                 </a>
-                                <a href="" onClick="return confirm('Você quer realmente apagar esse comentário?')" class="commentIcon delete">
+                                <?php if($user['id'] == $subComment['user_id'] || $user['access'] > 1):?>
+                                <a href="<?=$base_url;?>/deletap/subcomentario/<?=$subComment['id'];?>" onClick="return confirm('Você quer realmente apagar esse comentário?')" class="commentIcon delete">
                                     <i class="fas fa-trash-alt"></i>
                                 </a>
+                                <?php endif; ?>
                             </div>  
                         </div>
                     </div>
@@ -166,9 +170,12 @@ EnglishVtp - <?=$text['englishTitle'];?>
 
             <div class="boxNewComment subNewComment">
                 <img src="<?= $base_url;?>/media/avatars/<?= $user['photo']?>" />
-                <form>
-                    <textarea placeholder="Digite um comentario"></textarea>
-                    <div class="button">Enviar</div>
+                <form method="POST" action="<?=$base_url;?>/envianovosubcomentario">
+                    @csrf
+                    <input name="text" type="hidden" value="<?=$text['id']?>" />
+                    <input name="comment" type="hidden" value="<?=$comment['id']?>" />
+                    <textarea name="newSubComment" class="newMsg" placeholder="Digite um comentario"></textarea>
+                    <button class="button">Enviar</button>
                 </form>
             </div>
         <?php endforeach; ?>
