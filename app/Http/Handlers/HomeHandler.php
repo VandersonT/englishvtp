@@ -196,5 +196,15 @@ class HomeHandler{
             $newComment->commented_text	 = $textid;
         $newComment->save();
     }
+
+    public static function deleteComment($commentId){
+        $commentToDelete = Comment::find($commentId);
+
+        if($commentToDelete){
+            $commentToDelete->delete();
+            return true;
+        }
+        return false;
+    }
     
 }

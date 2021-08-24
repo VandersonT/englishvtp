@@ -129,4 +129,18 @@ class HomeController extends Controller{
         return redirect()->route('text', $textid)->send();
     }
 
+    public function deleteComment(Request $request){
+        $commentId = $request->id;
+
+        if($commentId){
+            $deu = HomeHandler::deleteComment($commentId);
+
+            if(!$deu){
+                redirect()->route('home')->send();//redireciona para o erro aqui
+            }
+            $_SESSION['flash'] = 'Comentário apagado com sucesso.';
+        }
+        echo "<script>window.history.back()</script>";
+    }
+
 }

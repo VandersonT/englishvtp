@@ -31,7 +31,8 @@ Route::get('/sair', [HomeController::class, 'logout']);
 Route::get('/texto/{textid}', [HomeController::class, 'openText'])->name('text');;
 /*-----------------------------------------------------------------------*/
 
-/*----------------------------------SendNewInformation---------------------------------*/
+/*--------------------------------Actions--------------------------------*/
 Route::get('/ajax/rate/{id}/{rate}/{type}', [AjaxController::class, 'like']);
 Route::post('/envianovocomentario', [HomeController::class, 'sendNewComment']);
+Route::get('/deletap/comentario/{id}', [HomeController::class, 'deleteComment']);
 /*-----------------------------------------------------------------------*/

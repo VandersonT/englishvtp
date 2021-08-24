@@ -27,7 +27,7 @@ class LoginHandler{
                 $loggedUser->name = $data['user_name'];
                 $loggedUser->email = $data['email'];
                 $loggedUser->password = $data['password'];
-                $loggedUser->status = $data['status'];
+                $loggedUser->access = $data['access'];
                 $loggedUser->token = $data['token'];
                 $loggedUser->tokenAdmin = $data['token_admin'];
                 $loggedUser->photo = $data['photo'];
@@ -48,7 +48,7 @@ class LoginHandler{
                 $loggedUser->name = $data['user_name'];
                 $loggedUser->email = $data['email'];
                 $loggedUser->password = $data['password'];
-                $loggedUser->status = $data['status'];
+                $loggedUser->access = $data['access'];
                 $loggedUser->token = $data['token'];
                 $loggedUser->tokenAdmin = $data['token_admin'];
                 $loggedUser->photo = $data['photo'];
@@ -92,7 +92,7 @@ class LoginHandler{
             $newUser->user_name = $name;
             $newUser->email = $email;
             $newUser->password = $hash;
-            $newUser->status = 1;
+            $newUser->access = 1;
             $newUser->token = $token;
             $newUser->photo = 'no-picture.png';
             $newUser->theme = 'light';

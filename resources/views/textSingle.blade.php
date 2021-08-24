@@ -118,9 +118,11 @@ EnglishVtp - <?=$text['englishTitle'];?>
                         <a href="#report" onClick="return confirm('Quer denunciar esse comentário aos administradores?')" class="commentIcon report">
                             <i class="fas fa-flag"></i>
                         </a>
-                        <a href="#" onClick="return confirm('Você quer realmente apagar esse comentário?')" class="commentIcon delete">
+                        <?php if($user['id'] == $comment['user_id'] || $user['access'] > 1):?>
+                        <a href="<?=$base_url;?>/deletap/comentario/<?=$comment['id'];?>" onClick="return confirm('Você quer realmente apagar esse comentário?')" class="commentIcon delete">
                             <i class="fas fa-trash-alt"></i>
                         </a>
+                        <?php endif; ?>
                         <a class="commentIcon btnActiveComment">
                             responder
                         </a>
