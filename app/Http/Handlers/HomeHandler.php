@@ -14,8 +14,13 @@ use App\Models\Comments_rating;
 class HomeHandler{
     
     public static function getAllText($filter){
-        $data = Text::join('users', 'users.id', '=', 'texts.created_by_id')
-            ->select('texts.id', 'english_title', 'image', 'texts.level', 'user_name')
+        $data = Text::where('type_english', $filter['type'])
+            ->where(function($query) use ($filter){
+                $query->where('texts.level', $filter['levels'][0])
+                ->orWhere('texts.level', $filter['levels'][1])
+                ->orWhere('texts.level', $filter['levels'][2])
+                ->orWhere('texts.level', $filter['levels'][3]);
+            })
         ->get();
 
         return count($data);
@@ -84,11 +89,16 @@ class HomeHandler{
         }
     }
 
-    public static function getTextComments($textid, $user){
+    public static function getTextComments($textid, $user, $page, $perPage){
+
+
+        $offset = ($page - 1) * $perPage;
 
         $comments = Comment::join('users', 'users.id', '=', 'comments.user_id')
             ->select('comments.id', 'user_id', 'photo', 'comment', 'last_update', 'user_name')
             ->where('commented_text', $textid)
+            ->offset($offset)
+            ->limit($perPage)
         ->get();
 
         foreach($comments as $comment){
@@ -168,6 +178,13 @@ class HomeHandler{
         }
 
         return $subcomments;
+    }
+
+    public static function countAllComments($textid){
+        $countSubComments = Subcomment::where('textid', $textid)->count();
+        $countComments = Comment::where('commented_text', $textid)->count();
+
+        return $countSubComments + $countComments;
     }
     
 }

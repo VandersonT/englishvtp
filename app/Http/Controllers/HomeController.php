@@ -45,11 +45,13 @@ class HomeController extends Controller{
             $page = addslashes($_GET['pg']);
         }
         
-        $perPage = 21;
+        $perPage = 2;
         
         $texts = HomeHandler::getTexts($filter, $page, $perPage);
 
         $totalTexts = HomeHandler::getAllText($filter);
+
+        echo $totalTexts;
 
         $totalPage = ceil($totalTexts / $perPage);
 
@@ -76,23 +78,27 @@ class HomeController extends Controller{
 
     public function openText($textid){
 
+        
+        $page = 1;
+        if(!empty($_GET['pg'])){
+            $page = addslashes($_GET['pg']);
+        }
+        
+        $perPage = 3;
+        
         $text = HomeHandler::getText($textid);
-        $comments = HomeHandler::getTextComments($textid, $this->loggedUser);
+        $comments = HomeHandler::getTextComments($textid, $this->loggedUser,$page, $perPage);
         $subComments = HomeHandler::getTextSubComments($textid, $this->loggedUser);
 
         if(!$text){
             redirect()->route('home')->send();//redireciona para o erro aqui
         }
 
+        $totalComments = HomeHandler::countAllComments($textid);
 
-        $page = 1;
-        if(!empty($_GET['pg'])){
-            $page = addslashes($_GET['pg']);
-        }
-        
-        $perPage = 21;
+        $totalPages = $totalComments / $perPage;
 
-        $totalComments = count($comments) + count($subComments);
+        echo $totalComments;
 
         return view('textSingle',[
             'user' => $this->loggedUser,
@@ -100,7 +106,9 @@ class HomeController extends Controller{
             'comments' => $comments,
             'totalComments' => $totalComments,
             'subComments' => $subComments,
-            'selected' => 'none'
+            'selected' => 'none',
+            'totalPages' => $totalPages,
+            'page' => $page
         ]);
     }
 

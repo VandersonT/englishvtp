@@ -154,6 +154,14 @@ EnglishVtp - <?=$text['englishTitle'];?>
             </div>
         <?php endforeach; ?>
 
+        <ul class="box-pagination">
+            <?php for($q=0; $q <= $totalPages; $q++): ?>
+
+                <a href="<?=$base_url;?>/texto/<?=$text['id'];?>?pg=<?=$q;?>"><li></li><?php echo $q?></a>
+
+            <?php endfor; ?>
+        </ul>
+
     </section>
 
     <div class="btnAssistent">
