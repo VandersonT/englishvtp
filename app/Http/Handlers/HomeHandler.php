@@ -201,6 +201,10 @@ class HomeHandler{
     public static function deleteComment($commentId){
         $commentToDelete = Comment::find($commentId);
         $commentToDelete->delete();
+
+        $deleteSubsComments = Subcomment::
+            where('comment_answered', $commentId)
+        ->delete();
     }
 
     public static function sendNewSubComment($commentId, $subComment, $textId, $user_id){
