@@ -147,7 +147,6 @@ class HomeHandler{
         $subcomments = Subcomment::join('users', 'users.id', '=', 'subcomments.user_id')
             ->select('subcomments.id', 'comment_answered', 'user_id', 'photo', 'comment', 'last_update', 'user_name')
             ->where('textid', $textid)
-            ->orderByDesc('subcomments.id')
         ->get();
 
         foreach($subcomments as $subcomment){

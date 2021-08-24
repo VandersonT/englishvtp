@@ -90,6 +90,7 @@ EnglishVtp - <?=$text['englishTitle'];?>
         </div>
 
         <?php foreach ($comments as $comment):?>
+       
             <div class="boxCommentSingle" data-id="<?=$comment['id']?>" typec="normal">
                 <img src="<?= $base_url;?>/media/avatars/<?= $comment['photo']?>" />
                 <div class="comment">
@@ -128,45 +129,58 @@ EnglishVtp - <?=$text['englishTitle'];?>
                 </div>
             </div>
             
-            <?php foreach ($subComments as $subComment):?>
-                <?php if($subComment['comment_answered'] == $comment['id']): ?>
-                    <div class="boxCommentSingle subComment" data-id="<?=$subComment['id']?>" typec="sub">
-                        <img src="<?= $base_url;?>/media/avatars/<?= $subComment['photo']?>" />
-                        <div class="comment">
-                            
-                            <div class="infoComment">
-                                <a href="#"><?= $subComment['user_name'];?></a>
-                                <span><?=date('d/m/Y - H:i', $subComment['last_update']);?></span>
-                            </div>
-                            
-                            <p>{{$subComment['comment']}}</p> 
+            <?php if($comment['subcomments']): ?>
+            <div class="boxGeneral animate__animated animate__fadeIn">
+            <?php endif; ?>
+                
+                <?php foreach ($subComments as $subComment):?>
+                    <?php if($subComment['comment_answered'] == $comment['id']): ?>
+                        <div class="boxCommentSingle subComment" data-id="<?=$subComment['id']?>" typec="sub">
+                            <img src="<?= $base_url;?>/media/avatars/<?= $subComment['photo']?>" />
+                            <div class="comment">
+                                
+                                <div class="infoComment">
+                                    <a href="#"><?= $subComment['user_name'];?></a>
+                                    <span><?=date('d/m/Y - H:i', $subComment['last_update']);?></span>
+                                </div>
+                                
+                                <p>{{$subComment['comment']}}</p> 
 
-                            <div class="commentRate">
-                                <a class="commentIcon">
-                                    <i class="btnLike fas fa-thumbs-up <?= ($subComment['userRated'] == 1) ? 'liked' : '' ?>"></i>
-                                    <span class="numberLike">
-                                        {{$subComment['likes']}}
-                                    </span>
-                                </a>
-                                <a class="commentIcon">
-                                    <i class="btnUnlike fas fa-thumbs-down <?= ($subComment['userRated'] == -1) ? 'unliked' : '' ?>"></i>
-                                    <span class="numberUnlike">
-                                        {{$subComment['unlikes']}}
-                                    </span>
-                                </a>
-                                <a href="" onClick="return confirm('Quer denunciar esse comentário aos administradores?')" class="commentIcon report">
-                                    <i class="fas fa-flag"></i>
-                                </a>
-                                <?php if($user['id'] == $subComment['user_id'] || $user['access'] > 1):?>
-                                <a href="<?=$base_url;?>/deletap/subcomentario/<?=$subComment['id'];?>" onClick="return confirm('Você quer realmente apagar esse comentário?')" class="commentIcon delete">
-                                    <i class="fas fa-trash-alt"></i>
-                                </a>
-                                <?php endif; ?>
-                            </div>  
+                                <div class="commentRate">
+                                    <a class="commentIcon">
+                                        <i class="btnLike fas fa-thumbs-up <?= ($subComment['userRated'] == 1) ? 'liked' : '' ?>"></i>
+                                        <span class="numberLike">
+                                            {{$subComment['likes']}}
+                                        </span>
+                                    </a>
+                                    <a class="commentIcon">
+                                        <i class="btnUnlike fas fa-thumbs-down <?= ($subComment['userRated'] == -1) ? 'unliked' : '' ?>"></i>
+                                        <span class="numberUnlike">
+                                            {{$subComment['unlikes']}}
+                                        </span>
+                                    </a>
+                                    <a href="" onClick="return confirm('Quer denunciar esse comentário aos administradores?')" class="commentIcon report">
+                                        <i class="fas fa-flag"></i>
+                                    </a>
+                                    <?php if($user['id'] == $subComment['user_id'] || $user['access'] > 1):?>
+                                    <a href="<?=$base_url;?>/deletap/subcomentario/<?=$subComment['id'];?>" onClick="return confirm('Você quer realmente apagar esse comentário?')" class="commentIcon delete">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                    <?php endif; ?>
+                                </div>  
+                            </div>
                         </div>
-                    </div>
-                <?php endif; ?>
-            <?php endforeach; ?>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+
+            <?php if($comment['subcomments']): ?>
+            </div>
+            <?php endif; ?>
+
+            <?php if($comment['subcomments']): ?>
+                <div class="seeMore">Ver Respostas</div>
+                <div class="seeLess">Ocultar Respostas</div>
+            <?php endif; ?>
 
             <div class="boxNewComment subNewComment">
                 <img src="<?= $base_url;?>/media/avatars/<?= $user['photo']?>" />
@@ -178,6 +192,7 @@ EnglishVtp - <?=$text['englishTitle'];?>
                     <button class="button">Enviar</button>
                 </form>
             </div>
+
         <?php endforeach; ?>
 
         <?php if($totalPages > 1): ?>

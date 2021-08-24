@@ -61,5 +61,24 @@ button.addEventListener('click', function(e){
         e.preventDefault();
     }
 })
-
 /*-------------------------------------------------------------------------------------------------------------*/
+
+let boxGeneral = document.querySelectorAll('.boxGeneral');
+let seeMore = document.querySelectorAll('.seeMore');
+let seeLess = document.querySelectorAll('.seeLess');
+
+for(let i = 0; i < seeMore.length; i++){
+    seeMore[i].addEventListener('click', function(e){
+        boxGeneral[i].style.display = 'block';
+        seeMore[i].style.display = 'none';
+        seeLess[i].style.display = 'block';
+    })
+}
+
+for(let i = 0; i < seeLess.length; i++){
+    seeLess[i].addEventListener('click', function(e){
+        boxGeneral[i].style.display = 'none';
+        seeMore[i].style.display = 'block';
+        seeLess[i].style.display = 'none';
+    })
+}

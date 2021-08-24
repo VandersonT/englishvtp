@@ -331,7 +331,8 @@ body{
 }
 
 .infoComment a{
-    color:rgb(0, 162, 255);
+    color:rgb(0, 132, 255);
+    font-weight: bold;
     margin-bottom: 5px;
     cursor: pointer;
     max-width: 100%;
@@ -340,12 +341,12 @@ body{
     margin-right: 5px;
 }
 
-.infoComment span{
-    font-size: 14px;
+.infoComment a:hover{
+    color:rgb(0, 118, 228);
 }
 
-.infoComment a:hover{
-    color:rgb(0, 140, 221);
+.infoComment span{
+    font-size: 14px;
 }
 
 .commentRate{
@@ -394,7 +395,25 @@ body{
     color: rgb(46, 9, 9);
 }
 
+.boxGeneral{
+    display: none;
+}
+
+.seeLess,
+.seeMore{
+    color: rgb(0, 132, 255);
+    font-weight: bold;
+    margin-left: 130px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.seeLess{
+    display: none;
+}
+
 .subComment{
+    /*display: none;*/
     margin-left: 60px;
     max-width: calc(90% - 60px);
     word-wrap: break-word;
