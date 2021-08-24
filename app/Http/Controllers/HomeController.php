@@ -14,6 +14,7 @@ class HomeController extends Controller{
     private $loggedUser;
 
     public function __construct(){
+        date_default_timezone_set('America/Sao_Paulo');
         $this->loggedUser = LoginHandler::checkLogin();
 
         if(!$this->loggedUser){

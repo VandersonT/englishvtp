@@ -93,7 +93,12 @@ EnglishVtp - <?=$text['englishTitle'];?>
             <div class="boxCommentSingle" data-id="<?=$comment['id']?>" typec="normal">
                 <img src="<?= $base_url;?>/media/avatars/<?= $comment['photo']?>" />
                 <div class="comment">
-                    <h1><?= $comment['user_name'];?></h1>
+
+                    <div class="infoComment">
+                        <a href="#"><?= $comment['user_name'];?></a>
+                        <span><?=date('d/m/Y - H:s', $comment['last_update']);?></span>
+                    </div>
+                    
                     <p>
                         {{$comment['comment']}}
                     </p>  

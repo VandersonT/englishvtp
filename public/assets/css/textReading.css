@@ -325,17 +325,26 @@ body{
     word-wrap: break-word;
 }
 
-.comment h1{
+.infoComment{
+    display: flex;
     font-size: 15px;
+}
+
+.infoComment a{
     color:rgb(0, 162, 255);
     margin-bottom: 5px;
     cursor: pointer;
     max-width: 100%;
     width: max-content;
     word-wrap: break-word;
+    margin-right: 5px;
 }
 
-.comment h1:hover{
+.infoComment span{
+    font-size: 14px;
+}
+
+.infoComment a:hover{
     color:rgb(0, 140, 221);
 }
 
@@ -404,6 +413,36 @@ body{
     .boxComments{
         width: 100vw;
         max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .boxNewComment form{
+        width: 80%;
+    }
+    .boxNewComment textarea{
+        width: 100%;
+    }
+    .subNewComment form{
+        width: calc(70% - 40px);
+    }
+    .subNewComment textarea{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .boxNewComment textarea{
+        font-size: 12px;
+    }
+    .subNewComment textarea{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 340px) {
+    .commentRate a{
+        font-size: 13px;
     }
 }
 /***/

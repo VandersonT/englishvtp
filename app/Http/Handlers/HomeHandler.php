@@ -99,6 +99,7 @@ class HomeHandler{
             ->where('commented_text', $textid)
             ->offset($offset)
             ->limit($perPage)
+            ->orderByDesc('comments.id')
         ->get();
 
         foreach($comments as $comment){
