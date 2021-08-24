@@ -77,13 +77,18 @@ class HomeController extends Controller{
 
     public function openText($textid){
 
+        $flash = '';
+        if(!empty($_SESSION['flash'])){
+            $flash = $_SESSION['flash'];
+            $_SESSION['flash'] = '';
+        }
         
         $page = 1;
         if(!empty($_GET['pg'])){
             $page = addslashes($_GET['pg']);
         }
         
-        $perPage = 3;
+        $perPage = 20;
         
         $text = HomeHandler::getText($textid);
         $comments = HomeHandler::getTextComments($textid, $this->loggedUser,$page, $perPage);
@@ -95,7 +100,7 @@ class HomeController extends Controller{
 
         $totalComments = HomeHandler::countAllComments($textid);
 
-        $totalPages = floor($totalComments / $perPage);
+        $totalPages = ceil($totalComments / $perPage);
 
         return view('textSingle',[
             'user' => $this->loggedUser,
@@ -105,8 +110,22 @@ class HomeController extends Controller{
             'subComments' => $subComments,
             'selected' => 'none',
             'totalPages' => $totalPages,
-            'page' => $page
+            'page' => $page,
+            'flash' => $flash
         ]);
+    }
+
+    public function sendNewComment(){
+        $message = filter_input(INPUT_POST, 'newcomment', FILTER_SANITIZE_SPECIAL_CHARS);
+        $textid = filter_input(INPUT_POST, 'textid', FILTER_SANITIZE_SPECIAL_CHARS);
+        
+        if($message && $textid){
+
+            HomeHandler::sendNewComment($message, $textid, $this->loggedUser->id);
+            $_SESSION['flash'] = 'Comentário adicionado com sucesso.';
+
+        }
+        return redirect()->route('text', $textid)->send();
     }
 
 }

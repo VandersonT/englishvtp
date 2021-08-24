@@ -28,9 +28,10 @@ Route::post('/cadastrar', [LoginController::class, 'registerAction']);
 /*----------------------------------HOME---------------------------------*/
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/sair', [HomeController::class, 'logout']);
-Route::get('/texto/{textid}', [HomeController::class, 'openText']);
+Route::get('/texto/{textid}', [HomeController::class, 'openText'])->name('text');;
 /*-----------------------------------------------------------------------*/
 
-/*----------------------------------AJAX---------------------------------*/
+/*----------------------------------SendNewInformation---------------------------------*/
 Route::get('/ajax/rate/{id}/{rate}/{type}', [AjaxController::class, 'like']);
+Route::post('/envianovocomentario', [HomeController::class, 'sendNewComment']);
 /*-----------------------------------------------------------------------*/

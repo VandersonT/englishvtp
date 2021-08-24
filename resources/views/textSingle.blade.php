@@ -13,6 +13,15 @@ EnglishVtp - <?=$text['englishTitle'];?>
 
 <!--Content-->
 @section('content')
+
+    <?php if(!empty($flash)): ?>
+    <div class="flash animate__animated animate__slideInRight">
+        <i class="fas fa-check"></i>
+        <p><?=$flash;?></p>
+        <button>Fechar</button>
+    </div>
+    <?php endif;?>
+
     <section class="menuAction">
         <a class="btnReturn" href="{{url()->previous()}}">Voltar</a>
         <a class="btnOrange" href="#">Finalizar Estudo</a>
@@ -67,9 +76,12 @@ EnglishVtp - <?=$text['englishTitle'];?>
         <h1 class="boxComments-title">Comentarios: {{$totalComments}}</h1>
         <div class="boxNewComment">
             <img src="<?= $base_url;?>/media/avatars/<?= $user['photo']?>" />
-            <form>
-                <textarea placeholder="Digite um comentario"></textarea>
-                <div class="button">Enviar</div>
+            <a name="form-anchor"></a>
+            <form method="POST" action="<?=$base_url;?>/envianovocomentario">
+                @csrf
+                <input type="hidden" name="textid" value="<?=$text['id']?>" />
+                <textarea class="sendnewComment" name="newcomment" placeholder="Digite um comentario"></textarea>
+                <button class="button">Enviar</button>
             </form>
         </div>
 

@@ -186,5 +186,14 @@ class HomeHandler{
 
         return $countSubComments + $countComments;
     }
+
+    public static function sendNewComment($message, $textid, $user_id){
+        $newComment = new Comment;
+            $newComment->user_id = $user_id;
+            $newComment->comment = $message;
+            $newComment->last_update = time();
+            $newComment->commented_text	 = $textid;
+        $newComment->save();
+    }
     
 }

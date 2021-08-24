@@ -40,3 +40,26 @@ btnSuggestion.addEventListener('click', function(){
     assistentIsOpen = !assistentIsOpen;
 })
 /*-------------------------------------------------------------------------------------------------------------*/
+
+/*-------------------------------------------Flash_Message-----------------------------------------------------*/
+
+let closeFlash = document.querySelector('.flash button');
+
+if(closeFlash){
+    closeFlash.addEventListener('click', function(){
+        document.querySelector('.flash').style.display = 'none';
+    }) 
+}
+/*-------------------------------------------------------------------------------------------------------------*/
+
+let button = document.querySelectorAll('.button');
+
+for(let i = 0; i < button.length; i++){
+    button[i].addEventListener('click', function(e){
+        let comment = document.querySelector('.sendnewComment').value;
+
+        if(comment == ''){
+            e.preventDefault();
+        }
+    })
+}
