@@ -98,4 +98,45 @@ class ActionController extends Controller
         exit;
     }
 
+    public function updateProfile(){
+        $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
+        $themeMode = filter_input(INPUT_POST, 'themeMode', FILTER_SANITIZE_SPECIAL_CHARS);
+        $englishLevel = filter_input(INPUT_POST, 'englishLevel', FILTER_SANITIZE_SPECIAL_CHARS);
+        $profilePictureChanged = false;
+        $allowed = ['image/jpeg', 'image/jpg', 'image/png'];
+        $namePhoto = '';
+
+        if(!empty($_FILES['photo']['name'])){
+            $profilePictureChanged = true;
+        }
+
+
+        if($profilePictureChanged){
+            if($_FILES['photo']['size'] > 2000000){
+                $_SESSION['error'] = 'A foto de perfil enviada é muito grande. (maximo 2MB)';
+                return back();
+                exit;
+            }
+    
+            //if type is not allowed
+            if(!in_array($_FILES['photo']['type'], $allowed)){
+                $_SESSION['error'] = 'Envie somente fotos jpeg, jpg ou png';
+                return back();
+                exit;
+            } 
+
+            //if that's ok
+            $namePhoto = md5(time().rand(0,9999)).'.jpg';
+            move_uploaded_file($_FILES['photo']['tmp_name'], 'media/avatars/'.$namePhoto);
+        }
+
+        ActionHandler::updateProfile($name, $email, $themeMode, $englishLevel,$profilePictureChanged, $namePhoto, $this->loggedUser->id);
+
+        $_SESSION['success'] = 'Seu perfil foi atualizado com sucesso.';
+        redirect()->route('profile')->send();
+        exit;
+
+    }
+
 }

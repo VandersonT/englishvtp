@@ -39,12 +39,6 @@ class AjaxHandler{
     }
 
     public static function addRated($idComment, $commentType, $user_id, $rate){
-        /*$addRate = new Comments_rating;
-            $addRate->user_id = $user_id;
-            $addRate->id_comment = $idComment;
-            $addRate->type = $commentType;
-            $addRate->rate = $rate;
-        $addRate->save();*/
 
         $addRate = Comments_rating::create([
             'user_id' => $user_id,

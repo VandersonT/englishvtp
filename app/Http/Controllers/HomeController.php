@@ -20,6 +20,7 @@ class HomeController extends Controller{
         if(!$this->loggedUser){
             redirect()->route('login')->send();
         }
+
     }
 
     public function index(Request $request){
@@ -92,7 +93,7 @@ class HomeController extends Controller{
         $subComments = HomeHandler::getTextSubComments($textid, $this->loggedUser);
 
         if(!$text){
-            redirect()->route('home')->send();//redireciona para o erro aqui
+            return back();//return because profile don't exists
         }
 
         $userStudiedThisText = HomeHandler::userStudiedThisText($textid, $this->loggedUser->id);
@@ -126,7 +127,7 @@ class HomeController extends Controller{
         $userFollowsThisPerson = HomeHandler::userFollowsThisPerson($request->id, $this->loggedUser->id);
 
         if(!$infoProfile){
-            return redirect()->route('404')->send();//redireciona para o erro aqui
+            return back();//return because profile don't exists
         }
 
         return view('profile',[
@@ -152,6 +153,27 @@ class HomeController extends Controller{
             'selected' => 'mytexts',
             'textsStudies' => $textsStudies,
             'textsSaveds' => $textsSaveds
+        ]);
+    }
+
+    public function editProfile(){
+
+        $success = '';
+        if(!empty($_SESSION['success'])){
+            $success = $_SESSION['success'];
+            $_SESSION['success'] = '';
+        }
+        $error = '';
+        if(!empty($_SESSION['error'])){
+            $error = $_SESSION['error'];
+            $_SESSION['error'] = '';
+        }
+
+        return view('editProfile',[
+            'user' => $this->loggedUser,
+            'selected' => 'profile',
+            'success' => $success,
+            'error' => $error
         ]);
     }
 

@@ -24,7 +24,7 @@ Perfil - <?=$infoProfile['user_name'];?>
                 <p><?= $infoProfile['user_name']?></p>
                 
                 <?php if($infoProfile['id'] == $user['id']): ?>
-                    <a href="" class="btn btnConfig" href="#">
+                    <a href="<?=$base_url;?>/editar/perfil" class="btn btnConfig" href="#">
                         <i class="fas fa-tools"></i>
                         Editar Perfil
                     </a>
@@ -32,8 +32,10 @@ Perfil - <?=$infoProfile['user_name'];?>
                     <a href="<?=$base_url;?>/follow/<?=$infoProfile['id'];?>" class="btn followColor" href="#">
                         <?= ($userFollowsThisPerson) ? 'Seguindo' : 'Seguir'?>
                     </a>
-                    <a href="" class="btn chatColor" href="#">Chat</a>
-                    <a href="#" onClick="return confirm('Você quer realmente bloquear este usuário?');" class="btn blockColor" href="#">Bloquear</a>
+                    <a href="" class="btn chatColor" href="#">
+                        <i class="fas fa-comment-alt"></i>
+                    </a>
+                    <!--<a href="#" onClick="return confirm('Você quer realmente bloquear este usuário?');" class="btn blockColor" href="#">Bloquear</a>-->
                 <?php endif;?>
 
             </div>

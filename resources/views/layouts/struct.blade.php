@@ -46,7 +46,7 @@
                         </span>
                     </li></a>
 
-                    <a href="<?=$base_url?>/profile/<?=$user['id']?>" class="<?= ($selected == 'profile') ? 'selected' : '';?>"><li>
+                    <a href="<?=$base_url?>/perfil/<?=$user['id']?>" class="<?= ($selected == 'profile') ? 'selected' : '';?>"><li>
                         Perfil
                     </li></a>
 
@@ -127,7 +127,7 @@
                         </span>
                     </li></a>
 
-                    <a href="<?=$base_url?>/profile/<?=$user['id']?>"><li>
+                    <a href="<?=$base_url?>/perfil/<?=$user['id']?>"><li>
                         Perfil
                     </li></a>
 

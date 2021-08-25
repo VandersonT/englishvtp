@@ -30,9 +30,10 @@ Route::post('/cadastrar', [LoginController::class, 'registerAction']);
 /*----------------------------------PAGES--------------------------------------------*/
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/texto/{textid}', [HomeController::class, 'openText'])->name('text');
-Route::get('/profile/{id}', [HomeController::class, 'profile']);
+Route::get('/perfil/{id}', [HomeController::class, 'profile']);
 Route::get('/meustextos', [HomeController::class, 'mytexts'])->name('mytexts');
 Route::get('/sair', [HomeController::class, 'logout']);
+Route::get('/editar/perfil', [HomeController::class, 'editProfile'])->name('profile');
 /*-----------------------------------------------------------------------------------*/
 
 /*--------------------------------Actions--------------------------------------------*/
@@ -43,6 +44,7 @@ Route::get('/deletap/subcomentario/{id}', [ActionController::class, 'deleteSubCo
 Route::get('/follow/{id}', [ActionController::class, 'follow']);
 Route::get('/finalizarEstudo/{textid}', [ActionController::class, 'finishStudy']);
 Route::get('/salvartexto/{textid}', [ActionController::class, 'saveText']);
+Route::post('/atualizaperfil', [ActionController::class, 'updateProfile']);
 /*-----------------------------------------------------------------------------------*/
 
 /*----------------------------------Ajax----------------------------------------------*/
@@ -51,4 +53,7 @@ Route::get('/ajax/rate/{id}/{rate}/{type}', [AjaxController::class, 'like']);
 
 /*---------------------------------Error---------------------------------------------*/
 Route::get('/error404', [ErrorController::class, 'error404'])->name('404');
+Route::fallback(function(){
+    return view('404');
+});
 /*-----------------------------------------------------------------------------------*/

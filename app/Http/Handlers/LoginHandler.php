@@ -32,6 +32,7 @@ class LoginHandler{
                 $loggedUser->tokenAdmin = $data['token_admin'];
                 $loggedUser->photo = $data['photo'];
                 $loggedUser->theme = $data['theme'];
+                $loggedUser->level = $data['level'];
                 return $loggedUser;
             }
             return false;
@@ -53,6 +54,8 @@ class LoginHandler{
                 $loggedUser->tokenAdmin = $data['token_admin'];
                 $loggedUser->photo = $data['photo'];
                 $loggedUser->theme = $data['theme'];
+                $loggedUser->level = $data['level'];
+                $loggedUser->points = $data['points'];
                 return $loggedUser;
             }
         }

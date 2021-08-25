@@ -100,7 +100,7 @@ EnglishVtp - <?=$text['englishTitle'];?>
                 <div class="comment">
 
                     <div class="infoComment">
-                        <a href="<?=$base_url;?>/profile/ <?= $comment['user_id']?>"><?= $comment['user_name'];?></a>
+                        <a href="<?=$base_url;?>/perfil/ <?= $comment['user_id']?>"><?= $comment['user_name'];?></a>
                         <span><?=date('d/m/Y - H:i', $comment['last_update']);?></span>
                     </div>
                     
@@ -144,7 +144,7 @@ EnglishVtp - <?=$text['englishTitle'];?>
                             <div class="comment">
                                 
                                 <div class="infoComment">
-                                    <a href="<?=$base_url;?>/profile/<?=$subComment['user_id'];?>"><?= $subComment['user_name'];?></a>
+                                    <a href="<?=$base_url;?>/perfil/<?=$subComment['user_id'];?>"><?= $subComment['user_name'];?></a>
                                     <span><?=date('d/m/Y - H:i', $subComment['last_update']);?></span>
                                 </div>
                                 

@@ -76,7 +76,7 @@ class ActionHandler{
         
         $interaction = new Interaction;
             $interaction->user_id = $user['id'];
-            $interaction->message = $user['name'].' respondeu um comentario no texto "'.$nameText.'".';
+            $interaction->message = $user['name'].' respondeu um comentário no texto "'.$nameText.'".';
             $interaction->whereOccurred = $_SERVER['HTTP_REFERER'];
             $interaction->last_update = time();
             $interaction->userWords = $subComment; /*This is filled only when the user do a interation on its own*/
@@ -168,6 +168,22 @@ class ActionHandler{
             $studiedText->textid = $textid;
             $studiedText->date = time();
         $studiedText->save();
+    }
+
+    public static function updateProfile($name, $email, $themeMode, $englishLevel, $profilePictureChanged, $namePhoto, $user_id){
+        $userInfo = User::find($user_id);
+            $userInfo->user_name = $name;
+            $userInfo->email = $email;
+            $userInfo->theme = $themeMode;
+            $userInfo->level = $englishLevel;
+        $userInfo->save();
+
+        if($profilePictureChanged){
+            $userInfo = User::find($user_id);
+                $userInfo->photo = $namePhoto;
+            $userInfo->save();
+        }
+
     }
     
 }
