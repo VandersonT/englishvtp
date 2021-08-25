@@ -7,7 +7,7 @@ session_start();
 
 /*-----------------------------Handlers----------------------------------------*/
 use App\Http\Handlers\LoginHandler;
-use App\Http\Handlers\HomeHandler;
+use App\Http\Handlers\ActionHandler;
 /*-----------------------------------------------------------------------------*/
 
 class ActionController extends Controller
@@ -29,7 +29,7 @@ class ActionController extends Controller
         
         if($message && $textid){
 
-            HomeHandler::sendNewComment($message, $textid, $this->loggedUser);
+            ActionHandler::sendNewComment($message, $textid, $this->loggedUser);
             $_SESSION['flash'] = 'Comentário adicionado com sucesso.';
 
         }
@@ -40,10 +40,10 @@ class ActionController extends Controller
         $commentId = $request->id;
 
         if($commentId){
-            HomeHandler::deleteComment($commentId);
+            ActionHandler::deleteComment($commentId);
             $_SESSION['flash'] = 'Comentário apagado com sucesso.';
         }
-        echo "<script>window.history.back()</script>";
+        return back();
     }
 
     public function sendNewSubComment(){
@@ -52,7 +52,7 @@ class ActionController extends Controller
         $textId = filter_input(INPUT_POST, 'text');
         
         if($commentId && $subComment && $textId){
-            HomeHandler::sendNewSubComment($commentId, $subComment, $textId, $this->loggedUser);
+            ActionHandler::sendNewSubComment($commentId, $subComment, $textId, $this->loggedUser);
             $_SESSION['flash'] = 'Comentário respondido com sucesso.';
         }
         return redirect()->route('text', $textId)->send();
@@ -62,15 +62,15 @@ class ActionController extends Controller
         $subCommentId = $request->id;
 
         if($subCommentId){
-            HomeHandler::deleteSubComment($subCommentId);
+            ActionHandler::deleteSubComment($subCommentId);
             $_SESSION['flash'] = 'Resposta apagada com sucesso.';
         }
-        echo "<script>window.history.back()</script>";
+        return back();
     }
 
     public function follow(Request $request){
-        HomeHandler::changeRelation($request->id, $this->loggedUser->id);
-        echo "<script>window.history.back()</script>";
+        ActionHandler::changeRelation($request->id, $this->loggedUser->id);
+        return back();
     }
 
 }
