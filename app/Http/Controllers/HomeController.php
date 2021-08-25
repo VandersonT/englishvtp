@@ -95,6 +95,8 @@ class HomeController extends Controller{
             redirect()->route('home')->send();//redireciona para o erro aqui
         }
 
+        $userStudiedThisText = HomeHandler::userStudiedThisText($textid, $this->loggedUser->id);
+
         return view('textSingle',[
             'user' => $this->loggedUser,
             'text' => $text,
@@ -104,7 +106,8 @@ class HomeController extends Controller{
             'selected' => 'none',
             'totalPages' => $totalPages,
             'page' => $page,
-            'flash' => $flash
+            'flash' => $flash,
+            'userStudiedThisText' => $userStudiedThisText
         ]);
     }
 
@@ -134,6 +137,14 @@ class HomeController extends Controller{
             'trophies' => $trophies,
             'interactions' => $interactions,
             'userFollowsThisPerson' => $userFollowsThisPerson
+        ]);
+    }
+
+    public function mytexts(){
+
+        return view('mytexts',[
+            'user' => $this->loggedUser,
+            'selected' => 'mytexts',
         ]);
     }
 

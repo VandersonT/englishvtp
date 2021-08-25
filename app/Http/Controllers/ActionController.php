@@ -33,7 +33,7 @@ class ActionController extends Controller
             $_SESSION['flash'] = 'Comentário adicionado com sucesso.';
 
         }
-        return redirect()->route('text', $textid)->send();
+        return back();
     }
 
     public function deleteComment(Request $request){
@@ -55,7 +55,7 @@ class ActionController extends Controller
             ActionHandler::sendNewSubComment($commentId, $subComment, $textId, $this->loggedUser);
             $_SESSION['flash'] = 'Comentário respondido com sucesso.';
         }
-        return redirect()->route('text', $textId)->send();
+        return back();
     }
 
     public function deleteSubComment(Request $request){
@@ -71,6 +71,23 @@ class ActionController extends Controller
     public function follow(Request $request){
         ActionHandler::changeRelation($request->id, $this->loggedUser->id);
         return back();
+    }
+
+    public function finishStudy(Request $request){
+        $alreadyStudied = ActionHandler::getTextStudied($request->textid, $this->loggedUser->id);
+
+        if($alreadyStudied){
+            ActionHandler::removeTextStudied($request->textid, $this->loggedUser->id);
+            return back();
+        }else{
+            ActionHandler::addTextStudied($request->textid, $this->loggedUser->id);
+            redirect()->route('mytexts')->send();
+        }
+        exit;
+    }
+
+    public function saveText(Request $request){
+        echo 'salvando...';
     }
 
 }

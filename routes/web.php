@@ -31,6 +31,7 @@ Route::post('/cadastrar', [LoginController::class, 'registerAction']);
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/texto/{textid}', [HomeController::class, 'openText'])->name('text');
 Route::get('/profile/{id}', [HomeController::class, 'profile']);
+Route::get('/meustextos', [HomeController::class, 'mytexts'])->name('mytexts');
 Route::get('/sair', [HomeController::class, 'logout']);
 /*-----------------------------------------------------------------------------------*/
 
@@ -40,6 +41,8 @@ Route::get('/deletap/comentario/{id}', [ActionController::class, 'deleteComment'
 Route::post('/envianovosubcomentario', [ActionController::class, 'sendNewSubComment']);
 Route::get('/deletap/subcomentario/{id}', [ActionController::class, 'deleteSubComment']);
 Route::get('/follow/{id}', [ActionController::class, 'follow']);
+Route::get('/finalizarEstudo/{textid}', [ActionController::class, 'finishStudy']);
+Route::get('/salvartexto/{textid}', [ActionController::class, 'saveText']);
 /*-----------------------------------------------------------------------------------*/
 
 /*----------------------------------Ajax----------------------------------------------*/

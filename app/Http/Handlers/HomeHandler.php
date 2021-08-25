@@ -12,6 +12,8 @@ use App\Models\Comments_rating;
 use App\Models\Relation;
 use App\Models\Trophie;
 use App\Models\Interaction;
+use App\Models\Saved_text;
+use App\Models\Studied_text;
 /*-----------------------------------------------------------------------------*/
 
 class HomeHandler{
@@ -252,6 +254,18 @@ class HomeHandler{
         }else{
             return false;
         }
+    }
+
+    public static function userStudiedThisText($textid, $user_id){
+        $alreadyStudied = Studied_text::
+            where('user_id', $user_id)
+            ->where('textid', $textid)
+        ->get();
+        
+        if(count($alreadyStudied) > 0){
+            return true;
+        }
+        return false;
     }
     
 }

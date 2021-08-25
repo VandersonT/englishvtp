@@ -23,9 +23,11 @@ EnglishVtp - <?=$text['englishTitle'];?>
     <?php endif;?>
 
     <section class="menuAction">
-        <a class="btnReturn" href="#" onClick="return window.history.back();">Voltar</a>
-        <a class="btnOrange" href="#">Finalizar Estudo</a>
-        <a class="btnGreen" href="#">Salvar</a>
+        <a class="btnReturn" href="<?=$base_url;?>/">Inicio</a>
+        <a class="btnOrange" href="<?=$base_url;?>/finalizarEstudo/<?=$text['id'];?>">
+            <?=($userStudiedThisText) ? 'Desmarcar estudado' : 'Finalizar Estudo' ?>
+        </a>
+        <a class="btnGreen" href="<?=$base_url;?>/salvartexto/<?=$text['id'];?>">Salvar</a>
     </section>
 
     <section class="infoText">
@@ -96,7 +98,7 @@ EnglishVtp - <?=$text['englishTitle'];?>
                 <div class="comment">
 
                     <div class="infoComment">
-                        <a href="#"><?= $comment['user_name'];?></a>
+                        <a href="<?=$base_url;?>/profile/ <?= $comment['user_id']?>"><?= $comment['user_name'];?></a>
                         <span><?=date('d/m/Y - H:i', $comment['last_update']);?></span>
                     </div>
                     
@@ -140,7 +142,7 @@ EnglishVtp - <?=$text['englishTitle'];?>
                             <div class="comment">
                                 
                                 <div class="infoComment">
-                                    <a href="#"><?= $subComment['user_name'];?></a>
+                                    <a href="<?=$base_url;?>/profile/<?=$subComment['user_id'];?>"><?= $subComment['user_name'];?></a>
                                     <span><?=date('d/m/Y - H:i', $subComment['last_update']);?></span>
                                 </div>
                                 

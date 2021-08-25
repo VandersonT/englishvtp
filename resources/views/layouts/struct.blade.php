@@ -25,7 +25,7 @@
     <noscript>Você precisa ativar o Javascript de seu navegador para visualizar o site corretamente.</noscript>
 
     <header class="box-menu">
-        <a href="#" class="logo"></a>
+        <a href="<?=$base_url;?>/" class="logo"></a>
 
         <div class="contentHeader">
 
@@ -35,7 +35,7 @@
                         Inicio
                     </li></a>
 
-                    <a class="<?= ($selected == 'mytexts') ? 'selected' : '';?>" href="#"><li>
+                    <a class="<?= ($selected == 'mytexts') ? 'selected' : '';?>" href="<?=$base_url;?>/meustextos"><li>
                         Meus textos
                     </li></a>
 

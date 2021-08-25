@@ -12,6 +12,8 @@ use App\Models\Comments_rating;
 use App\Models\Relation;
 use App\Models\Trophie;
 use App\Models\Interaction;
+use App\Models\Saved_text;
+use App\Models\Studied_text;
 /*-----------------------------------------------------------------------------*/
 
 class ActionHandler{
@@ -110,6 +112,34 @@ class ActionHandler{
             $following->save();
         }
 
+    }
+
+    public static function getTextStudied($textid, $user_id){
+        $data = Studied_text::
+            where('user_id', $user_id)
+            ->where('textid', $textid)
+        ->get();
+
+        if(count($data) > 0){
+            return true;
+        }
+
+        return false;
+    }
+
+    public static function removeTextStudied($textid, $user_id){
+        $studiedText = Studied_text::
+            where('user_id', $user_id)
+            ->where('textid', $textid)
+        ->delete();
+    }
+
+    public static function addTextStudied($textid, $user_id){
+        $studiedText = new Studied_text;
+            $studiedText->user_id = $user_id;
+            $studiedText->textid = $textid;
+            $studiedText->date = time();
+        $studiedText->save();
     }
     
 }
