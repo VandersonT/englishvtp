@@ -27,7 +27,9 @@ EnglishVtp - <?=$text['englishTitle'];?>
         <a class="btnOrange" href="<?=$base_url;?>/finalizarEstudo/<?=$text['id'];?>">
             <?=($userStudiedThisText) ? 'Desmarcar estudado' : 'Finalizar Estudo' ?>
         </a>
-        <a class="btnGreen" href="<?=$base_url;?>/salvartexto/<?=$text['id'];?>">Salvar</a>
+        <a class="btnGreen" href="<?=$base_url;?>/salvartexto/<?=$text['id'];?>">
+            <?= ($userSavedThisText) ? 'Remover Salvo' : 'Salvar' ?>
+        </a>
     </section>
 
     <section class="infoText">

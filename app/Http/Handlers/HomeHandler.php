@@ -268,10 +268,32 @@ class HomeHandler{
         return false;
     }
 
+    public static function userSavedThisText($textid, $user_id){
+        $alreadySaved = Saved_text::
+            where('user_id', $user_id)
+            ->where('textid', $textid)
+        ->get();
+        
+        if(count($alreadySaved) > 0){
+            return true;
+        }
+        return false;
+    }
+
     public static function getAllTextsStudies($user_id){
         $texts = Studied_text::
             where('user_id', $user_id)
             ->join('texts', 'studied_texts.textid', '=', 'texts.id')
+            ->select('textid', 'image', 'english_title', 'level')
+        ->get();
+
+        return $texts;
+    }
+
+    public static function getAllTextsSaved($user_id){
+        $texts = Saved_text::
+            where('user_id', $user_id)
+            ->join('texts', 'saved_texts.textid', '=', 'texts.id')
             ->select('textid', 'image', 'english_title', 'level')
         ->get();
 

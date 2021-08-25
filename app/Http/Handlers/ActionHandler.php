@@ -141,5 +141,33 @@ class ActionHandler{
             $studiedText->date = time();
         $studiedText->save();
     }
+
+    public static function getTextSaved($textid, $user_id){
+        $data = Saved_text::
+            where('user_id', $user_id)
+            ->where('textid', $textid)
+        ->get();
+
+        if(count($data) > 0){
+            return true;
+        }
+
+        return false;
+    }
+
+    public static function removeTextSaved($textid, $user_id){
+        $studiedText = Saved_text::
+            where('user_id', $user_id)
+            ->where('textid', $textid)
+        ->delete();
+    }
+
+    public static function addTextSaved($textid, $user_id){
+        $studiedText = new Saved_text;
+            $studiedText->user_id = $user_id;
+            $studiedText->textid = $textid;
+            $studiedText->date = time();
+        $studiedText->save();
+    }
     
 }

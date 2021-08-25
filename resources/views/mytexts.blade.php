@@ -17,19 +17,23 @@
         
         <div class="showcase">
             
-                <div class="textSavedSingle">
-                    <img src="media/textCover/aguia.jpg" />
-                    <h3>Aguia</h3>
-                    <p>Nivel: Intermediario</p>
+            <?php if(count($textsSaveds) > 0): ?>
+                <?php foreach($textsSaveds as $textsSaved): ?>
+                    <div class="textSavedSingle">
+                        <img src="<?=$base_url;?>/media/textCover/<?=$textsSaved['image'];?>" />
+                        <h3><?=$textsSaved['english_title'];?></h3>
+                        <p>Nivel: <?=$textsSaved['level'];?></p>
 
-                    <div class="btnsGroup">
-                        <a class="openText" href="">Abrir</a>
-                        <a class="deleteText" href="">Apagar</a>
+                        <div class="btnsGroup">
+                            <a class="openText" href="">Abrir</a>
+                            <a class="deleteText" href="">Apagar</a>
+                        </div>
                     </div>
-                </div>
-
+                <?php endforeach; ?>
+            <?php else: ?>
                 <p class="noText">Você ainda não salvou nenhum texto.</p>
-        
+            <?php endif; ?>
+
         </div>
 
     </section>

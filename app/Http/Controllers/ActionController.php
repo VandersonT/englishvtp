@@ -87,7 +87,16 @@ class ActionController extends Controller
     }
 
     public function saveText(Request $request){
-        echo 'salvando...';
+        $alreadySaved = ActionHandler::getTextSaved($request->textid, $this->loggedUser->id);
+
+        if($alreadySaved){
+            ActionHandler::removeTextSaved($request->textid, $this->loggedUser->id);
+            return back();
+        }else{
+            ActionHandler::addTextSaved($request->textid, $this->loggedUser->id);
+            redirect()->route('mytexts')->send();
+        }
+        exit;
     }
 
 }

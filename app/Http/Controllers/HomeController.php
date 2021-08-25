@@ -96,6 +96,7 @@ class HomeController extends Controller{
         }
 
         $userStudiedThisText = HomeHandler::userStudiedThisText($textid, $this->loggedUser->id);
+        $userSavedThisText = HomeHandler::userSavedThisText($textid, $this->loggedUser->id);
 
         return view('textSingle',[
             'user' => $this->loggedUser,
@@ -107,7 +108,8 @@ class HomeController extends Controller{
             'totalPages' => $totalPages,
             'page' => $page,
             'flash' => $flash,
-            'userStudiedThisText' => $userStudiedThisText
+            'userStudiedThisText' => $userStudiedThisText,
+            'userSavedThisText' => $userSavedThisText
         ]);
     }
 
@@ -143,11 +145,13 @@ class HomeController extends Controller{
     public function mytexts(){
 
         $textsStudies = HomeHandler::getAllTextsStudies($this->loggedUser->id);
+        $textsSaveds = HomeHandler::getAllTextsSaved($this->loggedUser->id);
 
         return view('mytexts',[
             'user' => $this->loggedUser,
             'selected' => 'mytexts',
-            'textsStudies' => $textsStudies
+            'textsStudies' => $textsStudies,
+            'textsSaveds' => $textsSaveds
         ]);
     }
 
