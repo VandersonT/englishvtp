@@ -29,7 +29,9 @@ Perfil - <?=$infoProfile['user_name'];?>
                         Editar Perfil
                     </a>
                 <?php else:?>
-                    <a href="" class="btn followColor" href="#">Seguir</a>
+                    <a href="<?=$base_url;?>/follow/<?=$infoProfile['id'];?>" class="btn followColor" href="#">
+                        <?= ($userFollowsThisPerson) ? 'Seguindo' : 'Seguir'?>
+                    </a>
                     <a href="" class="btn chatColor" href="#">Chat</a>
                     <a href="#" onClick="return confirm('Você quer realmente bloquear este usuário?');" class="btn blockColor" href="#">Bloquear</a>
                 <?php endif;?>

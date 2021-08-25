@@ -297,5 +297,38 @@ class HomeHandler{
         $trophies = Trophie::where('user_id', $ProfileUserId)->get();
         return $trophies;
     }
+
+    public static function changeRelation($ProfileUserId, $loggedUser){
+        $getRelation = Relation::
+            where('from_user', $loggedUser)
+            ->where('to_user', $ProfileUserId)
+        ->get();
+
+        if(count($getRelation) > 0){
+            $following = Relation::
+                where('from_user', $loggedUser)
+                ->where('to_user', $ProfileUserId)
+            ->delete();
+        }else{
+            $following = new Relation;
+                $following->from_user = $loggedUser;
+                $following->to_user = $ProfileUserId;
+            $following->save();
+        }
+
+    }
+
+    public static function userFollowsThisPerson($ProfileUserId, $loggedUser){
+        $getRelation = Relation::
+            where('from_user', $loggedUser)
+            ->where('to_user', $ProfileUserId)
+        ->get();
+
+        if(count($getRelation) > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
     
 }

@@ -39,6 +39,7 @@ Route::post('/envianovocomentario', [HomeController::class, 'sendNewComment']);
 Route::get('/deletap/comentario/{id}', [HomeController::class, 'deleteComment']);
 Route::post('/envianovosubcomentario', [HomeController::class, 'sendNewSubComment']);
 Route::get('/deletap/subcomentario/{id}', [HomeController::class, 'deleteSubComment']);
+Route::get('/follow/{id}', [HomeController::class, 'follow']);
 /*-----------------------------------------------------------------------------------*/
 
 /*---------------------------------Error---------------------------------------------*/

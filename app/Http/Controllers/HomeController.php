@@ -173,6 +173,7 @@ class HomeController extends Controller{
         $follower = HomeHandler::getFollowers($request->id);
         $following = HomeHandler::getFollowing($request->id);
         $trophies = HomeHandler::getTrophies($request->id);
+        $userFollowsThisPerson = HomeHandler::userFollowsThisPerson($request->id, $this->loggedUser->id);
 
         if(!$infoProfile){
             return redirect()->route('404')->send();//redireciona para o erro aqui
@@ -188,8 +189,14 @@ class HomeController extends Controller{
             'follower' => $follower,
             'following' => $following,
             'trophies' => $trophies,
-            'interactions' => $interactions
+            'interactions' => $interactions,
+            'userFollowsThisPerson' => $userFollowsThisPerson
         ]);
+    }
+
+    public function follow(Request $request){
+        HomeHandler::changeRelation($request->id, $this->loggedUser->id);
+        echo "<script>window.history.back()</script>";
     }
 
 }
