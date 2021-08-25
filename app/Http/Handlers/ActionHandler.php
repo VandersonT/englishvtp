@@ -24,6 +24,10 @@ class ActionHandler{
             $newComment->commented_text	 = $textid;
         $newComment->save();
 
+        $lastUserComment = Comment::where('user_id', $user['id'])
+            ->orderBy('last_update', 'desc')
+        ->first();
+
         $data = Text::where('id', $textid)->first();
         $nameText = $data['english_title'];
 
@@ -32,7 +36,8 @@ class ActionHandler{
             $interaction->message = $user['name'].' comentou no texto "'.$nameText.'".';
             $interaction->whereOccurred = $_SERVER['HTTP_REFERER'];
             $interaction->last_update = time();
-            $interaction->userWords = $message; /*This is filled only when the user do a interation on its own*/
+            $interaction->userWords = $message; //This is filled only when the user do a interation on its own*/
+            $interaction->actionId = $lastUserComment['id'];
         $interaction->save();
 
     }
@@ -43,6 +48,10 @@ class ActionHandler{
 
         $deleteSubsComments = Subcomment::
             where('comment_answered', $commentId)
+        ->delete();
+
+        $deleteInteration = Interaction::
+            where('actionId', $commentId)
         ->delete();
     }
 
@@ -55,6 +64,11 @@ class ActionHandler{
             $newComment->textid	 = $textid;
         $newComment->save();
 
+        $lastUserComment = Subcomment::where('user_id', $user['id'])
+            ->orderBy('last_update', 'desc')
+        ->first();
+        
+
         $data = Text::where('id', $textid)->first();
         $nameText = $data['english_title'];
         
@@ -64,6 +78,7 @@ class ActionHandler{
             $interaction->whereOccurred = $_SERVER['HTTP_REFERER'];
             $interaction->last_update = time();
             $interaction->userWords = $subComment; /*This is filled only when the user do a interation on its own*/
+            $interaction->actionId = $lastUserComment['id'];
         $interaction->save();
 
     }
@@ -71,6 +86,10 @@ class ActionHandler{
     public static function deleteSubComment($subCommentId){
         $subCommentToDelete = Subcomment::find($subCommentId);
         $subCommentToDelete->delete();
+
+        $deleteInteration = Interaction::
+            where('actionId', $subCommentId)
+        ->delete();
     }
 
     public static function changeRelation($ProfileUserId, $loggedUser){
