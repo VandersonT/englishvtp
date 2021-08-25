@@ -285,6 +285,7 @@ class HomeHandler{
             where('user_id', $user_id)
             ->join('texts', 'studied_texts.textid', '=', 'texts.id')
             ->select('textid', 'image', 'english_title', 'level')
+            ->orderByDesc('studied_texts.date')
         ->get();
 
         return $texts;
@@ -295,6 +296,7 @@ class HomeHandler{
             where('user_id', $user_id)
             ->join('texts', 'saved_texts.textid', '=', 'texts.id')
             ->select('textid', 'image', 'english_title', 'level')
+            ->orderByDesc('saved_texts.date')
         ->get();
 
         return $texts;

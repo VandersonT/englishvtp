@@ -176,7 +176,7 @@
 .boxTrophies{
     width: 100vw;
     max-width: 100%;
-    background-color: var(--menuBackground2);
+    background-color: var(--border);
     padding-top: 10px;
     display: flex;
     flex-wrap: wrap;
