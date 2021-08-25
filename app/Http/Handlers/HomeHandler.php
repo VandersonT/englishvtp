@@ -269,7 +269,10 @@ class HomeHandler{
     }
 
     public static function getAllInteractions($ProfileUserId){
-        $userInteractions = Interaction::where('user_id', $ProfileUserId)->get();
+        $userInteractions = Interaction::
+            where('user_id', $ProfileUserId)
+            ->orderByDesc('interactions.last_update')
+        ->get();
 
         return $userInteractions;
     }

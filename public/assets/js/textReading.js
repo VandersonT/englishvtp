@@ -63,6 +63,8 @@ button.addEventListener('click', function(e){
 })
 /*-------------------------------------------------------------------------------------------------------------*/
 
+
+/*------------------------------------OPEN_ANSWER_TO_COMMENTS--------------------------------------------------*/
 let boxGeneral = document.querySelectorAll('.boxGeneral');
 let seeMore = document.querySelectorAll('.seeMore');
 let seeLess = document.querySelectorAll('.seeLess');
@@ -82,3 +84,22 @@ for(let i = 0; i < seeLess.length; i++){
         seeLess[i].style.display = 'none';
     })
 }
+/*-------------------------------------------------------------------------------------------------------------*/
+
+
+/*---------------------------------SEND_COMMENTS_AND_CLEAN_TEXTAREA--------------------------------------------*/
+let btnSubmit = document.querySelectorAll('.button');
+let form = document.querySelectorAll('.formNewMsg');
+let substitute = document.querySelectorAll('.substitute');
+
+for(let i = 0; i < btnSubmit.length; i++){
+    btnSubmit[i].addEventListener('click', function(e){
+        e.preventDefault();
+        
+        let msg = form[i].querySelector('textarea').value;
+        form[i].querySelector('textarea').value = '';
+        substitute[i].value = msg;
+        form[i].submit();
+    })
+}
+/*-------------------------------------------------------------------------------------------------------------*/

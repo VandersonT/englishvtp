@@ -23,7 +23,7 @@ EnglishVtp - <?=$text['englishTitle'];?>
     <?php endif;?>
 
     <section class="menuAction">
-        <a class="btnReturn" href="{{url()->previous()}}">Voltar</a>
+        <a class="btnReturn" href="#" onClick="return window.history.back();">Voltar</a>
         <a class="btnOrange" href="#">Finalizar Estudo</a>
         <a class="btnGreen" href="#">Salvar</a>
     </section>
@@ -77,10 +77,11 @@ EnglishVtp - <?=$text['englishTitle'];?>
         <div class="boxNewComment">
             <img src="<?= $base_url;?>/media/avatars/<?= $user['photo']?>" />
             <a name="form-anchor"></a>
-            <form method="POST" action="<?=$base_url;?>/envianovocomentario">
+            <form class="formNewMsg" method="POST" action="<?=$base_url;?>/envianovocomentario">
                 @csrf
                 <input type="hidden" name="textid" value="<?=$text['id']?>" />
-                <textarea class="sendnewComment" name="newcomment" placeholder="Digite um comentario"></textarea>
+                <input class="substitute"  name="newcomment" type="hidden" />
+                <textarea class="sendnewComment" placeholder="Digite um comentario"></textarea>
                 <button class="button mainComment">Enviar</button>
             </form>
         </div>
@@ -184,11 +185,12 @@ EnglishVtp - <?=$text['englishTitle'];?>
 
             <div class="boxNewComment subNewComment">
                 <img src="<?= $base_url;?>/media/avatars/<?= $user['photo']?>" />
-                <form method="POST" action="<?=$base_url;?>/envianovosubcomentario">
+                <form class="formNewMsg" method="POST" action="<?=$base_url;?>/envianovosubcomentario">
                     @csrf
                     <input name="text" type="hidden" value="<?=$text['id']?>" />
                     <input name="comment" type="hidden" value="<?=$comment['id']?>" />
-                    <textarea name="newSubComment" class="newMsg" placeholder="Digite um comentario"></textarea>
+                    <input class="substitute" name="newSubComment" type="hidden" />
+                    <textarea class="newMsg" placeholder="Digite um comentario"></textarea>
                     <button class="button">Enviar</button>
                 </form>
             </div>

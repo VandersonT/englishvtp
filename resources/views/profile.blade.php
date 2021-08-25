@@ -71,7 +71,9 @@ Perfil - <?=$infoProfile['user_name'];?>
         <?php endif; ?>
 
     </section>
-
+    <div class="box1">
+        <p>Entrosamento</p>
+    </div>
     <section class="boxActions">
        
         <?php if(count($interactions) > 0): ?>
@@ -94,7 +96,7 @@ Perfil - <?=$infoProfile['user_name'];?>
             <h1 class="empty2">
                 <i class="fas fa-users"></i>
                 <?=($user['id'] == $infoProfile['id'])? 'Você' : 'Esse usuário'?> 
-                não teve nenhuma interação ainda.
+                não realizou nenhuma interação ainda.
             </h1>
         <?php endif; ?>
 
