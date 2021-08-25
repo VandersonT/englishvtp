@@ -31,7 +31,7 @@
 
             <nav class="menuDesktop">
                 <ul>
-                    <a class="<?= ($selected == 'home') ? 'selected' : '';?>" href="#"><li>
+                    <a class="<?= ($selected == 'home') ? 'selected' : '';?>" href="<?=$base_url?>/"><li>
                         Inicio
                     </li></a>
 
@@ -112,7 +112,7 @@
 
             <nav class="menuMobile">
                 <ul>
-                    <a href="#"><li class="selectedMobile">
+                    <a href="<?=$base_url?>/"><li class="selectedMobile">
                         Inicio
                     </li></a>
 

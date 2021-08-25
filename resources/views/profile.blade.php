@@ -1,7 +1,9 @@
 @extends('layouts.struct')
 
 <!--Page title-->
-@section('title', 'pageTitle')
+@section('title')
+Perfil - <?=$infoProfile['user_name'];?>
+@endsection
 
 
 <!--Links-->
@@ -36,7 +38,7 @@
             <div class="infoProfile2">
                 <div class="info2Single">
                     <p>Comentarios</p>
-                    <p><?=count($profileComments)?></p>
+                    <p>coloca aqui</p>
                 </div>
                 <div class="info2Single">
                     <p>Seguindo</p>
@@ -71,30 +73,26 @@
     </section>
 
     <section class="boxActions">
-        <?php if(count($profileComments) > 0): ?>
-            <?php foreach($profileComments as $profileComment): ?>
+       
             <a href="">
                 <div class="box2">
                     <img src="<?=$base_url;?>/media/avatars/<?=$infoProfile['photo'];?>" />
                     <div class="box2Info">
                         <h4>
-                            Vanderson comentou no texto "<?=$profileComment['english_title']?>" 
-                            (<?= date('d/m/Y H:i',$profileComment['last_update'])?>)
+                            Vanderson comentou no texto "testo aqui nome" 
+                            teste
                         </h4>
                         <p>
-                            te<?=$profileComment['comment'];?>
+                            teste
                         </p>
                     </div>
                 </div>
             </a>
-            <?php endforeach; ?>
-        <?php else: ?>
             <h1 class="empty2">
                 <i class="fas fa-users"></i>
                 <?=($user['id'] == $infoProfile['id'])? 'Você' : 'Esse usuário'?> 
                 não realizou nenhuma atividade social ainda.
             </h1>
-        <?php endif; ?>
 
     </section>
 

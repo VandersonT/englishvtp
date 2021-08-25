@@ -122,7 +122,7 @@ class HomeController extends Controller{
         
         if($message && $textid){
 
-            HomeHandler::sendNewComment($message, $textid, $this->loggedUser->id);
+            HomeHandler::sendNewComment($message, $textid, $this->loggedUser);
             $_SESSION['flash'] = 'Comentário adicionado com sucesso.';
 
         }
@@ -145,10 +145,10 @@ class HomeController extends Controller{
         $textId = filter_input(INPUT_POST, 'text');
         
         if($commentId && $subComment && $textId){
-            HomeHandler::sendNewSubComment($commentId, $subComment, $textId, $this->loggedUser->id);
+            HomeHandler::sendNewSubComment($commentId, $subComment, $textId, $this->loggedUser);
             $_SESSION['flash'] = 'Comentário respondido com sucesso.';
         }
-        echo "<script>window.history.back()</script>";
+        return redirect()->route('text', $textId)->send();
     }
 
     public function deleteSubComment(Request $request){
@@ -164,7 +164,9 @@ class HomeController extends Controller{
     public function profile(Request $request){
 
         $infoProfile = HomeHandler::getInfoProfile($request->id);
-        $profileComments = HomeHandler::getProfileUserComments($request->id);
+        
+        //$interactions = HomeHandler::getAllInteractions($request->id);
+        
         $follower = HomeHandler::getFollowers($request->id);
         $following = HomeHandler::getFollowing($request->id);
         $trophies = HomeHandler::getTrophies($request->id);
@@ -179,10 +181,10 @@ class HomeController extends Controller{
             'user' => $this->loggedUser,
             'selected' => 'profile',
             'infoProfile' => $infoProfile,
-            'profileComments' => $profileComments,
             'follower' => $follower,
             'following' => $following,
-            'trophies' => $trophies
+            'trophies' => $trophies,
+            //'interactions' => $interactions
         ]);
     }
 

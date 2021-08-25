@@ -11,6 +11,7 @@ use App\Models\Subcomment;
 use App\Models\Comments_rating;
 use App\Models\Relation;
 use App\Models\Trophie;
+use App\Models\Interaction;
 /*-----------------------------------------------------------------------------*/
 
 class HomeHandler{
@@ -191,13 +192,26 @@ class HomeHandler{
         return $countComments;
     }
 
-    public static function sendNewComment($message, $textid, $user_id){
+    public static function sendNewComment($message, $textid, $user){
         $newComment = new Comment;
-            $newComment->user_id = $user_id;
+            $newComment->user_id = $user['id'];
             $newComment->comment = $message;
             $newComment->last_update = time();
             $newComment->commented_text	 = $textid;
         $newComment->save();
+
+        $data = Text::where('id', $textid)->first();
+        $nameText = $data['english_title'];
+
+        $interaction = new Interaction;
+            $interaction->user_id = $user['id'];
+            $interaction->type = 'action';
+            $interaction->message = $user['name'].' comentou no texto "'.$nameText.'".';
+            $interaction->whereOccurred = $_SERVER['HTTP_REFERER'];
+            $interaction->last_update = time();
+            $interaction->userWords = $message; /*This is filled only when the user do a interation on its own*/
+        $interaction->save();
+
     }
 
     public static function deleteComment($commentId){
@@ -209,14 +223,27 @@ class HomeHandler{
         ->delete();
     }
 
-    public static function sendNewSubComment($commentId, $subComment, $textId, $user_id){
+    public static function sendNewSubComment($commentId, $subComment, $textid, $user){
         $newComment = new Subcomment;
-            $newComment->user_id = $user_id;
+            $newComment->user_id = $user['id'];
             $newComment->comment = $subComment;
             $newComment->last_update = time();
             $newComment->comment_answered = $commentId;
-            $newComment->textid	 = $textId;
+            $newComment->textid	 = $textid;
         $newComment->save();
+
+        $data = Text::where('id', $textid)->first();
+        $nameText = $data['english_title'];
+        
+        $interaction = new Interaction;
+            $interaction->user_id = $user['id'];
+            $interaction->type = 'action';
+            $interaction->message = $user['name'].' respondeu um comentario no texto "'.$nameText.'".';
+            $interaction->whereOccurred = $_SERVER['HTTP_REFERER'];
+            $interaction->last_update = time();
+            $interaction->userWords = $subComment; /*This is filled only when the user do a interation on its own*/
+        $interaction->save();
+
     }
 
     public static function deleteSubComment($subCommentId){
@@ -236,14 +263,8 @@ class HomeHandler{
         return false;
     }
 
-    public static function getProfileUserComments($ProfileUserId){
-        $comments = Comment::join('texts', 'comments.commented_text', '=', 'texts.id')
-            ->select('english_title', 'commented_text', 'comments.id', 'comments.last_update', 'comments.comment')
-            ->where('user_id', $ProfileUserId)
-            ->orderByDesc('comments.last_update')
-        ->get();
-
-        return $comments;
+    public static function getAllInteractions($ProfileUserId){
+        
     }
 
     public static function getFollowers($ProfileUserId){
