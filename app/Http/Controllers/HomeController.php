@@ -95,6 +95,8 @@ class HomeController extends Controller{
         $totalPages = ceil($totalComments / $perPage);
         /***/
         
+        $totalCommentsAndSub = HomeHandler::countAllCommentsAndSubComments($textid);
+
         $text = HomeHandler::getText($textid);
         $comments = HomeHandler::getTextComments($textid, $this->loggedUser,$page, $perPage);
         $subComments = HomeHandler::getTextSubComments($textid, $this->loggedUser);
@@ -107,7 +109,7 @@ class HomeController extends Controller{
             'user' => $this->loggedUser,
             'text' => $text,
             'comments' => $comments,
-            'totalComments' => $totalComments,
+            'totalComments' => $totalCommentsAndSub,
             'subComments' => $subComments,
             'selected' => 'none',
             'totalPages' => $totalPages,
@@ -165,8 +167,9 @@ class HomeController extends Controller{
 
         $infoProfile = HomeHandler::getInfoProfile($request->id);
         
-        //$interactions = HomeHandler::getAllInteractions($request->id);
+        $interactions = HomeHandler::getAllInteractions($request->id);
         
+        $userComments = HomeHandler::getUserComments($request->id);
         $follower = HomeHandler::getFollowers($request->id);
         $following = HomeHandler::getFollowing($request->id);
         $trophies = HomeHandler::getTrophies($request->id);
@@ -181,10 +184,11 @@ class HomeController extends Controller{
             'user' => $this->loggedUser,
             'selected' => 'profile',
             'infoProfile' => $infoProfile,
+            'userComments' => $userComments,
             'follower' => $follower,
             'following' => $following,
             'trophies' => $trophies,
-            //'interactions' => $interactions
+            'interactions' => $interactions
         ]);
     }
 

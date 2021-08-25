@@ -38,7 +38,7 @@ Perfil - <?=$infoProfile['user_name'];?>
             <div class="infoProfile2">
                 <div class="info2Single">
                     <p>Comentarios</p>
-                    <p>coloca aqui</p>
+                    <p><?=$userComments;?></p>
                 </div>
                 <div class="info2Single">
                     <p>Seguindo</p>
@@ -74,25 +74,29 @@ Perfil - <?=$infoProfile['user_name'];?>
 
     <section class="boxActions">
        
-            <a href="">
-                <div class="box2">
-                    <img src="<?=$base_url;?>/media/avatars/<?=$infoProfile['photo'];?>" />
-                    <div class="box2Info">
-                        <h4>
-                            Vanderson comentou no texto "testo aqui nome" 
-                            teste
-                        </h4>
-                        <p>
-                            teste
-                        </p>
+        <?php if(count($interactions) > 0): ?>
+            <?php foreach ($interactions as $interaction):?>
+                <a href="<?=$interaction['whereOccurred']?>">
+                    <div class="box2">
+                        <img src="<?=$base_url;?>/media/avatars/<?=$infoProfile['photo'];?>" />
+                        <div class="box2Info">
+                            <h4>
+                                <?=$interaction['message']?>
+                            </h4>
+                            <p>
+                                <?=$interaction['userWords']?>
+                            </p>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            <?php endforeach;?>
+        <?php else: ?>
             <h1 class="empty2">
                 <i class="fas fa-users"></i>
                 <?=($user['id'] == $infoProfile['id'])? 'Você' : 'Esse usuário'?> 
-                não realizou nenhuma atividade social ainda.
+                não teve nenhuma interação ainda.
             </h1>
+        <?php endif; ?>
 
     </section>
 

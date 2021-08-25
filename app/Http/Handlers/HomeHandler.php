@@ -192,6 +192,13 @@ class HomeHandler{
         return $countComments;
     }
 
+    public static function countAllCommentsAndSubComments($textid){
+        $countComments = Comment::where('commented_text', $textid)->count();
+        $countSubComments = Subcomment::where('textid', $textid)->count();
+
+        return $countComments + $countSubComments;
+    }
+
     public static function sendNewComment($message, $textid, $user){
         $newComment = new Comment;
             $newComment->user_id = $user['id'];
@@ -205,7 +212,6 @@ class HomeHandler{
 
         $interaction = new Interaction;
             $interaction->user_id = $user['id'];
-            $interaction->type = 'action';
             $interaction->message = $user['name'].' comentou no texto "'.$nameText.'".';
             $interaction->whereOccurred = $_SERVER['HTTP_REFERER'];
             $interaction->last_update = time();
@@ -237,7 +243,6 @@ class HomeHandler{
         
         $interaction = new Interaction;
             $interaction->user_id = $user['id'];
-            $interaction->type = 'action';
             $interaction->message = $user['name'].' respondeu um comentario no texto "'.$nameText.'".';
             $interaction->whereOccurred = $_SERVER['HTTP_REFERER'];
             $interaction->last_update = time();
@@ -264,7 +269,15 @@ class HomeHandler{
     }
 
     public static function getAllInteractions($ProfileUserId){
-        
+        $userInteractions = Interaction::where('user_id', $ProfileUserId)->get();
+
+        return $userInteractions;
+    }
+
+    public static function getUserComments($ProfileUserId){
+        $userComments = Comment::where('user_id', $ProfileUserId)->count();
+        $userSubComments = Subcomment::where('user_id', $ProfileUserId)->count();
+        return $userComments + $userSubComments;
     }
 
     public static function getFollowers($ProfileUserId){
