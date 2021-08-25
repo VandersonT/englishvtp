@@ -146,6 +146,9 @@
     </main>
 
     @yield('scripts')
+    <script>
+        let theme = "<?=$user['theme'];?>";
+    </script>
     <script src="{{url('assets/js/darkMode.js')}}"></script>
     <script src="{{url('assets/js/struct.js')}}"></script>
 </body>

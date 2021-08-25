@@ -1,10 +1,11 @@
 let btnChangeTheme = document.querySelector('.themeLever');
-let theme = 'light'; //pegar do db essa info
 let themeBar = document.querySelector('.themeBar');
 let themeLever = document.querySelector('.themeLever');
 let transition = '1s';
 
-//changeThemeToDark()
+if(theme == 'dark'){
+    changeThemeToDark();
+}
 
 function activeTransition(){
     document.body.style.transition = transition;

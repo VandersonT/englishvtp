@@ -20,15 +20,16 @@
     border: 1px solid var(--border);
     background-color: var(--defaultBackground2);
     text-align: center;
-    padding: 20px;
+    padding: 10px 10px 40px 10px;
     border-radius: 10px;
-    margin: 7% auto;
+    margin: 2% auto;
 }
 
 .boxEditProfile img{
     width: 100px;
     height: 100px;
-    margin-bottom: 30px;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 .boxEditProfile form{
@@ -40,15 +41,15 @@
 }
 
 .boxEditProfile form input:not(input[type=file]):not(input[type=radio]){
-    width: 90%;
-    padding: 10px 15px;
-    border-radius: 10px;
+    width: 80%;
+    padding: 5px;
+    border-radius: 5px;
     outline: 0;
-    border: 1px solid black;
+    border: 1px solid var(--border);
     box-shadow: 0,0,0,0;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     font-size: 16px;
-    color: rgb(75, 75, 75);
+    color: rgb(15, 15, 15);
 }
 
 .boxEditProfile form input[type=file]{
@@ -60,6 +61,7 @@
     display: flex;
 }
 
+.boxBtns a,
 .boxBtns button{
     padding: 10px 50px;
     margin-right: 10px;
@@ -90,15 +92,14 @@
 }
 
 .titleField{
-    font-size: 20px;
+    font-size: 17px;
     color: var(--select);
-    margin-bottom: 10px;
     font-weight: 900;
 }
 
 .boxInputRadio{
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .inputRadio{
@@ -113,16 +114,13 @@
 }
 
 select{
-    width: 90%;
-    padding: 10px;
+    width: 80%;
+    padding: 5px;
     border-radius: 10px;
     outline: 0;
     font-size: 18px;
     color: rgb(70, 70, 70);
-}
-
-.explanation{
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 @media screen and (max-width: 520px) {
@@ -132,10 +130,26 @@ select{
         padding: 0;
         background-color: transparent;
     }
+    .boxBtns a,
     .boxBtns button{
         padding: 10px 20px;
     }
     .boxEditProfile form input:not(input[type=file]):not(input[type=radio]){
         padding: 8px 15px;
+    }
+    select{
+        width: 90%;
+    }
+    .boxEditProfile form input:not(input[type=file]):not(input[type=radio]){
+        width: 90%;
+    }
+    .boxEditProfile form input[type=file]{
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .boxEditProfile form input[type=file]{
+        padding-left: 100px;
     }
 }

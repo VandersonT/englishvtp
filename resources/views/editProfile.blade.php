@@ -60,13 +60,9 @@
                 <option value="C1" <?=($user['level'] == 'C1') ? 'selected' : '';?>>C1</option>
                 <option value="C2" <?=($user['level'] == 'C2') ? 'selected' : '';?>>C2</option>
             </select>
-
-            <p class="explanation">
-                Isso nos ajudará a te recomendar os textos certos para o seu nível, levando em conta todos os textos que você já estudou aqui.
-            </p>
             
             <div class="boxBtns">
-                <button onClick="return window.history.back();" class="return">Voltar</button>
+                <a href="<?=$base_url;?>/perfil/<?=$user['id']?>" class="return">Voltar</a>
                 <button class="save">Salvar</button>
             </div>
         </form>
