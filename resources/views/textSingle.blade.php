@@ -80,8 +80,7 @@ EnglishVtp - <?=$text['englishTitle'];?>
             <form class="formNewMsg" method="POST" action="<?=$base_url;?>/envianovocomentario">
                 @csrf
                 <input type="hidden" name="textid" value="<?=$text['id']?>" />
-                <input class="substitute"  name="newcomment" type="hidden" />
-                <textarea class="sendnewComment" placeholder="Digite um comentario"></textarea>
+                <textarea class="sendnewComment" name="newcomment" placeholder="Digite um comentario"></textarea>
                 <button class="button mainComment">Enviar</button>
             </form>
         </div>
@@ -189,8 +188,7 @@ EnglishVtp - <?=$text['englishTitle'];?>
                     @csrf
                     <input name="text" type="hidden" value="<?=$text['id']?>" />
                     <input name="comment" type="hidden" value="<?=$comment['id']?>" />
-                    <input class="substitute" name="newSubComment" type="hidden" />
-                    <textarea class="newMsg" placeholder="Digite um comentario"></textarea>
+                    <textarea name="newSubComment" class="newMsg" placeholder="Digite um comentario"></textarea>
                     <button class="button">Enviar</button>
                 </form>
             </div>

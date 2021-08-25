@@ -128,7 +128,7 @@ class HomeController extends Controller{
             $_SESSION['flash'] = 'Comentário adicionado com sucesso.';
 
         }
-        echo "<script>window.history.back()</script>";
+        return redirect()->route('text', $textid)->send();
     }
 
     public function deleteComment(Request $request){
@@ -150,7 +150,7 @@ class HomeController extends Controller{
             HomeHandler::sendNewSubComment($commentId, $subComment, $textId, $this->loggedUser);
             $_SESSION['flash'] = 'Comentário respondido com sucesso.';
         }
-        echo "<script>window.history.back()</script>";
+        return redirect()->route('text', $textId)->send();
     }
 
     public function deleteSubComment(Request $request){

@@ -85,21 +85,3 @@ for(let i = 0; i < seeLess.length; i++){
     })
 }
 /*-------------------------------------------------------------------------------------------------------------*/
-
-
-/*---------------------------------SEND_COMMENTS_AND_CLEAN_TEXTAREA--------------------------------------------*/
-let btnSubmit = document.querySelectorAll('.button');
-let form = document.querySelectorAll('.formNewMsg');
-let substitute = document.querySelectorAll('.substitute');
-
-for(let i = 0; i < btnSubmit.length; i++){
-    btnSubmit[i].addEventListener('click', function(e){
-        e.preventDefault();
-        
-        let msg = form[i].querySelector('textarea').value;
-        form[i].querySelector('textarea').value = '';
-        substitute[i].value = msg;
-        form[i].submit();
-    })
-}
-/*-------------------------------------------------------------------------------------------------------------*/
