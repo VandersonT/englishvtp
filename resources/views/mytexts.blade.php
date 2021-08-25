@@ -25,8 +25,8 @@
                         <p>Nivel: <?=$textsSaved['level'];?></p>
 
                         <div class="btnsGroup">
-                            <a class="openText" href="">Abrir</a>
-                            <a class="deleteText" href="">Apagar</a>
+                            <a class="openText" href="<?=$base_url;?>/texto/<?=$textsSaved['textid'];?>">Abrir</a>
+                            <a class="deleteText" href="<?=$base_url;?>/salvartexto/<?=$textsSaved['textid'];?>">Apagar</a>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -50,8 +50,8 @@
                     <p>Nivel: <?= $textsStudie['level'];?></p>
 
                     <div class="btnsGroup">
-                        <a class="openText" href="">Abrir</a>
-                        <a class="deleteText" href="">Apagar</a>
+                        <a class="openText" href="<?=$base_url;?>/texto/<?=$textsStudie['textid'];?>">Abrir</a>
+                        <a class="deleteText" href="<?=$base_url;?>/finalizarEstudo/<?=$textsStudie['textid'];?>">Apagar</a>
                     </div>
                 </div>
             <?php endforeach; ?>

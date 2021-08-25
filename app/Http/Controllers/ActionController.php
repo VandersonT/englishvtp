@@ -91,11 +91,10 @@ class ActionController extends Controller
 
         if($alreadySaved){
             ActionHandler::removeTextSaved($request->textid, $this->loggedUser->id);
-            return back();
         }else{
             ActionHandler::addTextSaved($request->textid, $this->loggedUser->id);
-            redirect()->route('mytexts')->send();
         }
+        return back();
         exit;
     }
 
