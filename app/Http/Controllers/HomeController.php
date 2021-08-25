@@ -161,4 +161,29 @@ class HomeController extends Controller{
         echo "<script>window.history.back()</script>";
     }
 
+    public function profile(Request $request){
+
+        $infoProfile = HomeHandler::getInfoProfile($request->id);
+        $profileComments = HomeHandler::getProfileUserComments($request->id);
+        $follower = HomeHandler::getFollowers($request->id);
+        $following = HomeHandler::getFollowing($request->id);
+        $trophies = HomeHandler::getTrophies($request->id);
+
+        if(!$infoProfile){
+            return redirect()->route('404')->send();//redireciona para o erro aqui
+        }
+
+
+
+        return view('profile',[
+            'user' => $this->loggedUser,
+            'selected' => 'profile',
+            'infoProfile' => $infoProfile,
+            'profileComments' => $profileComments,
+            'follower' => $follower,
+            'following' => $following,
+            'trophies' => $trophies
+        ]);
+    }
+
 }

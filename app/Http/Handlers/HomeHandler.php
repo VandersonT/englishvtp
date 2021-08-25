@@ -9,6 +9,8 @@ use App\Models\Text;
 use App\Models\Comment;
 use App\Models\Subcomment;
 use App\Models\Comments_rating;
+use App\Models\Relation;
+use App\Models\Trophie;
 /*-----------------------------------------------------------------------------*/
 
 class HomeHandler{
@@ -220,6 +222,43 @@ class HomeHandler{
     public static function deleteSubComment($subCommentId){
         $subCommentToDelete = Subcomment::find($subCommentId);
         $subCommentToDelete->delete();
+    }
+
+    public static function getInfoProfile($idProfile){
+        $infoProfile = User::select('id', 'user_name', 'photo')
+            ->where('id', $idProfile)
+        ->first();
+
+        if($infoProfile){
+            return $infoProfile;
+        }
+
+        return false;
+    }
+
+    public static function getProfileUserComments($ProfileUserId){
+        $comments = Comment::join('texts', 'comments.commented_text', '=', 'texts.id')
+            ->select('english_title', 'commented_text', 'comments.id', 'comments.last_update', 'comments.comment')
+            ->where('user_id', $ProfileUserId)
+            ->orderByDesc('comments.last_update')
+        ->get();
+
+        return $comments;
+    }
+
+    public static function getFollowers($ProfileUserId){
+        $followers = Relation::where('to_user', $ProfileUserId)->count();
+        return $followers;
+    }
+
+    public static function getFollowing($ProfileUserId){
+        $following = Relation::where('from_user', $ProfileUserId)->count();
+        return $following;
+    }
+
+    public static function getTrophies($ProfileUserId){
+        $trophies = Trophie::where('user_id', $ProfileUserId)->get();
+        return $trophies;
     }
     
 }

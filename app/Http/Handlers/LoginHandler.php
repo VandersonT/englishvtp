@@ -94,7 +94,7 @@ class LoginHandler{
             $newUser->password = $hash;
             $newUser->access = 1;
             $newUser->token = $token;
-            $newUser->photo = 'no-picture.png';
+            $newUser->photo = 'no-picture2.png';
             $newUser->theme = 'light';
         $newUser->save();
 
