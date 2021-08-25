@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ActionController;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\ErrorController;
 
@@ -26,20 +27,23 @@ Route::post('/cadastrar', [LoginController::class, 'registerAction']);
 /*-----------------------------------------------------------------------------------*/
 
 
-/*----------------------------------PEGES--------------------------------------------*/
+/*----------------------------------PAGES--------------------------------------------*/
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/sair', [HomeController::class, 'logout']);
 Route::get('/texto/{textid}', [HomeController::class, 'openText'])->name('text');
 Route::get('/profile/{id}', [HomeController::class, 'profile']);
+Route::get('/sair', [HomeController::class, 'logout']);
 /*-----------------------------------------------------------------------------------*/
 
 /*--------------------------------Actions--------------------------------------------*/
+Route::post('/envianovocomentario', [ActionController::class, 'sendNewComment']);
+Route::get('/deletap/comentario/{id}', [ActionController::class, 'deleteComment']);
+Route::post('/envianovosubcomentario', [ActionController::class, 'sendNewSubComment']);
+Route::get('/deletap/subcomentario/{id}', [ActionController::class, 'deleteSubComment']);
+Route::get('/follow/{id}', [ActionController::class, 'follow']);
+/*-----------------------------------------------------------------------------------*/
+
+/*----------------------------------Ajax----------------------------------------------*/
 Route::get('/ajax/rate/{id}/{rate}/{type}', [AjaxController::class, 'like']);
-Route::post('/envianovocomentario', [HomeController::class, 'sendNewComment']);
-Route::get('/deletap/comentario/{id}', [HomeController::class, 'deleteComment']);
-Route::post('/envianovosubcomentario', [HomeController::class, 'sendNewSubComment']);
-Route::get('/deletap/subcomentario/{id}', [HomeController::class, 'deleteSubComment']);
-Route::get('/follow/{id}', [HomeController::class, 'follow']);
 /*-----------------------------------------------------------------------------------*/
 
 /*---------------------------------Error---------------------------------------------*/
