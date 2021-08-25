@@ -17,20 +17,19 @@
         
         <div class="showcase">
             
-            <div class="textSavedSingle">
-                <img src="media/textCover/aguia.jpg" />
-                <h3>Aguia</h3>
-                <p>Nivel: Intermediario</p>
+                <div class="textSavedSingle">
+                    <img src="media/textCover/aguia.jpg" />
+                    <h3>Aguia</h3>
+                    <p>Nivel: Intermediario</p>
 
-                <div class="btnsGroup">
-                    <a class="openText" href="">Abrir</a>
-                    <a class="deleteText" href="">Apagar</a>
+                    <div class="btnsGroup">
+                        <a class="openText" href="">Abrir</a>
+                        <a class="deleteText" href="">Apagar</a>
+                    </div>
                 </div>
-            </div>
+
+                <p class="noText">Você ainda não salvou nenhum texto.</p>
         
-        <!--
-        <p class="noText">Você ainda não salvou nenhum texto.</p>
-        -->
         </div>
 
     </section>
@@ -39,32 +38,22 @@
 
     <section class="textsStudied">
 
-        
-        <div class="textSavedSingle">
-            <img src="media/textCover/gow.jpg" />
-            <h3>Kratos - A saga do Olympus</h3>
-            <p>Nivel: Avançado</p>
+        <?php if(count($textsStudies) > 0): ?>
+            <?php foreach ($textsStudies as $textsStudie):?>
+                <div class="textSavedSingle">
+                    <img src="<?=$base_url;?>/media/textCover/<?= $textsStudie['image'];?>" />
+                    <h3><?= $textsStudie['english_title'];?></h3>
+                    <p>Nivel: <?= $textsStudie['level'];?></p>
 
-            <div class="btnsGroup">
-                <a class="openText" href="">Abrir</a>
-                <a class="deleteText" href="">Apagar</a>
-            </div>
-        </div>
-
-        <div class="textSavedSingle">
-            <img src="media/textCover/aguia.jpg" />
-            <h3>Aguia</h3>
-            <p>Nivel: Intermediario</p>
-
-            <div class="btnsGroup">
-                <a class="openText" href="">Abrir</a>
-                <a class="deleteText" href="">Apagar</a>
-            </div>
-        </div>
-        
-        <!--
-        <p class="noText">Você ainda não estudou nenhum texto.</p>
-        -->
+                    <div class="btnsGroup">
+                        <a class="openText" href="">Abrir</a>
+                        <a class="deleteText" href="">Apagar</a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p class="noText">Você ainda não estudou nenhum texto.</p>
+        <?php endif; ?>
 
     </section>
 

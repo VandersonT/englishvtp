@@ -267,5 +267,15 @@ class HomeHandler{
         }
         return false;
     }
+
+    public static function getAllTextsStudies($user_id){
+        $texts = Studied_text::
+            where('user_id', $user_id)
+            ->join('texts', 'studied_texts.textid', '=', 'texts.id')
+            ->select('textid', 'image', 'english_title', 'level')
+        ->get();
+
+        return $texts;
+    }
     
 }

@@ -142,9 +142,12 @@ class HomeController extends Controller{
 
     public function mytexts(){
 
+        $textsStudies = HomeHandler::getAllTextsStudies($this->loggedUser->id);
+
         return view('mytexts',[
             'user' => $this->loggedUser,
             'selected' => 'mytexts',
+            'textsStudies' => $textsStudies
         ]);
     }
 
