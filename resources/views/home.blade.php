@@ -109,9 +109,11 @@
 
     <div class="assistent animate__animated animate__bounceInUp"></div>
     <div class="assistentTalk animate__animated animate__rubberBand">
-        <p>
-            Ola, <?=$user->name;?>. Eu ainda não sou capaz de te recomendar nenhum texto, lamento!
-        </p>
+        <?php if($user['level'] == NULL): ?>
+            <p>Ola, <?=$user->name;?>. Antes de pedir recomendações, você deve informar seu nivel atual lá no seu perfil :D!</p>
+        <?php else: ?>
+            <p>1 minutinho que eu já vejo</p>
+        <?php endif; ?>
     </div>
 @endsection
 

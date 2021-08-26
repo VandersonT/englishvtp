@@ -21,6 +21,7 @@
 .photoProfile img{
     width: 130px;
     height: 130px;
+    border-radius: 20px;
     padding: 10px;
 }
 

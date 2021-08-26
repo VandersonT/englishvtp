@@ -33,6 +33,7 @@ class LoginHandler{
                 $loggedUser->photo = $data['photo'];
                 $loggedUser->theme = $data['theme'];
                 $loggedUser->level = $data['level'];
+                $loggedUser->points = $data['points'];
                 return $loggedUser;
             }
             return false;
