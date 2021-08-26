@@ -55,6 +55,8 @@ class HomeController extends Controller{
 
         $totalPage = ceil($totalTextsWithFilter / $perPage);
 
+        $assistentRecomendation = HomeHandler::getAssistentRecomendation($this->loggedUser);
+
         return view('home',[
             'selected' => 'home',
             'user' => $this->loggedUser,

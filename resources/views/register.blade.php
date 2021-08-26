@@ -51,8 +51,8 @@
             <?php endif; ?>
 
             @csrf
-            <input name="name" type="text" placeholder="Nome"/>
-            <input name="email" type="email" placeholder="E-mail"/>
+            <input maxlength="100" name="name" type="text" placeholder="Nome"/>
+            <input maxlength="100" name="email" type="email" placeholder="E-mail"/>
             <input name="password" id="pass" type="password" placeholder="Senha" />
             <input name="confirmPassword" id="confirmPass" type="password" placeholder="Confirme a senha" />
 

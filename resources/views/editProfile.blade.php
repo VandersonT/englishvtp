@@ -30,8 +30,8 @@
         <img src="<?=$base_url;?>/media/avatars/<?=$user['photo'];?>" />
         <form method="POST" action="<?=$base_url;?>/atualizaperfil" enctype="multipart/form-data">
             @csrf
-            <input name="name" type="text" placeholder="Nome" value="<?=$user['name'];?>"/>
-            <input name="email" type="text" placeholder="E-mail" value="<?=$user['email'];?>"/>
+            <input maxlength="100" name="name" type="text" placeholder="Nome" value="<?=$user['name'];?>"/>
+            <input maxlength="100" name="email" type="text" placeholder="E-mail" value="<?=$user['email'];?>"/>
             <p class="titleField">Foto de perfil:</p>
             <input name="photo" type="file" />
 

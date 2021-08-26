@@ -301,5 +301,161 @@ class HomeHandler{
 
         return $texts;
     }
+
+    public static function getAssistentRecomendation($user){
+        
+        $userSkills = $user['points'];
+
+        switch($user['level']){
+            case 'A1':
+                $userSkills = 0;
+                break;
+            case 'A2':
+                $userSkills = $userSkills + 3000;
+                break;
+            case 'B1':
+                $userSkills = $userSkills + 15000;
+                break;
+            case 'B2':
+                $userSkills = $userSkills + 90000;
+                break;
+            case 'C1':
+                $userSkills = $userSkills + 200000;
+                break;
+            case 'C2':
+                $userSkills = $userSkills + 500000;
+                break;
+        }
+        
+        if($userSkills >= 0 && $userSkills < 3000){
+
+            $appropriateAmericanTexts = Text::
+                select('id', 'english_title')
+                ->whereNotIn('id', Studied_Text::select('textid')->where('user_id', $user['id'])->get())
+                ->where('type_english', 'americano')
+                ->where('levels_points', '>=' ,0)
+                ->where('levels_points', '<' ,70)
+                ->inRandomOrder()
+            ->first();
+
+            $appropriateBritishTexts = Text::
+                select('id', 'english_title')
+                ->whereNotIn('id', Studied_Text::select('textid')->where('user_id', $user['id'])->get())
+                ->where('type_english', 'britanico')
+                ->where('levels_points', '>=' ,0)
+                ->where('levels_points', '<' ,70)
+                ->inRandomOrder()
+            ->first();
+
+        }else if($userSkills >= 3000 && $userSkills < 15000){
+
+            $appropriateAmericanTexts = Text::
+                select('id', 'english_title')    
+                ->whereNotIn('id', Studied_Text::select('textid')->where('user_id', $user['id'])->get())
+                ->where('type_english', 'americano')
+                ->where('levels_points', '>=' ,70)
+                ->where('levels_points', '<' ,100)
+                ->inRandomOrder()
+            ->first();
+
+            $appropriateBritishTexts = Text::
+                select('id', 'english_title')
+                ->whereNotIn('id', Studied_Text::select('textid')->where('user_id', $user['id'])->get())
+                ->where('type_english', 'britanico')
+                ->where('levels_points', '>=' ,70)
+                ->where('levels_points', '<' ,100)
+                ->inRandomOrder()
+            ->first();
+
+        }else if($userSkills >= 15000 && $userSkills < 90000){
+
+            $appropriateAmericanTexts = Text::
+                select('id', 'english_title')
+                ->whereNotIn('id', Studied_Text::select('textid')->where('user_id', $user['id'])->get())
+                ->where('type_english', 'americano')
+                ->where('levels_points', '>=' ,100)
+                ->where('levels_points', '<' ,1500)
+                ->inRandomOrder()
+            ->first();
+
+            $appropriateBritishTexts = Text::
+                select('id', 'english_title')
+                ->whereNotIn('id', Studied_Text::select('textid')->where('user_id', $user['id'])->get())
+                ->where('type_english', 'britanico')
+                ->where('levels_points', '>=' ,100)
+                ->where('levels_points', '<' ,1500)
+                ->inRandomOrder()
+            ->first();
+
+        }else if($userSkills >= 90000 && $userSkills < 200000){
+
+            $appropriateAmericanTexts = Text::
+                select('id', 'english_title')
+                ->whereNotIn('id', Studied_Text::select('textid')->where('user_id', $user['id'])->get())
+                ->where('type_english', 'americano')
+                ->where('levels_points', '>=' ,1500)
+                ->where('levels_points', '<' ,3000)
+                ->inRandomOrder()
+            ->first();
+
+            $appropriateBritishTexts = Text::
+                select('id', 'english_title')    
+                ->whereNotIn('id', Studied_Text::select('textid')->where('user_id', $user['id'])->get())
+                ->where('type_english', 'britanico')
+                ->where('levels_points', '>=' ,1500)
+                ->where('levels_points', '<' ,3000)
+                ->inRandomOrder()
+            ->first();
+
+        }else if($userSkills >= 200000 && $userSkills < 500000){
+
+            $appropriateAmericanTexts = Text::
+                select('id', 'english_title')
+                ->whereNotIn('id', Studied_Text::select('textid')->where('user_id', $user['id'])->get())
+                ->where('type_english', 'americano')
+                ->where('levels_points', '>=' ,3000)
+                ->where('levels_points', '<' ,10000)
+                ->inRandomOrder()
+            ->first();
+
+            $appropriateBritishTexts = Text::
+                select('id', 'english_title')    
+                ->whereNotIn('id', Studied_Text::select('textid')->where('user_id', $user['id'])->get())
+                ->where('type_english', 'britanico')
+                ->where('levels_points', '>=' ,3000)
+                ->where('levels_points', '<' ,10000)
+                ->inRandomOrder()
+            ->first();
+
+        }else if($userSkills >= 500000){
+
+            $appropriateAmericanTexts = Text::
+                select('id', 'english_title')
+                ->whereNotIn('id', Studied_Text::select('textid')->where('user_id', $user['id'])->get())
+                ->where('type_english', 'americano')
+                ->where('levels_points', '>=' ,10000)
+                ->inRandomOrder()
+            ->first();
+
+            $appropriateBritishTexts = Text::
+                select('id', 'english_title')
+                ->whereNotIn('id', Studied_Text::select('textid')->where('user_id', $user['id'])->get())
+                ->where('type_english', 'britanico')
+                ->where('levels_points', '>=' ,10000)
+                ->inRandomOrder()
+            ->first();
+
+        }
+
+        if($appropriateAmericanTexts){
+            echo 'Se quiser um americano eu recomendo o '.$appropriateAmericanTexts['english_title'].'['.$appropriateAmericanTexts["id"].']';
+        }
+
+        if($appropriateBritishTexts){
+            echo 'Se quiser um britanico eu recomendo o '.$appropriateBritishTexts['english_title'];
+        }
+        
+        exit;
+    }
     
 }

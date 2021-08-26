@@ -110,7 +110,10 @@
     <div class="assistent animate__animated animate__bounceInUp"></div>
     <div class="assistentTalk animate__animated animate__rubberBand">
         <?php if($user['level'] == NULL): ?>
-            <p>Ola, <?=$user->name;?>. Antes de pedir recomendações, você deve informar seu nivel atual lá no seu perfil :D!</p>
+            <p>
+                Ola, <?=$user->name;?>. Antes que eu possa te sugerir algum texto, você deve informar seu nivel atual lá no seu perfil 
+                <i class="far fa-smile-wink"></i>
+            </p>
         <?php else: ?>
             <p>1 minutinho que eu já vejo</p>
         <?php endif; ?>
