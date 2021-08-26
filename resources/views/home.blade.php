@@ -115,7 +115,33 @@
                 <i class="far fa-smile-wink"></i>
             </p>
         <?php else: ?>
-            <p>1 minutinho que eu já vejo</p>
+
+            <?php if(empty($americanTextRecommendation) && empty($britishTextRecommendation)): ?>
+                <p>Neste momento eu não sou capaz de te indicar nenhum texto, me desculpa :(</p>
+            <?php else: ?>
+
+                <?php if($americanTextRecommendation): ?>
+                    <p>
+                        Se você procura um texto americano, eu recomendaria neste momento o 
+                        <a class="recomendation" href="<?=$base_url;?>/texto/<?=$americanTextRecommendation['id'];?>">
+                            "<?=$americanTextRecommendation['english_title'];?>"
+                        </a>
+                    </p>
+                <?php else: ?>
+                    <p>Se você procura um texto americano, neste momento não consigo te indicar nenhum.</p>
+                <?php endif; ?>
+
+                <?php if($britishTextRecommendation): ?>
+                    <p>Por outro lado, se você procura um texto britanico, eu recomendaria neste momento o
+                        <a class="recomendation" href="<?=$base_url;?>/texto/<?=$britishTextRecommendation['id'];?>">
+                            "<?=$britishTextRecommendation['english_title'];?>"
+                        </a>
+                    </p>
+                <?php else: ?>
+                    <p>Se você procura um texto britanico, neste momento não consigo te indicar nenhum.</p>
+                <?php endif; ?>
+
+            <?php endif; ?>
         <?php endif; ?>
     </div>
 @endsection

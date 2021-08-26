@@ -302,7 +302,7 @@ class HomeHandler{
         return $texts;
     }
 
-    public static function getAssistentRecomendation($user){
+    public static function getAssistentRecomendation($user, $english_type){
         
         $userSkills = $user['points'];
 
@@ -447,14 +447,13 @@ class HomeHandler{
 
         }
 
-        if($appropriateAmericanTexts){
-            echo 'Se quiser um americano eu recomendo o '.$appropriateAmericanTexts['english_title'].'['.$appropriateAmericanTexts["id"].']';
+        if($english_type == 'american'){
+            return $appropriateAmericanTexts;
         }
-
-        if($appropriateBritishTexts){
-            echo 'Se quiser um britanico eu recomendo o '.$appropriateBritishTexts['english_title'];
+        if($english_type == 'british'){
+            return $appropriateBritishTexts;
         }
-        
+        echo "|ERROR| O tipo de inglês enviado não esta disponivel.";
         exit;
     }
     

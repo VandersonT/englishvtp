@@ -258,6 +258,13 @@ body{
     border: 1px solid black;
 }
 
+.recomendation{
+    color: #4db2ec;
+}
+.recomendation:hover{
+    color: #338cc0;
+}
+
 @media screen and (max-width: 350px){
     .assistentTalk{
         max-width: 90%;
