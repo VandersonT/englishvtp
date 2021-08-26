@@ -99,8 +99,9 @@ class ActionHandler{
                 $notification->user_from = $loggedUser['id'];
                 $notification->user_to = $userToNot;
                 $notification->whereOcurred = $_SERVER['HTTP_REFERER'];
-                $notification->message = $loggedUser['user_name'].' também comentou em um comentário que você esta seguindo.';
+                $notification->message = $loggedUser['user_name'].' responeu um comentário feito por você.';
                 $notification->date = time();
+                $notification->viewed = false;
             $notification->save();
         }
         /***/
@@ -117,6 +118,7 @@ class ActionHandler{
                     $notification->whereOcurred = $_SERVER['HTTP_REFERER'];
                     $notification->message = $loggedUser['user_name'].' também comentou em um comentário que você esta seguindo.';
                     $notification->date = time();
+                    $notification->viewed = false;
                 $notification->save();
             }
         }
@@ -150,6 +152,29 @@ class ActionHandler{
             $following->save();
         }
 
+    }
+
+    public static function sendFollowNotification($loggedUser, $profileUserId){
+        $getRelation = Relation::
+            where('from_user', $loggedUser['id'])
+            ->where('to_user', $profileUserId)
+        ->get();
+
+        if(count($getRelation) > 0){
+            $sendNotification = new Notification;
+                $sendNotification->user_from = $loggedUser['id'];
+                $sendNotification->user_to = $profileUserId;
+                $sendNotification->whereOcurred = url('').'/texto/'.$loggedUser['id'];
+                $sendNotification->message = $loggedUser['user_name'].' começou a te seguir.';
+                $sendNotification->date = time();
+                $sendNotification->viewed = false;
+            $sendNotification->save();
+        }else{
+            $removeNotification = Notification::
+                where('user_from', $loggedUser['id'])
+                ->where('user_to', $profileUserId)
+            ->delete();
+        }
     }
 
     public static function getTextStudied($textid, $user_id){

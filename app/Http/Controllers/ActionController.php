@@ -74,6 +74,9 @@ class ActionController extends Controller
 
     public function follow(Request $request){
         ActionHandler::changeRelation($request->id, $this->loggedUser->id);
+
+        ActionHandler::sendFollowNotification($this->loggedUser, $request->id);
+
         return back();
     }
 
