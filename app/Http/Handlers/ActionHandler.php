@@ -14,6 +14,7 @@ use App\Models\Trophie;
 use App\Models\Interaction;
 use App\Models\Saved_text;
 use App\Models\Studied_text;
+use App\Models\Notification;
 /*-----------------------------------------------------------------------------*/
 
 class ActionHandler{
@@ -83,6 +84,43 @@ class ActionHandler{
             $interaction->actionId = $lastUserComment['id'];
         $interaction->save();
 
+    }
+
+    public static function sendCommentNotification($loggedUser, $userToNot, $commentId, $textId){
+        $notificationUsers = Subcomment::
+            select('user_id')
+            ->where('comment_answered', $commentId)
+            ->distinct()
+        ->get();
+
+        /*Notifica o cara que fez o comentario principal se ele não for o usuário logado*/
+        if($userToNot != $loggedUser['id']){
+            $notification = new Notification;
+                $notification->user_from = $loggedUser['id'];
+                $notification->user_to = $userToNot;
+                $notification->whereOcurred = $_SERVER['HTTP_REFERER'];
+                $notification->message = $loggedUser['user_name'].' também comentou em um comentário que você esta seguindo.';
+                $notification->date = time();
+            $notification->save();
+        }
+        /***/
+
+        /*
+        Notifica todos que comentaram o comentario respondido, desde que não seja o cara
+        que acabou de comentar nem o dono do comentario, pois ele já foi notificado
+        */
+        foreach($notificationUsers as $notificationUser){
+            if($notificationUser['user_id'] != $loggedUser['id'] && $notificationUser['user_id'] != $userToNot){
+                $notification = new Notification;
+                    $notification->user_from = $loggedUser['id'];
+                    $notification->user_to = $notificationUser['user_id'];
+                    $notification->whereOcurred = $_SERVER['HTTP_REFERER'];
+                    $notification->message = $loggedUser['user_name'].' também comentou em um comentário que você esta seguindo.';
+                    $notification->date = time();
+                $notification->save();
+            }
+        }
+        /***/
     }
 
     public static function deleteSubComment($subCommentId){

@@ -98,9 +98,11 @@ EnglishVtp - <?=$text['englishTitle'];?>
             <div class="boxCommentSingle" data-id="<?=$comment['id']?>" typec="normal">
                 <img src="<?= $base_url;?>/media/avatars/<?= $comment['photo']?>" />
                 <div class="comment">
-
                     <div class="infoComment">
-                        <a href="<?=$base_url;?>/perfil/ <?= $comment['user_id']?>"><?= $comment['user_name'];?></a>
+                        <a href="<?=$base_url;?>/perfil/ <?= $comment['user_id']?>">
+                            <?= $comment['user_name'];?>
+                            <?= ($user['access'] > 1) ? '['.$comment['user_id'].']' : '' ?>
+                        </a>
                         <span><?=date('d/m/Y - H:i', $comment['last_update']);?></span>
                     </div>
                     
@@ -144,7 +146,10 @@ EnglishVtp - <?=$text['englishTitle'];?>
                             <div class="comment">
                                 
                                 <div class="infoComment">
-                                    <a href="<?=$base_url;?>/perfil/<?=$subComment['user_id'];?>"><?= $subComment['user_name'];?></a>
+                                    <a href="<?=$base_url;?>/perfil/<?=$subComment['user_id'];?>">
+                                        <?= $subComment['user_name'];?>
+                                        <?= ($user['access'] > 1) ? '['.$subComment['user_id'].']' : '' ?>
+                                    </a>
                                     <span><?=date('d/m/Y - H:i', $subComment['last_update']);?></span>
                                 </div>
                                 
@@ -190,8 +195,9 @@ EnglishVtp - <?=$text['englishTitle'];?>
                 <img src="<?= $base_url;?>/media/avatars/<?= $user['photo']?>" />
                 <form class="formNewMsg" method="POST" action="<?=$base_url;?>/envianovosubcomentario">
                     @csrf
-                    <input name="text" type="hidden" value="<?=$text['id']?>" />
-                    <input name="comment" type="hidden" value="<?=$comment['id']?>" />
+                    <input name="textid" type="hidden" value="<?=$text['id']?>" />
+                    <input name="commentid" type="hidden" value="<?=$comment['id']?>" />
+                    <input name="userToNot" type="hidden" value="<?=$comment['user_id']?>" />
                     <textarea name="newSubComment" class="newMsg" placeholder="Digite um comentario"></textarea>
                     <button class="button">Enviar</button>
                 </form>

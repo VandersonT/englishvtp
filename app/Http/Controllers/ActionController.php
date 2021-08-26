@@ -47,13 +47,17 @@ class ActionController extends Controller
     }
 
     public function sendNewSubComment(){
-        $commentId = filter_input(INPUT_POST, 'comment');
+        $commentId = filter_input(INPUT_POST, 'commentid');
         $subComment = filter_input(INPUT_POST, 'newSubComment');
-        $textId = filter_input(INPUT_POST, 'text');
-        
+        $textId = filter_input(INPUT_POST, 'textid');
+        $userToNot = filter_input(INPUT_POST, 'userToNot');
+
         if($commentId && $subComment && $textId){
             ActionHandler::sendNewSubComment($commentId, $subComment, $textId, $this->loggedUser);
             $_SESSION['flash'] = 'Comentário respondido com sucesso.';
+
+            ActionHandler::sendCommentNotification($this->loggedUser, $userToNot, $commentId, $textId);
+
         }
         return back();
     }
