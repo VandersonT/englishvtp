@@ -23,18 +23,6 @@ a{
     color: var(--defaultColor);
 }
 
-.noNotification{
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-}
-
-.noNotification i{
-    margin-right: 10px;
-}
-
 .box-menu{
     width: 100vw;
     max-width: 100%;
@@ -145,12 +133,20 @@ a{
     right: 38px;
     top: 42px;
     z-index: 2;
-    background-color: var(--menuBackground);
+    background-color: var(--menuBackground2);
     border: 1px solid rgb(124, 124, 124);
 }
 
-.notSeen{
-    background-color: var(--menuBackground2);
+.noNotification{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+
+.noNotification i{
+    margin-right: 10px;
 }
 
 .notificationSingle{
@@ -167,6 +163,7 @@ a{
     width: 60px;
     height: 60px;
     margin-right: 5px;
+    border-radius: 50px;
 }
 
 .notificationInfo{

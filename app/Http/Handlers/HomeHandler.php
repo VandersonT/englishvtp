@@ -34,7 +34,9 @@ class HomeHandler{
 
     public static function getNotifications($user_id, $maxNotPerUser){
         $notifications = Notification::
-            where('user_to', $user_id)
+            join('users', 'users.id', '=', 'notifications.user_from')
+            ->select('notifications.*', 'users.photo')
+            ->where('user_to', $user_id)
             ->orderByDesc('date')
             ->limit($maxNotPerUser)
         ->get();

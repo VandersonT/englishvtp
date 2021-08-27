@@ -69,8 +69,8 @@
             <div class="notification">
                 <?php if(!empty($notifications) && count($notifications) != 0): ?>
                     <?php foreach ($notifications as $notification):?>
-                        <a href="<?=$notification['whereOcurred'];?>" class="notificationSingle notSeen" dataId="<?= $notification['id'];?>">
-                            <img src="{{url('media/avatars/no-picture.png')}}" />
+                        <a href="<?=$notification['whereOcurred'];?>" class="notificationSingle" dataId="<?= $notification['id'];?>">
+                            <img src="<?=$base_url;?>/media/avatars/<?=$notification['photo'];?>" />
                             <div class="notificationInfo">
                                 <p><?=$notification['message'];?></p>
                                 <p><?= date('d/m/Y H:i', $notification['date']);?></p>
