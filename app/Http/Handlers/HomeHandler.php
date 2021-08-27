@@ -36,7 +36,6 @@ class HomeHandler{
         $notifications = Notification::
             where('user_to', $user_id)
             ->orderByDesc('date')
-            ->where('viewed', 0)
             ->limit($maxNotPerUser)
         ->get();
 

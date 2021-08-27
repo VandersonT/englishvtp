@@ -101,7 +101,6 @@ class ActionHandler{
                 $notification->whereOcurred = $_SERVER['HTTP_REFERER'];
                 $notification->message = $loggedUser['name'].' respondeu um comentário feito por você.';
                 $notification->date = time();
-                $notification->viewed = false;
             $notification->save();
         }
         /***/
@@ -118,7 +117,6 @@ class ActionHandler{
                     $notification->whereOcurred = $_SERVER['HTTP_REFERER'];
                     $notification->message = $loggedUser['name'].' também comentou em um comentário que você esta seguindo.';
                     $notification->date = time();
-                    $notification->viewed = false;
                 $notification->save();
             }
         }
@@ -164,10 +162,9 @@ class ActionHandler{
             $sendNotification = new Notification;
                 $sendNotification->user_from = $loggedUser['id'];
                 $sendNotification->user_to = $profileUserId;
-                $sendNotification->whereOcurred = url('').'/texto/'.$loggedUser['id'];
+                $sendNotification->whereOcurred = url('').'/perfil/'.$loggedUser['id'];
                 $sendNotification->message = $loggedUser['name'].' começou a te seguir.';
                 $sendNotification->date = time();
-                $sendNotification->viewed = false;
             $sendNotification->save();
         }else{
             $removeNotification = Notification::

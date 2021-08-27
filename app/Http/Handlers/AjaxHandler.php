@@ -100,7 +100,6 @@ class AjaxHandler{
                 $addNotification->whereOcurred = $_SERVER['HTTP_REFERER'];
                 $addNotification->message = ($rate == 1) ? $loggedUser['name']." curtiu um comentário feito por você." : $loggedUser['name']." não gostou de um comentário feito por você.";
                 $addNotification->date = time();
-                $addNotification->viewed = false;
                 $addNotification->idAction = $idComment;
             $addNotification->save();
         }
