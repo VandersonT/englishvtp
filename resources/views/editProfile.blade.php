@@ -62,7 +62,7 @@
             </select>
             
             <div class="boxBtns">
-                <a href="<?=$base_url;?>/perfil/<?=$user['id']?>" class="return">Voltar</a>
+                <a onclick="window.history.back();" class="return">Voltar</a>
                 <button class="save">Salvar</button>
             </div>
         </form>

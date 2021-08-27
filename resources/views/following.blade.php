@@ -14,10 +14,16 @@ EnglishVtp - quem <?=$infoProfile['user_name'];?> segue
 <!--Content-->
 @section('content')
 
+    <div class="menu">
+        <a href="#" class="returnBtn" onClick="window.history.back();"><i class="fas fa-undo-alt"></i></a>
+        <div class="aboutProfile">
+            <img src="<?= $base_url;?>/media/avatars/<?= $infoProfile['photo'];?>" />
+            <a href="<?=$base_url;?>/perfil/<?= $infoProfile['id'];?>"><?= $infoProfile['user_name'];?></a>
+        </div>
+    </div>
+
     <h1 class="mainTitle">
-        <?=($user['id'] == $infoProfile['id'])? 'Você' : $infoProfile['user_name'];?>
-        esta seguindo <?= count($following) ?>
-        <?= (count($following) > 1) ? 'pessoas' : 'pessoa' ?>
+        Seguindo (<?= count($following); ?>)
     </h1>
 
     <section class="screen">

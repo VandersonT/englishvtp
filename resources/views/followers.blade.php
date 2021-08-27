@@ -14,10 +14,16 @@ EnglishVtp - quem segue <?=$infoProfile['user_name'];?>
 <!--Content-->
 @section('content')
 
+    <div class="menu">
+        <a href="#" class="returnBtn" onClick="window.history.back();"><i class="fas fa-undo-alt"></i></a>
+        <div class="aboutProfile">
+            <img src="<?= $base_url;?>/media/avatars/<?= $infoProfile['photo'];?>" />
+            <a href="<?=$base_url;?>/perfil/<?= $infoProfile['id'];?>"><?= $infoProfile['user_name'];?></a>
+        </div>
+    </div>
+
     <h1 class="mainTitle">
-        <?= count($followers) ?>
-        <?= (count($followers) > 1) ? 'pessoas estão seguindo' : 'pessoa segue' ?>
-        <?=($user['id'] == $infoProfile['id'])? 'você' : $infoProfile['user_name'];?>
+        Seguidores (<?= count($followers) ?>)
     </h1>
 
     <section class="screen">

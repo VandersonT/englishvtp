@@ -35,7 +35,6 @@ EnglishVtp - perfil de <?=$infoProfile['user_name'];?>
                     <a href="" class="btn chatColor" href="#">
                         <i class="fas fa-comment-alt"></i>
                     </a>
-                    <!--<a href="#" onClick="return confirm('Você quer realmente bloquear este usuário?');" class="btn blockColor" href="#">Bloquear</a>-->
                 <?php endif;?>
 
             </div>
@@ -45,18 +44,22 @@ EnglishVtp - perfil de <?=$infoProfile['user_name'];?>
                     <p><?=$userComments;?></p>
                 </div>
                 <div class="info2Single">
-                    <a href="<?=$base_url;?>/perfil/seguindo/<?=$infoProfile['id'];?>">Seguindo</a>
-                    <p><?=$following;?></p>
+                    <a href="<?=$base_url;?>/perfil/seguindo/<?=$infoProfile['id'];?>">
+                        Seguindo
+                        <p><?=$following;?></p>
+                    </a>
                 </div>
                 <div class="info2Single">
-                    <a href="<?=$base_url;?>/perfil/seguidores/<?=$infoProfile['id'];?>">Seguidores</a>
-                    <p><?=$follower;?></p>
+                    <a href="<?=$base_url;?>/perfil/seguidores/<?=$infoProfile['id'];?>">
+                        Seguidores
+                        <p><?=$follower;?></p>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
     <div class="box1">
-        <p>Troféus conqusitados</p>
+        <p>Troféus conquistados</p>
     </div>
     <section class="boxTrophies">
         <?php if(count($trophies) > 0): ?>
@@ -69,7 +72,7 @@ EnglishVtp - perfil de <?=$infoProfile['user_name'];?>
         <?php else: ?>
                 <p class="empty1">
                     <i class="fas fa-trophy"></i>
-                    <?=($user['id'] == $infoProfile['id'])? 'Você' : 'Esse usuário'?> 
+                    <?=($user['id'] == $infoProfile['id'])? 'Você' : 'Este usuário'?> 
                     não possui nenhum troféu ainda.
                 </p>
         <?php endif; ?>

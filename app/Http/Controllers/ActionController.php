@@ -150,14 +150,13 @@ class ActionController extends Controller
             ActionHandler::updateProfile($name, $email, $themeMode, $englishLevel,$profilePictureChanged, $namePhoto, $this->loggedUser->id);
 
             $_SESSION['success'] = 'Seu perfil foi atualizado com sucesso.';
-            redirect()->route('profile')->send();
+            return back();
             exit;
         }else{
             $_SESSION['error'] = "Os campos 'nome', 'email' e 'thema' são obrigatorios!";
             return back();
             exit;
         }
-
     }
 
 }
