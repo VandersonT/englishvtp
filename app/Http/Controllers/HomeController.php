@@ -196,14 +196,14 @@ class HomeController extends Controller{
 
         $infoProfile = HomeHandler::getInfoProfile($request->id);
 
-        $followers = HomeHandler::getPeopleFollowed($infoProfile, $this->loggedUser->id);
+        $following = HomeHandler::getPeopleFollowed($infoProfile, $this->loggedUser->id);
 
         return view('following',[
             'user' => $this->loggedUser,
             'notifications' => $this->notifications,
             'selected' => 'profile',
             'infoProfile' => $infoProfile,
-            'followers' => $followers
+            'following' => $following
         ]);
     }
 
@@ -211,11 +211,14 @@ class HomeController extends Controller{
 
         $infoProfile = HomeHandler::getInfoProfile($request->id);
         
+        $followers = HomeHandler::getFollowers($infoProfile, $this->loggedUser->id);
+
         return view('followers',[
             'user' => $this->loggedUser,
             'notifications' => $this->notifications,
             'selected' => 'profile',
-            'infoProfile' => $infoProfile
+            'infoProfile' => $infoProfile,
+            'followers' => $followers
         ]);
     }
 

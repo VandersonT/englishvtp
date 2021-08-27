@@ -261,6 +261,16 @@ class HomeHandler{
         return $searchPeopleFollowed;
     }
 
+    public static function getFollowers($infoProfile, $user_id){
+        $searchFollowers = Relation::
+            where('to_user', $infoProfile['id'])
+            ->join('users', 'users.id', '=', 'relations.from_user')
+            ->select('user_name', 'photo', 'level', 'users.id')
+        ->get();
+
+        return $searchFollowers;
+    }
+
     public static function getTrophies($ProfileUserId){
         $trophies = Trophie::where('user_id', $ProfileUserId)->get();
         return $trophies;

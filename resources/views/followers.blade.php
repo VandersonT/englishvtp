@@ -13,89 +13,42 @@ EnglishVtp - quem segue <?=$infoProfile['user_name'];?>
 
 <!--Content-->
 @section('content')
-    <h1 class="mainTitle">Seguidores</h1>
-    <!--
-        Esta tela servirá tanto para ver seus seguidores
-        quanto quem você esta seguindo.
-        Esta tela também será usada para ver os seguidores 
-        de outras pessoas e quem elas estao seguindo
-        
-        Frases do h1/mainTitle
-            *Seus seguidores
-            *Quem te segue
-            *Seguidores de X
-            *Pessoas que X esta seguindo
-    -->
+
+    <h1 class="mainTitle">
+        <?= count($followers) ?>
+        <?= (count($followers) > 1) ? 'pessoas estão seguindo' : 'pessoa segue' ?>
+        <?=($user['id'] == $infoProfile['id'])? 'você' : $infoProfile['user_name'];?>
+    </h1>
 
     <section class="screen">
 
-        <!--
-        <div class="person">
-            <div class="info">
-                <img src="media/avatars/no-picture2.png" />
-                <div class="infoPerson">
-                    <a href="">Barbara top</a>
-                    <b>Nivel: Basico</b>
+        <?php if(count($followers) > 0): ?>
+            <?php foreach ($followers as $follower): ?>
+                <div class="person">
+                    <div class="info">
+                        <img src="<?=$base_url;?>/media/avatars/<?=$follower['photo'];?>" />
+                        <div class="infoPerson">
+                            <a href="<?=$base_url;?>/perfil/<?=$follower['id'];?>"><?=$follower['user_name'];?></a>
+                            <b>Nivel: <?=$follower['level'];?></b>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <a class="btnChat">
+                            <i class="fas fa-comment-alt"></i>
+                        </a>
+                        <a href="<?=$base_url;?>/perfil/<?=$follower['id'];?>" class="btn">
+                            Ver perfil
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="actions">
-                <a class="btnChat">
-                    <i class="fas fa-comment-alt"></i>
-                </a>
-                <a class="btn">Seguir</a>
-            </div>
-        </div>
-
-        <div class="person">
-            <div class="info">
-                <img src="media/avatars/no-picture2.png" />
-                <div class="infoPerson">
-                    <a href="">Izabela</a>
-                    <b>Nivel: Basico</b>
-                </div>
-            </div>
-            <div class="actions">
-                <a class="btnChat">
-                    <i class="fas fa-comment-alt"></i>
-                </a>
-                <a class="btn">Seguir</a>
-            </div>
-        </div>
-
-        <div class="person">
-            <div class="info">
-                <img src="media/avatars/no-picture2.png" />
-                <div class="infoPerson">
-                    <a href="">Pedro Nascimento</a>
-                    <b>Nivel: Basico</b>
-                </div>
-            </div>
-            <div class="actions">
-                <a class="btnChat">
-                    <i class="fas fa-comment-alt"></i>
-                </a>
-                <a class="btn">Seguir</a>
-            </div>
-        </div>
-
-        <div class="person">
-            <div class="info">
-                <img src="media/avatars/no-picture2.png" />
-                <div class="infoPerson">
-                    <a href="">Amanda Silva</a>
-                    <b>Nivel: Basico</b>
-                </div>
-            </div>
-            <div class="actions">
-                <a class="btnChat">
-                    <i class="fas fa-comment-alt"></i>
-                </a>
-                <a class="btn">Seguir</a>
-            </div>
-        </div>
-        -->
-
-        <h1 class="noPerson">Não possui nenhum seguidor ainda</h1>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <h1 class="noPerson">
+                <i class="far fa-frown-open"></i>
+                <?=($user['id'] == $infoProfile['id'])? 'Você' : $infoProfile['user_name'];?>
+                não tem nenhum seguidor ainda.
+            </h1>
+        <?php endif; ?>
 
     </section>
 @endsection
