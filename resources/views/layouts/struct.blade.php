@@ -92,22 +92,22 @@
 
             <nav class="menuMobile">
                 <ul>
-                    <a href="<?=$base_url?>/"><li class="selectedMobile">
+                    <a href="<?=$base_url?>/"><li class="<?= ($selected == 'home') ? 'selectedMobile' : '';?>">
                         Inicio
                     </li></a>
 
-                    <a href="#"><li>
+                    <a href="<?=$base_url;?>/meustextos"><li  class="<?= ($selected == 'mytexts') ? 'selectedMobile' : '';?>">
                         Meus textos
                     </li></a>
 
-                    <a href="#"><li>
+                    <a href="#"><li class="<?= ($selected == 'chat') ? 'selectedMobile' : '';?>">
                         Chat
                         <span class="chatNotification">
                             9
                         </span>
                     </li></a>
 
-                    <a href="<?=$base_url?>/perfil/<?=$user['id']?>"><li>
+                    <a href="<?=$base_url?>/perfil/<?=$user['id']?>"><li class="<?= ($selected == 'profile') ? 'selectedMobile' : '';?>">
                         Perfil
                     </li></a>
 
