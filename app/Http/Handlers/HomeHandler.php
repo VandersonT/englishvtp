@@ -32,23 +32,15 @@ class HomeHandler{
         return count($data);
     }
 
-    public static function getNotifications($user_id){
+    public static function getNotifications($user_id, $maxNotPerUser){
         $notifications = Notification::
             where('user_to', $user_id)
             ->orderByDesc('date')
+            ->where('viewed', 0)
+            ->limit($maxNotPerUser)
         ->get();
 
         return $notifications;
-    }
-
-    public static function getTotalNotificationsNotSeen($user_id){
-
-        $countNotificationsNotSeen = Notification::
-            where('user_to', $user_id)
-            ->where('viewed', 0)
-        ->count();
-
-        return $countNotificationsNotSeen;
     }
 
     public static function getTexts($filter, $page, $perPage){

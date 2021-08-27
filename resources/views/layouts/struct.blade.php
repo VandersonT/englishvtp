@@ -59,9 +59,9 @@
 
             <a class="bell" href="#"><li>
                 <i class="fas fa-bell"></i>
-                <?php if($totalNotificationsNotSeen != 0): ?>
+                <?php if(count($notifications) != 0): ?>
                     <span class="bellNotification">
-                        <?=$totalNotificationsNotSeen;?>
+                        <?=count($notifications)?>
                     </span>
                 <?php endif; ?>
             </li></a>
@@ -78,7 +78,10 @@
                         </a>
                     <?php endforeach; ?>
                 <?php else: ?>  
-                    Tem notificação nao
+                    <h1 class="noNotification">
+                        <i class="fas fa-dot-circle"></i>
+                        Você não tem nenhuma notificação nova.
+                    </h1>
                 <?php endif; ?>
 
             </div>

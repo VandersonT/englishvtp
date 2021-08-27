@@ -116,11 +116,9 @@ class AjaxHandler{
     }
 
     public static function setNotificationToView($idNot){
-        $updateNotification = Notification::
+        $deleteN = Notification::
             where('id', $idNot)
-        ->update([
-            'viewed' => true
-        ]);
+        ->delete();
     }
 
 }

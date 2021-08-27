@@ -23,6 +23,18 @@ a{
     color: var(--defaultColor);
 }
 
+.noNotification{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+
+.noNotification i{
+    margin-right: 10px;
+}
+
 .box-menu{
     width: 100vw;
     max-width: 100%;
