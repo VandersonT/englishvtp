@@ -31,6 +31,8 @@ class AjaxController extends Controller{
 
         $isRated = AjaxHandler::isRated($idComment, $rate, $commentType, $this->loggedUser->id);
     
+        $userToNotification = AjaxHandler::getUserToNotification($idComment, $commentType);
+
         if($isRated){
 
             if($isRated == $rate){
@@ -41,6 +43,10 @@ class AjaxController extends Controller{
 
         }else{
             AjaxHandler::addRated($idComment, $commentType, $this->loggedUser->id, $rate);
+        }
+        
+        if($userToNotification != $this->loggedUser->id && $isRated != $rate){
+            AjaxHandler::sendRatedNotification($this->loggedUser, $idComment, $rate, $userToNotification);
         }
 
     }

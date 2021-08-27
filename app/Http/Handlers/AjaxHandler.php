@@ -9,6 +9,7 @@ use App\Models\Text;
 use App\Models\Comment;
 use App\Models\Subcomment;
 use App\Models\Comments_rating;
+use App\Models\Notification;
 /*-----------------------------------------------------------------------------*/
 
 class AjaxHandler{
@@ -55,6 +56,53 @@ class AjaxHandler{
             ->where('user_id', $user_id)
             ->where('type', $commentType)
         ->update(['rate' => $rate]);
+    }
+
+    public static function getUserToNotification($idComment, $commentType){
+        echo 'id: '.$idComment;
+        if($commentType == 'normal'){
+            $userRate = Comment::
+                select('user_id')
+                ->where('id', $idComment)
+            ->first();
+            $userSearch = $userRate['user_id'];
+            return $userSearch;
+
+        }else{
+            $userRate = Subcomment::
+                select('user_id')
+                ->where('id', $idComment)
+            ->first();
+            $userSearch = $userRate['user_id'];
+            return $userSearch;
+        }
+    }
+
+    public static function sendRatedNotification($loggedUser, $idComment, $rate, $userToNotification){
+
+        $alreadyNotified = Notification::
+            where('idAction', $idComment)
+        ->first();
+
+        if($alreadyNotified){
+            $updateNotification = Notification::
+                where('idAction', $idComment)
+            ->update([
+                'message' => $loggedUser['user_name'].($rate == 1) ? ' curtiu um comentário feito por você.' : ' não gostou de um comentário feito por você.',
+                'date' => time()
+            ]);
+        }else{
+            $addNotification = new Notification;
+                $addNotification->user_from = $loggedUser['id'];
+                $addNotification->user_to = $userToNotification;
+                $addNotification->whereOcurred = $_SERVER['HTTP_REFERER'];
+                $addNotification->message = $loggedUser['user_name'].($rate == 1) ? ' curtiu um comentário feito por você.' : ' não gostou de um comentário feito por você.';
+                $addNotification->date = time();
+                $addNotification->viewed = false;
+                $addNotification->idAction = $idComment;
+            $addNotification->save();
+        }
+
     }
 
 }
