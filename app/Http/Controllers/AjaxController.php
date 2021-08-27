@@ -52,4 +52,10 @@ class AjaxController extends Controller{
 
     }
 
+    public function viewedNotification(Request $request){
+        
+        AjaxHandler::setNotificationToView($request->idnot);
+
+    }
+
 }

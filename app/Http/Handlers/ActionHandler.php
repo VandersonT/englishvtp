@@ -99,7 +99,7 @@ class ActionHandler{
                 $notification->user_from = $loggedUser['id'];
                 $notification->user_to = $userToNot;
                 $notification->whereOcurred = $_SERVER['HTTP_REFERER'];
-                $notification->message = $loggedUser['user_name'].' responeu um comentário feito por você.';
+                $notification->message = $loggedUser['name'].' respondeu um comentário feito por você.';
                 $notification->date = time();
                 $notification->viewed = false;
             $notification->save();
@@ -116,7 +116,7 @@ class ActionHandler{
                     $notification->user_from = $loggedUser['id'];
                     $notification->user_to = $notificationUser['user_id'];
                     $notification->whereOcurred = $_SERVER['HTTP_REFERER'];
-                    $notification->message = $loggedUser['user_name'].' também comentou em um comentário que você esta seguindo.';
+                    $notification->message = $loggedUser['name'].' também comentou em um comentário que você esta seguindo.';
                     $notification->date = time();
                     $notification->viewed = false;
                 $notification->save();
@@ -165,7 +165,7 @@ class ActionHandler{
                 $sendNotification->user_from = $loggedUser['id'];
                 $sendNotification->user_to = $profileUserId;
                 $sendNotification->whereOcurred = url('').'/texto/'.$loggedUser['id'];
-                $sendNotification->message = $loggedUser['user_name'].' começou a te seguir.';
+                $sendNotification->message = $loggedUser['name'].' começou a te seguir.';
                 $sendNotification->date = time();
                 $sendNotification->viewed = false;
             $sendNotification->save();

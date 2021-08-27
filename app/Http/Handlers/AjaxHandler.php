@@ -90,7 +90,7 @@ class AjaxHandler{
                 ->where('user_from', $loggedUser['id'])
                 ->where('user_to', $userToNotification)
             ->update([
-                'message' => $loggedUser['user_name'].($rate == 1) ? ' curtiu um comentário feito por você.' : ' não gostou de um comentário feito por você.',
+                'message' => ($rate == 1) ? $loggedUser['user_name'].' curtiu um comentário feito por você.' : $loggedUser['user_name'].' não gostou de um comentário feito por você.',
                 'date' => time()
             ]);
         }else{
@@ -98,7 +98,7 @@ class AjaxHandler{
                 $addNotification->user_from = $loggedUser['id'];
                 $addNotification->user_to = $userToNotification;
                 $addNotification->whereOcurred = $_SERVER['HTTP_REFERER'];
-                $addNotification->message = $loggedUser['user_name'].($rate == 1) ? ' curtiu um comentário feito por você.' : ' não gostou de um comentário feito por você.';
+                $addNotification->message = ($rate == 1) ? $loggedUser['name']." curtiu um comentário feito por você." : $loggedUser['name']." não gostou de um comentário feito por você.";
                 $addNotification->date = time();
                 $addNotification->viewed = false;
                 $addNotification->idAction = $idComment;
@@ -113,6 +113,14 @@ class AjaxHandler{
             ->where('user_from', $loggedUser['id'])
             ->where('user_to', $userToNotification)
         ->delete();
+    }
+
+    public static function setNotificationToView($idNot){
+        $updateNotification = Notification::
+            where('id', $idNot)
+        ->update([
+            'viewed' => true
+        ]);
     }
 
 }

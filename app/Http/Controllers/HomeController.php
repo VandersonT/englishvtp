@@ -56,11 +56,15 @@ class HomeController extends Controller{
         $totalPage = ceil($totalTextsWithFilter / $perPage);
 
         $americanTextRecommendation = HomeHandler::getAssistentRecomendation($this->loggedUser, 'american');
+
         $britishTextRecommendation = HomeHandler::getAssistentRecomendation($this->loggedUser, 'british');
+
+        $notifications = HomeHandler::getNotifications($this->loggedUser->id);
 
         return view('home',[
             'selected' => 'home',
             'user' => $this->loggedUser,
+            'notifications' => $notifications,
             'texts' => $texts,
             'filter' => $filter,
             'page' => $page,

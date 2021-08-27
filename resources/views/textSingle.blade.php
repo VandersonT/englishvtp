@@ -235,9 +235,6 @@ EnglishVtp - <?=$text['englishTitle'];?>
 
 <!--Scripts-->
 @section('scripts')
-    <script type="text/javascript">
-        let base_url = '<?=$base_url;?>';
-    </script>
     <script src="{{url('assets/js/textReading.js')}}"></script>
     <script src="{{url('assets/js/commentsInfo.js')}}"></script>
 @endsection

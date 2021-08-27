@@ -65,45 +65,20 @@
             </li></a>
 
             <div class="notification">
-                <a href="#" class="notificationSingle notSeen">
-                    <img src="{{url('media/avatars/no-picture.png')}}" />
-                    <div class="notificationInfo">
-                        <p>PedroN respondeu ao seu comentario no texto "Como jantar bem" </p>
-                        <p>99/99/9999 - 99:99</p>
-                    </div>
-                </a>
+                <?php if(!empty($notifications) && count($notifications) != 0): ?>
+                    <?php foreach ($notifications as $notification):?>
+                        <a href="<?=$notification['whereOcurred'];?>" class="notificationSingle <?=($notification['viewed'] == 0) ? 'notSeen' : '';?>" dataId="<?= $notification['id'];?>">
+                            <img src="{{url('media/avatars/no-picture.png')}}" />
+                            <div class="notificationInfo">
+                                <p><?=$notification['message'];?></p>
+                                <p><?= date('d/m/Y H:i', $notification['date']);?></p>
+                            </div>
+                        </a>
+                    <?php endforeach; ?>
+                <?php else: ?>  
+                    Tem notificação nao
+                <?php endif; ?>
 
-                <a href="#" class="notificationSingle">
-                    <img src="{{url('media/avatars/no-picture.png')}}" />
-                    <div class="notificationInfo">
-                        <p>PedroN curtiu o seu comentario no texto "Como jantar bem"</p>
-                        <p>99/99/9999 - 99:99</p>
-                    </div>
-                </a>
-
-                <a href="#" class="notificationSingle notSeen">
-                    <img src="{{url('media/avatars/no-picture.png')}}" />
-                    <div class="notificationInfo">
-                        <p>Ana Maria descurtiu o seu comentario no texto "Como jantar bem"</p>
-                        <p>99/99/9999 - 99:99</p>
-                    </div>
-                </a>
-
-                <a href="#" class="notificationSingle">
-                    <img src="{{url('media/avatars/no-picture.png')}}" />
-                    <div class="notificationInfo">
-                        <p>Ana Maria curtiu o seu comentario no texto "Aguias noturnas"</p>
-                        <p>99/99/9999 - 99:99</p>
-                    </div>
-                </a>
-
-                <a href="#" class="notificationSingle">
-                    <img src="{{url('media/avatars/no-picture.png')}}" />
-                    <div class="notificationInfo">
-                        <p>Ana Maria começou a te seguir.</p>
-                        <p>99/99/9999 - 99:99</p>
-                    </div>
-                </a>
             </div>
 
             <div class="btnMobile">
@@ -148,6 +123,7 @@
     @yield('scripts')
     <script>
         let theme = "<?=$user['theme'];?>";
+        let base_url = '<?=$base_url;?>';
     </script>
     <script src="{{url('assets/js/darkMode.js')}}"></script>
     <script src="{{url('assets/js/struct.js')}}"></script>

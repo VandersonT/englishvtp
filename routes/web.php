@@ -49,6 +49,7 @@ Route::post('/atualizaperfil', [ActionController::class, 'updateProfile']);
 
 /*----------------------------------Ajax----------------------------------------------*/
 Route::get('/ajax/rate/{id}/{rate}/{type}', [AjaxController::class, 'like']);
+Route::get('/viewedNotification/{idnot}', [AjaxController::class, 'viewedNotification']);
 /*-----------------------------------------------------------------------------------*/
 
 /*---------------------------------Error---------------------------------------------*/

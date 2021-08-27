@@ -14,6 +14,7 @@ use App\Models\Trophie;
 use App\Models\Interaction;
 use App\Models\Saved_text;
 use App\Models\Studied_text;
+use App\Models\Notification;
 /*-----------------------------------------------------------------------------*/
 
 class HomeHandler{
@@ -29,6 +30,15 @@ class HomeHandler{
         ->get();
 
         return count($data);
+    }
+
+    public static function getNotifications($user_id){
+        $notifications = Notification::
+            where('user_to', $user_id)
+            ->orderByDesc('date')
+        ->get();
+
+        return $notifications;
     }
 
     public static function getTexts($filter, $page, $perPage){

@@ -39,3 +39,19 @@ btnNotification.addEventListener('click', function(){
     }
     notificationIsOpen = !notificationIsOpen;
 })
+
+
+let openNot = document.querySelectorAll('.notificationSingle');
+
+for(let i = 0; i < openNot.length; i++){
+    openNot[i].addEventListener('click', function(){
+
+        console.log(base_url);
+        let id =  openNot[i].closest('.notificationSingle').getAttribute('dataId');
+
+        
+
+        fetch(base_url+'/viewedNotification/'+id);
+        
+    })
+}
