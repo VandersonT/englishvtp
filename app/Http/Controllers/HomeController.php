@@ -12,6 +12,8 @@ use App\Http\Handlers\HomeHandler;
 
 class HomeController extends Controller{
     private $loggedUser;
+    private $notifications;
+    private $totalNotificationsNotSeen;
 
     public function __construct(){
         date_default_timezone_set('America/Sao_Paulo');
@@ -19,6 +21,9 @@ class HomeController extends Controller{
 
         if(!$this->loggedUser){
             redirect()->route('login')->send();
+        }else{
+            $this->notifications = HomeHandler::getNotifications($this->loggedUser->id);
+            $this->totalNotificationsNotSeen = HomeHandler::getTotalNotificationsNotSeen($this->loggedUser->id);
         }
 
     }
@@ -59,12 +64,11 @@ class HomeController extends Controller{
 
         $britishTextRecommendation = HomeHandler::getAssistentRecomendation($this->loggedUser, 'british');
 
-        $notifications = HomeHandler::getNotifications($this->loggedUser->id);
-
         return view('home',[
             'selected' => 'home',
             'user' => $this->loggedUser,
-            'notifications' => $notifications,
+            'notifications' => $this->notifications,
+            'totalNotificationsNotSeen' => $this->totalNotificationsNotSeen,
             'texts' => $texts,
             'filter' => $filter,
             'page' => $page,
@@ -110,6 +114,8 @@ class HomeController extends Controller{
 
         return view('textSingle',[
             'user' => $this->loggedUser,
+            'notifications' => $this->notifications,
+            'totalNotificationsNotSeen' => $this->totalNotificationsNotSeen,
             'text' => $text,
             'comments' => $comments,
             'totalComments' => $totalCommentsAndSub,
@@ -141,6 +147,8 @@ class HomeController extends Controller{
 
         return view('profile',[
             'user' => $this->loggedUser,
+            'notifications' => $this->notifications,
+            'totalNotificationsNotSeen' => $this->totalNotificationsNotSeen,
             'selected' => 'profile',
             'infoProfile' => $infoProfile,
             'userComments' => $userComments,
@@ -159,6 +167,8 @@ class HomeController extends Controller{
 
         return view('mytexts',[
             'user' => $this->loggedUser,
+            'notifications' => $this->notifications,
+            'totalNotificationsNotSeen' => $this->totalNotificationsNotSeen,
             'selected' => 'mytexts',
             'textsStudies' => $textsStudies,
             'textsSaveds' => $textsSaveds
@@ -180,6 +190,8 @@ class HomeController extends Controller{
 
         return view('editProfile',[
             'user' => $this->loggedUser,
+            'notifications' => $this->notifications,
+            'totalNotificationsNotSeen' => $this->totalNotificationsNotSeen,
             'selected' => 'profile',
             'success' => $success,
             'error' => $error

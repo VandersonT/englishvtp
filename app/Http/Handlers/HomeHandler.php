@@ -41,6 +41,16 @@ class HomeHandler{
         return $notifications;
     }
 
+    public static function getTotalNotificationsNotSeen($user_id){
+
+        $countNotificationsNotSeen = Notification::
+            where('user_to', $user_id)
+            ->where('viewed', 0)
+        ->count();
+
+        return $countNotificationsNotSeen;
+    }
+
     public static function getTexts($filter, $page, $perPage){
         $texts = [];
 

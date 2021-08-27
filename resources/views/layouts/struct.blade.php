@@ -59,9 +59,11 @@
 
             <a class="bell" href="#"><li>
                 <i class="fas fa-bell"></i>
-                <span class="bellNotification">
-                    2
-                </span>
+                <?php if($totalNotificationsNotSeen != 0): ?>
+                    <span class="bellNotification">
+                        <?=$totalNotificationsNotSeen;?>
+                    </span>
+                <?php endif; ?>
             </li></a>
 
             <div class="notification">
