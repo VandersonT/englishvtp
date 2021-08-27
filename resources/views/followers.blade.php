@@ -14,6 +14,14 @@ EnglishVtp - quem segue <?=$infoProfile['user_name'];?>
 <!--Content-->
 @section('content')
 
+    <?php 
+        if($infoProfile['id'] == $user['id']){
+            $selected = 'profile';
+        }else{
+            $selected = 'none';
+        }
+    ?>
+
     <div class="menu">
         <a href="#" class="returnBtn" onClick="window.history.back();"><i class="fas fa-undo-alt"></i></a>
         <div class="aboutProfile">

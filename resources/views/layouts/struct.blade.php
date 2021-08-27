@@ -47,7 +47,7 @@
                     </li></a>
 
                     <a href="<?=$base_url?>/perfil/<?=$user['id']?>" class="<?= ($selected == 'profile') ? 'selected' : '';?>"><li>
-                        Perfil
+                        Seu perfil
                     </li></a>
 
                     <a onclick="return confirm('Você tem certeza que quer sair?')" href="{{url('sair')}}" class="close" ><li>

@@ -130,7 +130,7 @@ class ActionController extends Controller
                 //if type is not allowed
                 if(!in_array($_FILES['photo']['type'], $allowed)){
                     $_SESSION['error'] = 'Envie somente fotos jpeg, jpg ou png';
-                    return back();
+                    echo '<script>window.history.back();</script>';
                     exit;
                 } 
 
@@ -142,7 +142,7 @@ class ActionController extends Controller
 
             if($this->loggedUser->name == $name && $this->loggedUser->email == $email && !$profilePictureChanged && $this->loggedUser->theme == $themeMode && $this->loggedUser->level == $englishLevel){
                 $_SESSION['error'] = 'Você precisa alterar alguma coisa para poder salvar.';
-                return back();
+                echo '<script>window.history.back();</script>';
                 exit;
             }
 
@@ -150,7 +150,7 @@ class ActionController extends Controller
             ActionHandler::updateProfile($name, $email, $themeMode, $englishLevel,$profilePictureChanged, $namePhoto, $this->loggedUser->id);
 
             $_SESSION['success'] = 'Seu perfil foi atualizado com sucesso.';
-            return back();
+            echo '<script>window.history.back();</script>';
             exit;
         }else{
             $_SESSION['error'] = "Os campos 'nome', 'email' e 'thema' são obrigatorios!";

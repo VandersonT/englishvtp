@@ -14,6 +14,14 @@ EnglishVtp - perfil de <?=$infoProfile['user_name'];?>
 <!--Content-->
 @section('content')
     
+    <?php 
+        if($infoProfile['id'] == $user['id']){
+            $selected = 'profile';
+        }else{
+            $selected = 'none';
+        }
+    ?>
+
     <section class="boxProfile">
         <div class="photoProfile">
             <img src="<?= $base_url;?>/media/avatars/<?= $infoProfile['photo'];?>" />
@@ -79,7 +87,7 @@ EnglishVtp - perfil de <?=$infoProfile['user_name'];?>
 
     </section>
     <div class="box1">
-        <p>Entrosamento</p>
+        <p>Interações</p>
     </div>
     <section class="boxActions">
        
