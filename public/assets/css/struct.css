@@ -132,6 +132,7 @@ a{
     position: absolute;
     right: 38px;
     top: 42px;
+    z-index: 2;
     background-color: var(--menuBackground);
     border: 1px solid rgb(124, 124, 124);
 }
