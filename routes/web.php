@@ -34,6 +34,8 @@ Route::get('/perfil/{id}', [HomeController::class, 'profile']);
 Route::get('/meustextos', [HomeController::class, 'mytexts'])->name('mytexts');
 Route::get('/sair', [HomeController::class, 'logout']);
 Route::get('/editar/perfil', [HomeController::class, 'editProfile'])->name('profile');
+Route::get('/perfil/seguindo/{id}', [HomeController::class, 'following']);
+Route::get('/perfil/seguidores/{id}', [HomeController::class, 'followers']);
 /*-----------------------------------------------------------------------------------*/
 
 /*--------------------------------Actions--------------------------------------------*/

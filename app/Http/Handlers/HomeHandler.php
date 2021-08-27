@@ -241,14 +241,24 @@ class HomeHandler{
         return $userComments + $userSubComments;
     }
 
-    public static function getFollowers($ProfileUserId){
+    public static function getTotalFollowers($ProfileUserId){
         $followers = Relation::where('to_user', $ProfileUserId)->count();
         return $followers;
     }
 
-    public static function getFollowing($ProfileUserId){
+    public static function getTotalFollowing($ProfileUserId){
         $following = Relation::where('from_user', $ProfileUserId)->count();
         return $following;
+    }
+
+    public static function getPeopleFollowed($infoProfile, $user_id){
+        $searchPeopleFollowed = Relation::
+            where('from_user', $infoProfile['id'])
+            ->join('users', 'users.id', '=', 'relations.to_user')
+            ->select('user_name', 'photo', 'level', 'users.id')
+        ->get();
+
+        return $searchPeopleFollowed;
     }
 
     public static function getTrophies($ProfileUserId){

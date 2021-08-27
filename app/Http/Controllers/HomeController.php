@@ -133,8 +133,8 @@ class HomeController extends Controller{
         $interactions = HomeHandler::getAllInteractions($request->id);
         
         $userComments = HomeHandler::getUserComments($request->id);
-        $follower = HomeHandler::getFollowers($request->id);
-        $following = HomeHandler::getFollowing($request->id);
+        $follower = HomeHandler::getTotalFollowers($request->id);
+        $following = HomeHandler::getTotalFollowing($request->id);
         $trophies = HomeHandler::getTrophies($request->id);
         $userFollowsThisPerson = HomeHandler::userFollowsThisPerson($request->id, $this->loggedUser->id);
 
@@ -189,6 +189,33 @@ class HomeController extends Controller{
             'selected' => 'profile',
             'success' => $success,
             'error' => $error
+        ]);
+    }
+
+    public function following(Request $request){
+
+        $infoProfile = HomeHandler::getInfoProfile($request->id);
+
+        $followers = HomeHandler::getPeopleFollowed($infoProfile, $this->loggedUser->id);
+
+        return view('following',[
+            'user' => $this->loggedUser,
+            'notifications' => $this->notifications,
+            'selected' => 'profile',
+            'infoProfile' => $infoProfile,
+            'followers' => $followers
+        ]);
+    }
+
+    public function followers(Request $request){
+
+        $infoProfile = HomeHandler::getInfoProfile($request->id);
+        
+        return view('followers',[
+            'user' => $this->loggedUser,
+            'notifications' => $this->notifications,
+            'selected' => 'profile',
+            'infoProfile' => $infoProfile
         ]);
     }
 

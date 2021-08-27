@@ -2,7 +2,7 @@
 
 <!--Page title-->
 @section('title')
-Perfil - <?=$infoProfile['user_name'];?>
+EnglishVtp - perfil de <?=$infoProfile['user_name'];?>
 @endsection
 
 
@@ -45,11 +45,11 @@ Perfil - <?=$infoProfile['user_name'];?>
                     <p><?=$userComments;?></p>
                 </div>
                 <div class="info2Single">
-                    <p>Seguindo</p>
+                    <a href="<?=$base_url;?>/perfil/seguindo/<?=$infoProfile['id'];?>">Seguindo</a>
                     <p><?=$following;?></p>
                 </div>
                 <div class="info2Single">
-                    <p>Seguidores</p>
+                    <a href="<?=$base_url;?>/perfil/seguidores/<?=$infoProfile['id'];?>">Seguidores</a>
                     <p><?=$follower;?></p>
                 </div>
             </div>
