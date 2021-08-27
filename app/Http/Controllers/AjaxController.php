@@ -37,6 +37,7 @@ class AjaxController extends Controller{
 
             if($isRated == $rate){
                 AjaxHandler::deleteRated($idComment, $commentType, $this->loggedUser->id);
+                AjaxHandler::deleteRatedNotification($this->loggedUser, $idComment, $userToNotification);
             }else{
                 AjaxHandler::updateRated($idComment, $commentType, $this->loggedUser->id, $rate);
             }

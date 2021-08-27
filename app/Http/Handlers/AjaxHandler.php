@@ -87,6 +87,8 @@ class AjaxHandler{
         if($alreadyNotified){
             $updateNotification = Notification::
                 where('idAction', $idComment)
+                ->where('user_from', $loggedUser['id'])
+                ->where('user_to', $userToNotification)
             ->update([
                 'message' => $loggedUser['user_name'].($rate == 1) ? ' curtiu um comentário feito por você.' : ' não gostou de um comentário feito por você.',
                 'date' => time()
@@ -103,6 +105,14 @@ class AjaxHandler{
             $addNotification->save();
         }
 
+    }
+
+    public static function deleteRatedNotification($loggedUser, $idComment, $userToNotification){
+        $deleteRate = Notification::
+            where('idAction', $idComment)
+            ->where('user_from', $loggedUser['id'])
+            ->where('user_to', $userToNotification)
+        ->delete();
     }
 
 }
