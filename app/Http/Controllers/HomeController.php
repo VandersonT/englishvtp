@@ -128,10 +128,21 @@ class HomeController extends Controller{
 
     public function profile(Request $request){
 
+        /*your interactions per page*/
+        $page = 1;
+        if(!empty($_GET['pg'])){
+            $page = addslashes($_GET['pg']);
+        }
+        $perPage = 3;
+
+        $interactions = HomeHandler::getAllInteractions($request->id, $page, $perPage);
+
+        $totalInteractions = HomeHandler::getTotalInteractions($request->id);
+
+        $totalPages = ceil($totalInteractions / $perPage);
+        /***/
+
         $infoProfile = HomeHandler::getInfoProfile($request->id);
-        
-        $interactions = HomeHandler::getAllInteractions($request->id);
-        
         $userComments = HomeHandler::getUserComments($request->id);
         $follower = HomeHandler::getTotalFollowers($request->id);
         $following = HomeHandler::getTotalFollowing($request->id);
@@ -152,7 +163,9 @@ class HomeController extends Controller{
             'following' => $following,
             'trophies' => $trophies,
             'interactions' => $interactions,
-            'userFollowsThisPerson' => $userFollowsThisPerson
+            'userFollowsThisPerson' => $userFollowsThisPerson,
+            'totalPages' => $totalPages,
+            'page' => $page
         ]);
     }
 

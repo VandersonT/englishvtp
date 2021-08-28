@@ -107,6 +107,19 @@ EnglishVtp - perfil de <?=$infoProfile['user_name'];?>
                     </div>
                 </a>
             <?php endforeach;?>
+
+            <?php if($totalPages > 1): ?>
+                <ul class="box-pagination">
+                    <?php for($q=1; $q <= $totalPages; $q++): ?>
+
+                        <a href="<?=$base_url;?>/perfil/<?=$infoProfile['id'];?>?pg=<?=$q;?>">
+                            <li class="<?=($q == $page) ? 'paginationSelected' : ''?>"><?php echo $q?></li>
+                        </a>
+
+                    <?php endfor; ?>
+                </ul>
+            <?php endif; ?>
+
         <?php else: ?>
             <h1 class="empty2">
                 <i class="fas fa-users"></i>

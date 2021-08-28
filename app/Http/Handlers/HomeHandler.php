@@ -226,13 +226,26 @@ class HomeHandler{
         return false;
     }
 
-    public static function getAllInteractions($ProfileUserId){
+    public static function getAllInteractions($ProfileUserId,  $page, $perPage){
+
+        $offset = ($page - 1) * $perPage;
+
         $userInteractions = Interaction::
             where('user_id', $ProfileUserId)
+            ->offset($offset)
+            ->limit($perPage)
             ->orderByDesc('interactions.last_update')
         ->get();
 
         return $userInteractions;
+    }
+
+    public static function getTotalInteractions($ProfileUserId){
+        $total = Interaction::
+            where('user_id', $ProfileUserId)
+        ->count();
+
+        return $total;
     }
 
     public static function getUserComments($ProfileUserId){
