@@ -214,7 +214,7 @@ class HomeController extends Controller{
         if(!empty($_GET['pg'])){
             $page = addslashes($_GET['pg']);
         }
-        $perPage = 1;
+        $perPage = 30;
 
         $totalFollowing = HomeHandler::getTotalFollowing($infoProfile['id']);
 
@@ -238,14 +238,30 @@ class HomeController extends Controller{
 
         $infoProfile = HomeHandler::getInfoProfile($request->id);
         
-        $followers = HomeHandler::getFollowers($infoProfile, $this->loggedUser->id);
+
+        /*your interactions per page*/
+        $page = 1;
+        if(!empty($_GET['pg'])){
+            $page = addslashes($_GET['pg']);
+        }
+        $perPage = 30;
+
+        $totalFollowers = HomeHandler::getTotalFollowers($infoProfile['id']);
+
+        $totalPages = ceil($totalFollowers / $perPage);
+        /***/
+
+
+        $followers = HomeHandler::getFollowers($infoProfile, $this->loggedUser->id, $page, $perPage);
 
         return view('followers',[
             'user' => $this->loggedUser,
             'notifications' => $this->notifications,
             'selected' => 'profile',
             'infoProfile' => $infoProfile,
-            'followers' => $followers
+            'followers' => $followers,
+            'totalPages' => $totalPages,
+            'page' => $page
         ]);
     }
 

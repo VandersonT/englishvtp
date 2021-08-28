@@ -279,11 +279,16 @@ class HomeHandler{
         return $searchPeopleFollowed;
     }
 
-    public static function getFollowers($infoProfile, $user_id){
+    public static function getFollowers($infoProfile, $user_id, $page, $perPage){
+
+        $offset = ($page - 1) * $perPage;
+
         $searchFollowers = Relation::
             where('to_user', $infoProfile['id'])
             ->join('users', 'users.id', '=', 'relations.from_user')
             ->select('user_name', 'photo', 'level', 'users.id')
+            ->offset($offset)
+            ->limit($perPage)
         ->get();
 
         return $searchFollowers;
