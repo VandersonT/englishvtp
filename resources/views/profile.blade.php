@@ -13,7 +13,6 @@ EnglishVtp - perfil de <?=$infoProfile['user_name'];?>
 
 <!--Content-->
 @section('content')
-    
     <?php 
         if($infoProfile['id'] == $user['id']){
             $selected = 'profile';

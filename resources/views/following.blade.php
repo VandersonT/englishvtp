@@ -56,6 +56,7 @@ EnglishVtp - quem <?=$infoProfile['user_name'];?> segue
                     </div>
                 </div>
             <?php endforeach; ?>
+
         <?php else: ?>
             <h1 class="noPerson">
                 <i class="far fa-frown-open"></i>
@@ -65,6 +66,17 @@ EnglishVtp - quem <?=$infoProfile['user_name'];?> segue
         <?php endif; ?>
 
     </section>
+    <?php if($totalPages > 1): ?>
+        <ul class="box-pagination">
+            <?php for($q=1; $q <= $totalPages; $q++): ?>
+
+                <a href="<?=$base_url;?>/perfil/seguindo/<?=$infoProfile['id'];?>?pg=<?=$q;?>">
+                    <li class="<?=($q == $page) ? 'paginationSelected' : ''?>"><?php echo $q?></li>
+                </a>
+
+            <?php endfor; ?>
+        </ul>
+    <?php endif; ?>
 @endsection
 
 <!--Scripts-->

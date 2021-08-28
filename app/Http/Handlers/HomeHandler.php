@@ -226,7 +226,7 @@ class HomeHandler{
         return false;
     }
 
-    public static function getAllInteractions($ProfileUserId,  $page, $perPage){
+    public static function getAllInteractions($ProfileUserId, $page, $perPage){
 
         $offset = ($page - 1) * $perPage;
 
@@ -264,11 +264,16 @@ class HomeHandler{
         return $following;
     }
 
-    public static function getPeopleFollowed($infoProfile, $user_id){
+    public static function getPeopleFollowed($infoProfile, $user_id, $page, $perPage){
+
+        $offset = ($page - 1) * $perPage;
+
         $searchPeopleFollowed = Relation::
             where('from_user', $infoProfile['id'])
             ->join('users', 'users.id', '=', 'relations.to_user')
             ->select('user_name', 'photo', 'level', 'users.id')
+            ->offset($offset)
+            ->limit($perPage)
         ->get();
 
         return $searchPeopleFollowed;
