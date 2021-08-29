@@ -251,7 +251,7 @@ body{
     max-width: 200px;
     bottom: 200px;
     right: 120px;
-    background-color: var(--border);
+    background-color: var(--menuBackground);
     word-wrap: break-word;
     padding: 10px;
     border-radius: 10px;

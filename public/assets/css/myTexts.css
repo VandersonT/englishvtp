@@ -14,10 +14,10 @@
     max-width: 95%;
     margin: 0 auto;
     overflow-x:scroll;
-    border-left: 1px solid var(--border2);
-    border-right: 1px solid var(--border2);
-    border-top: 1px solid var(--border2);
-    border-bottom: 1px solid var(--border2);
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 }
 
 .showcase{

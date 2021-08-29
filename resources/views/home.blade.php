@@ -132,7 +132,7 @@
                 <?php endif; ?>
 
                 <?php if($britishTextRecommendation): ?>
-                    <p>Por outro lado, se você procura um texto britanico, eu recomendaria neste momento o
+                    <p>Por outro lado, se você procura um texto britânico, eu recomendaria neste momento o
                         <a class="recomendation" href="<?=$base_url;?>/texto/<?=$britishTextRecommendation['id'];?>">
                             "<?=$britishTextRecommendation['english_title'];?>"
                         </a>
