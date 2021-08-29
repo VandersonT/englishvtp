@@ -26,7 +26,7 @@
 
                         <div class="btnsGroup">
                             <a class="openText" href="<?=$base_url;?>/texto/<?=$textsSaved['textid'];?>">Abrir</a>
-                            <a class="deleteText" href="<?=$base_url;?>/salvartexto/<?=$textsSaved['textid'];?>">Apagar</a>
+                            <a class="deleteText" href="<?=$base_url;?>/salvartexto/<?=$textsSaved['textid'];?>">Remover</a>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -51,7 +51,7 @@
 
                     <div class="btnsGroup">
                         <a class="openText" href="<?=$base_url;?>/texto/<?=$textsStudie['textid'];?>">Abrir</a>
-                        <a class="deleteText" href="<?=$base_url;?>/finalizarEstudo/<?=$textsStudie['textid'];?>">Apagar</a>
+                        <a class="deleteText" href="<?=$base_url;?>/finalizarEstudo/<?=$textsStudie['textid'];?>">Remover</a>
                     </div>
                 </div>
             <?php endforeach; ?>

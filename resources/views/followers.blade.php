@@ -43,7 +43,7 @@ EnglishVtp - quem segue <?=$infoProfile['user_name'];?>
                         <img src="<?=$base_url;?>/media/avatars/<?=$follower['photo'];?>" />
                         <div class="infoPerson">
                             <a href="<?=$base_url;?>/perfil/<?=$follower['id'];?>"><?=$follower['user_name'];?></a>
-                            <b>Nivel: <?=$follower['level'];?></b>
+                            <b>Nivel: <?= ($follower['level']) ? $follower['level'] : 'Não informado' ;?></b>
                         </div>
                     </div>
                     <div class="actions">

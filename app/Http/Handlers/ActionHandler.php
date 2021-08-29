@@ -230,6 +230,27 @@ class ActionHandler{
         $studiedText->save();
     }
 
+    public static function getTextPoints($textid){
+        $data = Text::
+            where('id', $textid)
+            ->select('levels_points')
+        ->first();
+
+        return $data['levels_points'];
+    }
+
+    public static function upLevelUser($user_id, $textPoints){
+        $userInfo = User::find($user_id);
+            $userInfo->points = $userInfo->points + $textPoints;
+        $userInfo->save();
+    }
+
+    public static function downLevelUser($user_id, $textPoints){
+        $userInfo = User::find($user_id);
+            $userInfo->points = $userInfo->points - $textPoints;
+        $userInfo->save();
+    }
+
     public static function updateProfile($name, $email, $themeMode, $englishLevel, $profilePictureChanged, $namePhoto, $user_id){
         $userInfo = User::find($user_id);
             $userInfo->user_name = $name;

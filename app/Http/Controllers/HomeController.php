@@ -265,6 +265,17 @@ class HomeController extends Controller{
         ]);
     }
 
+    public function chat(){
+
+        
+
+        return view('chat', [
+            'user' => $this->loggedUser,
+            'notifications' => $this->notifications,
+            'selected' => 'chat',
+        ]);
+    }
+
     public function logout(){
         $_SESSION['token'] = '';
 

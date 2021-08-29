@@ -81,13 +81,22 @@ class ActionController extends Controller
     }
 
     public function finishStudy(Request $request){
+
         $alreadyStudied = ActionHandler::getTextStudied($request->textid, $this->loggedUser->id);
+
+        $textPoints = ActionHandler::getTextPoints($request->textid);
 
         if($alreadyStudied){
             ActionHandler::removeTextStudied($request->textid, $this->loggedUser->id);
+
+            ActionHandler::downLevelUser($this->loggedUser->id, $textPoints);
+
             return back();
         }else{
             ActionHandler::addTextStudied($request->textid, $this->loggedUser->id);
+
+            ActionHandler::upLevelUser($this->loggedUser->id, $textPoints);
+
             redirect()->route('mytexts')->send();
         }
         exit;

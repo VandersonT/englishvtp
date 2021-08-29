@@ -39,7 +39,7 @@
                         Meus textos
                     </li></a>
 
-                    <a class="<?= ($selected == 'chat') ? 'selected' : '';?>" href="#"><li>
+                    <a class="<?= ($selected == 'chat') ? 'selected' : '';?>" href="<?=$base_url;?>/chat/<?=$user['id'];?>"><li>
                         Chat
                         <span class="chatNotification">
                             9
@@ -100,7 +100,7 @@
                         Meus textos
                     </li></a>
 
-                    <a href="#"><li class="<?= ($selected == 'chat') ? 'selectedMobile' : '';?>">
+                    <a href="<?=$base_url;?>/chat/<?=$user['id'];?>"><li class="<?= ($selected == 'chat') ? 'selectedMobile' : '';?>">
                         Chat
                         <span class="chatNotification">
                             9
