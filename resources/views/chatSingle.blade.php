@@ -15,14 +15,14 @@ EnglishVtp - chat com X
     @section('content')
     <header class="headerUser">
                 
-        <img src="media/avatars/no-picture2.png" />
-        <a href="" class="name">Maria Eduarda [12]</a>
+        <img src="<?=$base_url?>/media/avatars/<?=$friendInfo['photo'];?>" />
+        <a href="<?=$base_url?>/perfil/<?=$friendInfo['id'];?>" class="name"><?=$friendInfo['user_name'];?></a>
         <i class="fas fa-ellipsis-v btnMenu"></i>
 
         <nav class="menu">
             <ul>
                 <a href=""><li>Bloquear</li></a>
-                <a href=""><li>Ver perfil</li></a>
+                <a href="<?=$base_url?>/perfil/<?=$friendInfo['id'];?>"><li>Ver perfil</li></a>
             </ul>
         </nav>
 
@@ -43,7 +43,7 @@ EnglishVtp - chat com X
                     </div>
                 <?php else: ?>
                     <div class="leftMsg">
-                        <img src="<?=$base_url?>/media/avatars/<?=$friendPicture;?>" />
+                        <img src="<?=$base_url?>/media/avatars/<?=$friendInfo['photo'];?>" />
                         <div class="msg">
                             <?=$conversation['message'];?>
                         </div>

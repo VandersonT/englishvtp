@@ -280,20 +280,21 @@ class HomeController extends Controller{
     }
 
     public function chatSingle(Request $request){
-        //$request->person
 
         //Verifica se esta bloqueado
 
+        HomeHandler::setsAllConversationsAsViewed($this->loggedUser->id, $request->person);
+
         $conversations = HomeHandler::getConversations($this->loggedUser->id, $request->person);
 
-        $friendPicture = HomeHandler::getFriendPicture($request->person);
+        $friendInfo = HomeHandler::getFriendInfo($request->person);
 
         return view('chatSingle', [
             'user' => $this->loggedUser,
             'notifications' => $this->notifications,
             'selected' => 'chat',
             'conversations' => $conversations,
-            'friendPicture' => $friendPicture
+            'friendInfo' => $friendInfo
         ]);
     }
 

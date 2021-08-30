@@ -529,54 +529,48 @@ class HomeHandler{
                     ->select('photo', 'user_name', 'id')
                 ->first();
 
-                $lastConversation = Conversation::
-                    where('user_from', $user_id)
-                    ->where('user_to', $chat['user2'])
-                    ->orderByDesc('date')
+                $conversations = Conversation::
+                    where([
+                        ['user_from', '=', $user_id],
+                        ['user_to', '=', $chat['user2']]
+                    ])
+                    ->orWhere([
+                        ['user_from', '=', $chat['user2']],
+                        ['user_to', '=', $user_id]
+                    ])
+                    ->orderByDesc('id')
                 ->first();
 
-                if(!$lastConversation){
-                    $lastConversation = Conversation::
-                        where('user_from', $chat['user2'])
-                        ->where('user_to', $user_id)
-                        ->orderByDesc('date')
-                    ->first();
-                }
-
-                $chat['lastConversation'] = $lastConversation['message'];
-                $chat['last_update'] = $lastConversation['date'];
-                $chat['wasViewed'] = $lastConversation['wasViewed'];
-                $chat['photo'] = $user['photo'];
-                $chat['friend'] = $user['user_name'];
-                $chat['friendId'] = $user['id'];
             }else{
                 $user = User::
                     where('id', $chat['user1'])
                     ->select('photo', 'user_name', 'id')
                 ->first();
 
-                $lastConversation = Conversation::
-                    where('user_from', $user_id)
-                    ->where('user_to', $chat['user1'])
-                    ->orderByDesc('date')
+                $conversations = Conversation::
+                    where([
+                        ['user_from', '=', $user_id],
+                        ['user_to', '=', $chat['user1']]
+                    ])
+                    ->orWhere([
+                        ['user_from', '=', $chat['user1']],
+                        ['user_to', '=', $user_id]
+                    ])
+                    ->orderByDesc('id')
                 ->first();
 
-                if(!$lastConversation){
-                    $lastConversation = Conversation::
-                        where('user_from', $chat['user1'])
-                        ->where('user_to', $user_id)
-                        ->orderByDesc('date')
-                    ->first();
-                }
-
-                $chat['lastConversation'] = $lastConversation['message'];
-                $chat['last_update'] = $lastConversation['date'];
-                $chat['wasViewed'] = $lastConversation['wasViewed'];
-                $chat['photo'] = $user['photo'];
-                $chat['friend'] = $user['user_name'];
-                $chat['friendId'] = $user['id'];
             }
+            $chat['photo'] = $user['photo'];
+            $chat['friend'] = $user['user_name'];
+            $chat['friendId'] = $user['id'];
+            $chat['wasViewed'] = $conversations['wasViewed'];
+            $chat['last_update'] = $conversations['date'];
+            $chat['last_message'] = $conversations['message'];
         }
+
+        /*echo '<pre>';
+        print_r($chats);
+        exit;*/
 
         return $chats;
     }
@@ -600,18 +594,32 @@ class HomeHandler{
                 ['user_from', '=', $conversationPartner],
                 ['user_to', '=', $loggedUserId]
             ])
+            ->orderByDesc('id')
         ->get();
 
         return $conversations;
     }
 
-    public static function getFriendPicture($conversationPartner){
+    public static function getFriendInfo($conversationPartner){
         $friend = User::
-            select('photo')
+            select('photo', 'user_name', 'id')
             ->where('id', $conversationPartner)
         ->first();
 
-        return $friend['photo'];
+        return $friend;
+    }
+
+    public static function setsAllConversationsAsViewed($loggedUserId, $conversationPartner){
+        $c = Conversation::
+            where([
+                ['user_from', '=', $loggedUserId],
+                ['user_to', '=', $conversationPartner]
+            ])
+            ->orWhere([
+                ['user_from', '=', $conversationPartner],
+                ['user_to', '=', $loggedUserId]
+            ])
+        ->update(['wasViewed' => true]);
     }
 
 }

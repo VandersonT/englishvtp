@@ -20,20 +20,21 @@
 
         <?php if(count($chats) > 0): ?>
             <?php foreach ($chats as $chat):?>
-                <a href="<?=$base_url;?>/chat/<?=$chat['friendId']?>" class="chatSingle <?=($chat['wasViewed']) ? 'notSeen' : ''?>">
+                <a href="<?=$base_url;?>/chat/<?=$chat['friendId']?>" class="chatSingle <?=(!$chat['wasViewed']) ? 'notSeen' : ''?>">
                     <img src="<?=$base_url?>/media/avatars/<?=$chat['photo'];?>" />
                     <div class="infoChat">
                         <div>
                             <span class="name"><?=$chat['friend'];?></span>
-                            <span class="newMsg">
-                                <i class="fas fa-circle"></i>
-                            </span>
+
+                            <?php if(!$chat['wasViewed']): ?>
+                            <span class="newMsg"><i class="fas fa-circle"></i></span>
+                            <?php endif; ?>
                         </div>
                         <p>
-                            <?=$chat['lastConversation'];?>
+                           <?=$chat['last_message'];?>
                         </p>
                         <p>
-                            <?=date('d/m/Y H:i', $chat['date']);?>
+                            <?=date('d/m/Y H:i', $chat['last_update']);?>
                         </p>
                     </div>
                 </a>
