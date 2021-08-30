@@ -56,16 +56,12 @@
 }
 
 .newMsg{
-    color: white;
-    background-color: red;
+    color: rgb(238, 115, 0);
     font-size: 13px;
-    padding: 2px 4px;
-    border-radius: 10px;
-    margin-left: 5px;
 }
 
 .infoChat p{
-  max-width: 100ch;
+  max-width: 100vh;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

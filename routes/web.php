@@ -36,7 +36,8 @@ Route::get('/sair', [HomeController::class, 'logout']);
 Route::get('/editar/perfil', [HomeController::class, 'editProfile'])->name('profile');
 Route::get('/perfil/seguindo/{id}', [HomeController::class, 'following']);
 Route::get('/perfil/seguidores/{id}', [HomeController::class, 'followers']);
-Route::get('/chat/{id}', [HomeController::class, 'chat']);
+Route::get('/chat', [HomeController::class, 'chat']);
+Route::get('/chat/{person}', [HomeController::class, 'chatSingle']);
 /*-----------------------------------------------------------------------------------*/
 
 /*--------------------------------Actions--------------------------------------------*/

@@ -526,7 +526,7 @@ class HomeHandler{
             if($chat['user1'] == $user_id){
                 $user = User::
                     where('id', $chat['user2'])
-                    ->select('photo', 'user_name')
+                    ->select('photo', 'user_name', 'id')
                 ->first();
 
                 $lastConversation = Conversation::
@@ -545,12 +545,14 @@ class HomeHandler{
 
                 $chat['lastConversation'] = $lastConversation['message'];
                 $chat['last_update'] = $lastConversation['date'];
+                $chat['wasViewed'] = $lastConversation['wasViewed'];
                 $chat['photo'] = $user['photo'];
                 $chat['friend'] = $user['user_name'];
+                $chat['friendId'] = $user['id'];
             }else{
                 $user = User::
                     where('id', $chat['user1'])
-                    ->select('photo', 'user_name')
+                    ->select('photo', 'user_name', 'id')
                 ->first();
 
                 $lastConversation = Conversation::
@@ -569,8 +571,10 @@ class HomeHandler{
 
                 $chat['lastConversation'] = $lastConversation['message'];
                 $chat['last_update'] = $lastConversation['date'];
+                $chat['wasViewed'] = $lastConversation['wasViewed'];
                 $chat['photo'] = $user['photo'];
                 $chat['friend'] = $user['user_name'];
+                $chat['friendId'] = $user['id'];
             }
         }
 
@@ -586,4 +590,28 @@ class HomeHandler{
         return $total;
     }*/
     
+    public static function getConversations($loggedUserId, $conversationPartner){
+        $conversations = Conversation::
+            where([
+                ['user_from', '=', $loggedUserId],
+                ['user_to', '=', $conversationPartner]
+            ])
+            ->orWhere([
+                ['user_from', '=', $conversationPartner],
+                ['user_to', '=', $loggedUserId]
+            ])
+        ->get();
+
+        return $conversations;
+    }
+
+    public static function getFriendPicture($conversationPartner){
+        $friend = User::
+            select('photo')
+            ->where('id', $conversationPartner)
+        ->first();
+
+        return $friend['photo'];
+    }
+
 }

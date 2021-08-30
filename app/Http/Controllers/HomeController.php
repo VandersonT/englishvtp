@@ -279,6 +279,24 @@ class HomeController extends Controller{
         ]);
     }
 
+    public function chatSingle(Request $request){
+        //$request->person
+
+        //Verifica se esta bloqueado
+
+        $conversations = HomeHandler::getConversations($this->loggedUser->id, $request->person);
+
+        $friendPicture = HomeHandler::getFriendPicture($request->person);
+
+        return view('chatSingle', [
+            'user' => $this->loggedUser,
+            'notifications' => $this->notifications,
+            'selected' => 'chat',
+            'conversations' => $conversations,
+            'friendPicture' => $friendPicture
+        ]);
+    }
+
     public function logout(){
         $_SESSION['token'] = '';
 
