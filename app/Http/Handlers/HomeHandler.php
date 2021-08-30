@@ -541,6 +541,14 @@ class HomeHandler{
                     ->orderByDesc('id')
                 ->first();
 
+                $wasViewed = Conversation::
+                    where([
+                        ['user_from', '=', $chat['user2']],
+                        ['user_to', '=', $user_id]
+                    ])
+                    ->orderByDesc('id')
+                ->first();
+
             }else{
                 $user = User::
                     where('id', $chat['user1'])
@@ -559,30 +567,25 @@ class HomeHandler{
                     ->orderByDesc('id')
                 ->first();
 
+                $wasViewed = Conversation::
+                    where([
+                        ['user_from', '=', $chat['user1']],
+                        ['user_to', '=', $user_id]
+                    ])
+                    ->orderByDesc('id')
+                ->first();
+
             }
             $chat['photo'] = $user['photo'];
             $chat['friend'] = $user['user_name'];
             $chat['friendId'] = $user['id'];
-            $chat['wasViewed'] = $conversations['wasViewed'];
+            $chat['wasViewed'] = $wasViewed['wasViewed'];
             $chat['last_update'] = $conversations['date'];
             $chat['last_message'] = $conversations['message'];
         }
 
-        /*echo '<pre>';
-        print_r($chats);
-        exit;*/
-
         return $chats;
     }
-
-    /*public static function getTotalChats($user_id){
-        $total = Chat::
-            where('user_from', $user_id)
-            ->orWhere('user_to', $user_id)
-        ->count();
-        
-        return $total;
-    }*/
     
     public static function getConversations($loggedUserId, $conversationPartner){
         $conversations = Conversation::
@@ -611,15 +614,9 @@ class HomeHandler{
 
     public static function setsAllConversationsAsViewed($loggedUserId, $conversationPartner){
         $c = Conversation::
-            where([
-                ['user_from', '=', $loggedUserId],
-                ['user_to', '=', $conversationPartner]
-            ])
-            ->orWhere([
-                ['user_from', '=', $conversationPartner],
-                ['user_to', '=', $loggedUserId]
-            ])
-        ->update(['wasViewed' => true]);
+            where('user_from', $conversationPartner)
+            ->where('user_to', $loggedUserId)
+        ->update(['wasViewed' => 1]);
     }
 
 }
