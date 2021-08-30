@@ -267,12 +267,15 @@ class HomeController extends Controller{
 
     public function chat(){
 
-        
+        $chats = HomeHandler::getUserChats($this->loggedUser->id);
+
+        //$totalChats = HomeHandler::getTotalChats($this->loggedUser->id);
 
         return view('chat', [
             'user' => $this->loggedUser,
             'notifications' => $this->notifications,
             'selected' => 'chat',
+            'chats' => $chats
         ]);
     }
 

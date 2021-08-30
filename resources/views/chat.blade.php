@@ -18,55 +18,27 @@
 
     <div class="boxChats">
 
-        <div class="chatSingle">
-            <img src="media/avatars/no-picture2.png" />
-            <div class="infoChat">
-                
-                <div>
-                    <span class="name">Suporte [2]</span>
+        <?php if(count($chats) > 0): ?>
+            <?php foreach ($chats as $chat):?>
+                <div class="chatSingle">
+                    <img src="<?=$base_url?>/media/avatars/<?=$chat['photo'];?>" />
+                    <div class="infoChat">
+                        <div>
+                            <span class="name"><?=$chat['friend'];?></span>
+                            <span class="newMsg">
+                                3
+                            </span>
+                        </div>
+                        <p>
+                            <?=$chat['lastConversation'];?>
+                        </p>
+                        <p>
+                            <?=date('d/m/Y H:i', $chat['date']);?>
+                        </p>
+                    </div>
                 </div>
-                
-                <p>
-                    Eu não sei o que te dizer e isso posso te dizer que eu sou amigo teu assim eu vou te contar tudo que houve aqui meu amigaozao, lembra desta musica? do amigaozao?
-                </p>
-                <p>
-                    12/02/2022 12:00
-                </p>
-            </div>
-        </div>
-
-        <div class="chatSingle">
-            <img src="media/avatars/no-picture2.png" />
-            <div class="infoChat">
-                <div>
-                    <span class="name">Amanda Silva [3]</span>
-                </div>
-                <p>
-                    Oie, tudo bom?
-                </p>
-                <p>
-                    12/02/2022 12:00
-                </p>
-            </div>
-        </div>
-
-        <div class="chatSingle notSeen">
-            <img src="media/avatars/no-picture2.png" />
-            <div class="infoChat">
-                <div>
-                    <span class="name">Pedro Oliveira [1]</span>
-                    <span class="newMsg">
-                        3
-                    </span>
-                </div>
-                <p>
-                    Salve, irmão
-                </p>
-                <p>
-                    12/02/2022 12:00
-                </p>
-            </div>
-        </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
 
         <!--
         <h1 class="noMsg">

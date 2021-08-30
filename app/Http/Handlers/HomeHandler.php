@@ -15,6 +15,8 @@ use App\Models\Interaction;
 use App\Models\Saved_text;
 use App\Models\Studied_text;
 use App\Models\Notification;
+use App\Models\Chat;
+use App\Models\Conversation;
 /*-----------------------------------------------------------------------------*/
 
 class HomeHandler{
@@ -512,5 +514,76 @@ class HomeHandler{
         echo "|ERROR| O tipo de inglês enviado não esta disponivel.";
         exit;
     }
+
+    public static function getUserChats($user_id){
+        $chats = Chat::
+            where('user1', $user_id)
+            ->orWhere('user2', $user_id)
+        ->get();
+        
+
+        foreach($chats as $chat){
+            if($chat['user1'] == $user_id){
+                $user = User::
+                    where('id', $chat['user2'])
+                    ->select('photo', 'user_name')
+                ->first();
+
+                $lastConversation = Conversation::
+                    where('user_from', $user_id)
+                    ->where('user_to', $chat['user2'])
+                    ->orderByDesc('date')
+                ->first();
+
+                if(!$lastConversation){
+                    $lastConversation = Conversation::
+                        where('user_from', $chat['user2'])
+                        ->where('user_to', $user_id)
+                        ->orderByDesc('date')
+                    ->first();
+                }
+
+                $chat['lastConversation'] = $lastConversation['message'];
+                $chat['last_update'] = $lastConversation['date'];
+                $chat['photo'] = $user['photo'];
+                $chat['friend'] = $user['user_name'];
+            }else{
+                $user = User::
+                    where('id', $chat['user1'])
+                    ->select('photo', 'user_name')
+                ->first();
+
+                $lastConversation = Conversation::
+                    where('user_from', $user_id)
+                    ->where('user_to', $chat['user1'])
+                    ->orderByDesc('date')
+                ->first();
+
+                if(!$lastConversation){
+                    $lastConversation = Conversation::
+                        where('user_from', $chat['user1'])
+                        ->where('user_to', $user_id)
+                        ->orderByDesc('date')
+                    ->first();
+                }
+
+                $chat['lastConversation'] = $lastConversation['message'];
+                $chat['last_update'] = $lastConversation['date'];
+                $chat['photo'] = $user['photo'];
+                $chat['friend'] = $user['user_name'];
+            }
+        }
+
+        return $chats;
+    }
+
+    /*public static function getTotalChats($user_id){
+        $total = Chat::
+            where('user_from', $user_id)
+            ->orWhere('user_to', $user_id)
+        ->count();
+        
+        return $total;
+    }*/
     
 }
