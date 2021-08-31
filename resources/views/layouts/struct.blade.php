@@ -39,13 +39,6 @@
                         Meus textos
                     </li></a>
 
-                    <a class="<?= ($selected == 'chat') ? 'selected' : '';?>" href="<?=$base_url;?>/chat"><li>
-                        Chat
-                        <span class="chatNotification">
-                            9
-                        </span>
-                    </li></a>
-
                     <a href="<?=$base_url?>/perfil/<?=$user['id']?>" class="<?= ($selected == 'profile') ? 'selected' : '';?>"><li>
                         Seu perfil
                     </li></a>
@@ -98,13 +91,6 @@
 
                     <a href="<?=$base_url;?>/meustextos"><li  class="<?= ($selected == 'mytexts') ? 'selectedMobile' : '';?>">
                         Meus textos
-                    </li></a>
-
-                    <a href="<?=$base_url;?>/chat"><li class="<?= ($selected == 'chat') ? 'selectedMobile' : '';?>">
-                        Chat
-                        <span class="chatNotification">
-                            9
-                        </span>
                     </li></a>
 
                     <a href="<?=$base_url?>/perfil/<?=$user['id']?>"><li class="<?= ($selected == 'profile') ? 'selectedMobile' : '';?>">

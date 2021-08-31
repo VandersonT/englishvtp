@@ -265,39 +265,6 @@ class HomeController extends Controller{
         ]);
     }
 
-    public function chat(){
-
-        $chats = HomeHandler::getUserChats($this->loggedUser->id);
-
-        //$totalChats = HomeHandler::getTotalChats($this->loggedUser->id);
-
-        return view('chat', [
-            'user' => $this->loggedUser,
-            'notifications' => $this->notifications,
-            'selected' => 'chat',
-            'chats' => $chats
-        ]);
-    }
-
-    public function chatSingle(Request $request){
-
-        //Verifica se esta bloqueado
-
-        HomeHandler::setsAllConversationsAsViewed($this->loggedUser->id, $request->person);
-
-        $conversations = HomeHandler::getConversations($this->loggedUser->id, $request->person);
-
-        $friendInfo = HomeHandler::getFriendInfo($request->person);
-
-        return view('chatSingle', [
-            'user' => $this->loggedUser,
-            'notifications' => $this->notifications,
-            'selected' => 'chat',
-            'conversations' => $conversations,
-            'friendInfo' => $friendInfo
-        ]);
-    }
-
     public function logout(){
         $_SESSION['token'] = '';
 
