@@ -168,4 +168,18 @@ class ActionController extends Controller
         }
     }
 
+    public function newSupport(){
+        $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
+        $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
+
+        if($title && $content){
+
+            ActionHandler::sendNewSupport($this->loggedUser->id, $title, $content);
+            $_SESSION['flash'] = "Seu chamado foi aberto com sucesso, logo te retornaremos.";
+        }
+
+        redirect()->route('support')->send();
+        exit;
+    }
+
 }

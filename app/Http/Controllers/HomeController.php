@@ -266,10 +266,18 @@ class HomeController extends Controller{
     }
 
     public function support(){
+
+        $flash = '';
+        if(!empty($_SESSION['flash'])){
+            $flash = $_SESSION['flash'];
+            $_SESSION['flash'] = '';
+        }
+
         return view('support', [
             'user' => $this->loggedUser,
             'notifications' => $this->notifications,
-            'selected' => 'support'
+            'selected' => 'support',
+            'flash' => $flash
         ]);
     }
 

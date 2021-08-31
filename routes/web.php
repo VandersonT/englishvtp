@@ -36,7 +36,7 @@ Route::get('/sair', [HomeController::class, 'logout']);
 Route::get('/editar/perfil', [HomeController::class, 'editProfile'])->name('profile');
 Route::get('/perfil/seguindo/{id}', [HomeController::class, 'following']);
 Route::get('/perfil/seguidores/{id}', [HomeController::class, 'followers']);
-Route::get('/suporte', [HomeController::class, 'support']);
+Route::get('/suporte', [HomeController::class, 'support'])->name('support');
 /*-----------------------------------------------------------------------------------*/
 
 /*--------------------------------Actions--------------------------------------------*/
@@ -48,6 +48,7 @@ Route::get('/follow/{id}', [ActionController::class, 'follow']);
 Route::get('/finalizarEstudo/{textid}', [ActionController::class, 'finishStudy']);
 Route::get('/salvartexto/{textid}', [ActionController::class, 'saveText']);
 Route::post('/atualizaperfil', [ActionController::class, 'updateProfile']);
+Route::post('/novoSuporte', [ActionController::class, 'newSupport']);
 /*-----------------------------------------------------------------------------------*/
 
 /*----------------------------------Ajax----------------------------------------------*/

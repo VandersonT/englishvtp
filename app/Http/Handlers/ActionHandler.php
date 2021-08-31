@@ -15,6 +15,8 @@ use App\Models\Interaction;
 use App\Models\Saved_text;
 use App\Models\Studied_text;
 use App\Models\Notification;
+use App\Models\Support;
+use App\Models\Suport_comment;
 /*-----------------------------------------------------------------------------*/
 
 class ActionHandler{
@@ -265,6 +267,16 @@ class ActionHandler{
             $userInfo->save();
         }
 
+    }
+
+    public static function sendNewSupport($user_id, $title, $content){
+        $newSupport = new Support;
+            $newSupport->user_id = $user_id;
+            $newSupport->title = $title;
+            $newSupport->content = $content;
+            $newSupport->date = time();
+            $newSupport->status = 'pendente';
+        $newSupport->save();
     }
     
 }

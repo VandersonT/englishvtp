@@ -26,9 +26,9 @@
     padding: 9px;
     margin-bottom: 10px;
     outline: 0;
+    color: rgb(85, 85, 85);
     border: 1px solid var(--border);
     font-size: 16px;
-    color: var(--menuBackground2);
     border-radius: 5px;
     background-color: var(--color1);
 }
@@ -58,6 +58,23 @@
     background-color: #0B286B;
     color: rgb(197, 197, 197);
 }
+
+.flash{
+    width: 100%;
+    display: flex;
+    background-color: rgb(43, 255, 0);
+    color: rgb(1, 0, 37);
+    font-weight: bold;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    justify-content: center;
+}
+
+.flash i{
+    margin-right: 5px;
+    margin-top: 2px;
+} 
 
 @media screen and (max-width: 830px) {
     .title{
