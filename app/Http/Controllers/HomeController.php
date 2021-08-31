@@ -273,11 +273,30 @@ class HomeController extends Controller{
             $_SESSION['flash'] = '';
         }
 
+        $supports = HomeHandler::getMySupports($this->loggedUser->id);
+
         return view('support', [
             'user' => $this->loggedUser,
             'notifications' => $this->notifications,
             'selected' => 'support',
-            'flash' => $flash
+            'flash' => $flash,
+            'supports' => $supports
+        ]);
+    }
+
+    public function viewSupport(Request $request){
+
+        $supportInfo = HomeHandler::getSupportSingle($request->id, $this->loggedUser->id);
+
+        if(!$supportInfo){
+            redirect()->route('404')->send();
+        }
+
+        return view('supportSingle', [
+            'user' => $this->loggedUser,
+            'notifications' => $this->notifications,
+            'selected' => 'support',
+            'supportInfo' => $supportInfo
         ]);
     }
 

@@ -15,8 +15,8 @@ use App\Models\Interaction;
 use App\Models\Saved_text;
 use App\Models\Studied_text;
 use App\Models\Notification;
-use App\Models\Chat;
-use App\Models\Conversation;
+use App\Models\Support;
+use App\Models\Suport_comment;
 /*-----------------------------------------------------------------------------*/
 
 class HomeHandler{
@@ -513,6 +513,27 @@ class HomeHandler{
         }
         echo "|ERROR| O tipo de inglês enviado não esta disponivel.";
         exit;
+    }
+
+    public static function getMySupports($user_id){
+        $supports = Support::
+            where('user_id', $user_id)
+        ->get();
+
+        return $supports;
+    }
+
+    public static function getSupportSingle($support_id, $user_id){
+        $support = Support::
+            where('id', $support_id)
+            ->where('user_id', $user_id)
+        ->first();
+
+        if($support){
+            return $support;
+        }
+
+        return false;
     }
 
 }

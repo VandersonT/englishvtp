@@ -28,19 +28,17 @@
     <section class="mySupports">
         <h1 class="title">Chamados Anteriores</h1>
 
-        <a href="" class="supportSingle">
-            <h1>Como que eu faço para falar inglês bem?</h1>
-            <div class="status resolved">
-                resolvido
-            </div>
-        </a>
+        <?php  if(!empty($supports)): ?>
+            <?php foreach ($supports as $support): ?>
+                <a href="<?= $base_url; ?>/suporte/<?= $support['id']; ?>" class="supportSingle">
+                    <h1><?= $support['title']; ?></h1>
+                    <div class="status <?= ($support['status'] == 'resolvido') ? 'resolved' : 'pending' ?>">
+                        <?= $support['status']; ?>
+                    </div>
+                </a>
+            <?php endforeach; ?>
 
-        <a href="" class="supportSingle">
-            <h1>O que que significa 'brunch'?</h1>
-            <div class="status pending">
-                pendente
-            </div>
-        </a>
+        <?php endif; ?>
 
     </section>
 @endsection

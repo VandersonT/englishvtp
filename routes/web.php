@@ -37,6 +37,7 @@ Route::get('/editar/perfil', [HomeController::class, 'editProfile'])->name('prof
 Route::get('/perfil/seguindo/{id}', [HomeController::class, 'following']);
 Route::get('/perfil/seguidores/{id}', [HomeController::class, 'followers']);
 Route::get('/suporte', [HomeController::class, 'support'])->name('support');
+Route::get('/suporte/{id}', [HomeController::class, 'viewSupport']);
 /*-----------------------------------------------------------------------------------*/
 
 /*--------------------------------Actions--------------------------------------------*/
