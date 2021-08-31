@@ -21,19 +21,19 @@
     <section class="mySupports">
         <h1 class="title">Chamados Anteriores</h1>
 
-        <div class="supportSingle">
+        <a href="" class="supportSingle">
             <h1>Como que eu faço para falar inglês bem?</h1>
             <div class="status resolved">
                 resolvido
             </div>
-        </div>
+        </a>
 
-        <div class="supportSingle">
+        <a href="" class="supportSingle">
             <h1>O que que significa 'brunch'?</h1>
             <div class="status pending">
                 pendente
             </div>
-        </div>
+        </a>
 
     </section>
 @endsection

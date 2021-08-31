@@ -16,6 +16,9 @@
     margin: 0 auto;
     padding: 5px;
     margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .support-form input{
@@ -53,31 +56,66 @@
     border: 0;
     cursor: pointer;
     background-color: #0B286B;
-    color: white;
+    color: rgb(197, 197, 197);
 }
+
+@media screen and (max-width: 830px) {
+    .title{
+        font-size: 16px;
+    }
+    .support-form input,
+    .support-form textarea{
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 530px) {
+    .title{
+        font-size: 14px;
+    }
+    .support-form{
+        width: 100%;
+    }
+    .support-form textarea,
+    .support-form input{
+        width: 95%;
+    }
+}
+@media screen and (max-width: 400px) {
+    .title{
+        font-size: 12px;
+    }
+
+    .support-form textarea,
+    .support-form input{
+        font-size: 9px;
+    }
+}
+
 /***/
 .mySupports{
     padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     border-top: 1px solid var(--border);
 }
 .supportSingle{
     width: 80%;
     height: 90px;
-    background-color: var( --support);
     color: var(--select);
     padding-left: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 13px;
-    cursor: pointer;
     margin-top: 10px;
     -webkit-box-shadow: 0px 2px 14px -7px #000000; 
     box-shadow: 0px 2px 14px -7px #000000;
+}
+
+.supportSingle:hover{
+    background-color: var(--defaultBackground2);
 }
 
 .status{
@@ -89,5 +127,46 @@
     padding: 5px 10px;
     text-transform: uppercase;
 }
-.resolved{color: rgb(51, 255, 0);}
-.pending{color: rgb(255, 187, 0);}
+.resolved{
+    color: rgb(39, 196, 0);
+}
+.pending{
+    color: rgb(204, 150, 0);
+}
+
+@media screen and (max-width: 830px) {
+    .supportSingle{
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .supportSingle{
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .supportSingle{
+        width: 95%;
+    }
+}
+@media screen and (max-width: 500px) {
+    .supportSingle{
+        height: 70px;
+        font-size: 8px;
+    }
+    .status{
+        line-height: 65px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .supportSingle{
+        font-size: 6px;
+        height: 55px;
+    }
+    .status{
+        line-height: 50px;
+    }
+}
