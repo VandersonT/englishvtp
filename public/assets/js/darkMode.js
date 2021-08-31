@@ -31,4 +31,5 @@ function changeThemeToDark(){
     document.documentElement.style.setProperty('--border2', '#4d4d4d');
     document.documentElement.style.setProperty('--border3', '#141414');
     document.documentElement.style.setProperty('--form', 'rgb(48, 48, 48)');
+    document.documentElement.style.setProperty('--color1', '#292929');
 }

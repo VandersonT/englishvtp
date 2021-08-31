@@ -11,6 +11,8 @@
     --border2: rgb(141, 141, 141);
     --border3: rgb(189, 189, 189);
     --form: rgb(194, 194, 194);
+
+    --color1: white;
 }
 
 body{
@@ -86,11 +88,12 @@ a{
 }
 
 .menuDesktop ul a:hover:not(.bell){
-    border-bottom: 2px solid rgb(255, 123, 0);
+    /*border-bottom: 2px solid rgb(255, 123, 0);*/
+    border-bottom: 2px solid rgb(68, 0, 255);
 }
 
 .selected{
-    border-bottom: 2px solid rgb(255, 123, 0);
+    border-bottom: 2px solid rgb(68, 0, 255);
 }
 
 .chatNotification{
@@ -117,7 +120,7 @@ a{
 }
 
 .bell{
-    color: var(--defaultColor) !important;
+    color: rgb(204, 204, 204);
     font-size: 25px !important;
     border: 2px solid transparent;
     position: relative;

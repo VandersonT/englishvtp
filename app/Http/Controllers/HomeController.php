@@ -265,6 +265,14 @@ class HomeController extends Controller{
         ]);
     }
 
+    public function support(){
+        return view('support', [
+            'user' => $this->loggedUser,
+            'notifications' => $this->notifications,
+            'selected' => 'support'
+        ]);
+    }
+
     public function logout(){
         $_SESSION['token'] = '';
 

@@ -1,0 +1,93 @@
+.title{
+    font-size: 23px;
+    color: var(--select);
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family: 'Lato', sans-serif;
+    font-weight: lighter;
+    text-transform: uppercase;
+}
+
+.support-form{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 5px;
+    margin-bottom: 25px;
+}
+
+.support-form input{
+    width: 100%;
+    padding: 9px;
+    margin-bottom: 10px;
+    outline: 0;
+    border: 1px solid var(--border);
+    font-size: 16px;
+    color: var(--menuBackground2);
+    border-radius: 5px;
+    background-color: var(--color1);
+}
+
+.support-form textarea{
+    width: 100%;
+    height: 200px;
+    margin-bottom: 10px;
+    outline: 0;
+    border: 1px solid var(--border);
+    font-size: 16px;
+    color: rgb(85, 85, 85);
+    border-radius: 5px;
+    padding: 9px;
+    background-color: var(--color1);
+    resize: none;
+}
+
+.support-form button{
+    width: 200px;
+    margin: 0 auto;
+    padding: 10px 15px;
+    border-radius: 5px;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    background-color: #0B286B;
+    color: white;
+}
+/***/
+.mySupports{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+    border-top: 1px solid var(--border);
+}
+.supportSingle{
+    width: 80%;
+    height: 90px;
+    background-color: var( --support);
+    color: var(--select);
+    padding-left: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    cursor: pointer;
+    margin-top: 10px;
+    -webkit-box-shadow: 0px 2px 14px -7px #000000; 
+    box-shadow: 0px 2px 14px -7px #000000;
+}
+
+.status{
+    height: 100%;
+    text-align: center;
+    line-height: 80px;
+    background-color: var(--color1);
+    font-weight: bold;
+    padding: 5px 10px;
+    text-transform: uppercase;
+}
+.resolved{color: rgb(51, 255, 0);}
+.pending{color: rgb(255, 187, 0);}
