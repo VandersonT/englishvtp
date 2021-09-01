@@ -23,10 +23,17 @@
 <body>
     <section class="screen">
         <form method="POST" action="">
+            @csrf
             <h1 class="title">
                 <i class="fas fa-user-cog"></i>
                 Login Admin
             </h1>
+            <?php if(!empty($flash)): ?>
+            <p class="flash">
+                <i class="fas fa-times"></i>
+                <?=$flash;?>
+            </p>
+            <?php endif; ?>
             <input type="email" name="email" placeholder="E-mail" />
             <input type="text" name="password" placeholder="Senha"/>
             <label>

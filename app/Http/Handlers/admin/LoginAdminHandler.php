@@ -3,7 +3,6 @@
 namespace App\Http\Handlers\admin;
 
 /*-----------------------------Models------------------------------------------*/
-use App\Models\Initial;
 use App\Models\User;
 /*-----------------------------------------------------------------------------*/
 
@@ -31,6 +30,9 @@ class LoginAdminHandler{
                 $loggedAdmin->points = $data['points'];
                 return $loggedAdmin;
             }
+        }else{
+            echo 'nao achamos sessao';
+            exit;
         }
 
         if(isset($_COOKIE['tokenAdmin'])){
@@ -55,6 +57,23 @@ class LoginAdminHandler{
             }
         }
 
+        return false;
+    }
+
+    public static function verifyLogin($email, $password){
+        $user = User::where('email', $email)->first();
+
+        if($user){
+            if(password_verify($password, $user['password'])){
+                $tokenAdmin = md5(time().rand(0,9999).rand(0,9999));
+
+                $updateUser = User::find($user->id);
+                    $updateUser->token_admin = $tokenAdmin;
+                $updateUser->save();
+
+                return $tokenAdmin;
+            }
+        }
         return false;
     }
     

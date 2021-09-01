@@ -1,3 +1,19 @@
+.flash{
+    width: 90%;
+    padding: 10px;
+    background-color: rgb(255, 0, 0);
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.flash i{
+    font-size: 15px;
+    position: relative;
+    top: 1px;
+}
+
 .screen{
     width: 100vw;
     height: 100vh;

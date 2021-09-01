@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+session_start();
 
 /*-----------------------------Handlers----------------------------------------*/
 use App\Http\Handlers\admin\LoginAdminHandler;
