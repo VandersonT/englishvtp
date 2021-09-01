@@ -66,9 +66,8 @@
     border: 0;
     outline: 0;
     background-color: #00c7b6;
-    color: rgb(29, 29, 29);
+    color: rgb(0, 0, 0);
     text-transform: uppercase;
-    font-weight: bold;
 }
 
 .screen form button:hover{
