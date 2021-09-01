@@ -518,6 +518,7 @@ class HomeHandler{
     public static function getMySupports($user_id){
         $supports = Support::
             where('user_id', $user_id)
+            ->orderByDesc('date')
         ->get();
 
         return $supports;

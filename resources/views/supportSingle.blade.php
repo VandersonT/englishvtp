@@ -25,11 +25,7 @@
                 </div>
             </div>
             <p>
-                <?php
-                    echo '<pre>';
-                    echo $supportInfo['content'];
-                    echo '</pre>';
-                ?>
+                <?=str_replace('&#13;', '<br/>', $supportInfo['content']);?>
             </p>
         </div>
 
@@ -43,13 +39,7 @@
                             <span><?=date('d/m/Y H:i',$reply['date']);?></span>
                         </div>
                     </div>
-                    <p>
-                        <?php
-                            echo '<pre>';
-                            echo $reply['comment'];
-                            echo '</pre>';
-                        ?>
-                    </p>
+                    <p><?=str_replace('&#13;', '<br/>', $reply['comment']);?></p>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
