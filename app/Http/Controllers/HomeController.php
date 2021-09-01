@@ -288,6 +288,8 @@ class HomeController extends Controller{
 
         $supportInfo = HomeHandler::getSupportSingle($request->id, $this->loggedUser->id);
 
+        $replys = HomeHandler::getSupportReplys($supportInfo['id']);
+
         if(!$supportInfo){
             redirect()->route('404')->send();
         }
@@ -296,7 +298,8 @@ class HomeController extends Controller{
             'user' => $this->loggedUser,
             'notifications' => $this->notifications,
             'selected' => 'support',
-            'supportInfo' => $supportInfo
+            'supportInfo' => $supportInfo,
+            'replys' => $replys
         ]);
     }
 

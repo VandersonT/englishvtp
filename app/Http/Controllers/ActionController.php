@@ -182,4 +182,16 @@ class ActionController extends Controller
         exit;
     }
 
+    public function replySupport(Request $request){
+        $reply = filter_input(INPUT_POST, 'reply', FILTER_SANITIZE_SPECIAL_CHARS);
+        $idSupport = $request->id;
+
+        if($reply && $idSupport){
+            ActionHandler::sendNewSupportReply($reply, $this->loggedUser->id, $idSupport);
+            $_SESSION['flash2'] = "Resposta enviada com sucesso.";
+        }
+        return back();
+        exit;
+    }
+
 }

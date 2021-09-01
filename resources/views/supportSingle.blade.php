@@ -25,13 +25,43 @@
                 </div>
             </div>
             <p>
-                <?=$supportInfo['content'];?>
+                <?php
+                    echo '<pre>';
+                    echo $supportInfo['content'];
+                    echo '</pre>';
+                ?>
             </p>
         </div>
+
+        <?php if(count($replys) > 0): ?>
+            <?php foreach($replys as $reply): ?>
+                <div class="commentSingle">
+                    <div class="box-info">
+                        <img src="<?=$base_url?>/media/avatars/<?=$reply['photo']?>" />
+                        <div class="infouser">
+                            <p><?=$reply['user_name']?></p>
+                            <span><?=date('d/m/Y H:i',$reply['date']);?></span>
+                        </div>
+                    </div>
+                    <p>
+                        <?php
+                            echo '<pre>';
+                            echo $reply['comment'];
+                            echo '</pre>';
+                        ?>
+                    </p>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </section>
 
     <section class="box-writeAReply">
-
+        <h1>Responda</h1>
+        <form method="POST" action="<?=$base_url;?>/respondeSuporte/<?=$supportInfo['id'];?>">
+            @csrf
+            <textarea required name="reply" placeholder="Escreva um comentário"></textarea>
+            <button>Enviar</button>
+        </form>
     </section>
 
 @endsection

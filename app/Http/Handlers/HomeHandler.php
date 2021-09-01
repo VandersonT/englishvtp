@@ -16,7 +16,7 @@ use App\Models\Saved_text;
 use App\Models\Studied_text;
 use App\Models\Notification;
 use App\Models\Support;
-use App\Models\Suport_comment;
+use App\Models\Support_comment;
 /*-----------------------------------------------------------------------------*/
 
 class HomeHandler{
@@ -534,6 +534,16 @@ class HomeHandler{
         }
 
         return false;
+    }
+
+    public static function getSupportReplys($idSupport){
+        $replys = Support_comment::
+            join('users', 'users.id', '=', 'support_comments.user_id')
+            ->where('support_id', $idSupport)
+            ->select('support_comments.*', 'users.id', 'photo', 'user_name')
+        ->get();
+
+        return $replys;
     }
 
 }

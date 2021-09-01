@@ -16,7 +16,7 @@ use App\Models\Saved_text;
 use App\Models\Studied_text;
 use App\Models\Notification;
 use App\Models\Support;
-use App\Models\Suport_comment;
+use App\Models\Support_comment;
 /*-----------------------------------------------------------------------------*/
 
 class ActionHandler{
@@ -277,6 +277,15 @@ class ActionHandler{
             $newSupport->date = time();
             $newSupport->status = 'pendente';
         $newSupport->save();
+    }
+
+    public static function sendNewSupportReply($reply, $user_id, $idSupport){
+        $newSupportReply = new Support_comment;
+            $newSupportReply->user_id = $user_id;
+            $newSupportReply->support_id = $idSupport;
+            $newSupportReply->comment = $reply;
+            $newSupportReply->date = time();
+        $newSupportReply->save();
     }
     
 }

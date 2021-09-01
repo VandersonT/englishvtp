@@ -50,6 +50,7 @@ Route::get('/finalizarEstudo/{textid}', [ActionController::class, 'finishStudy']
 Route::get('/salvartexto/{textid}', [ActionController::class, 'saveText']);
 Route::post('/atualizaperfil', [ActionController::class, 'updateProfile']);
 Route::post('/novoSuporte', [ActionController::class, 'newSupport']);
+Route::post('/respondeSuporte/{id}', [ActionController::class, 'replySupport']);
 /*-----------------------------------------------------------------------------------*/
 
 /*----------------------------------Ajax----------------------------------------------*/
