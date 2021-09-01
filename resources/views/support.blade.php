@@ -28,7 +28,7 @@
     <section class="mySupports">
         <h1 class="title">Chamados Anteriores</h1>
 
-        <?php  if(!empty($supports)): ?>
+        <?php  if(count($supports) > 0): ?>
             <?php foreach ($supports as $support): ?>
                 <a href="<?= $base_url; ?>/suporte/<?= $support['id']; ?>" class="supportSingle">
                     <h1><?= $support['title']; ?></h1>
@@ -37,7 +37,11 @@
                     </div>
                 </a>
             <?php endforeach; ?>
-
+        <?php else: ?>
+                <p class="noSupport">
+                    <i class="fas fa-bug"></i>
+                    Você não abriu nenhum chamado ainda.
+                </p>
         <?php endif; ?>
 
     </section>

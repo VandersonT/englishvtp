@@ -6,6 +6,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ActionController;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\ErrorController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\LoginadminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,5 +64,16 @@ Route::get('/viewedNotification/{idnot}', [AjaxController::class, 'viewedNotific
 Route::get('/error404', [ErrorController::class, 'error404'])->name('404');
 Route::fallback(function(){
     return view('404');
+});
+/*-----------------------------------------------------------------------------------*/
+
+
+
+
+
+/*---------------------------------Painel--------------------------------------------*/
+Route::prefix('Painel')->group(function(){
+    Route::get('/', [AdminController::class, 'index']);
+    Route::get('/login', [LoginadminController::class, 'teste']);
 });
 /*-----------------------------------------------------------------------------------*/

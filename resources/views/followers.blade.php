@@ -47,9 +47,6 @@ EnglishVtp - quem segue <?=$infoProfile['user_name'];?>
                         </div>
                     </div>
                     <div class="actions">
-                        <a class="btnChat">
-                            <i class="fas fa-comment-alt"></i>
-                        </a>
                         <a href="<?=$base_url;?>/perfil/<?=$follower['id'];?>" class="btn">
                             Ver perfil
                         </a>

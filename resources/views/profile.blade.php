@@ -39,9 +39,6 @@ EnglishVtp - perfil de <?=$infoProfile['user_name'];?>
                     <a href="<?=$base_url;?>/follow/<?=$infoProfile['id'];?>" class="btn followColor" href="#">
                         <?= ($userFollowsThisPerson) ? 'Seguindo' : 'Seguir'?>
                     </a>
-                    <a href="" class="btn chatColor" href="#">
-                        <i class="fas fa-comment-alt"></i>
-                    </a>
                 <?php endif;?>
 
             </div>
