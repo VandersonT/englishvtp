@@ -1,3 +1,6 @@
+body{
+    margin-bottom: 60px;
+}
 .title{
     margin-left: 35px;
     margin-top: 20px;
@@ -117,6 +120,7 @@
     .infoSingle .info{
         justify-content: center;
     }
+    .title2,
     .title{
         font-size: 15px;
     }
@@ -126,12 +130,16 @@
     width: 100vw;
     max-width: 100%;
     display: flex;
+    padding: 0 20px;
 }
 .chartSingle{
     width: 50%;
-    margin-right: 15px;
     -webkit-box-shadow: 0px 1px 9px -4px #000000; 
     box-shadow: 0px 1px 9px -4px #000000;
+}
+
+.chartSingle:nth-of-type(1){
+    margin-right: 15px;
 }
 
 #myChart{
@@ -139,6 +147,62 @@
     height: 100%;
 }
 
-body{
-    margin-bottom: 60px;
+.chartSingle canvas{
+    font-size: 3px;
+}
+
+@media screen and (max-width: 1100px){
+    .box-charts{
+        flex-direction: column;
+    }
+    .chartSingle{
+        width: 90%;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+}
+/***/
+.guide{
+    width: 97%;
+    padding: 10px 30px;
+    padding-bottom: 60px;
+    text-align: justify;
+    margin: 0 auto;
+    margin-top: 30px;
+    -webkit-box-shadow: 0px 1px 9px -4px #000000; 
+    box-shadow: 0px 1px 9px -4px #000000;
+}
+
+.guide h1{
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.guide h4{
+    margin-top: 20px;
+}
+
+.guide h4 i{
+    font-size: 13px;
+    margin-right: 5px;
+}
+
+.guide span{
+    word-break: break-all;
+}
+
+@media screen and (max-width: 700px){
+    .guide span,
+    .guide p{
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .guide h1{
+        font-size: 12px;
+    }
+    .guide h4{
+        font-size: 12px;
+    }
 }

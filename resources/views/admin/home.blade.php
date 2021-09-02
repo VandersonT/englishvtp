@@ -60,15 +60,40 @@
                 <i class="fas fa-align-left"></i>
                 Textos mais Salvados
             </h1>
-            <canvas id="myChart" width="400" height="400"></canvas>
+            <canvas id="myChart" width="400" height="250"></canvas>
         </div>
         <div class="chartSingle">
             <h1 class="title2">
                 <i class="fas fa-align-left"></i>
                 Textos mais estudados
             </h1>
-            <canvas id="myChart2" width="400" height="400"></canvas>
+            <canvas id="myChart2" width="400" height="250"></canvas>
         </div>
+    </section>
+
+    <section class="guide">
+        <h1 class="title">
+            <i class="fab fa-guilded"></i>
+            Guia do Painel
+        </h1>
+        <h4><i class="fas fa-pager"></i>Dasboard:</h4>
+        <p>Nesta página você tem acesso a informações importantes sobre o andamento do sistema, com isso sabe quais as proximas ações tomar. Lá também você pode tomar medidas urgentes, como trancar todo o sistema ou  todo o suporte ou reporte.</p>
+        <span>(Moderadores/Administradores)</span>
+        <h4><i class="fas fa-pager"></i>Páginas:</h4>
+        <p>Nesta aba você tem o controle sobre todas as paginas do sistema, lá é possivel editar o layout de todas as páginas existentes no sistema, desde cores até funcionalidades.</p>
+        <span>(Moderadores/administradores)</span>
+        <h4><i class="fas fa-pager"></i>Usuários</h4>
+        <p>Nesta aba você tem o controle sobre todos os usuários do sistema, desde promover à punir alguém. Lá você pode ver todos os usuários, membros da staff, banidos e exilados e nestes 3 últimos podem ser adicionados novos usuários.</p>
+        <span>(Ajudantes/Moderadores/administradores)</span>
+        <h4><i class="fas fa-pager"></i>Textos</h4>
+        <p>Nesta aba você pode adicionar novos textos para o sistema ou editar algum do que já existem.</p>
+        <span>(Moderadores/Administradores)</span>
+        <h4><i class="fas fa-pager"></i>Reportes</h4>
+        <p>Nesta aba você tem acesso a todos os comentários que foram reportados, podendo analizar e tomar alguma atitude, também pode ver todos os casos que já foram resolvidos ou que foram ignorados.</p>
+        <span>(Ajudantes/Moderadores/Administradores)</span>
+        <h4><i class="fas fa-pager"></i>Suporte</h4>
+        <p>Nesta aba você tem acesso a todos os chamados enviados pelos usuários, é lá que você ajudará eles, respondendo duvidas ou resolvendo alguma situação, podendo também analizar todos os chamados já resolvidos antes ou ignorados.</p>
+        <span>(Ajudantes/Moderadores/Administradores)</span>
     </section>
 @endsection
 
