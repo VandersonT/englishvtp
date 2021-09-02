@@ -75,6 +75,7 @@ Route::fallback(function(){
 Route::prefix('Painel')->group(function(){
     /*Home*/
     Route::get('/', [AdminController::class, 'index'])->name('painel');
+    Route::get('/sair', [AdminController::class, 'logout']);
     /*Login*/
     Route::get('/login', [LoginadminController::class, 'login'])->name('loginAdmin');
     Route::post('/login', [LoginadminController::class, 'loginAction']);

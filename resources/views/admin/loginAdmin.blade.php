@@ -29,10 +29,10 @@
                 Login Admin
             </h1>
             <?php if(!empty($flash)): ?>
-            <p class="flash">
+            <div class="flash animate__animated animate__bounceIn">
                 <i class="fas fa-times"></i>
                 <?=$flash;?>
-            </p>
+            </div>
             <?php endif; ?>
             <input type="email" name="email" placeholder="E-mail" />
             <input type="text" name="password" placeholder="Senha"/>

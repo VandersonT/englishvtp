@@ -24,7 +24,18 @@ class AdminController extends Controller
 
     public function index(){
         return view('admin/home',[
-            'user' => $this->loggedAdmin
+            'user' => $this->loggedAdmin,
+            'selected' => 'dashboard'
         ]);
+    }
+
+    public function logout(){
+        $_SESSION['tokenAdmin'] = '';
+
+        if(isset($_COOKIE['tokenAdmin'])){
+            setcookie('tokenAdmin', '', time()-3600);
+        }
+
+        redirect()->route('loginAdmin')->send();
     }
 }

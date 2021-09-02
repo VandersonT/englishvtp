@@ -42,13 +42,19 @@ class LoginadminController extends Controller
             $tokenAdmin = LoginAdminHandler::verifyLogin($email, $password);
 
             if($tokenAdmin){
-                $_SESSION['tokenAdmin'] = $tokenAdmin;
-                
-                if($keepConnected){
-                    $expiration = time() + (86400*30);
-                    setcookie('tokenAdmin', $tokenAdmin, $expiration);
+
+                $isAnAdm = LoginAdminHandler::checkIfItsAnAdmin($email);
+                if($isAnAdm){
+                        $_SESSION['tokenAdmin'] = $tokenAdmin;
+                    
+                    if($keepConnected){
+                        $expiration = time() + (86400*30);
+                        setcookie('tokenAdmin', $tokenAdmin, $expiration);
+                    }
+                    redirect()->route('painel')->send();
+                }else{
+                    $_SESSION['flash'] = 'Esta conta não faz parte da staff.';
                 }
-                redirect()->route('painel')->send();
             }else{
                 $_SESSION['flash'] = 'Email e/ou senha estão errados.';
             }

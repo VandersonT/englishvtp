@@ -2,7 +2,7 @@
 
 <!--Page title-->
 @section('title')
-   Painel - Dashboard
+   titulo aqui
 @endsection
 
 
@@ -13,7 +13,7 @@
 
 <!--Content-->
 @section('content')
-    teste
+    
 @endsection
 
 <!--Scripts-->

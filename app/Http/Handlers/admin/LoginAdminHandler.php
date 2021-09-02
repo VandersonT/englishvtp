@@ -73,5 +73,16 @@ class LoginAdminHandler{
         }
         return false;
     }
+
+    public static function checkIfItsAnAdmin($email){
+        $user = User::where('email', $email)->first();
+
+        if($user){
+            if($user['access'] > 1){
+                return true;
+            }
+        }
+        return false;
+    }
     
 }
