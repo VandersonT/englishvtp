@@ -60,22 +60,86 @@
                     <i class="fas fa-file-alt"></i>
                     <p>Páginas</p>
                 </a>
-                <a class="<?= ($selected == 'users') ? 'selected' : '';?>" href="<?=$base_url;?>/Painel/usuarios">
+
+                <div class="btnBox <?= ($selected == 'users') ? 'selected' : '';?>">
                     <i class="fas fa-user"></i>
                     <p>Usuários</p>
-                </a>
-                <a class="<?= ($selected == 'texts') ? 'selected' : '';?>" href="<?=$base_url;?>/Painel/textos">
+                    <i class="fas fa-caret-left arrow"></i>
+                </div>
+                <div class="boxBtns">
+                    <a href="">
+                        <i class="fas fa-circle"></i>
+                        Todos os usuários
+                    </a>
+                    <a href="">
+                        <i class="fas fa-circle"></i>
+                        Membros da staff
+                    </a>
+                    <a href="">
+                        <i class="fas fa-circle"></i>
+                        Banidos
+                    </a>
+                    <a href="">
+                        <i class="fas fa-circle"></i>
+                        Exilados
+                    </a>
+                </div>
+
+                <div class="btnBox <?= ($selected == 'users') ? 'selected' : '';?>">
                     <i class="fas fa-align-left"></i>
                     <p>Textos</p>
-                </a>
-                <a class="<?= ($selected == 'reports') ? 'selected' : '';?>" href="<?=$base_url;?>/Painel/reportes">
+                    <i class="fas fa-caret-left arrow"></i>
+                </div>
+                <div class="boxBtns">
+                    <a href="">
+                        <i class="fas fa-circle"></i>
+                        Novo Texto
+                    </a>
+                    <a href="">
+                        <i class="fas fa-circle"></i>
+                        Editar Textos
+                    </a>
+                </div>
+
+                <div class="btnBox <?= ($selected == 'users') ? 'selected' : '';?>">
                     <i class="fas fa-exclamation-circle"></i>
                     <p>Reportes</p>
-                </a>
-                <a class="<?= ($selected == 'support') ? 'selected' : '';?>" href="<?=$base_url;?>/Painel/suporte">
+                    <i class="fas fa-caret-left arrow"></i>
+                </div>
+                <div class="boxBtns">
+                    <a href="">
+                        <i class="fas fa-circle"></i>
+                        Pendentes
+                    </a>
+                    <a href="">
+                        <i class="fas fa-circle"></i>
+                        Resolvidos
+                    </a>
+                    <a href="">
+                        <i class="fas fa-circle"></i>
+                        Ignorados
+                    </a>
+                </div>
+
+                <div class="btnBox <?= ($selected == 'users') ? 'selected' : '';?>">
                     <i class="fas fa-ticket-alt"></i>
                     <p>Suporte</p>
-                </a>
+                    <i class="fas fa-caret-left arrow"></i>
+                </div>
+                <div class="boxBtns">
+                    <a href="">
+                        <i class="fas fa-circle"></i>
+                        Pendentes
+                    </a>
+                    <a href="">
+                        <i class="fas fa-circle"></i>
+                        Resolvidos
+                    </a>
+                    <a href="">
+                        <i class="fas fa-circle"></i>
+                        Ignorados
+                    </a>
+                </div>
 
                 <a target="_blank" class="<?= ($selected == 'goToSystem') ? 'selected' : '';?>" href="<?=$base_url;?>/">
                     <i class="fas fa-sitemap"></i>

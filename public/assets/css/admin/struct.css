@@ -75,22 +75,28 @@ body{
     width: 100%;
 }
 
+.btnBox,
 .menu a{
     width: 100%;
     color: white;
     display: flex;
-    padding: 15px;
+    padding: 10px;
+    cursor: pointer;
 }
 
 .menu a:hover:not(.close){
     background-color: #1a1a1a;
 }
 
+.btnBox i,
 .menu a > i{
     font-size: 14px;
     margin-right: 10px;
+    position: relative;
+    top: 4px;
 }
 
+.btnBox p,
 .menu a > p{
     margin-right: 10px;
 }
@@ -99,6 +105,19 @@ body{
 }
 .close{
     background-color: #aa0000;
+}
+
+.boxBtns{
+    display: none;
+}
+
+
+.fa-circle{
+    font-size: 6px !important;
+    position: relative;
+    top: 7px !important;
+    margin-right: 5px !important;
+    margin-left: 20px;
 }
 
 .box-content{

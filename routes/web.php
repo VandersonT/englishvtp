@@ -76,10 +76,6 @@ Route::prefix('Painel')->group(function(){
     /*Home*/
     Route::get('/', [AdminController::class, 'index'])->name('painel');
     Route::get('/paginas', [AdminController::class, 'pages']);
-    Route::get('/usuarios', [AdminController::class, 'users']);
-    Route::get('/textos', [AdminController::class, 'texts']);
-    Route::get('/reportes', [AdminController::class, 'reports']);
-    Route::get('/suporte', [AdminController::class, 'support']);
     Route::get('/sair', [AdminController::class, 'logout']);
     /*Login*/
     Route::get('/login', [LoginadminController::class, 'login'])->name('loginAdmin');

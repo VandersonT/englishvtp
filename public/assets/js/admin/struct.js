@@ -27,3 +27,23 @@ window.onresize = function(){
         isOpen = true;
     }
 }
+/****/
+
+let btns = document.querySelectorAll('.btnBox');
+let boxBtns = document.querySelectorAll('.boxBtns');
+let icon = document.querySelectorAll('.btnBox .arrow');
+
+for(let i = 0; i < btns.length; i++){
+    btns[i].addEventListener('click', function(){
+        //boxBtns[i].style.display = 'block';
+        if(icon[i].classList.contains('fa-caret-left')){
+            boxBtns[i].style.display = 'block';
+            icon[i].classList.add('fa-sort-down');
+            icon[i].classList.remove('fa-caret-left');
+        }else{
+            boxBtns[i].style.display = 'none';
+            icon[i].classList.add('fa-caret-left');
+            icon[i].classList.remove('fa-sort-down');
+        }
+    })
+}

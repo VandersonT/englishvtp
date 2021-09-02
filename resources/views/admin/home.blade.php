@@ -8,7 +8,7 @@
 
 <!--Links-->
 @section('links')
-    
+    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/dashboard.css" />
 @endsection
 
 <!--Content-->
