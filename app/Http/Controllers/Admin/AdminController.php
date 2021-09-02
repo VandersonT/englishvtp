@@ -23,6 +23,8 @@ class AdminController extends Controller
     }
 
     public function index(){
-        echo 'Home do painel';
+        return view('admin/home',[
+            'user' => $this->loggedAdmin
+        ]);
     }
 }

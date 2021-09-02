@@ -30,9 +30,6 @@ class LoginAdminHandler{
                 $loggedAdmin->points = $data['points'];
                 return $loggedAdmin;
             }
-        }else{
-            echo 'nao achamos sessao';
-            exit;
         }
 
         if(isset($_COOKIE['tokenAdmin'])){
