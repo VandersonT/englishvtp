@@ -115,3 +115,13 @@ body{
         margin-left: 0;
     }
 }
+
+@media screen and (max-width: 310px){
+    .box-menu{
+        width: 240px;
+    }
+    .btnMobile{
+        left: 240px;
+    }
+    
+}

@@ -3,12 +3,18 @@ let menu = document.querySelector('.box-menu');
 let isOpen = true;
 
 btnMobile.addEventListener('click', function(){
+    let windowWidth = window.innerWidth;
+
     if(isOpen){
         menu.style.display = 'none';
         btnMobile.style.left = '0';
     }else{
         menu.style.display = 'block';
-        btnMobile.style.left = '270px';
+        if(windowWidth < 310){
+            btnMobile.style.left = '240px';
+        }else{
+            btnMobile.style.left = '270px';
+        }
     }
     isOpen = !isOpen;
 })
