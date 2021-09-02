@@ -20,6 +20,15 @@ class AdminController extends Controller
         if(!$this->loggedAdmin){
             redirect()->route('loginAdmin')->send();
         }
+
+        if($this->loggedAdmin->access < 2){
+            $_SESSION['tokenAdmin'] = '';
+            if(isset($_COOKIE['tokenAdmin'])){
+                setcookie('tokenAdmin', '', time()-3600);
+            }
+            redirect()->route('loginAdmin')->send();
+        }
+
     }
 
     public function index(){
@@ -33,36 +42,6 @@ class AdminController extends Controller
         return view('admin/pages',[
             'user' => $this->loggedAdmin,
             'selected' => 'pages'
-        ]);
-    }
-
-    public function users(){
-        return view('admin/users',[
-            'user' => $this->loggedAdmin,
-            'selected' => 'users'
-        ]);
-    }
-
-    public function texts(){
-        return view('admin/texts',[
-            'user' => $this->loggedAdmin,
-            'selected' => 'texts'
-        ]);
-    }
-
-
-    public function reports(){
-        return view('admin/reports',[
-            'user' => $this->loggedAdmin,
-            'selected' => 'reports'
-        ]);
-    }
-
-
-    public function support(){
-        return view('admin/support',[
-            'user' => $this->loggedAdmin,
-            'selected' => 'support'
         ]);
     }
 

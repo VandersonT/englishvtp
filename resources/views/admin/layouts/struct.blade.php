@@ -68,19 +68,19 @@
                 </div>
                 <div class="boxBtns">
                     <a href="">
-                        <i class="fas fa-circle"></i>
-                        Todos os usuários
+                        <i class="fas fa-circle iconSubMenu"></i>
+                        Ver usuários
                     </a>
                     <a href="">
-                        <i class="fas fa-circle"></i>
+                        <i class="fas fa-circle iconSubMenu"></i>
                         Membros da staff
                     </a>
                     <a href="">
-                        <i class="fas fa-circle"></i>
+                        <i class="fas fa-circle iconSubMenu"></i>
                         Banidos
                     </a>
                     <a href="">
-                        <i class="fas fa-circle"></i>
+                        <i class="fas fa-circle iconSubMenu"></i>
                         Exilados
                     </a>
                 </div>
@@ -92,11 +92,11 @@
                 </div>
                 <div class="boxBtns">
                     <a href="">
-                        <i class="fas fa-circle"></i>
+                        <i class="fas fa-circle iconSubMenu"></i>
                         Novo Texto
                     </a>
                     <a href="">
-                        <i class="fas fa-circle"></i>
+                        <i class="fas fa-circle iconSubMenu"></i>
                         Editar Textos
                     </a>
                 </div>
@@ -108,15 +108,15 @@
                 </div>
                 <div class="boxBtns">
                     <a href="">
-                        <i class="fas fa-circle"></i>
+                        <i class="fas fa-circle iconSubMenu"></i>
                         Pendentes
                     </a>
                     <a href="">
-                        <i class="fas fa-circle"></i>
+                        <i class="fas fa-circle iconSubMenu"></i>
                         Resolvidos
                     </a>
                     <a href="">
-                        <i class="fas fa-circle"></i>
+                        <i class="fas fa-circle iconSubMenu"></i>
                         Ignorados
                     </a>
                 </div>
@@ -128,18 +128,23 @@
                 </div>
                 <div class="boxBtns">
                     <a href="">
-                        <i class="fas fa-circle"></i>
+                        <i class="fas fa-circle iconSubMenu"></i>
                         Pendentes
                     </a>
                     <a href="">
-                        <i class="fas fa-circle"></i>
+                        <i class="fas fa-circle iconSubMenu"></i>
                         Resolvidos
                     </a>
                     <a href="">
-                        <i class="fas fa-circle"></i>
+                        <i class="fas fa-circle iconSubMenu"></i>
                         Ignorados
                     </a>
                 </div>
+
+                <a class="<?= ($selected == 'goToSystem') ? 'selected' : '';?>" href="<?=$base_url;?>/">
+                    <i class="fas fa-male"></i>
+                    <p>Seu Perfil</p>
+                </a>
 
                 <a target="_blank" class="<?= ($selected == 'goToSystem') ? 'selected' : '';?>" href="<?=$base_url;?>/">
                     <i class="fas fa-sitemap"></i>
@@ -147,7 +152,7 @@
                 </a>
 
                 <a class="close" href="<?=$base_url;?>/Painel/sair" onClick="return confirm('Você quer realmente sair?');">
-                    <i class="fas fa-door-open"></i>
+                    <i class="fas fa-power-off"></i>
                     <p>Sair</p>
                 </a>
             </div>
@@ -158,6 +163,9 @@
     </div>
 
     @yield('scripts')
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="<?=$base_url;?>/assets/js/admin/struct.js"></script>
+    <script src="<?=$base_url;?>/assets/js/admin/chart.js"></script>
 </body>
 </html>

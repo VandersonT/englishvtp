@@ -35,12 +35,19 @@ let icon = document.querySelectorAll('.btnBox .arrow');
 
 for(let i = 0; i < btns.length; i++){
     btns[i].addEventListener('click', function(){
-        //boxBtns[i].style.display = 'block';
         if(icon[i].classList.contains('fa-caret-left')){
+            /*Close all box-menu*/
+            for(let i = 0; i < btns.length; i++){
+                boxBtns[i].style.display = 'none';
+                icon[i].classList.add('fa-caret-left');
+                icon[i].classList.remove('fa-sort-down');
+            }
+            /*Open the clicked*/
             boxBtns[i].style.display = 'block';
             icon[i].classList.add('fa-sort-down');
             icon[i].classList.remove('fa-caret-left');
         }else{
+            /*Close the clicked*/
             boxBtns[i].style.display = 'none';
             icon[i].classList.add('fa-caret-left');
             icon[i].classList.remove('fa-sort-down');
