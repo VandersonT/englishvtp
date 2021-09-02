@@ -53,6 +53,23 @@
             </div>
         </div>
     </section>
+
+    <section class="box-charts">
+        <div class="chartSingle">
+            <h1 class="title2">
+                <i class="fas fa-align-left"></i>
+                Textos mais Salvados
+            </h1>
+            <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
+        <div class="chartSingle">
+            <h1 class="title2">
+                <i class="fas fa-align-left"></i>
+                Textos mais estudados
+            </h1>
+            <canvas id="myChart2" width="400" height="400"></canvas>
+        </div>
+    </section>
 @endsection
 
 <!--Scripts-->
