@@ -52,37 +52,37 @@
                 </div>
             </div>
             <div class="menu">
-                <a class="<?= ($selected == 'dashboard') ? 'selected' : '';?>" href="#">
+                <a class="<?= ($selected == 'dashboard') ? 'selected' : '';?>" href="<?=$base_url;?>/Painel/">
                     <i class="fas fa-eye"></i>
                     <p>Dashboard</p>
                 </a>
-                <a class="<?= ($selected == 'pages') ? 'selected' : '';?>" href="#">
+                <a class="<?= ($selected == 'pages') ? 'selected' : '';?>" href="<?=$base_url;?>/Painel/paginas">
                     <i class="fas fa-file-alt"></i>
                     <p>Páginas</p>
                 </a>
-                <a class="<?= ($selected == 'users') ? 'selected' : '';?>" href="#">
+                <a class="<?= ($selected == 'users') ? 'selected' : '';?>" href="<?=$base_url;?>/Painel/usuarios">
                     <i class="fas fa-user"></i>
                     <p>Usuários</p>
                 </a>
-                <a class="<?= ($selected == 'texts') ? 'selected' : '';?>" href="#">
+                <a class="<?= ($selected == 'texts') ? 'selected' : '';?>" href="<?=$base_url;?>/Painel/textos">
                     <i class="fas fa-align-left"></i>
                     <p>Textos</p>
                 </a>
-                <a class="<?= ($selected == 'reports') ? 'selected' : '';?>" href="#">
+                <a class="<?= ($selected == 'reports') ? 'selected' : '';?>" href="<?=$base_url;?>/Painel/reportes">
                     <i class="fas fa-exclamation-circle"></i>
                     <p>Reportes</p>
                 </a>
-                <a class="<?= ($selected == 'support') ? 'selected' : '';?>" href="#">
+                <a class="<?= ($selected == 'support') ? 'selected' : '';?>" href="<?=$base_url;?>/Painel/suporte">
                     <i class="fas fa-ticket-alt"></i>
                     <p>Suporte</p>
                 </a>
 
-                <a class="<?= ($selected == 'goSystem') ? 'selected' : '';?>" href="#">
+                <a target="_blank" class="<?= ($selected == 'goToSystem') ? 'selected' : '';?>" href="<?=$base_url;?>/">
                     <i class="fas fa-sitemap"></i>
                     <p>Ir para o sistema</p>
                 </a>
 
-                <a class="close" href="<?=$base_url;?>/Painel/sair">
+                <a class="close" href="<?=$base_url;?>/Painel/sair" onClick="return confirm('Você quer realmente sair?');">
                     <i class="fas fa-door-open"></i>
                     <p>Sair</p>
                 </a>

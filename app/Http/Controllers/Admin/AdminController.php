@@ -29,6 +29,43 @@ class AdminController extends Controller
         ]);
     }
 
+    public function pages(){
+        return view('admin/pages',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'pages'
+        ]);
+    }
+
+    public function users(){
+        return view('admin/users',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'users'
+        ]);
+    }
+
+    public function texts(){
+        return view('admin/texts',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'texts'
+        ]);
+    }
+
+
+    public function reports(){
+        return view('admin/reports',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'reports'
+        ]);
+    }
+
+
+    public function support(){
+        return view('admin/support',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'support'
+        ]);
+    }
+
     public function logout(){
         $_SESSION['tokenAdmin'] = '';
 
