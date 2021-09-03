@@ -13,7 +13,6 @@
 
 <!--Content-->
 @section('content')
-    <!--<canvas id="myChart" width="400" height="400"></canvas>-->
     <h1 class="title">Dashboard</h1>
     <section class="box-dashboard">
         <div class="infoSingle blue">
@@ -95,9 +94,51 @@
         <p>Nesta aba você tem acesso a todos os chamados enviados pelos usuários, é lá que você ajudará eles, respondendo duvidas ou resolvendo alguma situação, podendo também analizar todos os chamados já resolvidos antes ou ignorados.</p>
         <span>(Ajudantes/Moderadores/Administradores)</span>
     </section>
+
+    <section class="box-controls">
+        <h1 class="title">
+            <i class="fab fa-guilded"></i>
+            Controles Principais
+        </h1>
+
+        <div class="box-btns">
+            <a class="btnSingle on">Sistema: On</a>
+            <a class="btnSingle on">Reportes: On</a>
+            <a class="btnSingle on">Comentários: On</a>
+            <a class="btnSingle off">Suporte: Off</a>
+        </div>
+
+    </section>
 @endsection
 
 <!--Scripts-->
 @section('scripts')
+    <script>
+        /*info saved texts*/
+        let savedName1 = 'teste1';
+        let savedName2 = 'teste2';
+        let savedName3 = 'teste3';
+        let savedName4 = 'teste4';
+        let savedName5 = 'teste5';
 
+        let savedValue1 = 100;
+        let savedValue2 = 200;
+        let savedValue3 = 300;
+        let savedValue4 = 400;
+        let savedValue5 = 500;
+
+        /*info studied texts*/
+        let studiedName1 = 'teste1';
+        let studiedName2 = 'teste2';
+        let studiedName3 = 'teste3';
+        let studiedName4 = 'teste4';
+        let studiedName5 = 'teste5';
+
+        let studiedValue1 = 100;
+        let studiedValue2 = 200;
+        let studiedValue3 = 300;
+        let studiedValue4 = 400;
+        let studiedValue5 = 500;
+
+    </script>
 @endsection

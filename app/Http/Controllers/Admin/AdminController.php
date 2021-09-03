@@ -8,6 +8,7 @@ session_start();
 
 /*-----------------------------Handlers----------------------------------------*/
 use App\Http\Handlers\admin\LoginAdminHandler;
+use App\Http\Handlers\admin\AdminHandler;
 /*-----------------------------------------------------------------------------*/
 
 class AdminController extends Controller
@@ -32,6 +33,9 @@ class AdminController extends Controller
     }
 
     public function index(){
+
+        $mostSavedTexts = AdminHandler::getMostSavedTexts();
+
         return view('admin/home',[
             'user' => $this->loggedAdmin,
             'selected' => 'dashboard'

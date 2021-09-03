@@ -3,10 +3,10 @@ var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Dog', 'PEter Jackson', 'Kratos no olimpo', 'Gretchen', 'puropulina na montanha sul'],
+        labels: [savedName1, savedName2, savedName3, savedName4, savedName5],
         datasets: [{
             label: '# of Votes',
-            data: [10, 190, 30, 50, 200],
+            data: [savedValue1, savedValue2, savedValue3, savedValue4, savedValue5],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -38,10 +38,10 @@ var ctx = document.getElementById('myChart2').getContext('2d');
 var myChart2 = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Dog', 'Pieter Jackson', 'Kratos no olimpo', 'Gretchen', 'puropulina na montanha sul'],
+        labels: [studiedName1, studiedName2, studiedName3, studiedName4, studiedName5],
         datasets: [{
             label: '# of Votes',
-            data: [100, 50, 30, 5, 20],
+            data: [studiedValue1, studiedValue2, studiedValue3, studiedValue4, studiedValue5],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

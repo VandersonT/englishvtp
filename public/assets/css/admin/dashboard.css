@@ -175,7 +175,6 @@ body{
 
 .guide h1{
     margin-bottom: 20px;
-    text-transform: uppercase;
 }
 
 .guide h4{
@@ -204,5 +203,57 @@ body{
     }
     .guide h4{
         font-size: 12px;
+    }
+}
+/****/
+.box-controls{
+    width: 97%;
+    -webkit-box-shadow: 0px 1px 9px -4px #000000; 
+    box-shadow: 0px 1px 9px -4px #000000;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+.box-controls h1{
+    margin-bottom: 20px;
+}
+
+.box-btns{
+    width: 100%;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-around;
+}
+
+.btnSingle{
+    width: 180px;
+    height: 60px;
+    border-radius: 5px;
+    margin: 10px;
+    text-align: center;
+    line-height: 60px;
+    color: white;
+    cursor: pointer;
+    border: 1px solid rgb(124, 124, 124);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+.on{
+    background-color: rgb(0, 177, 0);
+}
+
+.off{
+    background-color: rgb(148, 0, 0);
+}
+
+@media screen and (max-width: 600px){
+    .btnSingle{
+        width: 80px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 7px;
     }
 }
