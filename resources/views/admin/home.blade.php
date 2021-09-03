@@ -113,32 +113,26 @@
 
 <!--Scripts-->
 @section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         /*info saved texts*/
-        let savedName1 = 'teste1';
-        let savedName2 = 'teste2';
-        let savedName3 = 'teste3';
-        let savedName4 = 'teste4';
-        let savedName5 = 'teste5';
+        var savedName1 = '<?=$mostSavedTexts[0]["english_title"];?>';
+        let savedName2 = '<?=$mostSavedTexts[1]["english_title"];?>';
+        let savedName3 = '<?=$mostSavedTexts[2]["english_title"];?>';
 
-        let savedValue1 = 100;
-        let savedValue2 = 200;
-        let savedValue3 = 300;
-        let savedValue4 = 400;
-        let savedValue5 = 500;
+        let savedValue1 = '<?=$mostSavedTexts[0]["count(saved_texts.id)"];?>';;
+        let savedValue2 = '<?=$mostSavedTexts[1]["count(saved_texts.id)"];?>';;
+        let savedValue3 = '<?=$mostSavedTexts[2]["count(saved_texts.id)"];?>';;
 
         /*info studied texts*/
         let studiedName1 = 'teste1';
         let studiedName2 = 'teste2';
         let studiedName3 = 'teste3';
-        let studiedName4 = 'teste4';
-        let studiedName5 = 'teste5';
 
         let studiedValue1 = 100;
         let studiedValue2 = 200;
         let studiedValue3 = 300;
-        let studiedValue4 = 400;
-        let studiedValue5 = 500;
 
     </script>
+    <script src="<?=$base_url;?>/assets/js/admin/chart.js"></script>
 @endsection

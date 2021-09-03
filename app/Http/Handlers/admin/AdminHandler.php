@@ -12,13 +12,14 @@ class AdminHandler{
 
     public static function getMostSavedTexts(){
        $texts = Saved_text::
-            select('textid', \DB::raw("count(id)"))
-            ->orderByDesc(\DB::raw("count(id)"))
+            join('texts', 'texts.id', '=', 'saved_texts.textid')
+            ->select('english_title', 'textid', \DB::raw("count(saved_texts.id)"))
+            ->orderByDesc(\DB::raw("count(saved_texts.id)"))
             ->groupBy('textid')
-            ->limit(5)
+            ->limit(4)
         ->get();
 
-       return $texts;
+        return $texts;
     }
     
 }

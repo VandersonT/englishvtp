@@ -38,7 +38,8 @@ class AdminController extends Controller
 
         return view('admin/home',[
             'user' => $this->loggedAdmin,
-            'selected' => 'dashboard'
+            'selected' => 'dashboard',
+            'mostSavedTexts' => $mostSavedTexts
         ]);
     }
 
