@@ -36,10 +36,13 @@ class AdminController extends Controller
 
         $mostSavedTexts = AdminHandler::getMostSavedTexts();
 
+        $mostStudiedTexts = AdminHandler::getMostStudiedTexts();
+
         return view('admin/home',[
             'user' => $this->loggedAdmin,
             'selected' => 'dashboard',
-            'mostSavedTexts' => $mostSavedTexts
+            'mostSavedTexts' => $mostSavedTexts,
+            'mostStudiedTexts' => $mostStudiedTexts
         ]);
     }
 

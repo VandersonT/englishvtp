@@ -109,6 +109,7 @@
         </div>
 
     </section>
+    <?=$mostSavedTexts[0];?>
 @endsection
 
 <!--Scripts-->
@@ -120,18 +121,19 @@
         let savedName2 = '<?=$mostSavedTexts[1]["english_title"];?>';
         let savedName3 = '<?=$mostSavedTexts[2]["english_title"];?>';
 
-        let savedValue1 = '<?=$mostSavedTexts[0]["count(saved_texts.id)"];?>';;
-        let savedValue2 = '<?=$mostSavedTexts[1]["count(saved_texts.id)"];?>';;
-        let savedValue3 = '<?=$mostSavedTexts[2]["count(saved_texts.id)"];?>';;
-
+        let savedValue1 = '<?=$mostSavedTexts[0]["total"];?>';
+        let savedValue2 = '<?=$mostSavedTexts[1]["total"];?>';
+        let savedValue3 = '<?=$mostSavedTexts[2]["total"];?>';
+    </script>
+    <script>
         /*info studied texts*/
-        let studiedName1 = 'teste1';
-        let studiedName2 = 'teste2';
-        let studiedName3 = 'teste3';
+        let studiedName1 = '<?=$mostStudiedTexts[0]["english_title"];?>';
+        let studiedName2 = '<?=$mostStudiedTexts[1]["english_title"];?>';
+        let studiedName3 = '<?=$mostStudiedTexts[2]["english_title"];?>';
 
-        let studiedValue1 = 100;
-        let studiedValue2 = 200;
-        let studiedValue3 = 300;
+        let studiedValue1 = '<?=$mostStudiedTexts[0]["total"];?>';;
+        let studiedValue2 = '<?=$mostStudiedTexts[1]["total"];?>';;
+        let studiedValue3 = '<?=$mostStudiedTexts[2]["total"];?>';;
 
     </script>
     <script src="<?=$base_url;?>/assets/js/admin/chart.js"></script>

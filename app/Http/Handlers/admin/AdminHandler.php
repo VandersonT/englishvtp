@@ -6,20 +6,31 @@ namespace App\Http\Handlers\admin;
 use App\Models\User;
 use App\Models\Text;
 use App\Models\Saved_text;
+use App\Models\Studied_text;
 /*-----------------------------------------------------------------------------*/
 
 class AdminHandler{
 
     public static function getMostSavedTexts(){
-       $texts = Saved_text::
-            join('texts', 'texts.id', '=', 'saved_texts.textid')
-            ->select('english_title', 'textid', \DB::raw("count(saved_texts.id)"))
-            ->orderByDesc(\DB::raw("count(saved_texts.id)"))
-            ->groupBy('textid')
-            ->limit(4)
+        $data = Saved_text::groupBy('textid')
+            ->join('texts', 'texts.id', '=', 'saved_texts.textid')
+            ->selectRaw('count(*) as total, textid, english_title')
+            ->orderByDesc('total')
+            ->limit(3)
         ->get();
 
-        return $texts;
+        return $data;
     }
+
+    public static function getMostStudiedTexts(){
+        $data = Studied_text::groupBy('textid')
+            ->join('texts', 'texts.id', '=', 'studied_texts.textid')
+            ->selectRaw('count(*) as total, textid, english_title')
+            ->orderByDesc('total')
+            ->limit(3)
+        ->get();
+
+        return $data;
+     }
     
 }
