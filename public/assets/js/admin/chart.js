@@ -62,7 +62,7 @@ var myChart2 = new Chart(ctx, {
 
 /*Chart3*/
 var ctx = document.getElementById('myChart3').getContext('2d');
-var myChart2 = new Chart(ctx, {
+var myChart3 = new Chart(ctx, {
     type: 'doughnut',
     data: {
         labels: ['Americano', 'Britânico'],
@@ -70,8 +70,8 @@ var myChart2 = new Chart(ctx, {
             label: '# de votos',
             data: [american, british],
             backgroundColor: [
-                '#0000CD',
-                '#1E90FF'
+                '#ff0000',
+                '#00aeff'
             ],
             borderColor: [
                 'gray',

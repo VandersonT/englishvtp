@@ -77,6 +77,32 @@
         </div>
     </section>
 
+    <section class="box-userOn">
+        <h1 class="title">
+            <i class="fab fa-guilded"></i>
+            Usuários Online
+        </h1>
+
+        <table class="boxUsers">
+            <tr>
+                <th>Id</th>
+                <th>Usuário</th>
+                <th>Último acesso</th>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Matheus Vilela</td>
+                <td>20/01/2021 11:00</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Vanderson Lindão</td>
+                <td>20/01/2021 11:10</td>
+            </tr>
+        </table>
+
+    </section>
+
     <section class="guide">
         <h1 class="title">
             <i class="fab fa-guilded"></i>
