@@ -8,6 +8,7 @@ use App\Models\Text;
 use App\Models\Saved_text;
 use App\Models\Studied_text;
 use App\Models\Daily_access;
+use App\Models\User_on;
 /*-----------------------------------------------------------------------------*/
 
 class AdminHandler{
@@ -57,6 +58,25 @@ class AdminHandler{
      public static function getTotalAccounts(){
         $data = User::count();
         return $data;
+     }
+
+     public static function getUsersOn(){
+        $supposedMembersOn = User_on::get();
+
+        foreach($supposedMembersOn as $supposedMemberOn){
+            if($supposedMemberOn['last_action'] + 600 < time()){
+                $supposedMemberOn = User_on::
+                    where('id', $supposedMemberOn['id'])
+                ->update(['status' => 'offline']);
+                //mais de 10 minutos, ou seja, não esta mais online
+            }
+        }
+
+        $membersOn = User_on::
+            where('status', 'online')
+        ->get();
+
+        return $membersOn;
      }
     
 }

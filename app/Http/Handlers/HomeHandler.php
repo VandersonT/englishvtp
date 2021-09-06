@@ -18,6 +18,7 @@ use App\Models\Notification;
 use App\Models\Support;
 use App\Models\Support_comment;
 use App\Models\Daily_access;
+use App\Models\User_on;
 /*-----------------------------------------------------------------------------*/
 
 class HomeHandler{
@@ -552,6 +553,25 @@ class HomeHandler{
         $newAccess = new Daily_access;
             $newAccess->access = time();
         $newAccess->save();
+    }
+
+    public static function updateLastAction($user_id){
+        $data = User_on::where('user_id', $user_id)->get();
+        
+        if(count($data) > 0){
+            $updateAction = User_on::
+                where('user_id', $user_id)
+            ->update([
+                'last_action' => time(),
+                'status' => 'online'
+            ]);
+        }else{
+            $addAction = new User_on;
+                $addAction->user_id = $user_id;
+                $addAction->last_action = time();
+            $addAction->save();
+        }
+
     }
 
 }

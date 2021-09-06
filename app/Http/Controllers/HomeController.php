@@ -40,6 +40,8 @@ class HomeController extends Controller{
             //echo 'nao tem cookie ent conta o acesso';
         }
         /***/
+
+        HomeHandler::updateLastAction($this->loggedUser->id);
     }
 
     public function index(Request $request){

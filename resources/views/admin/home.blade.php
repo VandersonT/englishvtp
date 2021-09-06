@@ -26,7 +26,7 @@
         </div>
         <div class="infoSingle green">
             <div class="info">
-                <p class="number">52</p>
+                <p class="number"><?=count($usersOn);?></p>
                 <p>Online</p>
             </div>
             <div class="img">

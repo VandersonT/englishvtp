@@ -22,6 +22,8 @@ class AjaxController extends Controller{
             echo json_encode(['error' => 'Usuário não logado']);
             exit;
         }
+
+        HomeHandler::updateLastAction($this->loggedUser->id);
     }
 
     public function like(Request $request){

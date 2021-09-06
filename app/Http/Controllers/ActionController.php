@@ -21,6 +21,8 @@ class ActionController extends Controller
         if(!$this->loggedUser){
             redirect()->route('login')->send();
         }
+
+        HomeHandler::updateLastAction($this->loggedUser->id);
     }
 
     public function sendNewComment(){

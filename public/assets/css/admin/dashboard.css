@@ -178,6 +178,7 @@ body{
 .boxUsers{
     width: 100%;
     border-collapse: collapse;
+    margin: 0 auto;
     margin-top: 10px;
 }
 

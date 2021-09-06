@@ -36,6 +36,7 @@ class AdminController extends Controller
     public function index(){
 
         $totalAccess = AdminHandler::getTotalAccess();
+        $usersOn = AdminHandler::getUsersOn();
         $totalTexts =  AdminHandler::getTotalTexts();
         $totalAccounts =  AdminHandler::getTotalAccounts();
         $mostSavedTexts = AdminHandler::getMostSavedTexts();
@@ -50,7 +51,8 @@ class AdminController extends Controller
             'howManyOfEachType' => $howManyOfEachType,
             'totalAccess' => $totalAccess,
             'totalTexts' => $totalTexts,
-            'totalAccounts' => $totalAccounts
+            'totalAccounts' => $totalAccounts,
+            'usersOn' => $usersOn
         ]);
     }
 
