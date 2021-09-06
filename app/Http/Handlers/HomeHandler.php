@@ -17,6 +17,7 @@ use App\Models\Studied_text;
 use App\Models\Notification;
 use App\Models\Support;
 use App\Models\Support_comment;
+use App\Models\Daily_access;
 /*-----------------------------------------------------------------------------*/
 
 class HomeHandler{
@@ -545,6 +546,12 @@ class HomeHandler{
         ->get();
 
         return $replys;
+    }
+
+    public static function sendAccessToDb(){
+        $newAccess = new Daily_access;
+            $newAccess->access = time();
+        $newAccess->save();
     }
 
 }

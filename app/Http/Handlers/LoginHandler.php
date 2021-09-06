@@ -5,6 +5,7 @@ namespace App\Http\Handlers;
 /*-----------------------------Models------------------------------------------*/
 use App\Models\Initial;
 use App\Models\User;
+use App\Models\Daily_access;
 /*-----------------------------------------------------------------------------*/
 
 class LoginHandler{
@@ -103,6 +104,12 @@ class LoginHandler{
         $newUser->save();
 
         return $token;
+    }
+
+    public static function sendAccessToDb(){
+        $newAccess = new Daily_access;
+            $newAccess->access = date('d/m/Y', time());
+        $newAccess->save();
     }
     
 }

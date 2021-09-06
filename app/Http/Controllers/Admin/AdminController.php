@@ -30,6 +30,7 @@ class AdminController extends Controller
             redirect()->route('loginAdmin')->send();
         }
 
+        date_default_timezone_set('America/Sao_Paulo');
     }
 
     public function index(){
@@ -38,11 +39,16 @@ class AdminController extends Controller
 
         $mostStudiedTexts = AdminHandler::getMostStudiedTexts();
 
+        $howManyOfEachType = AdminHandler::getHowManyOfEachType();
+
+        $access = AdminHandler::getAccess();
+
         return view('admin/home',[
             'user' => $this->loggedAdmin,
             'selected' => 'dashboard',
             'mostSavedTexts' => $mostSavedTexts,
-            'mostStudiedTexts' => $mostStudiedTexts
+            'mostStudiedTexts' => $mostStudiedTexts,
+            'howManyOfEachType' => $howManyOfEachType
         ]);
     }
 

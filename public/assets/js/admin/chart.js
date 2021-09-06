@@ -5,18 +5,17 @@ var myChart = new Chart(ctx, {
     data: {
         labels: [savedName1, savedName2, savedName3],
         datasets: [{
-            label: '# of Votes',
+            label: '# de votos',
             data: [savedValue1, savedValue2, savedValue3],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)'
+                '#00CED1',
+                '#00CED1',
+                '#00CED1'
             ],
             borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)'
+                '#076e63',
+                '#076e63',
+                '#076e63'
             ],
             borderWidth: 1
         }]
@@ -37,17 +36,46 @@ var myChart2 = new Chart(ctx, {
     data: {
         labels: [studiedName1, studiedName2, studiedName3],
         datasets: [{
-            label: '# of Votes',
+            label: '# de votos',
             data: [studiedValue1, studiedValue2, studiedValue3],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)'
+                '#0000CD',
+                '#0000CD',
+                '#0000CD'
             ],
             borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)'
+                '#0d0638',
+                '#0d0638',
+                '#0d0638'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+/*Chart3*/
+var ctx = document.getElementById('myChart3').getContext('2d');
+var myChart2 = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Americano', 'Britânico'],
+        datasets: [{
+            label: '# de votos',
+            data: [american, british],
+            backgroundColor: [
+                '#0000CD',
+                '#1E90FF'
+            ],
+            borderColor: [
+                'gray',
+                'gray'
             ],
             borderWidth: 1
         }]

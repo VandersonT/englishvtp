@@ -130,10 +130,14 @@ body{
     width: 100vw;
     max-width: 100%;
     display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
     padding: 0 20px;
 }
+
 .chartSingle{
-    width: 50%;
+    width: 49%;
+    margin-bottom: 20px;
     -webkit-box-shadow: 0px 1px 9px -4px #000000; 
     box-shadow: 0px 1px 9px -4px #000000;
 }
@@ -168,7 +172,6 @@ body{
     padding-bottom: 60px;
     text-align: justify;
     margin: 0 auto;
-    margin-top: 30px;
     -webkit-box-shadow: 0px 1px 9px -4px #000000; 
     box-shadow: 0px 1px 9px -4px #000000;
 }
@@ -179,21 +182,30 @@ body{
 
 .guide h4{
     margin-top: 20px;
+    font-size: 20px;
+    font-weight: lighter;
+    font-family: 'Lato', sans-serif;
 }
 
 .guide h4 i{
-    font-size: 13px;
+    font-size: 20px;
     margin-right: 5px;
+}
+
+.guide p{
+    margin-left: 20px;
 }
 
 .guide span{
     word-break: break-all;
+    margin-left: 20px;
 }
 
 @media screen and (max-width: 700px){
     .guide span,
     .guide p{
         font-size: 14px;
+        margin-left: 0;
     }
 }
 

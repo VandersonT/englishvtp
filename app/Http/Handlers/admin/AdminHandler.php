@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Text;
 use App\Models\Saved_text;
 use App\Models\Studied_text;
+use App\Models\Daily_access;
 /*-----------------------------------------------------------------------------*/
 
 class AdminHandler{
@@ -31,6 +32,29 @@ class AdminHandler{
         ->get();
 
         return $data;
+     }
+
+     public static function getHowManyOfEachType(){
+         $american = Text::where('type_english', 'americano')->count();
+         $British = Text::where('type_english', 'britanico')->count();
+
+        $array['american'] =  $american;
+        $array['british'] =  $British;
+
+        return $array;
+     }
+
+     public static function getAccess(){
+        $data = Daily_access::first();
+
+        /*$cookie = date('d/m/Y', time());
+        $hoje = date('d/m/Y', time());
+        
+        if($cookie == $hoje){
+            echo 'é maior';
+        }else{
+            echo 'é menor';
+        }*/
      }
     
 }

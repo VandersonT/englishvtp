@@ -15,7 +15,8 @@ class HomeController extends Controller{
     private $notifications;
 
     public function __construct(){
-        date_default_timezone_set('America/Sao_Paulo');
+        
+        /*Get LoggedUser*/
         $this->loggedUser = LoginHandler::checkLogin();
 
         if(!$this->loggedUser){
@@ -24,7 +25,21 @@ class HomeController extends Controller{
             $maxNotPerUser = 100;
             $this->notifications = HomeHandler::getNotifications($this->loggedUser->id, $maxNotPerUser);
         }
+        /***/
 
+        /*check if it's a new access*/
+        if(isset($_COOKIE['lastAccess'])){
+            $tomorrow = strtotime('tomorrow');
+            if($_COOKIE['lastAccess'] > $tomorrow){
+                HomeHandler::sendAccessToDb();
+                //echo 'existe mas esta expirado ent conta o acesso';
+            }
+        }else{
+            setcookie('lastAccess', time(), time()+(86400 * 30));
+            HomeHandler::sendAccessToDb();
+            //echo 'nao tem cookie ent conta o acesso';
+        }
+        /***/
     }
 
     public function index(Request $request){

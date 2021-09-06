@@ -16,6 +16,20 @@ class LoginController extends Controller
         if(LoginHandler::checkLogin()){
             redirect()->route('home')->send();
         }
+
+        /*check if it's a new access*/
+        if(isset($_COOKIE['lastAccess'])){
+            $tomorrow = strtotime('tomorrow');
+            if($_COOKIE['lastAccess'] > $tomorrow){
+                HomeHandler::sendAccessToDb();
+                //echo 'existe mas esta expirado ent conta o acesso';
+            }
+        }else{
+            setcookie('lastAccess', time(), time()+(86400 * 30));
+            HomeHandler::sendAccessToDb();
+            //echo 'nao tem cookie ent conta o acesso';
+        }
+        /***/
     }
     
     public function initial(){
