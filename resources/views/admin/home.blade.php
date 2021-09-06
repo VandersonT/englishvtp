@@ -17,8 +17,8 @@
     <section class="box-dashboard">
         <div class="infoSingle blue">
             <div class="info">
-                <p class="number">779</p>
-                <p>Acessos</p>
+                <p class="number"><?=$totalAccess;?></p>
+                <p><?=($totalAccess > 1) ? 'Acessos' : 'Acesso'?></p>
             </div>
             <div class="img">
                 <i class="far fa-eye"></i>
@@ -35,8 +35,8 @@
         </div>
         <div class="infoSingle yellow">
             <div class="info">
-                <p class="number">134</p>
-                <p>Textos</p>
+                <p class="number"><?=$totalTexts;?></p>
+                <p><?=($totalTexts > 1) ? 'Textos' : 'Texto'?></p>
             </div>
             <div class="img">
                 <i class="far fa-file-alt"></i>
@@ -44,8 +44,8 @@
         </div>
         <div class="infoSingle red">
             <div class="info">
-                <p class="number">553</p>
-                <p>Contas</p>
+                <p class="number"><?=$totalAccounts;?></p>
+                <p><?=($totalAccounts > 1) ? 'Contas' : 'Conta'?></p>
             </div>
             <div class="img">
                 <i class="far fa-user"></i>
@@ -115,6 +115,7 @@
             <a class="btnSingle off">Suporte: Off</a>
         </div>
     </section>
+
 @endsection
 
 <!--Scripts-->

@@ -44,17 +44,19 @@ class AdminHandler{
         return $array;
      }
 
-     public static function getAccess(){
-        $data = Daily_access::first();
+     public static function getTotalAccess(){
+        $data = Daily_access::count();
+        return $data;
+     }
 
-        /*$cookie = date('d/m/Y', time());
-        $hoje = date('d/m/Y', time());
-        
-        if($cookie == $hoje){
-            echo 'é maior';
-        }else{
-            echo 'é menor';
-        }*/
+     public static function getTotalTexts(){
+        $data = Text::count();
+        return $data;
+     }
+
+     public static function getTotalAccounts(){
+        $data = User::count();
+        return $data;
      }
     
 }

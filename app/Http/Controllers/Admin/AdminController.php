@@ -35,20 +35,22 @@ class AdminController extends Controller
 
     public function index(){
 
+        $totalAccess = AdminHandler::getTotalAccess();
+        $totalTexts =  AdminHandler::getTotalTexts();
+        $totalAccounts =  AdminHandler::getTotalAccounts();
         $mostSavedTexts = AdminHandler::getMostSavedTexts();
-
         $mostStudiedTexts = AdminHandler::getMostStudiedTexts();
-
         $howManyOfEachType = AdminHandler::getHowManyOfEachType();
-
-        $access = AdminHandler::getAccess();
 
         return view('admin/home',[
             'user' => $this->loggedAdmin,
             'selected' => 'dashboard',
             'mostSavedTexts' => $mostSavedTexts,
             'mostStudiedTexts' => $mostStudiedTexts,
-            'howManyOfEachType' => $howManyOfEachType
+            'howManyOfEachType' => $howManyOfEachType,
+            'totalAccess' => $totalAccess,
+            'totalTexts' => $totalTexts,
+            'totalAccounts' => $totalAccounts
         ]);
     }
 
