@@ -74,6 +74,8 @@ class AdminHandler{
 
         $membersOn = User_on::
             where('status', 'online')
+            ->join('users', 'users.id', '=', 'user_on.user_id')
+            ->select('user_on.*', 'users.user_name')
         ->get();
 
         return $membersOn;

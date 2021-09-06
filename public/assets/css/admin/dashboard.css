@@ -1,6 +1,7 @@
 body{
     margin-bottom: 30px;
 }
+
 .title{
     margin-left: 35px;
     margin-top: 20px;
@@ -188,7 +189,6 @@ body{
 }
 
 .boxUsers th, td {
-    border:1px solid rgb(70, 70, 70);
     padding: 5px;
     text-align: center;
 }

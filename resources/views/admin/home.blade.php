@@ -89,16 +89,21 @@
                 <th>Usuário</th>
                 <th>Último acesso</th>
             </tr>
-            <tr>
-                <td>2</td>
-                <td>Matheus Vilela</td>
-                <td>20/01/2021 11:00</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Vanderson Lindão</td>
-                <td>20/01/2021 11:10</td>
-            </tr>
+            <?php if(count($usersOn) > 0): ?>
+                <?php foreach ($usersOn as $userOn): ?>
+                    <tr>
+                        <td><?=$userOn['user_id'];?></td>
+                        <td><?=$userOn['user_name'];?></td>
+                        <td><?=date('H:i', $userOn['last_action']);?></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <tr class="empty">
+                    <td>0</td>
+                    <td>Não tem ninguem online</td>
+                    <td>0</td>
+                </tr>
+            <?php endif; ?>
         </table>
 
     </section>
