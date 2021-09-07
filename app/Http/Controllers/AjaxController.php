@@ -23,6 +23,14 @@ class AjaxController extends Controller{
             exit;
         }
 
+        /*check if it's a new access*/
+        if(empty($_COOKIE['lastAccess'])){
+            $tomorrow = strtotime('tomorrow');
+            setcookie('lastAccess', time(), $tomorrow);
+            HomeHandler::sendAccessToDb();
+        }
+        /***/
+
         HomeHandler::updateLastAction($this->loggedUser->id);
     }
 

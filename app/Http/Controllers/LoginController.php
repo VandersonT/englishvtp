@@ -6,6 +6,7 @@ session_start();
 
 /*-----------------------------Handlers----------------------------------------*/
 use App\Http\Handlers\LoginHandler;
+use App\Http\Handlers\HomeHandler;
 /*-----------------------------------------------------------------------------*/
 
 class LoginController extends Controller
@@ -18,16 +19,10 @@ class LoginController extends Controller
         }
 
         /*check if it's a new access*/
-        if(isset($_COOKIE['lastAccess'])){
+        if(empty($_COOKIE['lastAccess'])){
             $tomorrow = strtotime('tomorrow');
-            if($_COOKIE['lastAccess'] > $tomorrow){
-                HomeHandler::sendAccessToDb();
-                //echo 'existe mas esta expirado ent conta o acesso';
-            }
-        }else{
-            setcookie('lastAccess', time(), time()+(86400 * 30));
+            setcookie('lastAccess', time(), $tomorrow);
             HomeHandler::sendAccessToDb();
-            //echo 'nao tem cookie ent conta o acesso';
         }
         /***/
     }
