@@ -164,5 +164,6 @@
 
     @yield('scripts')
     <script src="<?=$base_url;?>/assets/js/admin/struct.js"></script>
+    <script>let base_url = '<?=$base_url;?>';</script>
 </body>
 </html>

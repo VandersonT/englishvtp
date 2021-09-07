@@ -143,16 +143,16 @@
         </h1>
         
         <div class="box-btns">
-            <a class="btnSingle <?=($systemInfo['system']) ? 'on' : 'off';?>">
+            <a class="btnSingle system <?=($systemInfo['system']) ? 'on' : 'off';?>">
                 Sistema: <?=($systemInfo['system']) ? 'On' : 'Off';?>
             </a>
-            <a class="btnSingle <?=($systemInfo['reports']) ? 'on' : 'off';?>">
+            <a class="btnSingle reports <?=($systemInfo['reports']) ? 'on' : 'off';?>">
                 Reportes: <?=($systemInfo['reports']) ? 'On' : 'Off';?>
             </a>
-            <a class="btnSingle <?=($systemInfo['comments']) ? 'on' : 'off';?>">
-                Comentários: <?=($systemInfo['reports']) ? 'On' : 'Off';?>
+            <a class="btnSingle comments <?=($systemInfo['comments']) ? 'on' : 'off';?>">
+                Comentários: <?=($systemInfo['comments']) ? 'On' : 'Off';?>
             </a>
-            <a class="btnSingle <?=($systemInfo['support']) ? 'on' : 'off';?>">
+            <a class="btnSingle support <?=($systemInfo['support']) ? 'on' : 'off';?>">
                 Suporte: <?=($systemInfo['support']) ? 'On' : 'Off';?>
             </a>
         </div>
@@ -190,4 +190,5 @@
         let british = <?=$howManyOfEachType['british'];?>;
     </script>
     <script src="<?=$base_url;?>/assets/js/admin/chart.js"></script>
+    <script src="<?=$base_url;?>/assets/js/admin/home.js"></script>
 @endsection

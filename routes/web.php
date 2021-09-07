@@ -8,6 +8,7 @@ use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\LoginadminController;
+use App\Http\Controllers\Admin\ActionadminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,5 +82,8 @@ Route::prefix('Painel')->group(function(){
     Route::get('/login', [LoginadminController::class, 'login'])->name('loginAdmin');
     Route::post('/login', [LoginadminController::class, 'loginAction']);
     /***/
+    /*Action*/
+    Route::get('/controles/{btn}/{action}', [ActionadminController::class, 'mainControls']);
+    /****/
 });
 /*-----------------------------------------------------------------------------------*/
