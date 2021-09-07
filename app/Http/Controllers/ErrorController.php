@@ -17,7 +17,7 @@ class ErrorController extends Controller{
 
     public function maintenance(){
 
-        $isSystemActive = HomeHandler::getSystemStatus();
+        $isSystemActive = HomeHandler::getSystemStatus('system');
 
         if($isSystemActive){
             redirect()->route('home')->send();

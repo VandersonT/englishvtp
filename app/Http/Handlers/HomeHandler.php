@@ -24,9 +24,9 @@ use App\Models\System;
 
 class HomeHandler{
 
-    public static function getSystemStatus(){
-        $systemStatus = System::select('system')->first();
-        return $systemStatus['system'];
+    public static function getSystemStatus($search){
+        $systemStatus = System::select($search)->first();
+        return $systemStatus[$search];
     }
 
     public static function getAllTextWithFilter($filter){

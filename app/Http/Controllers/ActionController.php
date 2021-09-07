@@ -7,6 +7,7 @@ session_start();
 
 /*-----------------------------Handlers----------------------------------------*/
 use App\Http\Handlers\LoginHandler;
+use App\Http\Handlers\HomeHandler;
 use App\Http\Handlers\ActionHandler;
 /*-----------------------------------------------------------------------------*/
 
@@ -192,6 +193,27 @@ class ActionController extends Controller
             ActionHandler::sendNewSupportReply($reply, $this->loggedUser->id, $idSupport);
             $_SESSION['flash2'] = "Resposta enviada com sucesso.";
         }
+        return back();
+        exit;
+    }
+
+    public function reportComment(Request $request){
+        
+        $isReportActive = HomeHandler::getSystemStatus('reports');
+
+
+        if($isReportActive){
+            $done = ActionHandler::sendReportComment($this->loggedUser->id, $request->type, $request->id);
+
+            if($done){
+                $_SESSION['success'] = "Você denunciou este comentário aos administradores.";
+            }else{
+                $_SESSION['error'] = "Você já reportou esse comentário antes.";
+            }
+        }else{
+            $_SESSION['error'] = "Os reportes estão desabilitados no momento.";
+        }
+
         return back();
         exit;
     }

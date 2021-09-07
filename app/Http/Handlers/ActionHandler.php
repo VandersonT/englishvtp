@@ -17,6 +17,7 @@ use App\Models\Studied_text;
 use App\Models\Notification;
 use App\Models\Support;
 use App\Models\Support_comment;
+use App\Models\Report;
 /*-----------------------------------------------------------------------------*/
 
 class ActionHandler{
@@ -287,5 +288,23 @@ class ActionHandler{
             $newSupportReply->date = time();
         $newSupportReply->save();
     }
-    
+
+    public static function sendReportComment($user_id, $type, $comment_id){
+        $reportExists = Report::
+            where('user_id', $user_id)
+            ->where('type', $type)
+            ->where('comment_id', $comment_id)
+        ->get();
+
+        if(count($reportExists) > 0){
+            return false;
+        }
+
+        $newReport = new Report;
+            $newReport->user_id = $user_id;
+            $newReport->type = $type;
+            $newReport->comment_id = $comment_id;
+        $newReport->save();
+        return true;
+    }
 }

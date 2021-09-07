@@ -54,6 +54,7 @@ Route::get('/salvartexto/{textid}', [ActionController::class, 'saveText']);
 Route::post('/atualizaperfil', [ActionController::class, 'updateProfile']);
 Route::post('/novoSuporte', [ActionController::class, 'newSupport']);
 Route::post('/respondeSuporte/{id}', [ActionController::class, 'replySupport']);
+Route::get('/reportar/{type}/{id}', [ActionController::class, 'reportComment']);
 /*-----------------------------------------------------------------------------------*/
 
 /*----------------------------------Ajax----------------------------------------------*/

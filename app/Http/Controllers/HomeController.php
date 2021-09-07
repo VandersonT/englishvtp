@@ -29,7 +29,7 @@ class HomeController extends Controller{
         /***/
 
         /*Check if is system active*/
-        $isSystemActive = HomeHandler::getSystemStatus();
+        $isSystemActive = HomeHandler::getSystemStatus('system');
 
         if(!$isSystemActive){
             redirect()->route('maintenance')->send();
@@ -101,10 +101,16 @@ class HomeController extends Controller{
 
     public function openText($textid){
 
-        $flash = '';
-        if(!empty($_SESSION['flash'])){
-            $flash = $_SESSION['flash'];
-            $_SESSION['flash'] = '';
+        $error = '';
+        if(!empty($_SESSION['error'])){
+            $error = $_SESSION['error'];
+            $_SESSION['error'] = '';
+        }
+
+        $success = '';
+        if(!empty($_SESSION['success'])){
+            $success = $_SESSION['success'];
+            $_SESSION['success'] = '';
         }
         
         /*Comments per page*/
@@ -141,7 +147,8 @@ class HomeController extends Controller{
             'selected' => 'none',
             'totalPages' => $totalPages,
             'page' => $page,
-            'flash' => $flash,
+            'success' => $success,
+            'error' => $error,
             'userStudiedThisText' => $userStudiedThisText,
             'userSavedThisText' => $userSavedThisText
         ]);

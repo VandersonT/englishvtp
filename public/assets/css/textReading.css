@@ -3,14 +3,22 @@ body{
 }
 
 .flash{
-    background-color: rgb(9, 255, 0);
-    color: black;
     padding: 10px 0;
     display: flex;
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
     font-weight: bold;
+}
+
+.success{
+    background-color: rgb(9, 255, 0);
+    color: black;
+}
+
+.error{
+    background-color: rgb(204, 2, 2);
+    color: white;
 }
 
 .flash i{

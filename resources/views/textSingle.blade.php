@@ -14,10 +14,18 @@ EnglishVtp - <?=$text['englishTitle'];?>
 <!--Content-->
 @section('content')
 
-    <?php if(!empty($flash)): ?>
-    <div class="flash animate__animated animate__slideInRight">
+    <?php if(!empty($success)): ?>
+    <div class="flash success animate__animated animate__slideInRight">
         <i class="fas fa-check"></i>
-        <p><?=$flash;?></p>
+        <p><?=$success;?></p>
+        <button>Fechar</button>
+    </div>
+    <?php endif;?>
+
+    <?php if(!empty($error)): ?>
+    <div class="flash error animate__animated animate__slideInRight">
+        <i class="fas fa-check"></i>
+        <p><?=$error;?></p>
         <button>Fechar</button>
     </div>
     <?php endif;?>
@@ -120,7 +128,7 @@ EnglishVtp - <?=$text['englishTitle'];?>
                             <i class="fas fa-comment-alt"></i>
                             <span>{{$comment['subcomments']}}</span>
                         </a>
-                        <a href="#report" onClick="return confirm('Quer denunciar esse comentário aos administradores?')" class="commentIcon report">
+                        <a href="<?=$base_url;?>/reportar/comment/{{$comment['id']}}" onClick="return confirm('Quer denunciar esse comentário aos administradores?')" class="commentIcon report">
                             <i class="fas fa-flag"></i>
                         </a>
                         <?php if($user['id'] == $comment['user_id'] || $user['access'] > 1):?>
@@ -168,7 +176,7 @@ EnglishVtp - <?=$text['englishTitle'];?>
                                             {{$subComment['unlikes']}}
                                         </span>
                                     </a>
-                                    <a href="" onClick="return confirm('Quer denunciar esse comentário aos administradores?')" class="commentIcon report">
+                                    <a href="<?=$base_url;?>/reportar/subcomment/{{$comment['id']}}" onClick="return confirm('Quer denunciar esse comentário aos administradores?')" class="commentIcon report">
                                         <i class="fas fa-flag"></i>
                                     </a>
                                     <?php if($user['id'] == $subComment['user_id'] || $user['access'] > 1):?>
