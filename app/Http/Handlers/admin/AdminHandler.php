@@ -9,6 +9,7 @@ use App\Models\Saved_text;
 use App\Models\Studied_text;
 use App\Models\Daily_access;
 use App\Models\User_on;
+use App\Models\System;
 /*-----------------------------------------------------------------------------*/
 
 class AdminHandler{
@@ -79,6 +80,11 @@ class AdminHandler{
         ->get();
 
         return $membersOn;
+     }
+
+     public static function getSystemInfo(){
+        $systemInfo = System::first();
+        return $systemInfo;
      }
     
 }

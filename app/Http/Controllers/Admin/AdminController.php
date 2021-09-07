@@ -42,6 +42,7 @@ class AdminController extends Controller
         $mostSavedTexts = AdminHandler::getMostSavedTexts();
         $mostStudiedTexts = AdminHandler::getMostStudiedTexts();
         $howManyOfEachType = AdminHandler::getHowManyOfEachType();
+        $systemInfo = AdminHandler::getSystemInfo();
 
         return view('admin/home',[
             'user' => $this->loggedAdmin,
@@ -52,7 +53,8 @@ class AdminController extends Controller
             'totalAccess' => $totalAccess,
             'totalTexts' => $totalTexts,
             'totalAccounts' => $totalAccounts,
-            'usersOn' => $usersOn
+            'usersOn' => $usersOn,
+            'systemInfo' => $systemInfo
         ]);
     }
 

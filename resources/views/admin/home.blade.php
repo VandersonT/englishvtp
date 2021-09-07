@@ -13,7 +13,10 @@
 
 <!--Content-->
 @section('content')
-    <h1 class="title">Dashboard</h1>
+    <h1 class="title">
+        <i class="fas fa-chart-line"></i>
+        Dashboard
+    </h1>
     <section class="box-dashboard">
         <div class="infoSingle blue">
             <div class="info">
@@ -57,7 +60,7 @@
         <div class="chartSingle">
             <h1 class="title2">
                 <i class="fas fa-save"></i>
-                Textos mais Salvados
+                Textos mais Salvos
             </h1>
             <canvas id="myChart" width="400" height="250"></canvas>
         </div>
@@ -79,7 +82,7 @@
 
     <section class="box-userOn">
         <h1 class="title">
-            <i class="fab fa-guilded"></i>
+            <i class="fas fa-globe-europe"></i>
             Usuários Online
         </h1>
 
@@ -100,7 +103,7 @@
             <?php else: ?>
                 <tr class="empty">
                     <td>0</td>
-                    <td>Não tem ninguem online</td>
+                    <td>Não tem nenhum usuário online no momento</td>
                     <td>0</td>
                 </tr>
             <?php endif; ?>
@@ -135,15 +138,23 @@
 
     <section class="box-controls">
         <h1 class="title">
-            <i class="fab fa-guilded"></i>
+            <i class="fas fa-gamepad"></i>
             Controles Principais
         </h1>
-
+        
         <div class="box-btns">
-            <a class="btnSingle on">Sistema: On</a>
-            <a class="btnSingle on">Reportes: On</a>
-            <a class="btnSingle on">Comentários: On</a>
-            <a class="btnSingle off">Suporte: Off</a>
+            <a class="btnSingle <?=($systemInfo['system']) ? 'on' : 'off';?>">
+                Sistema: <?=($systemInfo['system']) ? 'On' : 'Off';?>
+            </a>
+            <a class="btnSingle <?=($systemInfo['reports']) ? 'on' : 'off';?>">
+                Reportes: <?=($systemInfo['reports']) ? 'On' : 'Off';?>
+            </a>
+            <a class="btnSingle <?=($systemInfo['comments']) ? 'on' : 'off';?>">
+                Comentários: <?=($systemInfo['reports']) ? 'On' : 'Off';?>
+            </a>
+            <a class="btnSingle <?=($systemInfo['support']) ? 'on' : 'off';?>">
+                Suporte: <?=($systemInfo['support']) ? 'On' : 'Off';?>
+            </a>
         </div>
     </section>
 
