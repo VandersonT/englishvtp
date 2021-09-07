@@ -21,9 +21,19 @@ class HomeController extends Controller{
 
         if(!$this->loggedUser){
             redirect()->route('login')->send();
+            exit;
         }else{
             $maxNotPerUser = 100;
             $this->notifications = HomeHandler::getNotifications($this->loggedUser->id, $maxNotPerUser);
+        }
+        /***/
+
+        /*Check if is system active*/
+        $isSystemActive = HomeHandler::getSystemStatus();
+
+        if(!$isSystemActive){
+            redirect()->route('maintenance')->send();
+            exit;
         }
         /***/
 

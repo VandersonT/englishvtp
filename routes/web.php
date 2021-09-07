@@ -66,6 +66,8 @@ Route::get('/error404', [ErrorController::class, 'error404'])->name('404');
 Route::fallback(function(){
     return view('404');
 });
+Route::get('/manutenção', [ErrorController::class, 'maintenance'])->name('maintenance');
+Route::get('/finalizaSessao', [ErrorController::class, 'endSection']);
 /*-----------------------------------------------------------------------------------*/
 
 

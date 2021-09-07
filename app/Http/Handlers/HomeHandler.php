@@ -19,9 +19,15 @@ use App\Models\Support;
 use App\Models\Support_comment;
 use App\Models\Daily_access;
 use App\Models\User_on;
+use App\Models\System;
 /*-----------------------------------------------------------------------------*/
 
 class HomeHandler{
+
+    public static function getSystemStatus(){
+        $systemStatus = System::select('system')->first();
+        return $systemStatus['system'];
+    }
 
     public static function getAllTextWithFilter($filter){
         $data = Text::where('type_english', $filter['type'])
