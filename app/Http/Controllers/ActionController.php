@@ -27,16 +27,25 @@ class ActionController extends Controller
     }
 
     public function sendNewComment(){
-        $message = filter_input(INPUT_POST, 'newcomment', FILTER_SANITIZE_SPECIAL_CHARS);
+        $message = filter_input(INPUT_POST, 'newcomment');
         $textid = filter_input(INPUT_POST, 'textid', FILTER_SANITIZE_SPECIAL_CHARS);
         
+        $isCommentActive = HomeHandler::getSystemStatus('comments');
+
+        if(!$isCommentActive){
+           $_SESSION['error'] = 'Não é possivel escrever um novo comentário no momento.';
+           return back();
+           exit;
+        }
+
         if($message && $textid){
 
             ActionHandler::sendNewComment($message, $textid, $this->loggedUser);
-            $_SESSION['flash'] = 'Comentário adicionado com sucesso.';
+            $_SESSION['success'] = 'Comentário adicionado com sucesso.';
 
         }
         return back();
+        exit;
     }
 
     public function deleteComment(Request $request){
@@ -44,12 +53,21 @@ class ActionController extends Controller
 
         if($commentId){
             ActionHandler::deleteComment($commentId);
-            $_SESSION['flash'] = 'Comentário apagado com sucesso.';
+            $_SESSION['success'] = 'Comentário apagado com sucesso.';
         }
         return back();
     }
 
     public function sendNewSubComment(){
+        
+        $isCommentActive = HomeHandler::getSystemStatus('comments');
+
+        if(!$isCommentActive){
+           $_SESSION['error'] = 'Não é possivel escrever um novo comentário no momento.';
+           return back();
+           exit;
+        }
+
         $commentId = filter_input(INPUT_POST, 'commentid');
         $subComment = filter_input(INPUT_POST, 'newSubComment');
         $textId = filter_input(INPUT_POST, 'textid');
@@ -57,7 +75,7 @@ class ActionController extends Controller
 
         if($commentId && $subComment && $textId){
             ActionHandler::sendNewSubComment($commentId, $subComment, $textId, $this->loggedUser);
-            $_SESSION['flash'] = 'Comentário respondido com sucesso.';
+            $_SESSION['success'] = 'Comentário respondido com sucesso.';
 
             ActionHandler::sendCommentNotification($this->loggedUser, $userToNot, $commentId, $textId);
 
@@ -70,7 +88,7 @@ class ActionController extends Controller
 
         if($subCommentId){
             ActionHandler::deleteSubComment($subCommentId);
-            $_SESSION['flash'] = 'Resposta apagada com sucesso.';
+            $_SESSION['success'] = 'Resposta apagada com sucesso.';
         }
         return back();
     }

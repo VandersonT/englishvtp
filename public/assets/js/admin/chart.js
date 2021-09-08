@@ -9,13 +9,13 @@ var myChart = new Chart(ctx, {
             data: [savedValue1, savedValue2, savedValue3],
             backgroundColor: [
                 '#00CED1',
-                '#00CED1',
-                '#00CED1'
+                '#0C7C59',
+                '#D64933'
             ],
             borderColor: [
-                '#076e63',
-                '#076e63',
-                '#076e63'
+                '#2E4057',
+                '#2E4057',
+                '#2E4057'
             ],
             borderWidth: 1
         }]
@@ -39,9 +39,9 @@ var myChart2 = new Chart(ctx, {
             label: '# de votos',
             data: [studiedValue1, studiedValue2, studiedValue3],
             backgroundColor: [
-                '#0000CD',
-                '#0000CD',
-                '#0000CD'
+                '#58A4B0',
+                '#CDC392',
+                '#FF66B3'
             ],
             borderColor: [
                 '#0d0638',
@@ -70,8 +70,8 @@ var myChart3 = new Chart(ctx, {
             label: '# de votos',
             data: [american, british],
             backgroundColor: [
-                '#ff0000',
-                '#00aeff'
+                '#2E4057',
+                '#F18F01'
             ],
             borderColor: [
                 'gray',
