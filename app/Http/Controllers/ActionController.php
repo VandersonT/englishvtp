@@ -205,7 +205,7 @@ class ActionController extends Controller
         if($title && $content){
 
             ActionHandler::sendNewSupport($this->loggedUser->id, $title, $content);
-            $_SESSION['flash'] = "Seu chamado foi aberto com sucesso, logo te retornaremos.";
+            $_SESSION['success'] = "Seu chamado foi aberto com sucesso, logo te retornaremos.";
         }
 
         redirect()->route('support')->send();

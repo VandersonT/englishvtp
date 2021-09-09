@@ -11,6 +11,23 @@
 
 <!--Content-->
 @section('content')
+
+
+    <?php if(!empty($success)): ?>
+        <div class="flash success">
+            <i class="fas fa-check-circle"></i>
+            <?=$success;?>
+        </div>
+    <?php endif; ?>
+
+    <?php if(!empty($error)): ?>
+        <div class="flash error">
+            <i class="fas fa-check-circle"></i>
+            <?=$error;?>
+        </div>
+    <?php endif; ?>
+
+
     <h1 class="title">Novo chamado</h1>
     <form class="support-form" method="POST" action="<?=$base_url;?>/novoSuporte">
         @csrf

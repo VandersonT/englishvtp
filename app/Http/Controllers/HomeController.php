@@ -295,10 +295,16 @@ class HomeController extends Controller{
 
     public function support(){
 
-        $flash = '';
-        if(!empty($_SESSION['flash'])){
-            $flash = $_SESSION['flash'];
-            $_SESSION['flash'] = '';
+        $error = '';
+        if(!empty($_SESSION['error'])){
+            $error = $_SESSION['error'];
+            $_SESSION['error'] = '';
+        }
+
+        $success = '';
+        if(!empty($_SESSION['success'])){
+            $success = $_SESSION['success'];
+            $_SESSION['success'] = '';
         }
 
         $supports = HomeHandler::getMySupports($this->loggedUser->id);
@@ -307,8 +313,9 @@ class HomeController extends Controller{
             'user' => $this->loggedUser,
             'notifications' => $this->notifications,
             'selected' => 'support',
-            'flash' => $flash,
-            'supports' => $supports
+            'supports' => $supports,
+            'error' => $error,
+            'success' => $success
         ]);
     }
 
