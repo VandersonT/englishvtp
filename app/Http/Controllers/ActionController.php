@@ -190,6 +190,15 @@ class ActionController extends Controller
     }
 
     public function newSupport(){
+        
+        $isSupportActive = HomeHandler::getSystemStatus('support');
+
+        if(!$isSupportActive){
+           $_SESSION['error'] = 'Não é possivel escrever um novo comentário no momento.';
+           return back();
+           exit;
+        }
+
         $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
         $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
 
@@ -204,12 +213,20 @@ class ActionController extends Controller
     }
 
     public function replySupport(Request $request){
+        $isSupportActive = HomeHandler::getSystemStatus('support');
+
+        if(!$isSupportActive){
+           $_SESSION['error'] = 'Não é possivel escrever um novo comentário no momento.';
+           return back();
+           exit;
+        }
+        
         $reply = filter_input(INPUT_POST, 'reply', FILTER_SANITIZE_SPECIAL_CHARS);
         $idSupport = $request->id;
 
         if($reply && $idSupport){
             ActionHandler::sendNewSupportReply($reply, $this->loggedUser->id, $idSupport);
-            $_SESSION['flash2'] = "Resposta enviada com sucesso.";
+            $_SESSION['success'] = "Resposta enviada com sucesso.";
         }
         return back();
         exit;

@@ -314,6 +314,18 @@ class HomeController extends Controller{
 
     public function viewSupport(Request $request){
 
+        $error = '';
+        if(!empty($_SESSION['error'])){
+            $error = $_SESSION['error'];
+            $_SESSION['error'] = '';
+        }
+
+        $success = '';
+        if(!empty($_SESSION['success'])){
+            $success = $_SESSION['success'];
+            $_SESSION['success'] = '';
+        }
+
         $supportInfo = HomeHandler::getSupportSingle($request->id, $this->loggedUser->id);
 
         $replys = HomeHandler::getSupportReplys($supportInfo['id']);
@@ -327,7 +339,9 @@ class HomeController extends Controller{
             'notifications' => $this->notifications,
             'selected' => 'support',
             'supportInfo' => $supportInfo,
-            'replys' => $replys
+            'replys' => $replys,
+            'error' => $error,
+            'success' => $success
         ]);
     }
 
