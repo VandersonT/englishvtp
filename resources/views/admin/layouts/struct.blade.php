@@ -141,7 +141,7 @@
                     </a>
                 </div>
 
-                <a class="<?= ($selected == 'goToSystem') ? 'selected' : '';?>" href="<?=$base_url;?>/">
+                <a class="<?= ($selected == 'profile') ? 'selected' : '';?>" href="<?=$base_url;?>/Painel/perfil/<?=$user['id'];?>">
                     <i class="fas fa-male"></i>
                     <p>Seu Perfil</p>
                 </a>

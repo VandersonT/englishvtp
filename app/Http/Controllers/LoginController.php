@@ -19,7 +19,7 @@ class LoginController extends Controller
         }
 
         /*check if it's a new access*/
-        if(empty($_COOKIE['lastAccess'])){
+        if(!isset($_COOKIE['lastAccess'])){
             $tomorrow = strtotime('tomorrow');
             setcookie('lastAccess', time(), $tomorrow);
             HomeHandler::sendAccessToDb();

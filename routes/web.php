@@ -81,6 +81,7 @@ Route::prefix('Painel')->group(function(){
     Route::get('/', [AdminController::class, 'index'])->name('painel');
     Route::get('/paginas', [AdminController::class, 'pages']);
     Route::get('/sair', [AdminController::class, 'logout']);
+    Route::get('/perfil/{id}', [AdminController::class, 'profile']);
     /*Login*/
     Route::get('/login', [LoginadminController::class, 'login'])->name('loginAdmin');
     Route::post('/login', [LoginadminController::class, 'loginAction']);

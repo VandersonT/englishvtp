@@ -65,6 +65,13 @@ class AdminController extends Controller
         ]);
     }
 
+    public function profile(Request $request){
+        return view('admin/profile',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'profile'
+        ]);
+    }
+
     public function logout(){
         $_SESSION['tokenAdmin'] = '';
 
