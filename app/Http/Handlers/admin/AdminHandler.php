@@ -86,5 +86,17 @@ class AdminHandler{
         $systemInfo = System::first();
         return $systemInfo;
      }
+
+     public static function getInfoProfile($idProfile){
+        $infoProfile = User::
+            select('id', 'user_name', 'photo', 'email', 'level', 'access')
+            ->where('id', $idProfile)
+        ->first();
+
+        if($infoProfile){
+            return $infoProfile;
+        }
+
+     }
     
 }

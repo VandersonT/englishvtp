@@ -66,9 +66,13 @@ class AdminController extends Controller
     }
 
     public function profile(Request $request){
+        
+        $infoProfile = AdminHandler::getInfoProfile($request->id);
+        
         return view('admin/profile',[
             'user' => $this->loggedAdmin,
-            'selected' => 'profile'
+            'selected' => 'profile',
+            'infoProfile' => $infoProfile
         ]);
     }
 
