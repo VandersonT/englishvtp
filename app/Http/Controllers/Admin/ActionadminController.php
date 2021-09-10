@@ -47,8 +47,9 @@ class ActionadminController extends Controller{
     
     public function changeAccess(Request $request){
 
-        if($this->loggedAdmin->access < 3){
-            $_SESSION['error'] = 'Somente administradores podem trocar os cargos.';
+        if($this->loggedAdmin->access < 4){
+            ActionadminHandler::changeUserAccess($this->loggedAdmin->id, 1);
+            $_SESSION['flash'] = '|Ant-Bug| Você acessou uma página não permitida ao seu cargo e foi rebaixado. Contate o dono para resolver isso.';
             return back();
             exit;
         }

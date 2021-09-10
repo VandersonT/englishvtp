@@ -103,7 +103,7 @@ class AdminController extends Controller
         }else{
             $staffs = AdminHandler::getAllStaffs();
         }
-        
+
         return view('admin/staffs',[
             'user' => $this->loggedAdmin,
             'selected' => 'staffs',
