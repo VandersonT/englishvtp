@@ -52,5 +52,30 @@ for(let i = 0; i < btns.length; i++){
             icon[i].classList.add('fa-caret-left');
             icon[i].classList.remove('fa-sort-down');
         }
+
     })
 }
+
+
+
+for(let i = 0; i < btns.length; i++){
+    let sons = boxBtns[i].querySelectorAll('a');
+    for(let j = 0; j < sons.length; j++){
+        if(sons[j].classList.contains('selected')){
+            boxBtns[i].style.display = 'block';
+            icon[i].classList.add('fa-sort-down');
+            icon[i].classList.remove('fa-caret-left');
+        }
+    }
+}
+/*
+let sons = boxBtns[i].querySelectorAll('a');
+
+for(let i = 0; i < sons.length; i++){
+    if(sons[i].classList.contains('selected')){
+        boxBtns[i].style.display = 'block';
+        icon[i].classList.add('fa-sort-down');
+        icon[i].classList.remove('fa-caret-left');
+    }
+}
+*/

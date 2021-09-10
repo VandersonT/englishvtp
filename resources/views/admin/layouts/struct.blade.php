@@ -101,13 +101,13 @@
                     </a>
                 </div>
 
-                <div class="btnBox <?= ($selected == 'reports') ? 'selected' : '';?>">
+                <div class="btnBox">
                     <i class="fas fa-exclamation-circle"></i>
                     <p>Reportes</p>
                     <i class="fas fa-caret-left arrow"></i>
                 </div>
                 <div class="boxBtns">
-                    <a href="">
+                    <a href="<?=$base_url;?>/Painel/reportes/pendentes" class="<?= ($selected == 'reportsP') ? 'selected' : '';?>">
                         <i class="fas fa-circle iconSubMenu"></i>
                         Pendentes
                     </a>

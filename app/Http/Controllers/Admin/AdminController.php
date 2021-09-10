@@ -98,6 +98,13 @@ class AdminController extends Controller
         ]);
     }
 
+    public function reportsPendents(){
+        return view('admin/reportsP',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'reportsP'
+        ]);
+    }
+
     public function logout(){
         $_SESSION['tokenAdmin'] = '';
 
