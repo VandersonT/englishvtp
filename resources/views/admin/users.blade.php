@@ -14,14 +14,20 @@
 <!--Content-->
 @section('content')
 
-    <form class="search" method="POST">
-        <input type="text" placeholder="Procure por alguem" />
+    <form class="search" method="GET">
+        <input type="text" name="search" placeholder="Procure por alguem" value="<?=($wantedUser != '') ? $wantedUser : '';?>"/>
         <button><i class="fas fa-search"></i>Procurar</button>
     </form>
 
     <h1 class="title">
         <i class="fas fa-users"></i>
-        Todos os usuários cadastrados
+        <?php if($wantedUser == ''):?>
+            Todos os usuários cadastrados
+        <?php else: ?>
+            <?='Encontramos '.count($users);?>
+            <?=(count($users) > 1) ? 'usuários' : 'usuário';?>
+            <?=' com "'.$wantedUser.'"';?>
+        <?php endif; ?>
     </h1>
 
     <table>
@@ -62,6 +68,12 @@
             <?php endforeach; ?>
         <?php endif; ?>
     </table>
+
+    <?php if(count($users) < 1):?>
+        <h1 class="empty">
+            <?=($wantedUser == '') ? 'Nenhum usuário registrado ainda' : 'Não encontramos nenhum usuário com esse filtro';?>
+        </h1>
+    <?php endif; ?>
 
 @endsection
 

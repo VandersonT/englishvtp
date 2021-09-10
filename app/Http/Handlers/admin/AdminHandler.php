@@ -113,5 +113,13 @@ class AdminHandler{
 
         return $users;
      }
+
+     public static function getWantedUser($wantedUser){
+        $users = User::
+            where('user_name', 'like', $wantedUser.'%')
+        ->get();
+
+        return $users;
+     }
     
 }

@@ -1,3 +1,15 @@
+.empty{
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 18px;
+    font-weight: lighter;
+    color: rgb(20, 20, 20);
+    border: 1px solid rgb(168, 168, 168);
+    border-top: 0;
+    padding: 5px;
+}
+
 .search{
     display: flex;
     flex-direction: column;
@@ -48,7 +60,6 @@
 .registerNew{
     padding: 10px 20px;
     background-color: rgb(255, 145, 0);
-    margin: 50px 0;
     margin-left: 65px;
     border-radius: 5px;
     color: rgb(255, 255, 255);

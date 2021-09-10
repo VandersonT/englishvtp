@@ -14,15 +14,21 @@
 <!--Content-->
 @section('content')
     
+    <form class="search" method="POST">
+        <input type="text" placeholder="Procure por alguem" />
+        <button><i class="fas fa-search"></i>Procurar</button>
+    </form>
+
     <h1 class="title">
         <i class="fas fa-users-cog"></i>
         Membros da staffs
     </h1>
-
+    <br/><br/>
     <a href="" class="registerNew">
         <i class="far fa-plus-square"></i>
         Novo staff
     </a>
+    <br/><br/>
 
     <table>
         <tr>
@@ -61,7 +67,6 @@
             <?php endforeach; ?>
         <?php endif; ?>
     </table>
-
 @endsection
 
 <!--Scripts-->

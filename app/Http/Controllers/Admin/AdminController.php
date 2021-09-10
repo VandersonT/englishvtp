@@ -76,18 +76,21 @@ class AdminController extends Controller
         ]);
     }
 
-    public function allUsers(){
+    public function users(Request $request){
 
-        if(!empty($_GET['pg'])){
-            $page = addslashes($_GET['pg']);
+        $wantedUser = '';
+        if($_GET){
+            $wantedUser = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS);
+            $users = AdminHandler::getWantedUser($wantedUser);
+        }else{
+            $users = AdminHandler::getAllUsers();
         }
-
-        $users = AdminHandler::getAllUsers();
-
+        
         return view('admin/users',[
             'user' => $this->loggedAdmin,
             'selected' => 'users',
-            'users' => $users
+            'users' => $users,
+            'wantedUser' => $wantedUser
         ]);
     }
 
