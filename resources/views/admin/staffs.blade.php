@@ -19,6 +19,11 @@
         Membros da staffs
     </h1>
 
+    <a href="" class="registerNew">
+        <i class="far fa-plus-square"></i>
+        Novo staff
+    </a>
+
     <table>
         <tr>
             <th>

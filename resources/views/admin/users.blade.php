@@ -13,7 +13,12 @@
 
 <!--Content-->
 @section('content')
-    
+
+    <form class="search" method="POST">
+        <input type="text" placeholder="Procure por alguem" />
+        <button><i class="fas fa-search"></i>Procurar</button>
+    </form>
+
     <h1 class="title">
         <i class="fas fa-users"></i>
         Todos os usuários cadastrados

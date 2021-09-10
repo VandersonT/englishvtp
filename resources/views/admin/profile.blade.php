@@ -65,7 +65,7 @@
                     </h1>
                     <p>A1</p>
                 </div>
-                <a  target="_blank" href="<?=$base_url;?>/perfil/1" class="button">
+                <a  target="_blank" href="<?=$base_url;?>/perfil/<?=$infoProfile['id'];?>" class="button">
                     Ver perfil no sistema
                 </a>
             </div>

@@ -76,7 +76,11 @@ class AdminController extends Controller
         ]);
     }
 
-    public function users(){
+    public function allUsers(){
+
+        if(!empty($_GET['pg'])){
+            $page = addslashes($_GET['pg']);
+        }
 
         $users = AdminHandler::getAllUsers();
 

@@ -82,7 +82,7 @@ Route::prefix('Painel')->group(function(){
     Route::get('/paginas', [AdminController::class, 'pages']);
     Route::get('/sair', [AdminController::class, 'logout']);
     Route::get('/perfil/{id}', [AdminController::class, 'profile']);
-    Route::get('/usuarios', [AdminController::class, 'users']);
+    Route::get('/usuarios', [AdminController::class, 'allUsers']);
     Route::get('/staffs', [AdminController::class, 'staffs']);
     Route::get('/reportes/pendentes', [AdminController::class, 'reportsPendents']);
     /*Login*/
