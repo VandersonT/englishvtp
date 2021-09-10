@@ -9,11 +9,12 @@
 <!--Links-->
 @section('links')
     <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/newStaff.css" />
+    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/flash.css" />
 @endsection
 
 <!--Content-->
 @section('content')
-  
+
 <h1 class="mainTitle">
     <i class="fas fa-user-shield"></i>
     Gerenciar cargos dos membros
@@ -34,6 +35,26 @@
     </h1>
 <?php endif; ?>
 
+<?php if($success): ?>
+    <div class="backgroundDark">
+        <div class="flash">
+            <h1 class="success">Alteração feita</h1>
+            <p><?=$success;?></p>
+            <button class="close btn">Fechar</button>
+        </div>
+    </div>
+<?php endif; ?>
+
+<?php if($error): ?>
+    <div class="backgroundDark">
+        <div class="flash">
+            <h1 class="error">Alteração negada</h1>
+            <p><?=$error;?></p>
+            <button class="close btn">Fechar</button>
+        </div>
+    </div>
+<?php endif; ?>
+
 <?php if(!empty($userFound)):?>
     <div class="userFound">
         <h1 class="title2 ciano">
@@ -46,6 +67,7 @@
             <p>
                 <b>Nome:</b>
                 <?=$userFound['user_name'];?>
+                <b><?=($userFound['id'] == $user['id']) ? '[você]' : '';?></b>
             </p>
             <p>
                 <b>Email:</b>
@@ -56,13 +78,16 @@
                 <?=($userFound['level'] != NULL) ? $userFound['level'] : 'Desconhecido';?>
             </p>
         </div>
-        <form class="saveInfo" method="POST" action="<?=$base_url;?>/">
-            <select>
-                <option <?=($userFound['access'] == 1) ? 'selected' : '';?>>Usuário</option>
-                <option <?=($userFound['access'] == 2) ? 'selected' : '';?>>Ajudante</option>
-                <option <?=($userFound['access'] == 3) ? 'selected' : '';?>>Moderador</option>
-                <option <?=($userFound['access'] == 4) ? 'selected' : '';?>>Administrador</option>
-                <option <?=($userFound['access'] == 5) ? 'selected' : '';?>>Dono</option>
+        <form class="saveInfo" method="POST" action="<?=$base_url;?>/Painel/mudarAcesso/<?=$userFound['id'];?>">
+            @csrf
+            <select name="newAccess">
+                <option <?=($userFound['access'] == 1) ? 'selected' : '';?> value="1">Usuário</option>
+                <option <?=($userFound['access'] == 2) ? 'selected' : '';?> value="2">Ajudante</option>
+                <option <?=($userFound['access'] == 3) ? 'selected' : '';?> value="3">Moderador</option>
+                <?php if($user['access'] > 4): ?>
+                    <option <?=($userFound['access'] == 4) ? 'selected' : '';?> value="4">Administrador</option>
+                    <option <?=($userFound['access'] == 5) ? 'selected' : '';?> value="5">Dono</option>
+                <?php endif; ?>
             </select>
             <button>Salvar</button>
         </form>
@@ -73,5 +98,5 @@
 
 <!--Scripts-->
 @section('scripts')
-
+    <script src="<?=$base_url;?>/assets/js/admin/flash.js"></script>
 @endsection

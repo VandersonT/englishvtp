@@ -26,7 +26,7 @@
     <br/><br/>
     <a href="<?=$base_url;?>/Painel/novoStaff" class="registerNew">
         <i class="fas fa-tools"></i>
-        Gerenciar staff
+        Gerenciar cargos
     </a>
     <br/><br/>
 

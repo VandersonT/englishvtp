@@ -62,13 +62,11 @@
     background-color: rgb(255, 145, 0);
     margin-left: 65px;
     border-radius: 5px;
-    color: rgb(255, 255, 255);
-    font-weight: bold;
+    color: rgb(41, 41, 41);
 }
 
 .registerNew:hover{
-    background-color: rgb(245, 139, 0);
-    color: rgb(248, 248, 248);
+    background-color: rgb(247, 140, 0);
 }
 
 .registerNew i{

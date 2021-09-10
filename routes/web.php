@@ -92,6 +92,7 @@ Route::prefix('Painel')->group(function(){
     /***/
     /*Action*/
     Route::get('/controles/{btn}/{action}', [ActionadminController::class, 'mainControls']);
+    Route::post('/mudarAcesso/{id}', [ActionadminController::class, 'changeAccess']);
     /****/
 });
 /*-----------------------------------------------------------------------------------*/

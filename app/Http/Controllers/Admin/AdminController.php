@@ -121,6 +121,18 @@ class AdminController extends Controller
 
     public function newStaff(){
 
+        $success = '';
+        if(!empty($_SESSION['success'])){
+            $success = $_SESSION['success'];
+            $_SESSION['success'] = '';
+        }
+
+        $error = '';
+        if(!empty($_SESSION['error'])){
+            $error = $_SESSION['error'];
+            $_SESSION['error'] = '';
+        }
+
         $idSearch = 0;
         $userFound = [];
         if($_GET){
@@ -132,7 +144,9 @@ class AdminController extends Controller
             'user' => $this->loggedAdmin,
             'selected' => 'staffs',
             'userFound' => $userFound,
-            'idSearch' => $idSearch
+            'idSearch' => $idSearch,
+            'success' => $success,
+            'error' => $error
         ]);
     }
 
