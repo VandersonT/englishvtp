@@ -131,5 +131,14 @@ class AdminHandler{
 
         return $users;
      }
+
+     public static function getWantedUserSingle($idSearch){
+        $user = User::
+            where('id', $idSearch)
+            ->select('user_name', 'photo', 'email' ,'access', 'level')
+        ->first();
+        
+        return $user;
+     }
     
 }

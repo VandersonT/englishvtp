@@ -24,4 +24,5 @@ class ActionadminController extends Controller{
 
         ActionadminHandler::changeSystemInfo($btn, $action);
     }
+
 }

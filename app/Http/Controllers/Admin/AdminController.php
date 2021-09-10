@@ -119,6 +119,23 @@ class AdminController extends Controller
         ]);
     }
 
+    public function newStaff(){
+
+        $idSearch = 0;
+        $userFound = [];
+        if($_GET){
+            $idSearch = filter_input(INPUT_GET, 'idSearch', FILTER_SANITIZE_SPECIAL_CHARS);
+            $userFound = AdminHandler::getWantedUserSingle($idSearch);
+        }
+
+        return view('admin/newStaff',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'staffs',
+            'userFound' => $userFound,
+            'idSearch' => $idSearch
+        ]);
+    }
+
     public function logout(){
         $_SESSION['tokenAdmin'] = '';
 

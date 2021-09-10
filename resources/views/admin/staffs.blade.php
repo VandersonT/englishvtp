@@ -24,9 +24,9 @@
         Membros da staffs
     </h1>
     <br/><br/>
-    <a href="" class="registerNew">
-        <i class="far fa-plus-square"></i>
-        Novo staff
+    <a href="<?=$base_url;?>/Painel/novoStaff" class="registerNew">
+        <i class="fas fa-tools"></i>
+        Gerenciar staff
     </a>
     <br/><br/>
 
