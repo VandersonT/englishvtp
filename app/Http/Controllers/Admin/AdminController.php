@@ -96,12 +96,19 @@ class AdminController extends Controller
 
     public function staffs(){
 
-        $staffs = AdminHandler::getAllStaffs();
-
+        $wantedUser = '';
+        if($_GET){
+            $wantedUser = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS);
+            $staffs = AdminHandler::getWantedStaff($wantedUser);
+        }else{
+            $staffs = AdminHandler::getAllStaffs();
+        }
+        
         return view('admin/staffs',[
             'user' => $this->loggedAdmin,
             'selected' => 'staffs',
-            'staffs' => $staffs
+            'staffs' => $staffs,
+            'wantedUser' => $wantedUser
         ]);
     }
 

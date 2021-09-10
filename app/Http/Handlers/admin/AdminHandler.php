@@ -105,6 +105,14 @@ class AdminHandler{
         return $users;
      }
 
+     public static function getWantedUser($wantedUser){
+        $users = User::
+            where('user_name', 'like', $wantedUser.'%')
+        ->get();
+
+        return $users;
+     }
+
      public static function getAllStaffs(){
         $users = User::
             where('access', '>', 1)
@@ -114,9 +122,11 @@ class AdminHandler{
         return $users;
      }
 
-     public static function getWantedUser($wantedUser){
+     public static function getWantedStaff($wantedUser){
         $users = User::
             where('user_name', 'like', $wantedUser.'%')
+            ->where('access', '>', 1)
+            ->orderByDesc('access')
         ->get();
 
         return $users;

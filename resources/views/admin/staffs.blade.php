@@ -14,8 +14,8 @@
 <!--Content-->
 @section('content')
     
-    <form class="search" method="POST">
-        <input type="text" placeholder="Procure por alguem" />
+    <form class="search" method="GET">
+        <input type="text" name="search" placeholder="Procure por algum staff" value="<?=($wantedUser != '') ? $wantedUser : '';?>"/>
         <button><i class="fas fa-search"></i>Procurar</button>
     </form>
 
@@ -67,6 +67,12 @@
             <?php endforeach; ?>
         <?php endif; ?>
     </table>
+    
+    <?php if(count($staffs) < 1):?>
+        <h1 class="empty">
+            <?=($wantedUser == '') ? 'Nenhum usuário registrado ainda' : 'Não encontramos nenhum usuário com esse filtro';?>
+        </h1>
+    <?php endif; ?>
 @endsection
 
 <!--Scripts-->
