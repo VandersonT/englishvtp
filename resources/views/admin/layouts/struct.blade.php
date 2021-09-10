@@ -61,17 +61,17 @@
                     <p>Páginas</p>
                 </a>
 
-                <div class="btnBox <?= ($selected == 'users') ? 'selected' : '';?>">
+                <div class="btnBox">
                     <i class="fas fa-user"></i>
                     <p>Usuários</p>
                     <i class="fas fa-caret-left arrow"></i>
                 </div>
                 <div class="boxBtns">
-                    <a href="">
+                    <a href="<?=$base_url;?>/Painel/usuarios" class="<?= ($selected == 'users') ? 'selected' : '';?>">
                         <i class="fas fa-circle iconSubMenu"></i>
                         Ver usuários
                     </a>
-                    <a href="">
+                    <a href="<?=$base_url;?>/Painel/staffs" class="<?= ($selected == 'staffs') ? 'selected' : '';?>">
                         <i class="fas fa-circle iconSubMenu"></i>
                         Membros da staff
                     </a>
@@ -85,7 +85,7 @@
                     </a>
                 </div>
 
-                <div class="btnBox <?= ($selected == 'users') ? 'selected' : '';?>">
+                <div class="btnBox <?= ($selected == 'texts') ? 'selected' : '';?>">
                     <i class="fas fa-align-left"></i>
                     <p>Textos</p>
                     <i class="fas fa-caret-left arrow"></i>
@@ -101,7 +101,7 @@
                     </a>
                 </div>
 
-                <div class="btnBox <?= ($selected == 'users') ? 'selected' : '';?>">
+                <div class="btnBox <?= ($selected == 'reports') ? 'selected' : '';?>">
                     <i class="fas fa-exclamation-circle"></i>
                     <p>Reportes</p>
                     <i class="fas fa-caret-left arrow"></i>
@@ -121,7 +121,7 @@
                     </a>
                 </div>
 
-                <div class="btnBox <?= ($selected == 'users') ? 'selected' : '';?>">
+                <div class="btnBox <?= ($selected == 'support') ? 'selected' : '';?>">
                     <i class="fas fa-ticket-alt"></i>
                     <p>Suporte</p>
                     <i class="fas fa-caret-left arrow"></i>

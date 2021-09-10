@@ -98,5 +98,20 @@ class AdminHandler{
         }
 
      }
+
+     public static function getAllUsers(){
+        $users = User::get();
+
+        return $users;
+     }
+
+     public static function getAllStaffs(){
+        $users = User::
+            where('access', '>', 1)
+            ->orderByDesc('access')
+        ->get();
+
+        return $users;
+     }
     
 }

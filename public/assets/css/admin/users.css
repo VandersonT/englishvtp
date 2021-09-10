@@ -1,0 +1,78 @@
+.title{
+    margin-top: 60px;
+    margin-left: 65px;
+    font-weight: lighter;
+    font-family: 'Lato', sans-serif;
+}
+
+table{
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 90%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+th{
+    border-bottom: 1px solid gray;
+    padding-bottom: 10px;
+}
+
+td{
+    border-bottom: 1px solid rgb(197, 197, 197);
+    padding: 10px 0;
+}
+
+.btn{
+    background: rgb(0, 140, 255);
+    border-radius: 5px;
+    padding: 5px 5px;
+    color: white;
+}
+
+.btn:hover{
+    background: rgb(0, 132, 240);
+    color: rgb(240, 240, 240);
+}
+
+@media screen and (max-width: 1000px){
+    .title{
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .title{
+        margin-top: 30px;
+        margin-left: 20px;
+        font-size: 18px;
+    }   
+    table{
+        width: 97%;
+        font-size: 12px;
+    } 
+    .btn{
+        padding: 2px 4px;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 430px){
+    .title{
+        font-size: 13px;
+    }   
+    .btn,
+    table{
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 350px){
+    .title{
+        font-size: 12px;
+    }   
+    .btn,
+    table{
+        font-size: 8px;
+    }
+}

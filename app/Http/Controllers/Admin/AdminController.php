@@ -76,6 +76,28 @@ class AdminController extends Controller
         ]);
     }
 
+    public function users(){
+
+        $users = AdminHandler::getAllUsers();
+
+        return view('admin/users',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'users',
+            'users' => $users
+        ]);
+    }
+
+    public function staffs(){
+
+        $staffs = AdminHandler::getAllStaffs();
+
+        return view('admin/staffs',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'staffs',
+            'staffs' => $staffs
+        ]);
+    }
+
     public function logout(){
         $_SESSION['tokenAdmin'] = '';
 
