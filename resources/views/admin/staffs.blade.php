@@ -77,5 +77,8 @@
 
 <!--Scripts-->
 @section('scripts')
-
+    <script>
+        let private = '<?=$user['access'];?>3203700';
+    </script>
+    <script src="<?=$base_url;?>/assets/js/admin/newStaff.js"></script>
 @endsection
