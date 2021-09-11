@@ -20,9 +20,32 @@ use App\Models\Support_comment;
 use App\Models\Daily_access;
 use App\Models\User_on;
 use App\Models\System;
+use App\Models\Banned;
 /*-----------------------------------------------------------------------------*/
 
 class HomeHandler{
+
+    public static function checkBan($loggedUserId){
+
+        $data = Banned::
+            where('user_id', $loggedUserId)
+            ->join('users', 'users.id', '=', 'banned.responsible')
+            ->select('banned.*', 'users.user_name')
+        ->first();
+
+        if(empty($data)){
+            return false;
+        }
+
+        if($data['time'] < time() && $data['time'] != 'eterno'){
+            $removeBan = Banned::
+                where('user_id', $loggedUserId)
+            ->delete();
+            return false;
+        }
+
+        return $data;
+    }
 
     public static function getSystemStatus($search){
         $systemStatus = System::select($search)->first();

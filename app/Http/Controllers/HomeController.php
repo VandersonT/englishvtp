@@ -28,6 +28,14 @@ class HomeController extends Controller{
         }
         /***/
 
+        /*Check if this user is banned*/
+        $isBanned = HomeHandler::checkBan($this->loggedUser->id);
+        if($isBanned){
+            redirect()->route('banned')->send();
+            exit;
+        }
+        /***/
+
         /*Check if is system active*/
         $isSystemActive = HomeHandler::getSystemStatus('system');
 

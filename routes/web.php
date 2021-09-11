@@ -68,6 +68,7 @@ Route::fallback(function(){
     return view('404');
 });
 Route::get('/manutenção', [ErrorController::class, 'maintenance'])->name('maintenance');
+Route::get('/banned', [ErrorController::class, 'banned'])->name('banned');
 Route::get('/finalizaSessao', [ErrorController::class, 'endSection']);
 /*-----------------------------------------------------------------------------------*/
 
