@@ -19,7 +19,7 @@
             <?=($infoProfile['user_name'] == $user['name']) ? 'Seu perfil - '.$infoProfile['user_name'] : 'Perfil de '.$infoProfile['user_name'];?>
         </h1>
         <div class="box-info">
-            <img src="<?=$base_url;?>/media/avatars/no-picture2.png" />
+            <img src="<?=$base_url;?>/media/avatars/<?=$infoProfile['photo'];?>" />
             
             <h1 class="title">Informações Básicas</h1>
 

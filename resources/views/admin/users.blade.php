@@ -52,7 +52,7 @@
                         <?=$user['id'];?>
                     </td>
                     <td>
-                        <?=$user['user_name'];?>
+                        <a href="<?=$base_url;?>/Painel/perfil/<?=$user['id'];?>"><?=$user['user_name'];?></a>
                     </td>
                     <td>
                         <?=($user['access'] == 1) ? 'Usuário' : '';?>

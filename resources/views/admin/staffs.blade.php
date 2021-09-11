@@ -38,16 +38,16 @@
 
     <table>
         <tr>
-            <th>
+            <th class="staffColor">
                 Id
             </th>
-            <th>
+            <th class="staffColor">
                 nome
             </th>
-            <th>
+            <th class="staffColor">
                 Cargo
-            </th>
-            <th>
+            </th class="staffColor">
+            <th class="staffColor">
                 Ações
             </th>
         </tr>
@@ -58,7 +58,7 @@
                         <?=$staff['id'];?>
                     </td>
                     <td>
-                        <?=$staff['user_name'];?>
+                        <a href="<?=$base_url;?>/Painel/perfil/<?=$staff['id'];?>"><?=$staff['user_name'];?></a>
                     </td>
                     <td>
                         <?=($staff['access'] == 2) ? 'Ajudante' : '';?>
