@@ -40,7 +40,7 @@ class ActionAdminHandler{
         echo 'fechou';
     }
 
-    public static function isAdmOrOwner($userSearch){
+    public static function getUserAccess($userSearch){
         $user = User::where('id', $userSearch)->first();
 
         return $user['access'];
@@ -78,6 +78,36 @@ class ActionAdminHandler{
 
         $flash = 'Você promoveu o usuário '.$data['user_name'].' para o cargo de '.$position.' do sistema.';
         return $flash;
+    }
+
+    public static function banAction($idToBan, $reason, $formTime, $time, $idResponsible){
+
+        $userToBan = User::where('id', $idToBan)->first();
+
+        if(!$userToBan){
+            return false;
+        }
+
+        if($formTime == 'Hora' || $formTime == 'Horas'){
+            $time = strtotime("+".$time." hours");
+        }else if($formTime == 'Dia' || $formTime == 'Dias'){
+            $time = strtotime("+".$time." day");
+        }else if($formTime == 'Mês' || $formTime == 'Meses'){
+            $time = strtotime("+".$time." month");
+        }else if($formTime == 'Ano' || $formTime == 'Anos'){
+            $time = strtotime("+".$time." year");
+        }else{
+            return false;
+        }
+
+        $ban = new Banned;
+            $ban->user_id = $idToBan;
+            $ban->responsible = $idResponsible;
+            $ban->time = $time;
+            $ban->reason = $reason;
+        $ban->save();
+
+        return true;
     }
 
     public static function unBanUser($userToUnBan){

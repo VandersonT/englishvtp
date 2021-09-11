@@ -15,6 +15,8 @@ class ErrorController extends Controller{
     public function __construct(){
         /*Get LoggedUser*/
         $this->loggedUser = LoginHandler::checkLogin();
+
+        date_default_timezone_set('America/Sao_Paulo');
     }
 
     public function error404(){

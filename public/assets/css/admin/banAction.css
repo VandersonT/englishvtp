@@ -1,6 +1,7 @@
 body{
     margin-bottom: 30px;
 }
+
 .title{
     text-align: center;
     background-color: rgb(199, 0, 0);
@@ -59,20 +60,46 @@ body{
     border-radius: 5px;
 }
 
+.box-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formBan a,
 .formBan button{
-    padding: 10px 40px;
+    width: 100px;
+    height: 30px;
+    padding: 10px;
     border-radius: 5px;
+    font-size: 10px;
     outline: 0;
+    text-align: center;
     border: 1px solid gray;
     cursor: pointer;
-    background-color: brown;
     color: white;
     text-transform: uppercase;
+    font-weight: bold;
+}
+
+.formBan button{
+    background-color: brown;
 }
 
 .formBan button:hover{
     background-color: rgb(150, 37, 37);
 }
+
+.formBan a{
+    background-color: rgb(126, 126, 126);
+    margin-right: 10px;
+}
+
+.formBan a:hover{
+    background-color: rgb(116, 116, 116);
+}
+
+
 
 @media screen and (max-width: 600px) {
     .title{

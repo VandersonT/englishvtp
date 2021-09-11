@@ -8,6 +8,7 @@ session_start();
 
 /*-----------------------------Handlers----------------------------------------*/
 use App\Http\Handlers\admin\ActionAdminHandler;
+use App\Http\Handlers\HomeHandler;
 use App\Http\Handlers\admin\LoginAdminHandler;
 /*-----------------------------------------------------------------------------*/
 
@@ -29,6 +30,8 @@ class ActionadminController extends Controller{
             }
             redirect()->route('loginAdmin')->send();
         }
+
+        date_default_timezone_set('America/Sao_Paulo');
     }
 
     public function mainControls(Request $request){
@@ -60,7 +63,7 @@ class ActionadminController extends Controller{
             exit;
         }
 
-        $userToChangePosition = ActionadminHandler::isAdmOrOwner($request->id);
+        $userToChangePosition = ActionadminHandler::getUserAccess($request->id);
 
         if($userToChangePosition >= 4 && $this->loggedAdmin->access < 5 ){
             $_SESSION['error'] = 'Somente os donos do sistema podem alterar o cargo de um administrador/dono.';
@@ -96,6 +99,44 @@ class ActionadminController extends Controller{
         return back();
         exit;
 
+    }
+
+    public function banAction(){
+        $idToBan = filter_input(INPUT_POST, 'idToBan', FILTER_SANITIZE_SPECIAL_CHARS);
+        $reason = filter_input(INPUT_POST, 'reason', FILTER_SANITIZE_SPECIAL_CHARS);
+        $formTime = filter_input(INPUT_POST, 'formTime', FILTER_SANITIZE_SPECIAL_CHARS);
+        $time = filter_input(INPUT_POST, 'time', FILTER_SANITIZE_SPECIAL_CHARS);
+
+        if($idToBan && $reason && $formTime && $time){
+
+            $alreadyBan = HomeHandler::checkBan($idToBan);
+            if($alreadyBan){
+                $_SESSION['error'] = "Este usuário já foi banido por ".$alreadyBan['user_name'].". <br/>O fim do ban é ".date('d/m/Y H:i', $alreadyBan['time']).". <br/>Se quiser atualizar basta desbanir o usuário e tornar a banir.";
+                return back();
+                exit;
+            }
+
+            $userToBanAccess = ActionadminHandler::getUserAccess($idToBan);
+            if($userToBanAccess > 1){
+                $_SESSION['error'] = "Este usuário pertence a staff, para bani-lo você deve retirar o cargo dele.";
+                return back();
+                exit;
+            }
+
+            $success = ActionadminHandler::banAction($idToBan, $reason,$formTime, $time, $this->loggedAdmin->id);
+
+            if($success){
+                $_SESSION['success'] = 'O usuário de id '.$idToBan.' foi banido com sucesso.';
+            }else{
+                $_SESSION['error'] = 'Desculpe, mas não encontramos o usuário informado.';
+            }
+
+        }else{
+            $_SESSION['error'] = 'Desculpe, mas você deve informar todos os campos para que o ban seja valido.';
+        }
+
+        return back();
+        exit;
     }
 
 }

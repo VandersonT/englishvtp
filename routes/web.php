@@ -97,6 +97,7 @@ Route::prefix('Painel')->group(function(){
     Route::get('/controles/{btn}/{action}', [ActionadminController::class, 'mainControls']);
     Route::post('/mudarAcesso/{id}', [ActionadminController::class, 'changeAccess']);
     Route::get('/removeBan/{id}', [ActionadminController::class, 'deleteBan']);
+    Route::post('/banir', [ActionadminController::class, 'banAction']);
     /****/
 });
 /*-----------------------------------------------------------------------------------*/

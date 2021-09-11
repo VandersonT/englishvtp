@@ -177,9 +177,23 @@ class AdminController extends Controller
 
     public function addBan(){
         
+        $success = '';
+        if(!empty($_SESSION['success'])){
+            $success = $_SESSION['success'];
+            $_SESSION['success'] = '';
+        }
+
+        $error = '';
+        if(!empty($_SESSION['error'])){
+            $error = $_SESSION['error'];
+            $_SESSION['error'] = '';
+        }
+
         return view('admin/newBan',[
             'user' => $this->loggedAdmin,
-            'selected' => 'bans'
+            'selected' => 'bans',
+            'success' => $success,
+            'error' => $error
         ]);
     }
 

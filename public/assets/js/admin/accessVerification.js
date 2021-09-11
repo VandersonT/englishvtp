@@ -22,6 +22,10 @@ for(let i = 0; i < btnRemoveBan.length; i++){
         if(private < 4){
             e.preventDefault();
             alert('Somente administradores e donos podem desfazer um ban.');
+        }else{
+            if(!confirm('Você tem certeza que quer desbanir este usuário?')){
+                e.preventDefault();
+            }
         }
     })
 }
