@@ -5,6 +5,7 @@ namespace App\Http\Handlers\admin;
 /*-----------------------------Models------------------------------------------*/
 use App\Models\User;
 use App\Models\System;
+use App\Models\Banned;
 /*-----------------------------------------------------------------------------*/
 
 class ActionAdminHandler{
@@ -77,6 +78,12 @@ class ActionAdminHandler{
 
         $flash = 'Você promoveu o usuário '.$data['user_name'].' para o cargo de '.$position.' do sistema.';
         return $flash;
+    }
+
+    public static function unBanUser($userToUnBan){
+        $unBan = Banned::
+            where('user_id', $userToUnBan)
+        ->delete();
     }
 
 }

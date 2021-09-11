@@ -82,4 +82,20 @@ class ActionadminController extends Controller{
 
     }
 
+    public function deleteBan(Request $request){
+        if($this->loggedAdmin->access < 4){
+            ActionadminHandler::changeUserAccess($this->loggedAdmin->id, 1);
+            $_SESSION['flash'] = '|Ant-Bug| Você tentou realizar uma ação não permitida a força, por segurança você foi rebaixado, contate o dono para resolver isso.';
+            return back();
+            exit;
+        }
+
+        ActionadminHandler::unBanUser($request->id);
+
+        $_SESSION['flash'] = 'Você desbaniu com sucesso o usuário de id '.$request->id;
+        return back();
+        exit;
+
+    }
+
 }

@@ -114,26 +114,20 @@
     <section class="guide">
         <h1 class="title">
             <i class="fab fa-guilded"></i>
-            Guia do Painel
+            Cargos do Painel
         </h1>
-        <h4><i class="fas fa-chart-line"></i>Dasboard:</h4>
-        <p>Nesta página você tem acesso a informações importantes sobre o andamento do sistema, com isso sabe quais as proximas ações tomar. Lá também você pode tomar medidas urgentes, como trancar todo o sistema ou  todo o suporte ou reporte.</p>
-        <span>(Moderadores/Administradores)</span>
-        <h4><i class="far fa-file-alt"></i>Páginas:</h4>
-        <p>Nesta aba você tem o controle sobre todas as paginas do sistema, lá é possivel editar o layout de todas as páginas existentes no sistema, desde cores até funcionalidades.</p>
-        <span>(Moderadores/administradores)</span>
-        <h4><i class="far fa-user"></i>Usuários:</h4>
-        <p>Nesta aba você tem o controle sobre todos os usuários do sistema, desde promover à punir alguém. Lá você pode ver todos os usuários, membros da staff, banidos e exilados e nestes 3 últimos podem ser adicionados novos usuários.</p>
-        <span>(Ajudantes/Moderadores/administradores)</span>
-        <h4><i class="fas fa-align-left"></i>Textos:</h4>
-        <p>Nesta aba você pode adicionar novos textos para o sistema ou editar algum do que já existem.</p>
-        <span>(Moderadores/Administradores)</span>
-        <h4><i class="fas fa-exclamation"></i>Reportes:</h4>
-        <p>Nesta aba você tem acesso a todos os comentários que foram reportados, podendo analizar e tomar alguma atitude, também pode ver todos os casos que já foram resolvidos ou que foram ignorados.</p>
-        <span>(Ajudantes/Moderadores/Administradores)</span>
-        <h4><i class="fas fa-headset"></i>Suporte:</h4>
-        <p>Nesta aba você tem acesso a todos os chamados enviados pelos usuários, é lá que você ajudará eles, respondendo duvidas ou resolvendo alguma situação, podendo também analizar todos os chamados já resolvidos antes ou ignorados.</p>
-        <span>(Ajudantes/Moderadores/Administradores)</span>
+        <h4><i class="fas fa-chart-line"></i>Ajudante:</h4>
+        <p>O ajudante é responsavel por controlar e manter a ordem no sistema principal e auxiliar os usuários, ele tem permissão para apagar qualquer comentário que quiser, desde que aja um motivo justo. O ajudante também tem acesso a página de suportes, podendo auxliar os usuários por lá, também podendo bloquear o envio de novos suportes.</p>
+
+        <h4><i class="far fa-file-alt"></i>Moderador:</h4>
+        <p>O moderador possui os mesmo controles que os ajudantes, mas ele vai além, podendo exilar e tirar do exilio um usuário. O moderador também pode bloquear/desbloquear os comentários e reportes</p>
+
+        <h4><i class="far fa-user"></i>Administrador:</h4>
+        <p>Além de poder fazer tudo que moderador e ajudante faz, o administrador pode bloquear o sistema completamente, impedindo qualquer acesso. O administrador tem controle sobre os bans, podendo banir ou retirar ban de algum usuário. Ele pode gerenciar todos os cargos abaixo dele, podendo rebaixar ou promover.</p>
+
+        <h4><i class="fas fa-align-left"></i>Dono:</h4>
+        <p>O dono além de poder fazer tudo que os cargo abaixo fazem, ele tem o controle sobre todos os cargos do sistema e seu cargo não pode ser alterado nem por um administrador.</p>
+
     </section>
 
     <section class="box-controls">

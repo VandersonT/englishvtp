@@ -14,6 +14,13 @@
 <!--Content-->
 @section('content')
     
+    <?php if(!empty($flash)): ?>
+        <h1 class="flash">
+            <i class="far fa-check-circle"></i>
+            <?=$flash;?>
+        </h1>
+    <?php endif; ?>
+
     <form class="search" method="GET">
         <input type="text" name="search" placeholder="Procure por algum staff" value="<?=($wantedUser != '') ? $wantedUser : '';?>"/>
         <button><i class="fas fa-search"></i>Procurar</button>
@@ -30,7 +37,7 @@
         <?php endif; ?>
     </h1>
     <br/><br/>
-    <a href="<?=$base_url;?>/Painel/novoStaff" class="registerNew">
+    <a href="<?=$base_url;?>/Painel/banir" class="registerNew">
         <i class="fas fa-tools"></i>
         Banir Usuário
     </a>
@@ -76,7 +83,7 @@
                         <?=($userSingle['time'] == 'eterno') ? 'nunca' : date('d/m/Y H:i', $userSingle['time']) ;?>
                     </td>
                     <td>
-                        <a class="btn delete" href="<?=$base_url;?>/Painel/perfil/<?=$userSingle['id'];?>">Desbanir</a>
+                        <a class="btn delete" href="<?=$base_url;?>/Painel/removeBan/<?=$userSingle['user_id'];?>">Desbanir</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -85,7 +92,7 @@
     
     <?php if(count($users) < 1):?>
         <h1 class="empty">
-            <?=($wantedUser == '') ? 'Nenhum usuário registrado ainda' : 'Não encontramos nenhum usuário com esse filtro';?>
+            <?=($wantedUser == '') ? 'Nenhum usuário foi banido até agora' : 'Não encontramos nenhum usuário com esse filtro';?>
         </h1>
     <?php endif; ?>
 @endsection
@@ -95,5 +102,5 @@
     <script>
         let private = '<?=$user['access'];?>3203700';
     </script>
-    <script src="<?=$base_url;?>/assets/js/admin/newStaff.js"></script>
+    <script src="<?=$base_url;?>/assets/js/admin/accessVerification.js"></script>
 @endsection

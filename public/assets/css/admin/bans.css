@@ -1,3 +1,11 @@
+.flash{
+    background-color: rgb(0, 187, 0);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+}
+
 .empty{
     width: 90%;
     margin: 0 auto;

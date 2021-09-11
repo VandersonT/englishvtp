@@ -88,6 +88,7 @@ Route::prefix('Painel')->group(function(){
     Route::get('/novoStaff', [AdminController::class, 'newStaff']);
     Route::get('/banidos', [AdminController::class, 'bans']);
     Route::get('/reportes/pendentes', [AdminController::class, 'reportsPendents']);
+    Route::get('/banir', [AdminController::class, 'addBan']);
     /*Login*/
     Route::get('/login', [LoginadminController::class, 'login'])->name('loginAdmin');
     Route::post('/login', [LoginadminController::class, 'loginAction']);
@@ -95,6 +96,7 @@ Route::prefix('Painel')->group(function(){
     /*Action*/
     Route::get('/controles/{btn}/{action}', [ActionadminController::class, 'mainControls']);
     Route::post('/mudarAcesso/{id}', [ActionadminController::class, 'changeAccess']);
+    Route::get('/removeBan/{id}', [ActionadminController::class, 'deleteBan']);
     /****/
 });
 /*-----------------------------------------------------------------------------------*/
