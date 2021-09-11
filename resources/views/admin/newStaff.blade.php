@@ -89,7 +89,12 @@
                     <option <?=($userFound['access'] == 5) ? 'selected' : '';?> value="5">Dono</option>
                 <?php endif; ?>
             </select>
+
+        <div class="box-btn">
+            <a href="<?=$base_url;?>/Painel/staffs">Ver lista</a>
             <button>Salvar</button>
+        </div>
+
         </form>
     </div>
 <?php endif; ?>
