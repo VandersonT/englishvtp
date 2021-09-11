@@ -180,8 +180,9 @@
     </script>
     <script>
         /*info how many of each type*/
-        let american = <?=$howManyOfEachType['american'];?>;
-        let british = <?=$howManyOfEachType['british'];?>;
+        let american = '<?=$howManyOfEachType["american"];?>';
+        let british = '<?=$howManyOfEachType["british"];?>';
+        let private = '<?=$user['access'];?>3203700';
     </script>
     <script src="<?=$base_url;?>/assets/js/admin/chart.js"></script>
     <script src="<?=$base_url;?>/assets/js/admin/home.js"></script>

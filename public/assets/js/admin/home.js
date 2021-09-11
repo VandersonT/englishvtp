@@ -1,20 +1,47 @@
+/*Get User Access*/
+private = private.replace("3203700", "");
+parseInt(private);
+/***/
+
+
 /*System*/
 let btnSystem = document.querySelector('.system');
-btnSystem.addEventListener('click', function(){
+btnSystem.addEventListener('click', function(e){
+
+    if(private < 4){
+        e.preventDefault();
+        alert('Você não tem permissão para trancar o sistema.');
+        return false;
+    }
+
     let action = toggleBtn('Sistema', btnSystem);
     fetch(base_url+'/Painel/controles/system/'+action);
 })
 
 /*Reports*/
 let btnReports = document.querySelector('.reports');
-btnReports.addEventListener('click', function(){
+btnReports.addEventListener('click', function(e){
+
+    if(private < 3){
+        e.preventDefault();
+        alert('Você não tem permissão para bloquear os reportes.');
+        return false;
+    }
+
     let action = toggleBtn('Reportes', btnReports);
     fetch(base_url+'/Painel/controles/reports/'+action);
 })
 
 /*Comments*/
 let btnComments = document.querySelector('.comments');
-btnComments.addEventListener('click', function(){
+btnComments.addEventListener('click', function(e){
+
+    if(private < 3){
+        e.preventDefault();
+        alert('Você não tem permissão para bloquear os comentários.');
+        return false;
+    }
+
     let action = toggleBtn('Comentários', btnComments);
     fetch(base_url+'/Painel/controles/comments/'+action);
 })
