@@ -11,6 +11,7 @@ use App\Models\Daily_access;
 use App\Models\User_on;
 use App\Models\System;
 use App\Models\Banned;
+use App\Models\Exile;
 /*-----------------------------------------------------------------------------*/
 
 class AdminHandler{
@@ -170,6 +171,42 @@ class AdminHandler{
         foreach($users as $user){
             $data = User::
                 join('banned', 'users.id', 'banned.responsible')
+                ->select('users.user_name')
+            ->first();
+            $user['responsible_name'] = $data['user_name'];
+        }
+
+        return $users;
+     }
+
+     public static function getAllUserExile(){
+        $users = Exile::
+            join('users', 'users.id', 'exile.user_id')
+            ->select('exile.*', 'users.user_name')
+        ->get();
+
+        foreach($users as $user){
+            $data = User::
+                join('exile', 'users.id', 'exile.responsible')
+                ->select('users.user_name')
+            ->first();
+            $user['responsible_name'] = $data['user_name'];
+        }
+
+        return $users;
+     }
+
+     public static function getWantedUserExile($wantedUser){
+        $users = Exile::
+            join('users', 'users.id', '=', 'exile.user_id')
+            ->where('user_name', 'like', $wantedUser.'%')
+            ->select('exile.*', 'users.user_name')
+            ->orderByDesc('access')
+        ->get();
+
+        foreach($users as $user){
+            $data = User::
+                join('exile', 'users.id', 'exile.responsible')
                 ->select('users.user_name')
             ->first();
             $user['responsible_name'] = $data['user_name'];

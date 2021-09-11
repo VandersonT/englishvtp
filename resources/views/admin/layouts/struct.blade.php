@@ -79,7 +79,7 @@
                         <i class="fas fa-circle iconSubMenu"></i>
                         Banidos
                     </a>
-                    <a href="">
+                    <a href="<?=$base_url;?>/Painel/exilio" class="<?= ($selected == 'exile') ? 'selected' : '';?>">
                         <i class="fas fa-circle iconSubMenu"></i>
                         Exilados
                     </a>

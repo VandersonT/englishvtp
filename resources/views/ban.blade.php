@@ -45,6 +45,5 @@
         </div>
     </div>
 
-    <script src="assets/js/darkMode.js"></script>
 </body>
 </html>

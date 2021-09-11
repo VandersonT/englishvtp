@@ -87,8 +87,9 @@ Route::prefix('Painel')->group(function(){
     Route::get('/staffs', [AdminController::class, 'staffs']);
     Route::get('/novoStaff', [AdminController::class, 'newStaff']);
     Route::get('/banidos', [AdminController::class, 'bans']);
-    Route::get('/reportes/pendentes', [AdminController::class, 'reportsPendents']);
     Route::get('/banir', [AdminController::class, 'addBan']);
+    Route::get('/exilio', [AdminController::class, 'exile']);
+    Route::get('/reportes/pendentes', [AdminController::class, 'reportsPendents']);
     /*Login*/
     Route::get('/login', [LoginadminController::class, 'login'])->name('loginAdmin');
     Route::post('/login', [LoginadminController::class, 'loginAction']);

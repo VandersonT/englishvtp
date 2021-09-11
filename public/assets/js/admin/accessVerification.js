@@ -15,15 +15,16 @@ registerNew.addEventListener('click', function(e){
 /***/
 
 /*check if access is greater than 4 to unban someone*/
-let btnRemoveBan = document.querySelectorAll('.delete');
+let btnRemovePunishment = document.querySelectorAll('.delete');
 
-for(let i = 0; i < btnRemoveBan.length; i++){
-    btnRemoveBan[i].addEventListener('click', function(e){
+for(let i = 0; i < btnRemovePunishment.length; i++){
+    btnRemovePunishment[i].addEventListener('click', function(e){
         if(private < 4){
             e.preventDefault();
             alert('Somente administradores e donos podem desfazer um ban.');
         }else{
-            if(!confirm('Você tem certeza que quer desbanir este usuário?')){
+            let actionName = btnRemovePunishment[i].innerText.toLowerCase();
+            if(!confirm('Você tem certeza que quer '+actionName+' este usuário?')){
                 e.preventDefault();
             }
         }

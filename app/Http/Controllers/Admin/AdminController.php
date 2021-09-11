@@ -197,6 +197,24 @@ class AdminController extends Controller
         ]);
     }
 
+    public function exile(){
+
+        $wantedUser = '';
+        if($_GET){
+            $wantedUser = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS);
+            $users = AdminHandler::getWantedUserExile($wantedUser);
+        }else{
+            $users = AdminHandler::getAllUserExile();
+        }
+
+        return view('admin/exile',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'exile',
+            'wantedUser' => $wantedUser,
+            'users' => $users
+        ]);
+    }
+
     public function logout(){
         $_SESSION['tokenAdmin'] = '';
 

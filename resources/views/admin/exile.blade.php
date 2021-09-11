@@ -8,7 +8,7 @@
 
 <!--Links-->
 @section('links')
-    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/bans.css" />
+    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/exile.css" />
 @endsection
 
 <!--Content-->
@@ -29,17 +29,17 @@
     <h1 class="title">
         <i class="fas fa-users-cog"></i>
         <?php if($wantedUser == ''):?>
-        Usuários Banidos
+        Usuários Exilados
         <?php else: ?>
             <?='Encontramos '.count($users);?>
-            <?=(count($users) > 1) ? 'usuários banidos' : 'usuário banido';?>
+            <?=(count($users) > 1) ? 'usuários exilados' : 'usuário exilado';?>
             <?=' com "'.$wantedUser.'"';?>
         <?php endif; ?>
     </h1>
     <br/><br/>
     <a href="<?=$base_url;?>/Painel/banir" class="registerNew">
         <i class="fas fa-tools"></i>
-        Banir Usuário
+        Exilar Usuário
     </a>
     <br/><br/>
 
@@ -83,7 +83,7 @@
                         <?=($userSingle['time'] == 'eterno') ? 'nunca' : date('d/m/Y H:i', $userSingle['time']) ;?>
                     </td>
                     <td>
-                        <a class="btn delete" href="<?=$base_url;?>/Painel/removeBan/<?=$userSingle['user_id'];?>">Desbanir</a>
+                        <a class="btn delete" href="#">Repatriar</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -92,7 +92,7 @@
     
     <?php if(count($users) < 1):?>
         <h1 class="empty">
-            <?=($wantedUser == '') ? 'Nenhum usuário foi banido até agora' : 'Não encontramos nenhum usuário com esse filtro';?>
+            <?=($wantedUser == '') ? 'Nenhum usuário foi exilado até agora' : 'Não encontramos nenhum usuário com esse filtro';?>
         </h1>
     <?php endif; ?>
 @endsection

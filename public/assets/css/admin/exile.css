@@ -1,0 +1,206 @@
+.flash{
+    background-color: rgb(0, 187, 0);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.empty{
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 18px;
+    font-weight: lighter;
+    color: rgb(20, 20, 20);
+    border: 1px solid rgb(168, 168, 168);
+    border-top: 0;
+    padding: 5px;
+}
+
+.search{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 70px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgb(168, 168, 168);
+}
+
+.search input{
+    width: 400px;
+    padding: 10px;
+    border: 1px solid rgb(197, 197, 197);
+    outline: 0;
+    border-radius: 5px;
+    font-size: 17px;
+}
+.search button{
+    width: 100px;
+    background-color: rgb(0, 26, 255);
+    color: white;
+    padding: 10px 0;
+    border: 0;
+    outline: 0;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search button i{
+    margin-right: 5px;
+}
+
+.search button:hover{
+    background-color: rgb(0, 24, 243);
+    color: rgb(243, 243, 243);
+}
+
+.title{
+    margin-top: 30px;
+    margin-left: 65px;
+    font-weight: lighter;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    color: rgb(46, 46, 46);
+}
+
+.registerNew{
+    padding: 10px 20px;
+    background-color: rgb(255, 145, 0);
+    margin-left: 65px;
+    border-radius: 5px;
+    color: rgb(41, 41, 41);
+}
+
+.registerNew:hover{
+    background-color: rgb(247, 140, 0);
+}
+
+.registerNew i{
+    margin-right: 5px;
+}
+
+table{
+    margin: 0 auto;
+    margin-top: 10px;
+    width: 90%;
+    text-align: center;
+    border-collapse: collapse;
+    border: 1px solid rgb(168, 168, 168);
+}
+
+th{
+    border-bottom: 1px solid rgb(168, 168, 168);
+    padding: 5px;
+    background-color: rgb(34, 12, 12);
+    color: white;
+}
+
+td{
+    border-bottom: 1px solid rgb(168, 168, 168);
+    padding: 10px 5px;
+    max-width: 300px;
+}
+
+td a{
+    color: rgb(0, 157, 230);
+}
+
+td a:hover{
+    color: rgb(0, 136, 199);
+}
+
+.btn{
+    background: rgb(0, 140, 255);
+    border-radius: 5px;
+    padding: 5px 5px;
+    color: white;
+}
+
+.btn:hover{
+    background: rgb(0, 132, 240);
+    color: rgb(240, 240, 240);
+}
+
+.delete{
+    background-color: rgb(202, 7, 0)!important;
+}
+
+.delete:hover{
+    background-color: rgb(190, 6, 0)!important;
+}
+
+@media screen and (max-width: 1000px){
+    table{
+        font-size: 12px;
+    } 
+    .registerNew{
+        padding: 7px 10px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .title{
+        margin-top: 30px;
+        margin-left: 20px;
+        font-size: 18px;
+    }   
+    table{
+        width: 97%;
+        font-size: 9px;
+    } 
+    td{
+        max-width: 150px;
+    }
+    .registerNew{
+        font-size: 12px;
+        margin-left: 10px;
+    }
+    .btn{
+        padding: 2px 4px;
+        font-size: 12px;
+    }
+    .search input{
+        font-size: 12px;
+    }
+    .search button{
+        font-size: 12px;
+        width: max-content;
+        padding: 8px 8px;
+    }
+}
+
+@media screen and (max-width: 600px){
+    table{
+        font-size: 7px;
+    } 
+}
+
+@media screen and (max-width: 430px){
+    .title{
+        font-size: 13px;
+    }   
+    .registerNew,
+    .btn{
+        font-size: 8px;
+    }
+    table{
+        font-size: 6px;
+        margin-top: 0;
+    }
+    .search input{
+        width: 90%;
+        font-size: 10px;
+    }
+    .search button{
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 350px){
+    .title{
+        font-size: 12px;
+    }
+}
