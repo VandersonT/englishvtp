@@ -75,7 +75,7 @@
                         <i class="fas fa-circle iconSubMenu"></i>
                         Membros da staff
                     </a>
-                    <a href="">
+                    <a href="<?=$base_url;?>/Painel/banidos" class="<?= ($selected == 'bans') ? 'selected' : '';?>">
                         <i class="fas fa-circle iconSubMenu"></i>
                         Banidos
                     </a>

@@ -91,7 +91,8 @@ th{
 
 td{
     border-bottom: 1px solid rgb(168, 168, 168);
-    padding: 10px 0;
+    padding: 10px 5px;
+    max-width: 300px;
 }
 
 td a{
@@ -122,6 +123,16 @@ td a:hover{
     background-color: rgb(190, 6, 0)!important;
 }
 
+@media screen and (max-width: 1000px){
+    table{
+        font-size: 12px;
+    } 
+    .registerNew{
+        padding: 7px 10px;
+        font-size: 14px;
+    }
+}
+
 @media screen and (max-width: 700px){
     .title{
         margin-top: 30px;
@@ -130,8 +141,15 @@ td a:hover{
     }   
     table{
         width: 97%;
-        font-size: 12px;
+        font-size: 9px;
     } 
+    td{
+        max-width: 150px;
+    }
+    .registerNew{
+        font-size: 12px;
+        margin-left: 10px;
+    }
     .btn{
         padding: 2px 4px;
         font-size: 12px;
@@ -146,13 +164,23 @@ td a:hover{
     }
 }
 
+@media screen and (max-width: 600px){
+    table{
+        font-size: 7px;
+    } 
+}
+
 @media screen and (max-width: 430px){
     .title{
         font-size: 13px;
     }   
-    .btn,
+    .registerNew,
+    .btn{
+        font-size: 8px;
+    }
     table{
-        font-size: 10px;
+        font-size: 6px;
+        margin-top: 0;
     }
     .search input{
         width: 90%;
@@ -166,9 +194,5 @@ td a:hover{
 @media screen and (max-width: 350px){
     .title{
         font-size: 12px;
-    }   
-    .btn,
-    table{
-        font-size: 8px;
     }
 }

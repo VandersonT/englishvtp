@@ -10,6 +10,7 @@ use App\Models\Studied_text;
 use App\Models\Daily_access;
 use App\Models\User_on;
 use App\Models\System;
+use App\Models\Banned;
 /*-----------------------------------------------------------------------------*/
 
 class AdminHandler{
@@ -139,6 +140,42 @@ class AdminHandler{
         ->first();
         
         return $user;
+     }
+
+     public static function getAllUserBan(){
+        $users = Banned::
+            join('users', 'users.id', 'banned.user_id')
+            ->select('banned.*', 'users.user_name')
+        ->get();
+
+        foreach($users as $user){
+            $data = User::
+                join('banned', 'users.id', 'banned.responsible')
+                ->select('users.user_name')
+            ->first();
+            $user['responsible_name'] = $data['user_name'];
+        }
+
+        return $users;
+     }
+
+     public static function getWantedUserBan($wantedUser){
+        $users = Banned::
+            join('users', 'users.id', '=', 'banned.user_id')
+            ->where('user_name', 'like', $wantedUser.'%')
+            ->select('banned.*', 'users.user_name')
+            ->orderByDesc('access')
+        ->get();
+
+        foreach($users as $user){
+            $data = User::
+                join('banned', 'users.id', 'banned.responsible')
+                ->select('users.user_name')
+            ->first();
+            $user['responsible_name'] = $data['user_name'];
+        }
+
+        return $users;
      }
     
 }

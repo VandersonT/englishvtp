@@ -112,13 +112,6 @@ class AdminController extends Controller
         ]);
     }
 
-    public function reportsPendents(){
-        return view('admin/reportsP',[
-            'user' => $this->loggedAdmin,
-            'selected' => 'reportsP'
-        ]);
-    }
-
     public function newStaff(){
 
         $success = '';
@@ -147,6 +140,31 @@ class AdminController extends Controller
             'idSearch' => $idSearch,
             'success' => $success,
             'error' => $error
+        ]);
+    }
+
+    public function bans(){
+
+        $wantedUser = '';
+        if($_GET){
+            $wantedUser = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS);
+            $users = AdminHandler::getWantedUserBan($wantedUser);
+        }else{
+            $users = AdminHandler::getAllUserBan();
+        }
+
+        return view('admin/bans',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'bans',
+            'wantedUser' => $wantedUser,
+            'users' => $users
+        ]);
+    }
+
+    public function reportsPendents(){
+        return view('admin/reportsP',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'reportsP'
         ]);
     }
 

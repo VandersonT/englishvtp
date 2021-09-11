@@ -2,13 +2,13 @@
 
 <!--Page title-->
 @section('title')
-   EnglisVtp - usuários
+   EnglisVtp - banidos
 @endsection
 
 
 <!--Links-->
 @section('links')
-    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/users.css" />
+    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/bans.css" />
 @endsection
 
 <!--Content-->
@@ -22,17 +22,17 @@
     <h1 class="title">
         <i class="fas fa-users-cog"></i>
         <?php if($wantedUser == ''):?>
-            Membros da staffs
+        Usuários Banidos
         <?php else: ?>
-            <?='Encontramos '.count($staffs);?>
-            <?=(count($staffs) > 1) ? 'usuários' : 'usuário';?>
-            <?=' da staff com "'.$wantedUser.'"';?>
+            <?='Encontramos '.count($users);?>
+            <?=(count($users) > 1) ? 'usuários banidos' : 'usuário banido';?>
+            <?=' com "'.$wantedUser.'"';?>
         <?php endif; ?>
     </h1>
     <br/><br/>
     <a href="<?=$base_url;?>/Painel/novoStaff" class="registerNew">
         <i class="fas fa-tools"></i>
-        Gerenciar cargos
+        Banir Usuário
     </a>
     <br/><br/>
 
@@ -45,36 +45,45 @@
                 nome
             </th>
             <th>
-                Cargo
+                Responsável
+            </th>
+            <th>
+                Motivo
+            </th>
+            <th>
+                Término
             </th>
             <th>
                 Ações
             </th>
         </tr>
-        <?php if(count($staffs) > 0):?>
-            <?php foreach($staffs as $staff): ?>
+        <?php if(count($users) > 0):?>
+            <?php foreach($users as $userSingle): ?>
                 <tr>
                     <td>
-                        <?=$staff['id'];?>
+                        <?=$userSingle['user_id'];?>
                     </td>
                     <td>
-                        <?=$staff['user_name'];?>
+                        <a href="<?=$base_url;?>/Painel/perfil/<?=$userSingle['user_id'];?>"><?=$userSingle['user_name'];?></a>
                     </td>
                     <td>
-                        <?=($staff['access'] == 2) ? 'Ajudante' : '';?>
-                        <?=($staff['access'] == 3) ? 'Moderador' : '';?>
-                        <?=($staff['access'] == 4) ? 'Administrador' : '';?>
-                        <?=($staff['access'] == 5) ? 'Dono' : '';?>
+                        <a href="<?=$base_url;?>/Painel/perfil/<?=$userSingle['responsible'];?>"><?=$userSingle['responsible_name'];?></a>
                     </td>
                     <td>
-                        <a class="btn" href="<?=$base_url;?>/Painel/perfil/<?=$staff['id'];?>">Ver perfil</a>
+                        <?=$userSingle['reason'];?>
+                    </td>
+                    <td>
+                        <?=($userSingle['time'] == 'eterno') ? 'nunca' : date('d/m/Y H:i', $userSingle['time']) ;?>
+                    </td>
+                    <td>
+                        <a class="btn delete" href="<?=$base_url;?>/Painel/perfil/<?=$userSingle['id'];?>">Desbanir</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
         <?php endif; ?>
     </table>
     
-    <?php if(count($staffs) < 1):?>
+    <?php if(count($users) < 1):?>
         <h1 class="empty">
             <?=($wantedUser == '') ? 'Nenhum usuário registrado ainda' : 'Não encontramos nenhum usuário com esse filtro';?>
         </h1>
