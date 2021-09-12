@@ -83,7 +83,7 @@
                         <?=($userSingle['time'] == 'eterno') ? 'nunca' : date('d/m/Y H:i', $userSingle['time']) ;?>
                     </td>
                     <td>
-                        <a class="btn delete" href="#">Repatriar</a>
+                        <a class="btn delete" href="<?=$base_url;?>/Painel/removeExilio/<?=$userSingle['user_id'];?>">Repatriar</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

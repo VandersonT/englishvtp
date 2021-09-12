@@ -107,11 +107,18 @@ class ActionadminController extends Controller{
         $formTime = filter_input(INPUT_POST, 'formTime', FILTER_SANITIZE_SPECIAL_CHARS);
         $time = filter_input(INPUT_POST, 'time', FILTER_SANITIZE_SPECIAL_CHARS);
 
-        if($idToBan && $reason && $formTime && $time){
+        if($idToBan && $reason && $formTime){
+
+            if(!$time && $formTime != 'Eterno'){
+                $_SESSION['error'] = "Ocorreu um erro inesperado durante o banimento.";
+                return back();
+                exit; 
+            }
 
             $alreadyBan = HomeHandler::checkBan($idToBan);
             if($alreadyBan){
-                $_SESSION['error'] = "Este usuário já foi banido por ".$alreadyBan['user_name'].". <br/>O fim do ban é ".date('d/m/Y H:i', $alreadyBan['time']).". <br/>Se quiser atualizar basta desbanir o usuário e tornar a banir.";
+                $timeEnd = ($alreadyBan['time'] == 'eterno') ? 'O banimento foi definido como eterno' : 'O fim do banimento é '.date('d/m/Y H:i', $alreadyBan['time']);
+                $_SESSION['error'] = "Este usuário já foi banido por ".$alreadyBan['user_name'].". <br/>".$timeEnd.". <br/>Se quiser atualizar basta desbanir o usuário e tornar a banir.";
                 return back();
                 exit;
             }
@@ -180,6 +187,21 @@ class ActionadminController extends Controller{
             $_SESSION['error'] = 'Desculpe, mas você deve informar todos os campos para que o exilio seja valido.';
         }
 
+        return back();
+        exit;
+    }
+
+    public function deleteExile(Request $request){
+        if($this->loggedAdmin->access < 4){
+            ActionadminHandler::changeUserAccess($this->loggedAdmin->id, 1);
+            $_SESSION['flash'] = '|Ant-Bug| Você tentou realizar uma ação não permitida a força, por segurança você foi rebaixado, contate o dono para resolver isso.';
+            return back();
+            exit;
+        }
+
+        ActionadminHandler::repatriateUser($request->id);
+
+        $_SESSION['flash'] = 'Você repatriou com sucesso o usuário de id '.$request->id;
         return back();
         exit;
     }

@@ -19,11 +19,15 @@ let btnRemovePunishment = document.querySelectorAll('.delete');
 
 for(let i = 0; i < btnRemovePunishment.length; i++){
     btnRemovePunishment[i].addEventListener('click', function(e){
+        let actionName = btnRemovePunishment[i].innerText.toLowerCase();
         if(private < 4){
             e.preventDefault();
-            alert('Somente administradores e donos podem desfazer um ban.');
+            if(actionName == 'repatriar'){
+                alert('Somente administradores e donos podem desfazer um exilio.');
+            }else{
+                alert('Somente administradores e donos podem desfazer um ban.');
+            }
         }else{
-            let actionName = btnRemovePunishment[i].innerText.toLowerCase();
             if(!confirm('Você tem certeza que quer '+actionName+' este usuário?')){
                 e.preventDefault();
             }

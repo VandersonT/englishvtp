@@ -151,4 +151,10 @@ class ActionAdminHandler{
         return true;
     }
 
+    public static function repatriateUser($userToRepatriate){
+        $repatriate = Exile::
+            where('user_id', $userToRepatriate)
+        ->delete();
+    }
+
 }

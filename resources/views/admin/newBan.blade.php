@@ -56,6 +56,7 @@
                 <option>Dia</option>
                 <option>Mês</option>
                 <option>Ano</option>
+                <option>Eterno</option>
             </select>
         </div>
 
@@ -85,6 +86,17 @@
                 options[1].innerHTML = 'Dia';
                 options[2].innerHTML = 'Mês';
                 options[3].innerHTML = 'Ano';
+            }
+        })
+
+        let select = document.querySelector('.formTime');
+        let time = document.querySelector('.time');
+        select.addEventListener('click', function(){
+            if(select.value == 'Eterno'){
+                time.disabled = true;
+                time.value = '';
+            }else{
+                time.disabled = false;
             }
         })
 

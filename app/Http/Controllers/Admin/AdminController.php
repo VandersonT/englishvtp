@@ -199,6 +199,12 @@ class AdminController extends Controller
 
     public function exile(){
 
+        $flash = '';
+        if(!empty($_SESSION['flash'])){
+            $flash = $_SESSION['flash'];
+            $_SESSION['flash'] = '';
+        }
+
         $wantedUser = '';
         if($_GET){
             $wantedUser = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -211,7 +217,8 @@ class AdminController extends Controller
             'user' => $this->loggedAdmin,
             'selected' => 'exile',
             'wantedUser' => $wantedUser,
-            'users' => $users
+            'users' => $users,
+            'flash' => $flash
         ]);
     }
 

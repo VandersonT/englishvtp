@@ -101,6 +101,7 @@ Route::prefix('Painel')->group(function(){
     Route::get('/removeBan/{id}', [ActionadminController::class, 'deleteBan']);
     Route::post('/banir', [ActionadminController::class, 'banAction']);
     Route::post('/exilar', [ActionadminController::class, 'exileAction']);
+    Route::get('/removeExilio/{id}', [ActionadminController::class, 'deleteExile']);
     /****/
 });
 /*-----------------------------------------------------------------------------------*/
