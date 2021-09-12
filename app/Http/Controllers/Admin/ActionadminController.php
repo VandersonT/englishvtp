@@ -226,7 +226,7 @@ class ActionadminController extends Controller{
         /*Audio verify*/
         if(empty($_FILES['audio']['name'])){
             $_SESSION['error'] = 'Você deve enviar um aúdio para o texto.';
-            return back();
+            echo "<script>history.go(-1)</script>";
             exit;
         }
         if($_FILES['audio']['size'] > 10000000){

@@ -72,12 +72,12 @@ EnglishVtp - <?=$text['englishTitle'];?>
 
             <div class="text">
                 <h1><?=$text['englishTitle'];?></h1>
-                <p><?=$text['englishContent'];?></p>
+                <p><?=nl2br($text['englishContent']);?></p>
             </div>
 
             <div class="text">
                 <h1><?=$text['translatedTitle'];?></h1>
-                <p><?=$text['translatedContent'];?></p>
+                <p><?=nl2br($text['translatedContent']);?></p>
             </div>
 
         </div>

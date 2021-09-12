@@ -91,13 +91,11 @@
         <section class="secondSection">
             <div class="box1">
                 <input type="text" placeholder="Titulo em inglês" name="englishTitle"/>
-                <input type="hidden" name="englishContent" class="sendEnglishContent"/>
-                <div contenteditable="true" class="content englishContent"></div>
+                <textarea name="englishContent" placeholder="Escreva o texto em inglês"></textarea>
             </div>
             <div class="box2">
                 <input type="text" placeholder="Titulo em português" name="portugueseTitle"/>
-                <input type="hidden" name="portugueseContent" class="sendPortugueseContent"/>
-               <div contenteditable="true" class="content portugueseContent"></div> 
+                <textarea name="portugueseContent" placeholder="Escreva o texto em português"></textarea>
             </div>
         </section>
 
@@ -108,22 +106,5 @@
 
 <!--Scripts-->
 @section('scripts')
-<script>
-    let button = document.querySelector('.formText button');
-    let form = document.querySelector('.formText');
-
-    button.addEventListener('click', function(e){
-        e.preventDefault();
-
-        let englishContent = document.querySelector('.englishContent').innerHTML;
-        let portugueseContent = document.querySelector('.portugueseContent').innerHTML;
-
-        document.querySelector('.sendEnglishContent').value = englishContent;
-        document.querySelector('.sendPortugueseContent').value = portugueseContent;
-
-        form.submit();
-    })
-
-</script>
     <script src="<?=$base_url;?>/assets/js/admin/flash.js"></script>
 @endsection

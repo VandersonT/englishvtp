@@ -146,14 +146,16 @@ body{
     margin-bottom: 30px;
 }
 
-.secondSection .content{
+.secondSection textarea{
     width: 100%;
-    min-height: 300px;
+    min-height: 500px;
+    max-height: 1500px;
     padding: 10px;
     outline: 0;
     border: 1px solid gray;
     font-size: 16px;
     background-color: white;
+    resize: vertical;
 }
 
 
@@ -180,7 +182,7 @@ body{
         width: 80%;
         font-size: 16px;
     }
-    .secondSection .content{
+    .secondSection textarea{
         font-size: 14px;
     }
 }
@@ -203,7 +205,7 @@ body{
         width: 70%;
         margin-bottom: 10px;
     }
-    .secondSection .content{
+    .secondSection textarea{
         width: 85%;
     }
     .formText button{
@@ -224,7 +226,7 @@ body{
     .secondSection input{
         width: 90%;
     }
-    .secondSection .content{
+    .secondSection textarea{
         width: 100%;
     }
 }
