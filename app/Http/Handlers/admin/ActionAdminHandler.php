@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\System;
 use App\Models\Banned;
 use App\Models\Exile;
+use App\Models\Text;
 /*-----------------------------------------------------------------------------*/
 
 class ActionAdminHandler{
@@ -155,6 +156,24 @@ class ActionAdminHandler{
         $repatriate = Exile::
             where('user_id', $userToRepatriate)
         ->delete();
+    }
+
+    public static function saveNewText($englishLevel,$points,$englishType,$englishTitle,$englishContent,$portugueseTitle,$portugueseContent,$nameAudio,$nameImage,$loggedUserId){
+        $newText = new Text;
+            $newText->type_english = $englishType;
+            $newText->image = $nameImage;
+            $newText->level = $englishLevel;
+            $newText->levels_points = $points;
+            $newText->english_title = $englishTitle;
+            $newText->english_content = $englishContent;
+            $newText->translated_title = $portugueseTitle;
+            $newText->translated_content = $portugueseContent;
+            $newText->created = time();
+            $newText->created_by_id = $loggedUserId;
+            $newText->last_update = time();
+            $newText->updated_by_id = $loggedUserId;
+            $newText->audio = $nameAudio;
+        $newText->save();
     }
 
 }

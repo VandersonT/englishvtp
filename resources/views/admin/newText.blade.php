@@ -15,6 +15,16 @@
 <!--Content-->
 @section('content')
 
+    <?php if($success): ?>
+    <div class="backgroundDark">
+        <div class="flash">
+            <h1 class="success">Texto criado com sucesso</h1>
+            <p><?=$success;?></p>
+            <button class="close btn">Fechar</button>
+        </div>
+    </div>
+    <?php endif; ?>
+
     <?php if($error): ?>
     <div class="backgroundDark">
         <div class="flash">
@@ -53,10 +63,10 @@
                     Nivel do inglês:
                 </label>
                 <select name="englishLevel">
-                    <option>Básico</option>
-                    <option>Intermediário</option>
-                    <option>Avançado</option>
-                    <option>Super-Avançado</option>
+                    <option value="básico">Básico</option>
+                    <option value="intermediário">Intermediário</option>
+                    <option value="avançado">Avançado</option>
+                    <option value="superavançado">Super-Avançado</option>
                 </select>
 
                 <label for="image" class="subTitle">
@@ -70,9 +80,9 @@
                     Escolha o tipo de inglês:
                 </label>
                 <div class="boxRadios">
-                    <input type="radio" name="englishType"/>
+                    <input type="radio" name="englishType" value="americano"/>
                     <p>Americano</p>
-                    <input type="radio" name="englishType"/>
+                    <input type="radio" name="englishType" value="britanico"/>
                     <p>Britânico</p>
                 </div>
             </div>

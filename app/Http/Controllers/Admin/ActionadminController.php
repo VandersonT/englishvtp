@@ -260,25 +260,28 @@ class ActionadminController extends Controller{
         } 
         /***/
 
-        $englishLevel = filter_input(INPUT_POST, 'englishLevel', FILTER_SANITIZE_SPECIAL_CHARS);
-        $points = filter_input(INPUT_POST, 'points', FILTER_SANITIZE_SPECIAL_CHARS);
-        $englishType = filter_input(INPUT_POST, 'englishType', FILTER_SANITIZE_SPECIAL_CHARS);
-        $englishTitle = filter_input(INPUT_POST, 'englishTitle', FILTER_SANITIZE_SPECIAL_CHARS);
-        $englishContent = filter_input(INPUT_POST, 'englishContent', FILTER_SANITIZE_SPECIAL_CHARS);
-        $portugueseTitle = filter_input(INPUT_POST, 'portugueseTitle', FILTER_SANITIZE_SPECIAL_CHARS);
-        $portugueseContent = filter_input(INPUT_POST, 'portugueseContent', FILTER_SANITIZE_SPECIAL_CHARS);
+        $englishLevel = filter_input(INPUT_POST, 'englishLevel');
+        $points = filter_input(INPUT_POST, 'points');
+        $englishType = filter_input(INPUT_POST, 'englishType');
+        $englishTitle = filter_input(INPUT_POST, 'englishTitle');
+        $englishContent = filter_input(INPUT_POST, 'englishContent');
+        $portugueseTitle = filter_input(INPUT_POST, 'portugueseTitle');
+        $portugueseContent = filter_input(INPUT_POST, 'portugueseContent');
         
         if($englishLevel && $points && $englishType && $englishTitle && $englishContent && $portugueseTitle && $portugueseContent){
             
             /*Save audio to system*/
-            //$nameAudio = md5(time().rand(0,9999)).'.mp3';
-            //move_uploaded_file($_FILES['audio']['tmp_name'], 'media/audio/'.$nameAudio);
+            $nameAudio = md5(time().rand(0,9999)).'.mp3';
+            move_uploaded_file($_FILES['audio']['tmp_name'], 'media/audio/'.$nameAudio);
             /***/
             /*Save image to system*/
-            //$nameImage = md5(time().rand(0,9999)).'.jpg';
-            //move_uploaded_file($_FILES['image']['tmp_name'], 'media/textCover/'.$nameImage);
+            $nameImage = md5(time().rand(0,9999)).'.jpg';
+            move_uploaded_file($_FILES['image']['tmp_name'], 'media/textCover/'.$nameImage);
             /***/
 
+            ActionadminHandler::saveNewText($englishLevel,$points,$englishType,$englishTitle,$englishContent,$portugueseTitle,$portugueseContent,$nameAudio,$nameImage,$this->loggedAdmin->id);
+
+            $_SESSION['success'] = 'O seu texto foi criado com sucesso, você pode edita-lo na página "Editar Textos" que se encontra no menu ao lado.';
             redirect()->route('newText')->send();
             return back();
             exit;

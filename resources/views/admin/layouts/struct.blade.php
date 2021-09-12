@@ -151,7 +151,7 @@
                     <p>Ir para o sistema</p>
                 </a>
 
-                <a class="close" href="<?=$base_url;?>/Painel/sair" onClick="return confirm('Você quer realmente sair?');">
+                <a class="mainClose" href="<?=$base_url;?>/Painel/sair" onClick="return confirm('Você quer realmente sair?');">
                     <i class="fas fa-power-off"></i>
                     <p>Sair</p>
                 </a>

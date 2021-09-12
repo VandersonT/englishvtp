@@ -245,6 +245,12 @@ class AdminController extends Controller
 
     public function newText(){
 
+        $success = '';
+        if(!empty($_SESSION['success'])){
+            $success = $_SESSION['success'];
+            $_SESSION['success'] = '';
+        }
+
         $error = '';
         if(!empty($_SESSION['error'])){
             $error = $_SESSION['error'];
@@ -255,6 +261,7 @@ class AdminController extends Controller
         return view('admin/newText',[
             'user' => $this->loggedAdmin,
             'selected' => 'newText',
+            'success' => $success,
             'error' => $error
         ]);
     }

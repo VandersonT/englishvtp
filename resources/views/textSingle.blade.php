@@ -49,7 +49,7 @@ EnglishVtp - <?=$text['englishTitle'];?>
             </p>
             <p>
                 <b>Publicado:</b>
-                <?=$text['created'];?>
+                <?= date('d/m/Y', $text['created']);?>
             </p>
             <p>
                 <b>By:</b>
