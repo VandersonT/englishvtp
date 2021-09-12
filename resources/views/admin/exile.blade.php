@@ -38,7 +38,11 @@
     </h1>
     <br/><br/>
     <a href="<?=$base_url;?>/Painel/exilar" class="registerNew">
-        <i class="fas fa-tools"></i>
+        <?php if($user['access'] < 4): ?>
+            <i class="fas fa-lock"></i>
+        <?php else: ?>
+            <i class="fas fa-tools"></i>
+        <?php endif; ?>
         Exilar Usuário
     </a>
     <br/><br/>
@@ -99,8 +103,5 @@
 
 <!--Scripts-->
 @section('scripts')
-    <script>
-        let private = '<?=$user['access'];?>3203700';
-    </script>
     <script src="<?=$base_url;?>/assets/js/admin/accessVerification.js"></script>
 @endsection

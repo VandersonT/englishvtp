@@ -85,17 +85,22 @@
                     </a>
                 </div>
 
-                <div class="btnBox">
+                <div class="btnBox onlyAdm">
                     <i class="fas fa-align-left"></i>
                     <p>Textos</p>
-                    <i class="fas fa-caret-left arrow"></i>
+                    <?php if($user['access'] < 4): ?>
+                        <i class="fas fa-lock"></i>
+                    <?php else: ?>
+                        <i class="fas fa-caret-left arrow"></i>
+                    <?php endif; ?>
+
                 </div>
                 <div class="boxBtns">
                     <a href="<?=$base_url;?>/Painel/novoTexto" class="<?= ($selected == 'newText') ? 'selected' : '';?>">
                         <i class="fas fa-circle iconSubMenu"></i>
                         Novo Texto
                     </a>
-                    <a href="">
+                    <a href="<?=$base_url;?>/Painel/editarTextos" class="<?= ($selected == 'editTexts') ? 'selected' : '';?>">
                         <i class="fas fa-circle iconSubMenu"></i>
                         Editar Textos
                     </a>
@@ -162,8 +167,11 @@
         </section>
     </div>
 
-    @yield('scripts')
+    <script>
+        let base_url = '<?=$base_url;?>';
+        let private = '<?=$user["access"];?>3203700';
+    </script>
     <script src="<?=$base_url;?>/assets/js/admin/struct.js"></script>
-    <script>let base_url = '<?=$base_url;?>';</script>
+    @yield('scripts')
 </body>
 </html>

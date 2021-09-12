@@ -245,6 +245,11 @@ class AdminController extends Controller
 
     public function newText(){
 
+        if($this->loggedAdmin->access < 4){
+            redirect()->route('painel')->send();
+            exit;
+        }
+
         $success = '';
         if(!empty($_SESSION['success'])){
             $success = $_SESSION['success'];
@@ -266,6 +271,19 @@ class AdminController extends Controller
         ]);
     }
 
+    public function editTexts(){
+
+        if($this->loggedAdmin->access < 4){
+            redirect()->route('painel')->send();
+            exit;
+        }
+
+        return view('admin/editTexts',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'editTexts'
+        ]);
+    }
+
     public function logout(){
         $_SESSION['tokenAdmin'] = '';
 
@@ -274,5 +292,6 @@ class AdminController extends Controller
         }
 
         redirect()->route('loginAdmin')->send();
+        exit;
     }
 }

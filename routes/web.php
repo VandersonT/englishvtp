@@ -91,6 +91,7 @@ Route::prefix('Painel')->group(function(){
     Route::get('/exilio', [AdminController::class, 'exile']);
     Route::get('/exilar', [AdminController::class, 'addExile']);
     Route::get('/novoTexto', [AdminController::class, 'newText'])->name('newText');
+    Route::get('/editarTextos', [AdminController::class, 'editTexts']);
     Route::get('/reportes/pendentes', [AdminController::class, 'reportsPendents']);
     /*Login*/
     Route::get('/login', [LoginadminController::class, 'login'])->name('loginAdmin');

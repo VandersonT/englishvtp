@@ -159,12 +159,21 @@
         
         <div class="box-btns">
             <a class="btnSingle system <?=($systemInfo['system']) ? 'on' : 'off';?>">
+                <?php if($user['access'] < 4): ?>
+                    <i class="fas fa-lock"></i>
+                <?php endif; ?>
                 Sistema: <?=($systemInfo['system']) ? 'On' : 'Off';?>
             </a>
             <a class="btnSingle reports <?=($systemInfo['reports']) ? 'on' : 'off';?>">
+                <?php if($user['access'] < 3): ?>
+                    <i class="fas fa-lock"></i>
+                <?php endif; ?>
                 Reportes: <?=($systemInfo['reports']) ? 'On' : 'Off';?>
             </a>
             <a class="btnSingle comments <?=($systemInfo['comments']) ? 'on' : 'off';?>">
+                <?php if($user['access'] < 3): ?>
+                    <i class="fas fa-lock"></i>
+                <?php endif; ?>
                 Comentários: <?=($systemInfo['comments']) ? 'On' : 'Off';?>
             </a>
             <a class="btnSingle support <?=($systemInfo['support']) ? 'on' : 'off';?>">
@@ -231,14 +240,12 @@
             /*info how many of each type*/
             let american = '<?=$howManyOfEachType["american"];?>';
             let british = '<?=$howManyOfEachType["british"];?>';
-            let private = '<?=$user['access'];?>3203700';
         </script>
     <?php else: ?>
         <script>
             /*info how many of each type*/
             let american = 'undefined';
             let british = 'undefined';
-            let private = '<?=$user['access'];?>3203700';
         </script>
     <?php endif; ?>
     

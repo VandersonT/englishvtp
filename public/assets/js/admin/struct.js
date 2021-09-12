@@ -1,3 +1,8 @@
+/*Get User Access*/
+private = private.replace("3203700", "");
+parseInt(private);
+/***/
+
 let btnMobile = document.querySelector('.btnMobile');
 let menu = document.querySelector('.box-menu');
 let isOpen = true;
@@ -34,7 +39,14 @@ let boxBtns = document.querySelectorAll('.boxBtns');
 let icon = document.querySelectorAll('.btnBox .arrow');
 
 for(let i = 0; i < btns.length; i++){
+
     btns[i].addEventListener('click', function(){
+
+        if(btns[i].classList.contains('onlyAdm') && private < 4){
+            alert("Somente administradores e donos tem acesso a essa página.");
+            return false;
+        }
+
         if(icon[i].classList.contains('fa-caret-left')){
             /*Close all box-menu*/
             for(let i = 0; i < btns.length; i++){
@@ -68,14 +80,4 @@ for(let i = 0; i < btns.length; i++){
         }
     }
 }
-/*
-let sons = boxBtns[i].querySelectorAll('a');
-
-for(let i = 0; i < sons.length; i++){
-    if(sons[i].classList.contains('selected')){
-        boxBtns[i].style.display = 'block';
-        icon[i].classList.add('fa-sort-down');
-        icon[i].classList.remove('fa-caret-left');
-    }
-}
-*/
+/***/
