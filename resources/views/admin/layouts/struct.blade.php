@@ -89,6 +89,7 @@
                     <i class="fas fa-align-left"></i>
                     <p>Textos</p>
                     <?php if($user['access'] < 4): ?>
+                        <i style="display: none;" class="fas fa-caret-left arrow"></i>    
                         <i class="fas fa-lock"></i>
                     <?php else: ?>
                         <i class="fas fa-caret-left arrow"></i>

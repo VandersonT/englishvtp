@@ -214,5 +214,22 @@ class AdminHandler{
 
         return $users;
      }
+
+     public static function getAllTexts(){
+        $texts = Text::
+            select('image', 'english_title', 'id')
+        ->get();
+
+        return $texts;
+     }
+
+     public static function getWantedText($wantedText){
+        $texts = Text::
+            where('english_title', 'like', '%'.$wantedText.'%')
+            ->select('image', 'english_title', 'id')
+        ->get();
+
+        return $texts;
+     }
     
 }

@@ -278,9 +278,19 @@ class AdminController extends Controller
             exit;
         }
 
+        $wantedText = '';
+        if($_GET){
+            $wantedText = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS);
+            $texts = AdminHandler::getWantedText($wantedText);
+        }else{
+            $texts = AdminHandler::getAllTexts();
+        }
+
         return view('admin/editTexts',[
             'user' => $this->loggedAdmin,
-            'selected' => 'editTexts'
+            'selected' => 'editTexts',
+            'wantedText' => $wantedText,
+            'texts' => $texts
         ]);
     }
 
