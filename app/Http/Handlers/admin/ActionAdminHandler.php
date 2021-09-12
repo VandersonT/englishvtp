@@ -159,6 +159,7 @@ class ActionAdminHandler{
     }
 
     public static function saveNewText($englishLevel,$points,$englishType,$englishTitle,$englishContent,$portugueseTitle,$portugueseContent,$nameAudio,$nameImage,$loggedUserId){
+        
         $newText = new Text;
             $newText->type_english = $englishType;
             $newText->image = $nameImage;

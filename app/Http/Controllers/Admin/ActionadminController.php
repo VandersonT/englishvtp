@@ -219,6 +219,7 @@ class ActionadminController extends Controller{
     }
 
     public function sendNewText(){
+
         $allowed = ['image/jpeg', 'image/jpg', 'image/png'];
         $allowedAudio = ['audio/mpeg', 'audio/mp3', 'audio/wav'];
 
