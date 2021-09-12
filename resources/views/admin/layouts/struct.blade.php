@@ -85,13 +85,13 @@
                     </a>
                 </div>
 
-                <div class="btnBox <?= ($selected == 'texts') ? 'selected' : '';?>">
+                <div class="btnBox">
                     <i class="fas fa-align-left"></i>
                     <p>Textos</p>
                     <i class="fas fa-caret-left arrow"></i>
                 </div>
                 <div class="boxBtns">
-                    <a href="">
+                    <a href="<?=$base_url;?>/Painel/novoTexto" class="<?= ($selected == 'newText') ? 'selected' : '';?>">
                         <i class="fas fa-circle iconSubMenu"></i>
                         Novo Texto
                     </a>

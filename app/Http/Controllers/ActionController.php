@@ -160,7 +160,7 @@ class ActionController extends Controller
                 //if type is not allowed
                 if(!in_array($_FILES['photo']['type'], $allowed)){
                     $_SESSION['error'] = 'Envie somente fotos jpeg, jpg ou png';
-                    //echo '<script>window.history.back();</script>';
+                    return back();
                     exit;
                 } 
 

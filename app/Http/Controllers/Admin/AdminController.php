@@ -243,6 +243,22 @@ class AdminController extends Controller
         ]);
     }
 
+    public function newText(){
+
+        $error = '';
+        if(!empty($_SESSION['error'])){
+            $error = $_SESSION['error'];
+            $_SESSION['error'] = '';
+        }
+
+
+        return view('admin/newText',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'newText',
+            'error' => $error
+        ]);
+    }
+
     public function logout(){
         $_SESSION['tokenAdmin'] = '';
 

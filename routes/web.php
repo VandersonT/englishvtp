@@ -90,6 +90,7 @@ Route::prefix('Painel')->group(function(){
     Route::get('/banir', [AdminController::class, 'addBan']);
     Route::get('/exilio', [AdminController::class, 'exile']);
     Route::get('/exilar', [AdminController::class, 'addExile']);
+    Route::get('/novoTexto', [AdminController::class, 'newText'])->name('newText');
     Route::get('/reportes/pendentes', [AdminController::class, 'reportsPendents']);
     /*Login*/
     Route::get('/login', [LoginadminController::class, 'login'])->name('loginAdmin');
@@ -102,6 +103,7 @@ Route::prefix('Painel')->group(function(){
     Route::post('/banir', [ActionadminController::class, 'banAction']);
     Route::post('/exilar', [ActionadminController::class, 'exileAction']);
     Route::get('/removeExilio/{id}', [ActionadminController::class, 'deleteExile']);
+    Route::post('/enviaNovoTexto', [ActionadminController::class, 'sendNewText']);
     /****/
 });
 /*-----------------------------------------------------------------------------------*/

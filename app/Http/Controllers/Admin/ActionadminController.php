@@ -115,6 +115,12 @@ class ActionadminController extends Controller{
                 exit; 
             }
 
+            if($time < 0 && $formTime != 'Eterno'){
+                $_SESSION['error'] = "Não use números negativos para definir o tempo do banimento.";
+                return back();
+                exit; 
+            }
+
             $alreadyBan = HomeHandler::checkBan($idToBan);
             if($alreadyBan){
                 $timeEnd = ($alreadyBan['time'] == 'eterno') ? 'O banimento foi definido como eterno' : 'O fim do banimento é '.date('d/m/Y H:i', $alreadyBan['time']);
@@ -156,6 +162,12 @@ class ActionadminController extends Controller{
 
             if(!$time && $formTime != 'Eterno'){
                 $_SESSION['error'] = "Ocorreu um erro inesperado durante o exilio.";
+                return back();
+                exit; 
+            }
+
+            if($time < 0 && $formTime != 'Eterno'){
+                $_SESSION['error'] = "Não use números negativos para definir o tempo do exilio.";
                 return back();
                 exit; 
             }
@@ -204,6 +216,78 @@ class ActionadminController extends Controller{
         $_SESSION['flash'] = 'Você repatriou com sucesso o usuário de id '.$request->id;
         return back();
         exit;
+    }
+
+    public function sendNewText(){
+        $allowed = ['image/jpeg', 'image/jpg', 'image/png'];
+        $allowedAudio = ['audio/mpeg', 'audio/mp3', 'audio/wav'];
+
+        /*Audio verify*/
+        if(empty($_FILES['audio']['name'])){
+            $_SESSION['error'] = 'Você deve enviar um aúdio para o texto.';
+            return back();
+            exit;
+        }
+        if($_FILES['audio']['size'] > 10000000){
+            $_SESSION['error'] = 'O aúdio enviado é muito grande. (maximo 5MB)';
+            return back();
+            exit;
+        }
+        if(!in_array($_FILES['audio']['type'], $allowedAudio)){
+            $_SESSION['error'] = 'Envie somente aúdios mp3 ou wav';
+            return back();
+            exit;
+        } 
+        /***/
+
+        /*Image verify*/
+        if(empty($_FILES['image']['name'])){
+            $_SESSION['error'] = 'Você deve enviar uma foto para o texto.';
+            return back();
+            exit;
+        }
+
+        if($_FILES['image']['size'] > 2000000){
+            $_SESSION['error'] = 'A foto enviada é muito grande. (maximo 2MB)';
+            return back();
+            exit;
+        }
+
+        if(!in_array($_FILES['image']['type'], $allowed)){
+            $_SESSION['error'] = 'Envie somente imagens jpeg, jpg ou png';
+            return back();
+            exit;
+        } 
+        /***/
+
+        $englishLevel = filter_input(INPUT_POST, 'englishLevel', FILTER_SANITIZE_SPECIAL_CHARS);
+        $points = filter_input(INPUT_POST, 'points', FILTER_SANITIZE_SPECIAL_CHARS);
+        $englishType = filter_input(INPUT_POST, 'englishType', FILTER_SANITIZE_SPECIAL_CHARS);
+        $englishTitle = filter_input(INPUT_POST, 'englishTitle', FILTER_SANITIZE_SPECIAL_CHARS);
+        $englishContent = filter_input(INPUT_POST, 'englishContent', FILTER_SANITIZE_SPECIAL_CHARS);
+        $portugueseTitle = filter_input(INPUT_POST, 'portugueseTitle', FILTER_SANITIZE_SPECIAL_CHARS);
+        $portugueseContent = filter_input(INPUT_POST, 'portugueseContent', FILTER_SANITIZE_SPECIAL_CHARS);
+        
+        if($englishLevel && $points && $englishType && $englishTitle && $englishContent && $portugueseTitle && $portugueseContent){
+            
+            /*Save audio to system*/
+            //$nameAudio = md5(time().rand(0,9999)).'.mp3';
+            //move_uploaded_file($_FILES['audio']['tmp_name'], 'media/audio/'.$nameAudio);
+            /***/
+            /*Save image to system*/
+            //$nameImage = md5(time().rand(0,9999)).'.jpg';
+            //move_uploaded_file($_FILES['image']['tmp_name'], 'media/textCover/'.$nameImage);
+            /***/
+
+            redirect()->route('newText')->send();
+            return back();
+            exit;
+        }else{
+            $_SESSION['error'] = 'Não envie campos vazios, para ser criado um novo texto é necessario enviar todas as informações.';
+            return back();
+            exit;
+        }
+
     }
 
 }
