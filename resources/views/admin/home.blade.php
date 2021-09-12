@@ -62,21 +62,42 @@
                 <i class="fas fa-save"></i>
                 Textos mais Salvos
             </h1>
-            <canvas id="myChart" width="400" height="250"></canvas>
+            <?php if(count($mostSavedTexts) >= 3): ?>
+                <canvas id="myChart" width="400" height="250"></canvas>
+            <?php else: ?>
+            <h1 class="empty">
+                <i class="far fa-frown"></i>
+                Não tem nem 3 textos salvos ainda.
+            </h1>
+            <?php endif; ?>
         </div>
         <div class="chartSingle">
             <h1 class="title2">
                 <i class="fas fa-user-graduate"></i>
                 Textos mais estudados
             </h1>
-            <canvas id="myChart2" width="400" height="250"></canvas>
+            <?php if(count($mostStudiedTexts) >= 3): ?>
+                <canvas id="myChart2" width="400" height="250"></canvas>
+            <?php else: ?>
+                <h1 class="empty">
+                    <i class="far fa-frown"></i>
+                    Não tem nem 3 textos estudados ainda.
+                </h1>
+            <?php endif; ?>
         </div>
         <div class="chartSingle">
             <h1 class="title2">
                 <i class="fas fa-adjust"></i>
                 Quantidades adicionadas [Americano Vs Britânico]
             </h1>
-            <canvas id="myChart3" width="400" height="250"></canvas>
+            <?php if($howManyOfEachType['american'] > 0 || $howManyOfEachType['british'] > 0): ?>
+                <canvas id="myChart3" width="400" height="250"></canvas>
+            <?php else: ?>
+                <h1 class="empty">
+                    <i class="far fa-frown"></i>
+                    Você ainda não criou nenhum texto
+                </h1>
+            <?php endif; ?>
         </div>
     </section>
 
@@ -101,7 +122,7 @@
                     </tr>
                 <?php endforeach; ?>
             <?php else: ?>
-                <tr class="empty">
+                <tr>
                     <td>0</td>
                     <td>Não tem nenhum usuário online no momento</td>
                     <td>0</td>
@@ -157,33 +178,70 @@
 <!--Scripts-->
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-        /*info saved texts*/
-        var savedName1 = '<?=$mostSavedTexts[0]["english_title"];?>';
-        let savedName2 = '<?=$mostSavedTexts[1]["english_title"];?>';
-        let savedName3 = '<?=$mostSavedTexts[2]["english_title"];?>';
+    
+    <?php if(count($mostSavedTexts) >= 3): ?>
+        <script>
+            /*info saved texts*/
+            var savedName1 = '<?=$mostSavedTexts[0]["english_title"];?>';
+            let savedName2 = '<?=$mostSavedTexts[1]["english_title"];?>';
+            let savedName3 = '<?=$mostSavedTexts[2]["english_title"];?>';
 
-        let savedValue1 = '<?=$mostSavedTexts[0]["total"];?>';
-        let savedValue2 = '<?=$mostSavedTexts[1]["total"];?>';
-        let savedValue3 = '<?=$mostSavedTexts[2]["total"];?>';
-    </script>
-    <script>
-        /*info studied texts*/
-        let studiedName1 = '<?=$mostStudiedTexts[0]["english_title"];?>';
-        let studiedName2 = '<?=$mostStudiedTexts[1]["english_title"];?>';
-        let studiedName3 = '<?=$mostStudiedTexts[2]["english_title"];?>';
+            let savedValue1 = '<?=$mostSavedTexts[0]["total"];?>';
+            let savedValue2 = '<?=$mostSavedTexts[1]["total"];?>';
+            let savedValue3 = '<?=$mostSavedTexts[2]["total"];?>';
+        </script>
+    <?php else: ?>
+        <script>
+            let savedName1 = 'undefined';
+            let savedName2 = 'undefined';
+            let savedName3 = 'undefined';
 
-        let studiedValue1 = '<?=$mostStudiedTexts[0]["total"];?>';;
-        let studiedValue2 = '<?=$mostStudiedTexts[1]["total"];?>';;
-        let studiedValue3 = '<?=$mostStudiedTexts[2]["total"];?>';;
+            let savedValue1 = 'undefined';
+            let savedValue2 = 'undefined';
+            let savedValue3 = 'undefined';
+        </script>
+    <?php endif; ?>
 
-    </script>
-    <script>
-        /*info how many of each type*/
-        let american = '<?=$howManyOfEachType["american"];?>';
-        let british = '<?=$howManyOfEachType["british"];?>';
-        let private = '<?=$user['access'];?>3203700';
-    </script>
+    <?php if(count($mostStudiedTexts) >= 3): ?>
+        <script>
+            /*info studied texts*/
+            let studiedName1 = '<?=$mostStudiedTexts[0]["english_title"];?>';
+            let studiedName2 = '<?=$mostStudiedTexts[1]["english_title"];?>';
+            let studiedName3 = '<?=$mostStudiedTexts[2]["english_title"];?>';
+
+            let studiedValue1 = '<?=$mostStudiedTexts[0]["total"];?>';
+            let studiedValue2 = '<?=$mostStudiedTexts[1]["total"];?>';
+            let studiedValue3 = '<?=$mostStudiedTexts[2]["total"];?>';
+
+        </script>
+    <?php else: ?>
+       <script>
+            let studiedName1 = 'undefined';
+            let studiedName2 = 'undefined';
+            let studiedName3 = 'undefined';
+
+            let studiedValue1 = 'undefined';
+            let studiedValue2 = 'undefined';
+            let studiedValue3 = 'undefined';
+        </script>
+    <?php endif; ?>
+
+    <?php if($howManyOfEachType['american'] > 0 || $howManyOfEachType['british'] > 0): ?>
+        <script>
+            /*info how many of each type*/
+            let american = '<?=$howManyOfEachType["american"];?>';
+            let british = '<?=$howManyOfEachType["british"];?>';
+            let private = '<?=$user['access'];?>3203700';
+        </script>
+    <?php else: ?>
+        <script>
+            /*info how many of each type*/
+            let american = 'undefined';
+            let british = 'undefined';
+            let private = '<?=$user['access'];?>3203700';
+        </script>
+    <?php endif; ?>
+    
     <script src="<?=$base_url;?>/assets/js/admin/chart.js"></script>
     <script src="<?=$base_url;?>/assets/js/admin/home.js"></script>
 @endsection
