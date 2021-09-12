@@ -215,6 +215,27 @@ class AdminController extends Controller
         ]);
     }
 
+    public function addExile(){
+        $success = '';
+        if(!empty($_SESSION['success'])){
+            $success = $_SESSION['success'];
+            $_SESSION['success'] = '';
+        }
+
+        $error = '';
+        if(!empty($_SESSION['error'])){
+            $error = $_SESSION['error'];
+            $_SESSION['error'] = '';
+        }
+
+        return view('admin/newExile',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'exile',
+            'success' => $success,
+            'error' => $error
+        ]);
+    }
+
     public function logout(){
         $_SESSION['tokenAdmin'] = '';
 

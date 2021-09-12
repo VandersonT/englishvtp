@@ -21,6 +21,7 @@ use App\Models\Daily_access;
 use App\Models\User_on;
 use App\Models\System;
 use App\Models\Banned;
+use App\Models\Exile;
 /*-----------------------------------------------------------------------------*/
 
 class HomeHandler{
@@ -39,6 +40,28 @@ class HomeHandler{
 
         if($data['time'] < time() && $data['time'] != 'eterno'){
             $removeBan = Banned::
+                where('user_id', $loggedUserId)
+            ->delete();
+            return false;
+        }
+
+        return $data;
+    }
+
+    public static function checkExile($loggedUserId){
+
+        $data = Exile::
+            where('user_id', $loggedUserId)
+            ->join('users', 'users.id', '=', 'exile.responsible')
+            ->select('exile.*', 'users.user_name')
+        ->first();
+
+        if(empty($data)){
+            return false;
+        }
+
+        if($data['time'] < time() && $data['time'] != "eterno"){
+            $removeExile = Exile::
                 where('user_id', $loggedUserId)
             ->delete();
             return false;

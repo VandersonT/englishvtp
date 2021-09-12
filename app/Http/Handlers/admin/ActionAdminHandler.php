@@ -6,6 +6,7 @@ namespace App\Http\Handlers\admin;
 use App\Models\User;
 use App\Models\System;
 use App\Models\Banned;
+use App\Models\Exile;
 /*-----------------------------------------------------------------------------*/
 
 class ActionAdminHandler{
@@ -96,6 +97,8 @@ class ActionAdminHandler{
             $time = strtotime("+".$time." month");
         }else if($formTime == 'Ano' || $formTime == 'Anos'){
             $time = strtotime("+".$time." year");
+        }else if($formTime == 'Eterno'){
+            $time = 'eterno';
         }else{
             return false;
         }
@@ -114,6 +117,38 @@ class ActionAdminHandler{
         $unBan = Banned::
             where('user_id', $userToUnBan)
         ->delete();
+    }
+
+    public static function exileAction($idToExile, $reason, $formTime, $time, $idResponsible){
+
+        $userToBan = User::where('id', $idToExile)->first();
+
+        if(!$userToBan){
+            return false;
+        }
+
+        if($formTime == 'Hora' || $formTime == 'Horas'){
+            $time = strtotime("+".$time." hours");
+        }else if($formTime == 'Dia' || $formTime == 'Dias'){
+            $time = strtotime("+".$time." day");
+        }else if($formTime == 'Mês' || $formTime == 'Meses'){
+            $time = strtotime("+".$time." month");
+        }else if($formTime == 'Ano' || $formTime == 'Anos'){
+            $time = strtotime("+".$time." year");
+        }else if($formTime == 'Eterno'){
+            $time = 'eterno';
+        }else{
+            return false;
+        }
+
+        $exile = new Exile;
+            $exile->user_id = $idToExile;
+            $exile->responsible = $idResponsible;
+            $exile->time = $time;
+            $exile->reason = $reason;
+        $exile->save();
+
+        return true;
     }
 
 }

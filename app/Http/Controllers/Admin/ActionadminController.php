@@ -139,4 +139,49 @@ class ActionadminController extends Controller{
         exit;
     }
 
+    public function exileAction(){
+        $idToExile = filter_input(INPUT_POST, 'idToExile', FILTER_SANITIZE_SPECIAL_CHARS);
+        $reason = filter_input(INPUT_POST, 'reason', FILTER_SANITIZE_SPECIAL_CHARS);
+        $formTime = filter_input(INPUT_POST, 'formTime', FILTER_SANITIZE_SPECIAL_CHARS);
+        $time = filter_input(INPUT_POST, 'time', FILTER_SANITIZE_SPECIAL_CHARS);
+
+        if($idToExile && $reason && $formTime){
+
+            if(!$time && $formTime != 'Eterno'){
+                $_SESSION['error'] = "Ocorreu um erro inesperado durante o exilio.";
+                return back();
+                exit; 
+            }
+
+            $alreadyExiled = HomeHandler::checkExile($idToExile);
+            if($alreadyExiled){
+                $timeEnd = ($alreadyExiled['time'] == 'eterno') ? 'O exilio foi definido como eterno' : 'O fim do exilio é '.date('d/m/Y H:i', $alreadyExiled['time']);
+                $_SESSION['error'] = "Este usuário já foi exilado por ".$alreadyExiled['user_name'].". <br/>".$timeEnd.". <br/>Se quiser atualizar basta repatriar o usuário e tornar a banir.";
+                return back();
+                exit;
+            }
+
+            $userToBanAccess = ActionadminHandler::getUserAccess($idToExile);
+            if($userToBanAccess > 1){
+                $_SESSION['error'] = "Este usuário pertence a staff, para exila-lo você deve retirar o cargo dele.";
+                return back();
+                exit;
+            }
+
+            $success = ActionadminHandler::exileAction($idToExile, $reason,$formTime, $time, $this->loggedAdmin->id);
+
+            if($success){
+                $_SESSION['success'] = 'O usuário de id '.$idToExile.' foi exilado com sucesso.';
+            }else{
+                $_SESSION['error'] = 'Desculpe, mas não encontramos o usuário informado.';
+            }
+
+        }else{
+            $_SESSION['error'] = 'Desculpe, mas você deve informar todos os campos para que o exilio seja valido.';
+        }
+
+        return back();
+        exit;
+    }
+
 }
