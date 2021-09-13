@@ -11,6 +11,7 @@ use App\Models\Text;
 use App\Models\Saved_text;
 use App\Models\Studied_text;
 use App\Models\Report;
+use App\Models\Support;
 /*-----------------------------------------------------------------------------*/
 
 class ActionAdminHandler{
@@ -227,6 +228,12 @@ class ActionAdminHandler{
         $updateReportStatus = Report::find($reportId);
             $updateReportStatus->status = $newStatus;
         $updateReportStatus->save();
+    }
+
+    public static function updateSupport($supportId, $newStatus){
+        $updateSupportStatus = Support::find($supportId);
+            $updateSupportStatus->status = $newStatus;
+        $updateSupportStatus->save();
     }
 
 }

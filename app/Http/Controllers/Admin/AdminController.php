@@ -409,6 +409,18 @@ class AdminController extends Controller
 
     public function supportOpen(Request $request){
 
+        $success = '';
+        if(!empty($_SESSION['success'])){
+            $success = $_SESSION['success'];
+            $_SESSION['success'] = '';
+        }
+
+        $error = '';
+        if(!empty($_SESSION['error'])){
+            $error = $_SESSION['error'];
+            $_SESSION['error'] = '';
+        }
+
         $support = AdminHandler::getSupport($request->id);
         $supportReplys = AdminHandler::getSupportReplys($request->id);
 
@@ -426,7 +438,9 @@ class AdminController extends Controller
             'user' => $this->loggedAdmin,
             'selected' => $selected,
             'support' => $support,
-            'supportReplys' => $supportReplys
+            'supportReplys' => $supportReplys,
+            'success' => $success,
+            'error' => $error
         ]);
     }
 

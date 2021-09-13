@@ -16,20 +16,20 @@
 
     <?php if($support['status'] == 'pendente'): ?>
         <div class="bar">
-            <a class="ignored" href="#">Ignorado</i></a>
-            <a class="resolved" href="#">Resolvido</i></a>
+            <a class="ignored" href="<?=$base_url;?>/Painel/mudarStatusSuporte/ignorado/<?=$support['id'];?>">Ignorado</i></a>
+            <a class="resolved" href="<?=$base_url;?>/Painel/mudarStatusSuporte/resolvido/<?=$support['id'];?>">Resolvido</i></a>
         </div>
     <?php endif; ?>
     <?php if($support['status'] == 'resolvido'): ?>
         <div class="bar">
-            <a class="pending" href="#">Pendente</i></a>
-            <a class="ignored" href="#">Ignorar</i></a>
+            <a class="pending" href="<?=$base_url;?>/Painel/mudarStatusSuporte/pendente/<?=$support['id'];?>">Pendente</i></a>
+            <a class="ignored" href="<?=$base_url;?>/Painel/mudarStatusSuporte/ignorado/<?=$support['id'];?>">Ignorar</i></a>
         </div>
     <?php endif; ?>
     <?php if($support['status'] == 'ignorado'): ?>
         <div class="bar">
-            <a class="pending" href="#">Pendente</i></a>
-            <a class="resolved" href="#">Resolvido</i></a>
+            <a class="pending" href="<?=$base_url;?>/Painel/mudarStatusSuporte/pendente/<?=$support['id'];?>">Pendente</i></a>
+            <a class="resolved" href="<?=$base_url;?>/Painel/mudarStatusSuporte/resolvido/<?=$support['id'];?>">Resolvido</i></a>
         </div>
     <?php endif; ?>
 

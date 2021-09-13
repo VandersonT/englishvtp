@@ -401,5 +401,13 @@ class ActionadminController extends Controller{
         redirect()->route($request->newStatus)->send();
         exit;
     }
+    
+    public function changeSupportStatus(Request $request){
+        
+        ActionadminHandler::updateSupport($request->id, $request->newStatus);
+        
+        redirect()->route('S'.$request->newStatus)->send();
+        exit;
+    }
 
 }
