@@ -278,6 +278,18 @@ class AdminController extends Controller
             exit;
         }
 
+        $success = '';
+        if(!empty($_SESSION['success'])){
+            $success = $_SESSION['success'];
+            $_SESSION['success'] = '';
+        }
+
+        $error = '';
+        if(!empty($_SESSION['error'])){
+            $error = $_SESSION['error'];
+            $_SESSION['error'] = '';
+        }
+
         $wantedText = '';
         if($_GET){
             $wantedText = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -290,7 +302,38 @@ class AdminController extends Controller
             'user' => $this->loggedAdmin,
             'selected' => 'editTexts',
             'wantedText' => $wantedText,
-            'texts' => $texts
+            'texts' => $texts,
+            'success' => $success,
+            'error' => $error
+        ]);
+    }
+
+    public function editTextSingle(Request $request){
+        if($this->loggedAdmin->access < 4){
+            redirect()->route('painel')->send();
+            exit;
+        }
+
+        $success = '';
+        if(!empty($_SESSION['success'])){
+            $success = $_SESSION['success'];
+            $_SESSION['success'] = '';
+        }
+
+        $error = '';
+        if(!empty($_SESSION['error'])){
+            $error = $_SESSION['error'];
+            $_SESSION['error'] = '';
+        }
+
+        $text = AdminHandler::getText($request->id);
+        
+        return view('admin/editText',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'editTexts',
+            'text' => $text,
+            'success' => $success,
+            'error' => $error
         ]);
     }
 

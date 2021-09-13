@@ -177,4 +177,39 @@ class ActionAdminHandler{
         $newText->save();
     }
 
+    public static function deleteText($textId){
+        $repatriate = Text::
+            where('id', $textId)
+        ->delete();
+    }
+
+    public static function editText($englishLevel,$points,$englishType,$englishTitle,$englishContent,$portugueseTitle,$portugueseContent,$nameAudio,$nameImage,$loggedUserId,$audioUpdated,$imageUpdated,$textToUpdate){
+        $editText = Text::find($textToUpdate);
+            $editText->type_english = $englishType;
+            $editText->level = $englishLevel;
+            $editText->levels_points = $points;
+            $editText->english_title = $englishTitle;
+            $editText->english_content = $englishContent;
+            $editText->translated_title = $portugueseTitle;
+            $editText->translated_content = $portugueseContent;
+            $editText->created = time();
+            $editText->created_by_id = $loggedUserId;
+            $editText->last_update = time();
+            $editText->updated_by_id = $loggedUserId;
+        $editText->save();
+
+        if($audioUpdated){
+            $editAudio = Text::find($textToUpdate);
+                $editAudio->audio = $nameAudio;
+            $editAudio->save();
+        }
+
+        if($imageUpdated){
+            $editImage = Text::find($textToUpdate);
+                $editImage->image = $nameImage;
+            $editImage->save();
+        }
+        
+    }
+
 }

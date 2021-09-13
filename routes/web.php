@@ -91,7 +91,8 @@ Route::prefix('Painel')->group(function(){
     Route::get('/exilio', [AdminController::class, 'exile']);
     Route::get('/exilar', [AdminController::class, 'addExile']);
     Route::get('/novoTexto', [AdminController::class, 'newText'])->name('newText');
-    Route::get('/editarTextos', [AdminController::class, 'editTexts']);
+    Route::get('/editarTextos', [AdminController::class, 'editTexts'])->name('editTexts');
+    Route::get('/editarTexto/{id}', [AdminController::class, 'editTextSingle']);
     Route::get('/reportes/pendentes', [AdminController::class, 'reportsPendents']);
     /*Login*/
     Route::get('/login', [LoginadminController::class, 'login'])->name('loginAdmin');
@@ -105,6 +106,8 @@ Route::prefix('Painel')->group(function(){
     Route::post('/exilar', [ActionadminController::class, 'exileAction']);
     Route::get('/removeExilio/{id}', [ActionadminController::class, 'deleteExile']);
     Route::post('/enviaNovoTexto', [ActionadminController::class, 'sendNewText']);
+    Route::post('/editarTextoAcao', [ActionadminController::class, 'editTextAction']);
+    Route::get('/removeTexto/{id}', [ActionadminController::class, 'deleteText']);
     /****/
 });
 /*-----------------------------------------------------------------------------------*/

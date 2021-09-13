@@ -231,5 +231,13 @@ class AdminHandler{
 
         return $texts;
      }
+
+     public static function getText($TextId){
+        $texts = Text::
+            where('id', $TextId)
+        ->first();
+
+        return $texts;
+     }
     
 }

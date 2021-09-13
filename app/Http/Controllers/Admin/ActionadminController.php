@@ -299,4 +299,99 @@ class ActionadminController extends Controller{
 
     }
 
+    public function deleteText(Request $request){
+        if($this->loggedAdmin->access < 4){
+            redirect()->route('painel')->send();
+            exit;
+        }
+
+        ActionadminHandler::deleteText($request->id);
+        $_SESSION['success'] = 'O texto de id '.$request->id.' foi deletado com sucesso. Não é mais possivel desfazer essa ação.';
+        return back();
+        exit;
+    }
+
+    public function editTextAction(Request $request){
+        if($this->loggedAdmin->access < 4){
+            redirect()->route('painel')->send();
+            exit;
+        }
+
+        $allowed = ['image/jpeg', 'image/jpg', 'image/png'];
+        $allowedAudio = ['audio/mpeg', 'audio/mp3', 'audio/wav'];
+        $audioUpdated = false;
+        $imageUpdated = false;
+
+        /*Audio verify*/
+        if(!empty($_FILES['audio']['name'])){
+            if($_FILES['audio']['size'] > 10000000){
+                $_SESSION['error'] = 'O aúdio enviado é muito grande. (maximo 5MB)';
+                return back();
+                exit;
+            }
+            if(!in_array($_FILES['audio']['type'], $allowedAudio)){
+                $_SESSION['error'] = 'Envie somente aúdios mp3 ou wav';
+                return back();
+                exit;
+            } 
+            $audioUpdated = true;
+        }
+        /***/
+
+        /*Image verify*/
+        if(!empty($_FILES['image']['name'])){
+            if($_FILES['image']['size'] > 2000000){
+                $_SESSION['error'] = 'A foto enviada é muito grande. (maximo 2MB)';
+                return back();
+                exit;
+            }
+
+            if(!in_array($_FILES['image']['type'], $allowed)){
+                $_SESSION['error'] = 'Envie somente imagens jpeg, jpg ou png';
+                return back();
+                exit;
+            }
+            $imageUpdated = true;
+        }
+        /***/
+
+        $englishLevel = filter_input(INPUT_POST, 'englishLevel');
+        $points = filter_input(INPUT_POST, 'points');
+        $englishType = filter_input(INPUT_POST, 'englishType');
+        $englishTitle = filter_input(INPUT_POST, 'englishTitle');
+        $englishContent = filter_input(INPUT_POST, 'englishContent');
+        $portugueseTitle = filter_input(INPUT_POST, 'portugueseTitle');
+        $portugueseContent = filter_input(INPUT_POST, 'portugueseContent');
+        $textToUpdate = filter_input(INPUT_POST, 'textToUpdate'); 
+        
+        if($englishLevel && $points && $englishType && $englishTitle && $englishContent && $portugueseTitle && $portugueseContent){
+            
+            /*Save audio to system*/
+            $nameAudio = '';
+            if($audioUpdated){
+                $nameAudio = md5(time().rand(0,9999)).'.mp3';
+                move_uploaded_file($_FILES['audio']['tmp_name'], 'media/audio/'.$nameAudio);
+            }
+            /***/
+
+            /*Save image to system*/
+            $nameImage = '';
+            if($imageUpdated){
+                $nameImage = md5(time().rand(0,9999)).'.jpg';
+                move_uploaded_file($_FILES['image']['tmp_name'], 'media/textCover/'.$nameImage);
+            }
+            /***/
+
+            ActionadminHandler::editText($englishLevel,$points,$englishType,$englishTitle,$englishContent,$portugueseTitle,$portugueseContent,$nameAudio,$nameImage,$this->loggedAdmin->id,$audioUpdated,$imageUpdated,$textToUpdate);
+
+            $_SESSION['success'] = 'O seu texto foi editado com sucesso.';
+            redirect()->route('editTexts')->send();
+            exit;
+        }else{
+            $_SESSION['error'] = 'Não envie campos vazios, para ser editado o texto é necessario enviar todas as informações.';
+            return back();
+            exit;
+        }
+    }
+
 }
