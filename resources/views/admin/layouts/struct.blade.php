@@ -61,6 +61,11 @@
                     <p>Páginas</p>
                 </a>
 
+                <a target="_blank" class="<?= ($selected == 'usersNotification') ? 'selected' : '';?>" href="<?=$base_url;?>/">
+                    <i class="fas fa-bell"></i>
+                    <p>Notificar usuários</p>
+                </a>
+
                 <div class="btnBox">
                     <i class="fas fa-user"></i>
                     <p>Usuários</p>

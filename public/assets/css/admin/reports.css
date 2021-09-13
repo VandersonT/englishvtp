@@ -139,12 +139,9 @@ td a:hover{
     color: rgb(240, 240, 240);
 }
 
-.delete{
-    background-color: rgb(202, 7, 0)!important;
-}
-
-.delete:hover{
-    background-color: rgb(190, 6, 0)!important;
+.seeReports i{
+    font-size: 14px;
+    margin-right: 5px;
 }
 
 @media screen and (max-width: 700px){

@@ -84,7 +84,7 @@ body{
     cursor: pointer;
 }
 
-.menu a:hover:not(.close){
+.menu a:hover:not(.mainClose){
     background-color: #1a1a1a;
 }
 

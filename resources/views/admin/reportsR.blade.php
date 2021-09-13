@@ -52,7 +52,12 @@
                         <?=$report['status'];?>
                     </td>
                     <td>
-                        <a class="btn">Abrir</a>
+                        <a href="<?=$base_url;?>/Painel/reporte/<?=$report['type'];?>/<?=$report['id'];?>" class="btn seeReports">
+                            <?php if($user['access'] < 3): ?>
+                                <i class="fas fa-lock"></i>
+                            <?php endif; ?>
+                            Abrir
+                        </a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -69,5 +74,5 @@
 
 <!--Scripts-->
 @section('scripts')
-
+    <script src="<?=$base_url;?>/assets/js/admin/reports.js"></script>
 @endsection

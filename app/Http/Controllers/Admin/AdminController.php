@@ -363,6 +363,17 @@ class AdminController extends Controller
         ]);
     }
 
+    public function reportOpen(Request $request){
+
+        $report = AdminHandler::getReport($request->id, $request->type);
+
+        return view('admin/reportOpen',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'none',
+            'report' => $report
+        ]);
+    }
+
     public function logout(){
         $_SESSION['tokenAdmin'] = '';
 

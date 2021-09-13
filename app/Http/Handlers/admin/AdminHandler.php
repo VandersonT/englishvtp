@@ -13,6 +13,8 @@ use App\Models\System;
 use App\Models\Banned;
 use App\Models\Exile;
 use App\Models\Report;
+use App\Models\Comment;
+use App\Models\Subcomment;
 /*-----------------------------------------------------------------------------*/
 
 class AdminHandler{
@@ -249,6 +251,32 @@ class AdminHandler{
         ->get();
 
         return $reports;
+    }
+
+    public static function getReport($idReport, $type){
+        
+        if($type == 'comment'){
+            $report = Report::
+                join('comments', 'comments.id', '=', 'reports.comment_id')
+                ->where('reports.id', $idReport)
+                ->select('reports.id','reports.type', 'reports.status', 'comments.comment', 'comments.user_id', 'comments.last_update')
+            ->first();
+        }else{
+            $report = Report::
+                join('subcomments', 'subcomments.id', '=', 'reports.comment_id')
+                ->where('reports.id', $idReport)
+                ->select('reports.id','reports.type', 'reports.status', 'subcomments.comment', 'subcomments.user_id', 'subcomments.last_update')
+            ->first();
+        }
+
+        $data = User::
+            where('id', '=', $report['user_id'])
+        ->first();
+        $report['reported_id'] = $data['id'];
+        $report['reported_name'] = $data['user_name'];
+        $report['reported_photo'] = $data['photo'];
+
+        return $report;
     }
 
 }
