@@ -93,9 +93,9 @@ Route::prefix('Painel')->group(function(){
     Route::get('/novoTexto', [AdminController::class, 'newText'])->name('newText');
     Route::get('/editarTextos', [AdminController::class, 'editTexts'])->name('editTexts');
     Route::get('/editarTexto/{id}', [AdminController::class, 'editTextSingle']);
-    Route::get('/reportes/pendentes', [AdminController::class, 'reportsPendents']);
-    Route::get('/reportes/resolvidos', [AdminController::class, 'reportsResolved']);
-    Route::get('/reportes/ignorados', [AdminController::class, 'reportsIgnored']);
+    Route::get('/reportes/pendentes', [AdminController::class, 'reportsPendents'])->name('pendente');
+    Route::get('/reportes/resolvidos', [AdminController::class, 'reportsResolved'])->name('resolvido');
+    Route::get('/reportes/ignorados', [AdminController::class, 'reportsIgnored'])->name('ignorado');
     Route::get('/reporte/{type}/{id}', [AdminController::class, 'reportOpen']);
     /*Login*/
     Route::get('/login', [LoginadminController::class, 'login'])->name('loginAdmin');
@@ -111,6 +111,7 @@ Route::prefix('Painel')->group(function(){
     Route::post('/enviaNovoTexto', [ActionadminController::class, 'sendNewText']);
     Route::post('/editarTextoAcao', [ActionadminController::class, 'editTextAction']);
     Route::get('/removeTexto/{id}', [ActionadminController::class, 'deleteText']);
+    Route::get('/mudarStatusReporte/{newStatus}/{id}', [ActionadminController::class, 'changeReportStatus']);
     /****/
 });
 /*-----------------------------------------------------------------------------------*/

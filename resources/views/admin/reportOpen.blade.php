@@ -50,16 +50,16 @@
 
             <div class="box-btn">
                 <?php if($report['status'] == 'pendente'):?>
-                    <a href="" class="ignore">Ignorar</a>
-                    <a href="" class="resolve">Resolvido</a>
+                    <a href="<?=$base_url;?>/Painel/mudarStatusReporte/ignorado/<?=$report['id'];?>" class="ignore">Ignorar</a>
+                    <a href="<?=$base_url;?>/Painel/mudarStatusReporte/resolvido/<?=$report['id'];?>" class="resolve">Resolvido</a>
                 <?php endif; ?>
                 <?php if($report['status'] == 'resolvido'):?>
-                    <a href="" class="ignore">Ignorar</a>
-                    <a href="" class="pending">Pendente</a>
+                    <a href="<?=$base_url;?>/Painel/mudarStatusReporte/ignorado/<?=$report['id'];?>" class="ignore">Ignorar</a>
+                    <a href="<?=$base_url;?>/Painel/mudarStatusReporte/pendente/<?=$report['id'];?>" class="pending">Pendente</a>
                 <?php endif; ?>
                 <?php if($report['status'] == 'ignorado'):?>
-                    <a href="" class="pending">Pendente</a>
-                    <a href="" class="resolve">Resolvido</a>
+                    <a href="<?=$base_url;?>/Painel/mudarStatusReporte/pendente/<?=$report['id'];?>" class="pending">Pendente</a>
+                    <a href="<?=$base_url;?>/Painel/mudarStatusReporte/resolvido/<?=$report['id'];?>" class="resolve">Resolvido</a>
                 <?php endif; ?>
             </div>
 

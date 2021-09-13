@@ -13,16 +13,16 @@
 
 <!--Content-->
 @section('content')
-    
+
+    <div class="note ignoredColor">
+        <h1><i class="far fa-sticky-note"></i>Sobre os ignorados:</h1>
+        <p>Aqui ficam os reporte que já foram analizados por algum membro da staff e considerados como irrelevantes ou até reportados injustamente, se você possui o cargo de moderador ou superior, pode revisa-los e até mesmo mudar o status.</p>
+    </div>
+
     <h1 class="title">
         <i class="fas fa-users"></i>
         Reportes Ignorados
     </h1>
-
-    <div class="note">
-        <h1><i class="far fa-sticky-note"></i> Nota:</h1>
-        <p>Quando um usuário reporta algum comentário, significa que aquele comentário o incomodou de alguma forma e possivelmente possui desrespeito ou esta causando desordem, neste caso a staff deve analizar e aplicar a devida punição.</p>
-    </div>
 
     <table>
         <tr>

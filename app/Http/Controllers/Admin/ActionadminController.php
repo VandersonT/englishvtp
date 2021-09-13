@@ -394,4 +394,12 @@ class ActionadminController extends Controller{
         }
     }
 
+    public function changeReportStatus(Request $request){
+        
+        ActionadminHandler::updateReport($request->id, $request->newStatus);
+        
+        redirect()->route($request->newStatus)->send();
+        exit;
+    }
+
 }

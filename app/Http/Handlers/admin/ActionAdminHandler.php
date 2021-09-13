@@ -10,6 +10,7 @@ use App\Models\Exile;
 use App\Models\Text;
 use App\Models\Saved_text;
 use App\Models\Studied_text;
+use App\Models\Report;
 /*-----------------------------------------------------------------------------*/
 
 class ActionAdminHandler{
@@ -220,6 +221,12 @@ class ActionAdminHandler{
             $editImage->save();
         }
         
+    }
+
+    public static function updateReport($reportId, $newStatus){
+        $updateReportStatus = Report::find($reportId);
+            $updateReportStatus->status = $newStatus;
+        $updateReportStatus->save();
     }
 
 }
