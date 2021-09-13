@@ -97,6 +97,10 @@ Route::prefix('Painel')->group(function(){
     Route::get('/reportes/resolvidos', [AdminController::class, 'reportsResolved'])->name('resolvido');
     Route::get('/reportes/ignorados', [AdminController::class, 'reportsIgnored'])->name('ignorado');
     Route::get('/reporte/{type}/{id}', [AdminController::class, 'reportOpen']);
+    Route::get('/suportes/pendentes', [AdminController::class, 'supportsPendents'])->name('Spendente');
+    Route::get('/suportes/resolvidos', [AdminController::class, 'supportsResolved'])->name('Sresolvido');
+    Route::get('/suportes/ignorados', [AdminController::class, 'supportsIgnored'])->name('Signorado');
+    Route::get('/suporte/{id}', [AdminController::class, 'supportOpen']);
     /*Login*/
     Route::get('/login', [LoginadminController::class, 'login'])->name('loginAdmin');
     Route::post('/login', [LoginadminController::class, 'loginAction']);

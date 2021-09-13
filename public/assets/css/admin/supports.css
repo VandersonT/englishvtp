@@ -119,7 +119,7 @@ table{
 th{
     border-bottom: 1px solid rgb(168, 168, 168);
     padding: 5px;
-    background-color: rgb(255, 123, 0);
+    background-color: rgb(0, 26, 255);
     color: white;
 }
 
@@ -138,6 +138,10 @@ td a{
 
 td a:hover{
     color: rgb(0, 136, 199);
+}
+
+.less{
+    font-size: 14px;
 }
 
 .btn{
@@ -176,6 +180,9 @@ td a:hover{
         width: 97%;
         font-size: 12px;
     } 
+    .less{
+        font-size: 10px;
+    }
     .btn{
         padding: 2px 4px;
         font-size: 12px;
@@ -207,6 +214,9 @@ td a:hover{
     table{
         font-size: 10px;
     }
+    .less{
+        font-size: 8px;
+    }
     .search input{
         width: 90%;
         font-size: 10px;
@@ -219,7 +229,7 @@ td a:hover{
 @media screen and (max-width: 350px){
     .title{
         font-size: 12px;
-    }  
+    }   
     .note{
         font-size: 8px;
     }
@@ -228,9 +238,12 @@ td a:hover{
     }
     .note h1 i{
         font-size: 9px;
-    } 
+    }
     .btn,
     table{
         font-size: 8px;
+    }
+    .less{
+        font-size: 7px;
     }
 }

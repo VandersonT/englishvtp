@@ -13,6 +13,8 @@ use App\Models\System;
 use App\Models\Banned;
 use App\Models\Exile;
 use App\Models\Report;
+use App\Models\Support;
+use App\Models\Support_comment;
 use App\Models\Comment;
 use App\Models\Subcomment;
 /*-----------------------------------------------------------------------------*/
@@ -45,202 +47,202 @@ class AdminHandler{
         $american = Text::where('type_english', 'americano')->count();
         $British = Text::where('type_english', 'britanico')->count();
 
-    $array['american'] =  $american;
-    $array['british'] =  $British;
+        $array['american'] =  $american;
+        $array['british'] =  $British;
 
-    return $array;
+        return $array;
     }
 
     public static function getTotalAccess(){
-    $data = Daily_access::count();
-    return $data;
+        $data = Daily_access::count();
+        return $data;
     }
 
     public static function getTotalTexts(){
-    $data = Text::count();
-    return $data;
+        $data = Text::count();
+        return $data;
     }
 
     public static function getTotalAccounts(){
-    $data = User::count();
-    return $data;
+        $data = User::count();
+        return $data;
     }
 
     public static function getUsersOn(){
-    $supposedMembersOn = User_on::get();
+        $supposedMembersOn = User_on::get();
 
-    foreach($supposedMembersOn as $supposedMemberOn){
-        if($supposedMemberOn['last_action'] + 600 < time()){
-            $supposedMemberOn = User_on::
-                where('id', $supposedMemberOn['id'])
-            ->update(['status' => 'offline']);
-            //mais de 10 minutos, ou seja, não esta mais online
+        foreach($supposedMembersOn as $supposedMemberOn){
+            if($supposedMemberOn['last_action'] + 600 < time()){
+                $supposedMemberOn = User_on::
+                    where('id', $supposedMemberOn['id'])
+                ->update(['status' => 'offline']);
+                //mais de 10 minutos, ou seja, não esta mais online
+            }
         }
-    }
 
-    $membersOn = User_on::
-        where('status', 'online')
-        ->join('users', 'users.id', '=', 'user_on.user_id')
-        ->select('user_on.*', 'users.user_name')
-    ->get();
+        $membersOn = User_on::
+            where('status', 'online')
+            ->join('users', 'users.id', '=', 'user_on.user_id')
+            ->select('user_on.*', 'users.user_name')
+        ->get();
 
-    return $membersOn;
+        return $membersOn;
     }
 
     public static function getSystemInfo(){
-    $systemInfo = System::first();
-    return $systemInfo;
+        $systemInfo = System::first();
+        return $systemInfo;
     }
 
     public static function getInfoProfile($idProfile){
-    $infoProfile = User::
-        select('id', 'user_name', 'photo', 'email', 'level', 'access')
-        ->where('id', $idProfile)
-    ->first();
+        $infoProfile = User::
+            select('id', 'user_name', 'photo', 'email', 'level', 'access')
+            ->where('id', $idProfile)
+        ->first();
 
-    if($infoProfile){
-        return $infoProfile;
-    }
+        if($infoProfile){
+            return $infoProfile;
+        }
 
     }
 
     public static function getAllUsers(){
-    $users = User::get();
+        $users = User::get();
 
-    return $users;
+        return $users;
     }
 
     public static function getWantedUser($wantedUser){
-    $users = User::
-        where('user_name', 'like', $wantedUser.'%')
-    ->get();
+        $users = User::
+            where('user_name', 'like', $wantedUser.'%')
+        ->get();
 
-    return $users;
+        return $users;
     }
 
     public static function getAllStaffs(){
-    $users = User::
-        where('access', '>', 1)
-        ->orderByDesc('access')
-    ->get();
+        $users = User::
+            where('access', '>', 1)
+            ->orderByDesc('access')
+        ->get();
 
-    return $users;
+        return $users;
     }
 
     public static function getWantedStaff($wantedUser){
-    $users = User::
-        where('user_name', 'like', $wantedUser.'%')
-        ->where('access', '>', 1)
-        ->orderByDesc('access')
-    ->get();
+        $users = User::
+            where('user_name', 'like', $wantedUser.'%')
+            ->where('access', '>', 1)
+            ->orderByDesc('access')
+        ->get();
 
-    return $users;
+        return $users;
     }
 
     public static function getWantedUserSingle($idSearch){
-    $user = User::
-        where('id', $idSearch)
-        ->select('id', 'user_name', 'photo', 'email' ,'access', 'level')
-    ->first();
-    
-    return $user;
+        $user = User::
+            where('id', $idSearch)
+            ->select('id', 'user_name', 'photo', 'email' ,'access', 'level')
+        ->first();
+        
+        return $user;
     }
 
     public static function getAllUserBan(){
-    $users = Banned::
-        join('users', 'users.id', 'banned.user_id')
-        ->select('banned.*', 'users.user_name')
-    ->get();
+        $users = Banned::
+            join('users', 'users.id', 'banned.user_id')
+            ->select('banned.*', 'users.user_name')
+        ->get();
 
-    foreach($users as $user){
-        $data = User::
-            join('banned', 'users.id', 'banned.responsible')
-            ->select('users.user_name')
-        ->first();
-        $user['responsible_name'] = $data['user_name'];
-    }
+        foreach($users as $user){
+            $data = User::
+                join('banned', 'users.id', 'banned.responsible')
+                ->select('users.user_name')
+            ->first();
+            $user['responsible_name'] = $data['user_name'];
+        }
 
-    return $users;
+        return $users;
     }
 
     public static function getWantedUserBan($wantedUser){
-    $users = Banned::
-        join('users', 'users.id', '=', 'banned.user_id')
-        ->where('user_name', 'like', $wantedUser.'%')
-        ->select('banned.*', 'users.user_name')
-        ->orderByDesc('access')
-    ->get();
+        $users = Banned::
+            join('users', 'users.id', '=', 'banned.user_id')
+            ->where('user_name', 'like', $wantedUser.'%')
+            ->select('banned.*', 'users.user_name')
+            ->orderByDesc('access')
+        ->get();
 
-    foreach($users as $user){
-        $data = User::
-            join('banned', 'users.id', 'banned.responsible')
-            ->select('users.user_name')
-        ->first();
-        $user['responsible_name'] = $data['user_name'];
-    }
+        foreach($users as $user){
+            $data = User::
+                join('banned', 'users.id', 'banned.responsible')
+                ->select('users.user_name')
+            ->first();
+            $user['responsible_name'] = $data['user_name'];
+        }
 
-    return $users;
+        return $users;
     }
 
     public static function getAllUserExile(){
-    $users = Exile::
-        join('users', 'users.id', 'exile.user_id')
-        ->select('exile.*', 'users.user_name')
-    ->get();
+        $users = Exile::
+            join('users', 'users.id', 'exile.user_id')
+            ->select('exile.*', 'users.user_name')
+        ->get();
 
-    foreach($users as $user){
-        $data = User::
-            join('exile', 'users.id', 'exile.responsible')
-            ->select('users.user_name')
-        ->first();
-        $user['responsible_name'] = $data['user_name'];
-    }
+        foreach($users as $user){
+            $data = User::
+                join('exile', 'users.id', 'exile.responsible')
+                ->select('users.user_name')
+            ->first();
+            $user['responsible_name'] = $data['user_name'];
+        }
 
-    return $users;
+        return $users;
     }
 
     public static function getWantedUserExile($wantedUser){
-    $users = Exile::
-        join('users', 'users.id', '=', 'exile.user_id')
-        ->where('user_name', 'like', $wantedUser.'%')
-        ->select('exile.*', 'users.user_name')
-        ->orderByDesc('access')
-    ->get();
+        $users = Exile::
+            join('users', 'users.id', '=', 'exile.user_id')
+            ->where('user_name', 'like', $wantedUser.'%')
+            ->select('exile.*', 'users.user_name')
+            ->orderByDesc('access')
+        ->get();
 
-    foreach($users as $user){
-        $data = User::
-            join('exile', 'users.id', 'exile.responsible')
-            ->select('users.user_name')
-        ->first();
-        $user['responsible_name'] = $data['user_name'];
-    }
+        foreach($users as $user){
+            $data = User::
+                join('exile', 'users.id', 'exile.responsible')
+                ->select('users.user_name')
+            ->first();
+            $user['responsible_name'] = $data['user_name'];
+        }
 
-    return $users;
+        return $users;
     }
 
     public static function getAllTexts(){
-    $texts = Text::
-        select('image', 'english_title', 'id')
-    ->get();
+        $texts = Text::
+            select('image', 'english_title', 'id')
+        ->get();
 
-    return $texts;
+        return $texts;
     }
 
     public static function getWantedText($wantedText){
-    $texts = Text::
-        where('english_title', 'like', '%'.$wantedText.'%')
-        ->select('image', 'english_title', 'id')
-    ->get();
+        $texts = Text::
+            where('english_title', 'like', '%'.$wantedText.'%')
+            ->select('image', 'english_title', 'id')
+        ->get();
 
-    return $texts;
+        return $texts;
     }
 
     public static function getText($TextId){
-    $texts = Text::
-        where('id', $TextId)
-    ->first();
+        $texts = Text::
+            where('id', $TextId)
+        ->first();
 
-    return $texts;
+        return $texts;
     }
 
     public static function getAllReports($status){
@@ -277,6 +279,36 @@ class AdminHandler{
         $report['reported_photo'] = $data['photo'];
 
         return $report;
+    }
+
+    public static function getAllSupports($status){
+        $supports = Support::
+            join('users', 'users.id', '=', 'supports.user_id')
+            ->select('supports.*', 'users.user_name')
+            ->where('status', $status)
+        ->get();
+
+        return $supports;
+    }
+
+    public static function getSupport($supportId){
+        $support = Support::
+            join('users', 'users.id', '=', 'supports.user_id')
+            ->select('supports.*', 'users.user_name', 'users.photo')
+            ->where('supports.id', $supportId)
+        ->first();
+
+        return $support;
+    }
+
+    public static function getSupportReplys($supportId){
+        $supportReplys = Support_comment::
+            join('users', 'users.id', '=', 'support_comments.user_id')
+            ->select('support_comments.*', 'users.user_name', 'users.photo')
+            ->where('support_id', $supportId)
+        ->get();
+
+        return $supportReplys;
     }
 
 }

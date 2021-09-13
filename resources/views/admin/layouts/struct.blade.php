@@ -138,15 +138,15 @@
                     <i class="fas fa-caret-left arrow"></i>
                 </div>
                 <div class="boxBtns">
-                    <a href="">
+                    <a href="<?=$base_url;?>/Painel/suportes/pendentes" class="<?= ($selected == 'supportsP') ? 'selected' : '';?>">
                         <i class="fas fa-circle iconSubMenu"></i>
                         Pendentes
                     </a>
-                    <a href="">
+                    <a href="<?=$base_url;?>/Painel/suportes/resolvidos" class="<?= ($selected == 'supportsR') ? 'selected' : '';?>">
                         <i class="fas fa-circle iconSubMenu"></i>
                         Resolvidos
                     </a>
-                    <a href="">
+                    <a href="<?=$base_url;?>/Painel/suportes/ignorados" class="<?= ($selected == 'supportsI') ? 'selected' : '';?>">
                         <i class="fas fa-circle iconSubMenu"></i>
                         Ignorados
                     </a>

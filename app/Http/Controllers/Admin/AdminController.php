@@ -374,6 +374,62 @@ class AdminController extends Controller
         ]);
     }
 
+    public function supportsPendents(){
+
+        $supports = AdminHandler::getAllSupports('pendente');
+
+        return view('admin/supportsP',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'supportsP',
+            'supports' => $supports
+        ]);
+    }
+
+    public function supportsResolved(){
+
+        $supports = AdminHandler::getAllSupports('resolvido');
+
+        return view('admin/supportsR',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'supportsR',
+            'supports' => $supports
+        ]);
+    }
+
+    public function supportsIgnored(){
+
+        $supports = AdminHandler::getAllSupports('ignorado');
+
+        return view('admin/supportsI',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'supportsI',
+            'supports' => $supports
+        ]);
+    }
+
+    public function supportOpen(Request $request){
+
+        $support = AdminHandler::getSupport($request->id);
+        $supportReplys = AdminHandler::getSupportReplys($request->id);
+
+        if($support['status'] == 'pendente'){
+            $selected = 'supportsP';
+        }
+        if($support['status'] == 'resolvido'){
+            $selected = 'supportsR';
+        }
+        if($support['status'] == 'ignorado'){
+            $selected = 'supportsI';
+        }
+
+        return view('admin/supportOpen',[
+            'user' => $this->loggedAdmin,
+            'selected' => $selected,
+            'support' => $support,
+            'supportReplys' => $supportReplys
+        ]);
+    }
+
     public function logout(){
         $_SESSION['tokenAdmin'] = '';
 
