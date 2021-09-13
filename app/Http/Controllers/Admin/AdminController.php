@@ -168,13 +168,6 @@ class AdminController extends Controller
         ]);
     }
 
-    public function reportsPendents(){
-        return view('admin/reportsP',[
-            'user' => $this->loggedAdmin,
-            'selected' => 'reportsP'
-        ]);
-    }
-
     public function addBan(){
         
         $success = '';
@@ -334,6 +327,39 @@ class AdminController extends Controller
             'text' => $text,
             'success' => $success,
             'error' => $error
+        ]);
+    }
+
+    public function reportsPendents(){
+        
+        $reports = AdminHandler::getAllReports('pendente');
+
+        return view('admin/reportsP',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'reportsP',
+            'reports' => $reports
+        ]);
+    }
+
+    public function reportsResolved(){
+        
+        $reports = AdminHandler::getAllReports('resolvido');
+
+        return view('admin/reportsR',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'reportsR',
+            'reports' => $reports
+        ]);
+    }
+
+    public function reportsIgnored(){
+        
+        $reports = AdminHandler::getAllReports('ignorado');
+
+        return view('admin/reportsI',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'reportsI',
+            'reports' => $reports
         ]);
     }
 

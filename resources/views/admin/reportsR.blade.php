@@ -16,7 +16,7 @@
     
     <h1 class="title">
         <i class="fas fa-users"></i>
-        Reportes Pendentes
+        Reportes Resolvidos
     </h1>
 
     <div class="note">
@@ -61,7 +61,7 @@
 
     <?php if(count($reports) < 1):?>
         <h1 class="empty">
-            Não tem nenhum reporte pendente
+            Não tem nenhum reporte resolvido ainda.
         </h1>
     <?php endif; ?>
 

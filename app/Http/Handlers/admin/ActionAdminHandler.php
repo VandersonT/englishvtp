@@ -8,6 +8,8 @@ use App\Models\System;
 use App\Models\Banned;
 use App\Models\Exile;
 use App\Models\Text;
+use App\Models\Saved_text;
+use App\Models\Studied_text;
 /*-----------------------------------------------------------------------------*/
 
 class ActionAdminHandler{
@@ -178,8 +180,16 @@ class ActionAdminHandler{
     }
 
     public static function deleteText($textId){
-        $repatriate = Text::
+        $delText = Text::
             where('id', $textId)
+        ->delete();
+
+        $delSavedText = Saved_text::
+            where('textid', $textId)
+        ->delete();
+
+        $delStudiedText = Studied_text::
+            where('textid', $textId)
         ->delete();
     }
 

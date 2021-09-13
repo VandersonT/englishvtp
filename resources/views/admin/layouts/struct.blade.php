@@ -117,11 +117,11 @@
                         <i class="fas fa-circle iconSubMenu"></i>
                         Pendentes
                     </a>
-                    <a href="">
+                    <a href="<?=$base_url;?>/Painel/reportes/resolvidos" class="<?= ($selected == 'reportsR') ? 'selected' : '';?>">
                         <i class="fas fa-circle iconSubMenu"></i>
                         Resolvidos
                     </a>
-                    <a href="">
+                    <a href="<?=$base_url;?>/Painel/reportes/ignorados" class="<?= ($selected == 'reportsI') ? 'selected' : '';?>">
                         <i class="fas fa-circle iconSubMenu"></i>
                         Ignorados
                     </a>

@@ -94,6 +94,8 @@ Route::prefix('Painel')->group(function(){
     Route::get('/editarTextos', [AdminController::class, 'editTexts'])->name('editTexts');
     Route::get('/editarTexto/{id}', [AdminController::class, 'editTextSingle']);
     Route::get('/reportes/pendentes', [AdminController::class, 'reportsPendents']);
+    Route::get('/reportes/resolvidos', [AdminController::class, 'reportsResolved']);
+    Route::get('/reportes/ignorados', [AdminController::class, 'reportsIgnored']);
     /*Login*/
     Route::get('/login', [LoginadminController::class, 'login'])->name('loginAdmin');
     Route::post('/login', [LoginadminController::class, 'loginAction']);
