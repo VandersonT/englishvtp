@@ -84,6 +84,12 @@ class ActionAdminHandler{
         return false;//there is no error
     }
 
+    public static function deleteNotification($notificationId){
+        $unBan = UserNotification::
+            where('id', $notificationId)
+        ->delete();
+    }
+
     public static function changeUserAccess($userToChange, $newAccess){
        
         $data = User::where('id', $userToChange)->first();

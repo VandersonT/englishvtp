@@ -9,11 +9,22 @@
 <!--Links-->
 @section('links')
     <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/managerNotification.css" />
+    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/flash.css" />
 @endsection
 
 <!--Content-->
 @section('content')
     
+    <?php if($flash): ?>
+    <div class="backgroundDark">
+        <div class="flash">
+            <h1 class="success">Removido com sucesso</h1>
+            <p><?=$flash;?></p>
+            <button class="close btn">Fechar</button>
+        </div>
+    </div>
+    <?php endif; ?>
+
     <form class="search" method="GET">
         <input type="text" name="search" placeholder="Procure pelo nome ou id de algum usuário" value="<?=($wantedNotification != '') ? $wantedNotification : '';?>"/>
         <button><i class="fas fa-search"></i>Procurar</button>
@@ -64,7 +75,7 @@
                         <?=$notification['message'];?>
                     </td>
                     <td>
-                        <a href="">Apagar</a>
+                        <a onClick="return confirm('Você tem certeza que quer remover esta notificação?');" href="<?=$base_url;?>/Painel/removeNotificação/<?=$notification['id'];?>">Apagar</a>
                     </td>
                 </tr>
                 
@@ -112,7 +123,7 @@
                         <?=$globalNotification['message'];?>
                     </td>
                     <td>
-                        <a href="">Apagar</a>
+                        <a onClick="return confirm('Você tem certeza que quer remover esta notificação?');" href="<?=$base_url;?>/Painel/removeNotificação/<?=$globalNotification['id'];?>">Apagar</a>
                     </td>
                 </tr>
                 
@@ -127,5 +138,5 @@
 
 <!--Scripts-->
 @section('scripts')
-
+    <script src="<?=$base_url;?>/assets/js/admin/flash.js"></script>
 @endsection

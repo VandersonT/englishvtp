@@ -72,6 +72,13 @@ class ActionadminController extends Controller{
         exit;
     }
     
+    public function deleteNotification(Request $request){
+        ActionadminHandler::deleteNotification($request->id);
+        $_SESSION['flash'] = 'A notificação foi apagada com sucesso, o usuário não poderá mais vizualizar ela.';
+        return back();
+        exit;
+    }
+
     public function changeAccess(Request $request){
 
         if($this->loggedAdmin->access < 4){

@@ -120,6 +120,7 @@ Route::prefix('Painel')->group(function(){
     Route::get('/mudarStatusReporte/{newStatus}/{id}', [ActionadminController::class, 'changeReportStatus']);
     Route::get('/mudarStatusSuporte/{newStatus}/{id}', [ActionadminController::class, 'changeSupportStatus']);
     Route::post('/enviaNotificação', [ActionadminController::class, 'sendNotification']);
+    Route::get('/removeNotificação/{id}', [ActionadminController::class, 'deleteNotification']);
     /****/
 });
 /*-----------------------------------------------------------------------------------*/

@@ -93,6 +93,12 @@ class AdminController extends Controller
 
     public function manageNotifications(){
 
+        $flash = '';
+        if(!empty($_SESSION['flash'])){
+            $flash = $_SESSION['flash'];
+            $_SESSION['flash'] = '';
+        }
+
         $wantedNotification = '';
         if($_GET){
             $wantedNotification = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -108,7 +114,8 @@ class AdminController extends Controller
             'selected' => 'usersNotification',
             'wantedNotification' => $wantedNotification,
             'notifications' => $notifications,
-            'globalNotifications' => $globalNotifications
+            'globalNotifications' => $globalNotifications,
+            'flash' => $flash
         ]);
     }
 
