@@ -81,3 +81,12 @@ for(let i = 0; i < btns.length; i++){
     }
 }
 /***/
+
+let btnNotification = document.querySelector('.notification');
+
+btnNotification.addEventListener('click', function(e){
+    if(private < 3){
+        e.preventDefault();
+        alert("Somente moderadores, administradores e donos tem acesso a essa página.");
+    }
+})

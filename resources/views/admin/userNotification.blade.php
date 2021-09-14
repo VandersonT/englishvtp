@@ -18,7 +18,7 @@
     <?php if($success): ?>
     <div class="backgroundDark">
         <div class="flash">
-            <h1 class="success">Alteração feita</h1>
+            <h1 class="success">Enviado feito</h1>
             <p><?=$success;?></p>
             <button class="close btn">Fechar</button>
         </div>
@@ -28,7 +28,7 @@
     <?php if($error): ?>
     <div class="backgroundDark">
         <div class="flash">
-            <h1 class="error">Alteração negada</h1>
+            <h1 class="error">Envio negado</h1>
             <p><?=$error;?></p>
             <button class="close btn">Fechar</button>
         </div>
@@ -61,7 +61,7 @@
 
             <button>Enviar</button>
         </form>
-        <a href="<?=$base_url;?>/" class="config"><i class="fas fa-tools"></i></a>
+        <a href="<?=$base_url;?>/Painel/gerenciarNotificações" class="config"><i class="fas fa-tools"></i></a>
 
     </div>
 

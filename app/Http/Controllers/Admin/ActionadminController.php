@@ -53,10 +53,16 @@ class ActionadminController extends Controller{
         $color = filter_input(INPUT_POST, 'color');
         $title = filter_input(INPUT_POST, 'title');
         $content = filter_input(INPUT_POST, 'content');
-        
-        if($user_to && $color && $title && $content){
 
-            $_SESSION['success'] = 'Deu certim.';
+        if($user_to >= 0 && $color && $title && $content){
+
+            $error = ActionadminHandler::sendNotification($user_to,$color,$title,$content,$this->loggedAdmin->id);
+            
+            if(!$error){
+                $_SESSION['success'] = 'A notificação foi enviada com sucesso! <br/>Você pode remove-la clicando no simbolo de confirações que se encontra no canto inferior direito da tela.';
+            }else{  
+                $_SESSION['error'] = $error;
+            }
 
         }else{
             $_SESSION['error'] = 'Não envie campos vazios, todos os campos são necessarios.';

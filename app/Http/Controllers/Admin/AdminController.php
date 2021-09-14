@@ -67,6 +67,10 @@ class AdminController extends Controller
 
     public function userNotification(){
 
+        if($this->loggedAdmin->access < 3){
+            return redirect()->route('painel')->send();
+        }
+
         $success = '';
         if(!empty($_SESSION['success'])){
             $success = $_SESSION['success'];
@@ -84,6 +88,27 @@ class AdminController extends Controller
             'selected' => 'usersNotification',
             'success' => $success,
             'error' => $error
+        ]);
+    }
+
+    public function manageNotifications(){
+
+        $wantedNotification = '';
+        if($_GET){
+            $wantedNotification = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS);
+            $notifications = AdminHandler::getWantedUserNotification($wantedNotification);
+        }else{
+            $notifications = AdminHandler::getAllUsersNotification();
+        }
+
+        $globalNotifications = AdminHandler::getGlobalNotification();
+        
+        return view('admin/managerNotifications',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'usersNotification',
+            'wantedNotification' => $wantedNotification,
+            'notifications' => $notifications,
+            'globalNotifications' => $globalNotifications
         ]);
     }
 

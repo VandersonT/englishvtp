@@ -17,6 +17,7 @@ use App\Models\Support;
 use App\Models\Support_comment;
 use App\Models\Comment;
 use App\Models\Subcomment;
+use App\Models\UserNotification;
 /*-----------------------------------------------------------------------------*/
 
 class AdminHandler{
@@ -92,6 +93,76 @@ class AdminHandler{
     public static function getSystemInfo(){
         $systemInfo = System::first();
         return $systemInfo;
+    }
+
+    public static function getGlobalNotification(){
+        $globalNotifications = UserNotification::
+            where('user_to', 0)
+        ->get();
+
+        foreach($globalNotifications as $globalNotification){
+            $data = User::
+                join('userNotifications', 'users.id', 'userNotifications.staff_id')
+                ->select('users.user_name')
+            ->first();
+            $globalNotification['responsible_name'] = $data['user_name'];
+        }
+        
+        return $globalNotifications;
+    }
+
+    public static function getAllUsersNotification(){
+        $allNotifications = UserNotification::
+            join('users', 'users.id', '=' ,'userNotifications.user_to')
+            ->select('userNotifications.*', 'users.user_name', 'users.photo')
+        ->get();
+
+        foreach($allNotifications as $allNotification){
+            $data = User::
+                join('userNotifications', 'users.id', 'userNotifications.staff_id')
+                ->select('users.user_name')
+            ->first();
+            $allNotification['responsible_name'] = $data['user_name'];
+        }
+
+        return $allNotifications;
+    }
+
+    public static function getWantedUserNotification($wantedUser){
+
+        if(is_numeric($wantedUser)){
+            $allNotifications = UserNotification::
+                join('users', 'users.id', '=' ,'userNotifications.user_to')
+                ->select('userNotifications.*', 'users.user_name', 'users.photo')
+                ->where('users.id', $wantedUser)
+            ->get();
+            
+            foreach($allNotifications as $allNotification){
+                $data = User::
+                    join('userNotifications', 'users.id', 'userNotifications.staff_id')
+                    ->select('users.user_name')
+                ->first();
+                $allNotification['responsible_name'] = $data['user_name'];
+            }
+
+            return $allNotifications;
+        }
+
+        $allNotifications = UserNotification::
+            join('users', 'users.id', '=' ,'userNotifications.user_to')
+            ->select('userNotifications.*', 'users.user_name', 'users.photo')
+            ->where('users.user_name', 'like', $wantedUser.'%')
+        ->get();
+        
+        foreach($allNotifications as $allNotification){
+            $data = User::
+                join('userNotifications', 'users.id', 'userNotifications.staff_id')
+                ->select('users.user_name')
+            ->first();
+            $allNotification['responsible_name'] = $data['user_name'];
+        }
+
+        return $allNotifications;
     }
 
     public static function getInfoProfile($idProfile){

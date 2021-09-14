@@ -61,9 +61,12 @@
                     <p>Páginas</p>
                 </a>
 
-                <a href="<?=$base_url;?>/Painel/notificações" class="<?= ($selected == 'usersNotification') ? 'selected' : '';?>">
+                <a href="<?=$base_url;?>/Painel/notificações" class="<?= ($selected == 'usersNotification') ? 'selected' : '';?> notification">
                     <i class="fas fa-bell"></i>
                     <p>Notificar usuários</p>
+                    <?php if($user['access'] < 4): ?>  
+                        <i class="fas fa-lock"></i>
+                    <?php endif; ?>
                 </a>
 
                 <div class="btnBox">

@@ -12,6 +12,7 @@ use App\Models\Saved_text;
 use App\Models\Studied_text;
 use App\Models\Report;
 use App\Models\Support;
+use App\Models\UserNotification;
 /*-----------------------------------------------------------------------------*/
 
 class ActionAdminHandler{
@@ -52,6 +53,37 @@ class ActionAdminHandler{
         return $user['access'];
     }
     
+    public static function sendNotification($user_to,$color,$title,$content,$loggedUserId){
+        
+        $user = User::where('id', $user_to)->count();
+        
+        if(!$user){
+            return 'O ID informado não esta atribuido a nenhuma conta registrada.';
+        }
+
+        $data = UserNotification::
+            where('user_to', $user_to)
+            ->orWhere('user_to', 0)
+            ->where('viewed', 0)
+        ->count();
+        
+        if($data >= 3){
+            return 'Contando com as notificações globais, este usuário já possui 3 notificações ainda não vistas, para impedir span, esta ultima notificação não foi enviada, se mesmo assim quiser envia-la, gerencie as notificações deste usuário e exclua alguma das que foram enviadas anteriormente.';
+        }
+
+        $newNot = new UserNotification;
+            $newNot->staff_id = $loggedUserId;
+            $newNot->user_to = $user_to;
+            $newNot->title = $title;
+            $newNot->message = $content;
+            $newNot->last_update = time();
+            $newNot->color = $color;
+            $newNot->viewed = false;
+        $newNot->save();
+
+        return false;//there is no error
+    }
+
     public static function changeUserAccess($userToChange, $newAccess){
        
         $data = User::where('id', $userToChange)->first();
