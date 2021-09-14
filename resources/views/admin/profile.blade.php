@@ -2,7 +2,7 @@
 
 <!--Page title-->
 @section('title')
-   EnglishVtp - perfil de <?=$infoProfile['user_name'];?>
+   Painel - perfil de <?=$infoProfile['user_name'];?>
 @endsection
 
 

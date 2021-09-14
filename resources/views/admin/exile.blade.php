@@ -2,7 +2,7 @@
 
 <!--Page title-->
 @section('title')
-   EnglisVtp - exilados
+    Painel - Exilados
 @endsection
 
 

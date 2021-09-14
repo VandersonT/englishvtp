@@ -2,7 +2,7 @@
 
 <!--Page title-->
 @section('title')
-   EnglisVtp - banidos
+    Painel - Banidos
 @endsection
 
 

@@ -65,6 +65,13 @@ class AdminController extends Controller
         ]);
     }
 
+    public function userNotification(){
+        return view('admin/userNotification',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'usersNotification'
+        ]);
+    }
+
     public function profile(Request $request){
         
         $infoProfile = AdminHandler::getInfoProfile($request->id);

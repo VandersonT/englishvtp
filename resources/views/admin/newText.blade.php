@@ -2,7 +2,7 @@
 
 <!--Page title-->
 @section('title')
-   EnglisVtp - novo texto
+    Painel - Novo texto
 @endsection
 
 

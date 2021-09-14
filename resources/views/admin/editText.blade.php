@@ -2,7 +2,7 @@
 
 <!--Page title-->
 @section('title')
-   EnglishVtp - editando "<?=$text['english_title'];?>"
+    Painel - editando "<?=$text['english_title'];?>"
 @endsection
 
 

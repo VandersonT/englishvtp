@@ -2,7 +2,7 @@
 
 <!--Page title-->
 @section('title')
-   titulo aqui
+    Painel - Suportes pendentes
 @endsection
 
 

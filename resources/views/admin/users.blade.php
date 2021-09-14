@@ -2,7 +2,7 @@
 
 <!--Page title-->
 @section('title')
-   EnglisVtp - usuários
+   Painel - Usuários
 @endsection
 
 

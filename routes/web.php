@@ -81,6 +81,7 @@ Route::prefix('Painel')->group(function(){
     /*Home*/
     Route::get('/', [AdminController::class, 'index'])->name('painel');
     Route::get('/paginas', [AdminController::class, 'pages']);
+    Route::get('/notificações', [AdminController::class, 'userNotification']);
     Route::get('/sair', [AdminController::class, 'logout']);
     Route::get('/perfil/{id}', [AdminController::class, 'profile']);
     Route::get('/usuarios', [AdminController::class, 'users']);

@@ -2,7 +2,7 @@
 
 <!--Page title-->
 @section('title')
-   EnglisVtp - reportes pendentes
+    Painel - Reportes pendentes
 @endsection
 
 
