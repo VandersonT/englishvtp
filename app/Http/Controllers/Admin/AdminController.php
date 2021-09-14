@@ -66,9 +66,24 @@ class AdminController extends Controller
     }
 
     public function userNotification(){
+
+        $success = '';
+        if(!empty($_SESSION['success'])){
+            $success = $_SESSION['success'];
+            $_SESSION['success'] = '';
+        }
+
+        $error = '';
+        if(!empty($_SESSION['error'])){
+            $error = $_SESSION['error'];
+            $_SESSION['error'] = '';
+        }
+
         return view('admin/userNotification',[
             'user' => $this->loggedAdmin,
-            'selected' => 'usersNotification'
+            'selected' => 'usersNotification',
+            'success' => $success,
+            'error' => $error
         ]);
     }
 

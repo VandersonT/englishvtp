@@ -118,6 +118,7 @@ Route::prefix('Painel')->group(function(){
     Route::get('/removeTexto/{id}', [ActionadminController::class, 'deleteText']);
     Route::get('/mudarStatusReporte/{newStatus}/{id}', [ActionadminController::class, 'changeReportStatus']);
     Route::get('/mudarStatusSuporte/{newStatus}/{id}', [ActionadminController::class, 'changeSupportStatus']);
+    Route::post('/enviaNotificação', [ActionadminController::class, 'sendNotification']);
     /****/
 });
 /*-----------------------------------------------------------------------------------*/

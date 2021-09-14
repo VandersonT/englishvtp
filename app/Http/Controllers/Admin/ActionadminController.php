@@ -47,6 +47,24 @@ class ActionadminController extends Controller{
 
         ActionadminHandler::changeSystemInfo($btn, $action);
     }
+
+    public function sendNotification(){
+        $user_to = filter_input(INPUT_POST, 'user_to');
+        $color = filter_input(INPUT_POST, 'color');
+        $title = filter_input(INPUT_POST, 'title');
+        $content = filter_input(INPUT_POST, 'content');
+        
+        if($user_to && $color && $title && $content){
+
+            $_SESSION['success'] = 'Deu certim.';
+
+        }else{
+            $_SESSION['error'] = 'Não envie campos vazios, todos os campos são necessarios.';
+        }
+
+        return back();
+        exit;
+    }
     
     public function changeAccess(Request $request){
 
