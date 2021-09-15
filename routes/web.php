@@ -60,6 +60,7 @@ Route::get('/reportar/{type}/{id}', [ActionController::class, 'reportComment']);
 /*----------------------------------Ajax----------------------------------------------*/
 Route::get('/ajax/rate/{id}/{rate}/{type}', [AjaxController::class, 'like']);
 Route::get('/viewedNotification/{idnot}', [AjaxController::class, 'viewedNotification']);
+Route::get('/removeNotificação/{id}', [AjaxController::class, 'deleteNotification']);
 /*-----------------------------------------------------------------------------------*/
 
 /*---------------------------------Error---------------------------------------------*/

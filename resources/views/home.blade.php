@@ -3,9 +3,22 @@
 
 @section('links')
     <link rel="stylesheet" href="{{url('assets/css/home.css')}}" />
+    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/flash.css" />
 @endsection
 
 @section('content')
+
+    <?php if(count($notificationOnScreen) > 0): ?>
+        <?php foreach($notificationOnScreen as $notificationOnScreenSingle): ?>
+            <div class="backgroundDark" userTo="<?=$notificationOnScreenSingle['user_to'];?>" private="<?=$notificationOnScreenSingle['id'];?>">
+                <div class="flash2">
+                    <h1 class="normal"><?=$notificationOnScreenSingle['title'];?></h1>
+                    <p><?=$notificationOnScreenSingle['message'];?></p>
+                    <button class="close2 btn">Fechar</button>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
 
     <section class="filter">
         <form method="GET">
@@ -148,4 +161,5 @@
 
 @section('scripts')
     <script src="{{url('assets/js/home.js')}}"></script>
+    <script src="<?=$base_url;?>/assets/js/notificationSeen.js"></script>
 @endsection

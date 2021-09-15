@@ -54,10 +54,12 @@ class HomeController extends Controller{
         /***/
 
         HomeHandler::updateLastAction($this->loggedUser->id);
+        date_default_timezone_set('America/Sao_Paulo');
     }
 
     public function index(Request $request){
         
+        $notificationOnScreen = HomeHandler::getThisUserNotification($this->loggedUser->id);
 
         /*--------------------------------TEXTS_FILTER-------------------------------------------------*/
         $filter['type'] = 'americano';
@@ -102,7 +104,8 @@ class HomeController extends Controller{
             'totalPage' => $totalPage,
             'availableTexts' => $totalTextsWithFilter,
             'americanTextRecommendation' => $americanTextRecommendation,
-            'britishTextRecommendation' => $britishTextRecommendation
+            'britishTextRecommendation' => $britishTextRecommendation,
+            'notificationOnScreen' => $notificationOnScreen
         ]);
 
     }

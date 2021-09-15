@@ -24,6 +24,7 @@ class ActionController extends Controller
         }
 
         HomeHandler::updateLastAction($this->loggedUser->id);
+        date_default_timezone_set('America/Sao_Paulo');
     }
 
     public function sendNewComment(){

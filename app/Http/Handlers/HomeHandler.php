@@ -22,6 +22,7 @@ use App\Models\User_on;
 use App\Models\System;
 use App\Models\Banned;
 use App\Models\Exile;
+use App\Models\UserNotification;
 /*-----------------------------------------------------------------------------*/
 
 class HomeHandler{
@@ -73,6 +74,17 @@ class HomeHandler{
     public static function getSystemStatus($search){
         $systemStatus = System::select($search)->first();
         return $systemStatus[$search];
+    }
+
+    public static function getThisUserNotification($loggedUserId){
+        $notification = UserNotification::
+            where(function($query) use ($loggedUserId){
+                $query->where('user_to', $loggedUserId)
+                ->orWhere('user_to', 0);
+            })
+        ->get();
+
+        return $notification;
     }
 
     public static function getAllTextWithFilter($filter){

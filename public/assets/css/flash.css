@@ -5,7 +5,7 @@
     width: 100vw;
     max-width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0,0,0,0.6);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,6 +33,11 @@
 
 .error{
     background-color: rgb(231, 0, 0);
+    color: white;
+}
+
+.normal{
+    background-color: rgb(35, 70, 110);
     color: white;
 }
 

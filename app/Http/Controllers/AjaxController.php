@@ -60,4 +60,8 @@ class AjaxController extends Controller{
 
     }
 
+    public function deleteNotification(Request $request){
+        AjaxHandler::deleteNotificationOnScreen($request->id);
+    }
+
 }

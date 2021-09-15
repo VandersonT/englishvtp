@@ -10,6 +10,7 @@ use App\Models\Comment;
 use App\Models\Subcomment;
 use App\Models\Comments_rating;
 use App\Models\Notification;
+use App\Models\UserNotification;
 /*-----------------------------------------------------------------------------*/
 
 class AjaxHandler{
@@ -117,6 +118,12 @@ class AjaxHandler{
     public static function setNotificationToView($idNot){
         $deleteN = Notification::
             where('id', $idNot)
+        ->delete();
+    }
+
+    public static function deleteNotificationOnScreen($idNotification){
+        $deleteN = UserNotification::
+            where('id', $idNotification)
         ->delete();
     }
 

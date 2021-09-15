@@ -57,14 +57,13 @@ class ActionAdminHandler{
         
         $user = User::where('id', $user_to)->count();
         
-        if(!$user){
+        if(!$user && $user_to != 0){
             return 'O ID informado não esta atribuido a nenhuma conta registrada.';
         }
 
         $data = UserNotification::
             where('user_to', $user_to)
             ->orWhere('user_to', 0)
-            ->where('viewed', 0)
         ->count();
         
         if($data >= 3){
@@ -78,7 +77,6 @@ class ActionAdminHandler{
             $newNot->message = $content;
             $newNot->last_update = time();
             $newNot->color = $color;
-            $newNot->viewed = false;
         $newNot->save();
 
         return false;//there is no error
