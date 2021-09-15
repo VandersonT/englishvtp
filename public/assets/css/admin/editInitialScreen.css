@@ -17,6 +17,7 @@ form{
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 50px;
 }
 
 form input{
@@ -53,25 +54,98 @@ form label{
     text-align: center;
     font-weight: lighter;
     font-size: 25px;
+    background-color: rgb(61, 61, 61);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
 }
 
-.section1{
+.title i{
+    margin-right: 8px;
+    font-size: 20px;
+}
+
+.section{
     width: 100vw;
     max-width: 100%;
     padding: 20px;
-    padding-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-bottom: 1px solid rgb(180, 180, 180);
-    margin-bottom: 50px;
 }
 
 button{
     padding: 10px;
-    background-color: red;
+    width: 200px;
+    background-color: rgb(230, 230, 230);
     border: 1px solid gray;
     outline: 0;
     border-radius: 10px;
     margin: 0 auto;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+button:hover{
+    background-color: rgb(221, 221, 221);
+}
+
+@media screen and (max-width: 700px) {
+    .mainTitle{
+        font-size: 25px;
+    }
+    .title{
+        font-size: 20px;
+    }
+    .title i{
+        font-size: 16px;
+    }
+    form label{
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .mainTitle{
+        font-size: 22px;
+    }
+    .title{
+        font-size: 18px;
+        border-radius: 5px;
+    }
+    .title i{
+        font-size: 14px;
+    }
+    form{
+        width: 100%;
+    }
+    form textarea,
+    form input{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .mainTitle{
+        font-size: 20px;
+    }
+    .title{
+        font-size: 16px;
+    }
+    .title i{
+        font-size: 14px;
+    }
+    form label{
+        font-size: 14px;
+    }
+    form{
+        width: 100%;
+    }
+    button{
+        width: 130px;
+    }
+    .section{
+        padding: 10px;
+    }
 }
