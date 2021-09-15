@@ -8,6 +8,7 @@ session_start();
 /*-----------------------------Handlers----------------------------------------*/
 use App\Http\Handlers\LoginHandler;
 use App\Http\Handlers\HomeHandler;
+use App\Http\Handlers\TrophiesHandler;
 /*-----------------------------------------------------------------------------*/
 
 class HomeController extends Controller{
@@ -58,8 +59,13 @@ class HomeController extends Controller{
     }
 
     public function index(Request $request){
-        
-        $notificationOnScreen = HomeHandler::getThisUserNotification($this->loggedUser->id);
+
+        TrophiesHandler::primordialTrophy($this->loggedUser->id);
+        TrophiesHandler::staffTrophy($this->loggedUser->id, $this->loggedUser->access);
+        TrophiesHandler::socialTrophy($this->loggedUser->id);
+        TrophiesHandler::famousTrophy($this->loggedUser->id);
+        TrophiesHandler::peoplesVoiceTrophy($this->loggedUser->id);
+        TrophiesHandler::studiousTrophy($this->loggedUser->id);
 
         /*--------------------------------TEXTS_FILTER-------------------------------------------------*/
         $filter['type'] = 'americano';
@@ -93,6 +99,8 @@ class HomeController extends Controller{
         $americanTextRecommendation = HomeHandler::getAssistentRecomendation($this->loggedUser, 'american');
 
         $britishTextRecommendation = HomeHandler::getAssistentRecomendation($this->loggedUser, 'british');
+
+        $notificationOnScreen = HomeHandler::getThisUserNotification($this->loggedUser->id);
 
         return view('home',[
             'selected' => 'home',

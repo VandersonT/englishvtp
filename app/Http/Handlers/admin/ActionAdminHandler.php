@@ -67,7 +67,11 @@ class ActionAdminHandler{
         ->count();
         
         if($data >= 3){
-            return 'Contando com as notificações globais, este usuário já possui 3 notificações ainda não vistas, para impedir span, esta ultima notificação não foi enviada, se mesmo assim quiser envia-la, gerencie as notificações deste usuário e exclua alguma das que foram enviadas anteriormente.';
+            if($user_to != 0){
+                return 'Contando com as notificações globais, este usuário já possui 3 notificações ainda não vistas, para impedir span, esta ultima notificação não foi enviada, se mesmo assim quiser envia-la, gerencie as notificações deste usuário e exclua alguma das que foram enviadas anteriormente.';
+            }else{
+                return 'Para evitar span, foi definido que o maximo de notificações globais por vez é 3.';
+            }
         }
 
         $newNot = new UserNotification;

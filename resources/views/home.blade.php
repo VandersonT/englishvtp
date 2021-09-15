@@ -12,7 +12,7 @@
         <?php foreach($notificationOnScreen as $notificationOnScreenSingle): ?>
             <div class="backgroundDark" userTo="<?=$notificationOnScreenSingle['user_to'];?>" private="<?=$notificationOnScreenSingle['id'];?>">
                 <div class="flash2">
-                    <h1 class="normal"><?=$notificationOnScreenSingle['title'];?></h1>
+                    <h1 class="<?=$notificationOnScreenSingle['color'];?>"><?=$notificationOnScreenSingle['title'];?></h1>
                     <p><?=$notificationOnScreenSingle['message'];?></p>
                     <button class="close2 btn">Fechar</button>
                 </div>
