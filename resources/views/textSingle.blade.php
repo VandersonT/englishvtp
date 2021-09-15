@@ -8,11 +8,22 @@ EnglishVtp - <?=$text['englishTitle'];?>
 
 <!--Links-->
 @section('links')
+    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/flash.css" />
     <link rel="stylesheet" href="{{url('assets/css/textReading.css')}}" />
 @endsection
 
 <!--Content-->
 @section('content')
+
+    <?php if($exiled): ?>
+    <div class="backgroundDark">
+        <div class="flash2">
+            <h1 class="error">Você esta exilado</h1>
+            <p><?=$exiled;?></p>
+            <button class="close2 btn">Fechar</button>
+        </div>
+    </div>
+    <?php endif; ?>
 
     <?php if(!empty($success)): ?>
     <div class="flash success animate__animated animate__slideInRight">
@@ -243,6 +254,7 @@ EnglishVtp - <?=$text['englishTitle'];?>
 
 <!--Scripts-->
 @section('scripts')
+    <script src="<?=$base_url;?>/assets/js/admin/flash.js"></script>
     <script src="{{url('assets/js/textReading.js')}}"></script>
     <script src="{{url('assets/js/commentsInfo.js')}}"></script>
 @endsection

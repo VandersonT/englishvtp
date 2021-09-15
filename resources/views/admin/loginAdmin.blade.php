@@ -35,7 +35,7 @@
             </div>
             <?php endif; ?>
             <input type="email" name="email" placeholder="E-mail" />
-            <input type="text" name="password" placeholder="Senha"/>
+            <input type="password" name="password" placeholder="Senha"/>
             <label>
                 <input type="checkbox" name="keepConnected"/>
                 <p>Manter conectado</p>

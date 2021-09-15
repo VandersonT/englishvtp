@@ -27,6 +27,16 @@ class ActionController extends Controller
     }
 
     public function sendNewComment(){
+
+        $isUserExiled = ActionHandler::checkIfIsUserExiled($this->loggedUser->id);
+
+        if($isUserExiled){
+            $end = ($isUserExiled['time'] == 'eterno') ? 'Nesta conta o exilio foi determinado como permanente.' : 'O fim do exilio será: '.date('d/m/Y H:i', $isUserExiled['time']);
+            $_SESSION['exiled'] = '<b>A sua conta foi exilada! Sendo assim, você está impedido de comentar e reportar qualquer comentário, o motivo é: <br/><br/>"'.$isUserExiled['reason'].'"<br/><br/>º'.$end.'</b>';
+            return back();
+            exit;
+        }
+
         $message = filter_input(INPUT_POST, 'newcomment');
         $textid = filter_input(INPUT_POST, 'textid', FILTER_SANITIZE_SPECIAL_CHARS);
         
@@ -60,6 +70,15 @@ class ActionController extends Controller
 
     public function sendNewSubComment(){
         
+        $isUserExiled = ActionHandler::checkIfIsUserExiled($this->loggedUser->id);
+
+        if($isUserExiled){
+            $end = ($isUserExiled['time'] == 'eterno') ? 'Nesta conta o exilio foi determinado como permanente.' : 'O fim do exilio será: '.date('d/m/Y H:i', $isUserExiled['time']);
+            $_SESSION['exiled'] = '<b>A sua conta foi exilada! Sendo assim, você está impedido de comentar e reportar qualquer comentário, o motivo é: <br/><br/>"'.$isUserExiled['reason'].'"<br/><br/>º'.$end.'</b>';
+            return back();
+            exit;
+        }
+
         $isCommentActive = HomeHandler::getSystemStatus('comments');
 
         if(!$isCommentActive){
@@ -191,6 +210,15 @@ class ActionController extends Controller
 
     public function newSupport(){
         
+        $isUserExiled = ActionHandler::checkIfIsUserExiled($this->loggedUser->id);
+
+        if($isUserExiled){
+            $end = ($isUserExiled['time'] == 'eterno') ? 'Nesta conta o exilio foi determinado como permanente.' : 'O fim do exilio será: '.date('d/m/Y H:i', $isUserExiled['time']);
+            $_SESSION['exiled'] = '<b>A sua conta foi exilada! Sendo assim, você está impedido de ultilizar o suporte, o motivo é: <br/><br/>"'.$isUserExiled['reason'].'"<br/><br/>º'.$end.'</b>';
+            return back();
+            exit;
+        }
+
         $isSupportActive = HomeHandler::getSystemStatus('support');
 
         if(!$isSupportActive){
@@ -213,6 +241,16 @@ class ActionController extends Controller
     }
 
     public function replySupport(Request $request){
+        
+        $isUserExiled = ActionHandler::checkIfIsUserExiled($this->loggedUser->id);
+
+        if($isUserExiled){
+            $end = ($isUserExiled['time'] == 'eterno') ? 'Nesta conta o exilio foi determinado como permanente.' : 'O fim do exilio será: '.date('d/m/Y H:i', $isUserExiled['time']);
+            $_SESSION['exiled'] = '<b>A sua conta foi exilada! Sendo assim, você está impedido de ultilizar o suporte, o motivo é: <br/><br/>"'.$isUserExiled['reason'].'"<br/><br/>º'.$end.'</b>';
+            return back();
+            exit;
+        }
+        
         $isSupportActive = HomeHandler::getSystemStatus('support');
 
         if(!$isSupportActive){
@@ -233,7 +271,16 @@ class ActionController extends Controller
     }
 
     public function reportComment(Request $request){
-        
+
+        $isUserExiled = ActionHandler::checkIfIsUserExiled($this->loggedUser->id);
+
+        if($isUserExiled){
+            $end = ($isUserExiled['time'] == 'eterno') ? 'Nesta conta o exilio foi determinado como permanente.' : 'O fim do exilio será: '.date('d/m/Y H:i', $isUserExiled['time']);
+            $_SESSION['exiled'] = '<b>A sua conta foi exilada! Sendo assim, você está impedido de comentar e reportar qualquer comentário, o motivo é: <br/><br/>"'.$isUserExiled['reason'].'"<br/><br/>º'.$end.'</b>';
+            return back();
+            exit;
+        }
+
         $isReportActive = HomeHandler::getSystemStatus('reports');
 
 

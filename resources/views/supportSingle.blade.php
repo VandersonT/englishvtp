@@ -8,11 +8,22 @@
 
 <!--Links-->
 @section('links')
+    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/flash.css" />
     <link rel="stylesheet" href="<?=$base_url?>/assets/css/supportSingle.css" />
 @endsection
 
 <!--Content-->
 @section('content')
+
+    <?php if($exiled): ?>
+    <div class="backgroundDark">
+        <div class="flash2">
+            <h1 class="error">Você esta exilado</h1>
+            <p><?=$exiled;?></p>
+            <button class="close2 btn">Fechar</button>
+        </div>
+    </div>
+    <?php endif; ?>
 
     <?php if(!empty($success)): ?>
         <div class="flash success">
@@ -73,5 +84,5 @@
 
 <!--Scripts-->
 @section('scripts')
-
+    <script src="<?=$base_url;?>/assets/js/admin/flash.js"></script>
 @endsection

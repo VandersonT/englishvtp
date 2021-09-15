@@ -18,9 +18,20 @@ use App\Models\Notification;
 use App\Models\Support;
 use App\Models\Support_comment;
 use App\Models\Report;
+use App\Models\Exile;
 /*-----------------------------------------------------------------------------*/
 
 class ActionHandler{
+
+    public static function checkIfIsUserExiled($loggedUserId){
+        $exile = Exile::where('user_id', $loggedUserId)->first();
+
+        if($exile){
+            return $exile;
+        }
+
+        return false;
+    }
 
     public static function sendNewComment($message, $textid, $user){
         $newComment = new Comment;

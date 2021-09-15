@@ -120,7 +120,13 @@ class HomeController extends Controller{
             $success = $_SESSION['success'];
             $_SESSION['success'] = '';
         }
-        
+
+        $exiled = '';
+        if(!empty($_SESSION['exiled'])){
+            $exiled = $_SESSION['exiled'];
+            $_SESSION['exiled'] = '';
+        }
+
         /*Comments per page*/
         $page = 1;
         if(!empty($_GET['pg'])){
@@ -157,6 +163,7 @@ class HomeController extends Controller{
             'page' => $page,
             'success' => $success,
             'error' => $error,
+            'exiled' => $exiled,
             'userStudiedThisText' => $userStudiedThisText,
             'userSavedThisText' => $userSavedThisText
         ]);
@@ -315,6 +322,12 @@ class HomeController extends Controller{
             $_SESSION['success'] = '';
         }
 
+        $exiled = '';
+        if(!empty($_SESSION['exiled'])){
+            $exiled = $_SESSION['exiled'];
+            $_SESSION['exiled'] = '';
+        }
+
         $supports = HomeHandler::getMySupports($this->loggedUser->id);
 
         return view('support', [
@@ -323,6 +336,7 @@ class HomeController extends Controller{
             'selected' => 'support',
             'supports' => $supports,
             'error' => $error,
+            'exiled' => $exiled,
             'success' => $success
         ]);
     }
@@ -341,6 +355,12 @@ class HomeController extends Controller{
             $_SESSION['success'] = '';
         }
 
+        $exiled = '';
+        if(!empty($_SESSION['exiled'])){
+            $exiled = $_SESSION['exiled'];
+            $_SESSION['exiled'] = '';
+        }
+
         $supportInfo = HomeHandler::getSupportSingle($request->id, $this->loggedUser->id);
 
         $replys = HomeHandler::getSupportReplys($supportInfo['id']);
@@ -356,6 +376,7 @@ class HomeController extends Controller{
             'supportInfo' => $supportInfo,
             'replys' => $replys,
             'error' => $error,
+            'exiled' => $exiled,
             'success' => $success
         ]);
     }
