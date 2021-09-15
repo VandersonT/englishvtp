@@ -3,6 +3,7 @@
 namespace App\Http\Handlers\admin;
 
 /*-----------------------------Models------------------------------------------*/
+use App\Models\Initial;
 use App\Models\User;
 use App\Models\Text;
 use App\Models\Saved_text;
@@ -21,6 +22,11 @@ use App\Models\UserNotification;
 /*-----------------------------------------------------------------------------*/
 
 class AdminHandler{
+
+    public static function getInfoPageInitial(){
+        $data = Initial::first();
+        return $data;
+    }
 
     public static function getMostSavedTexts(){
         $data = Saved_text::groupBy('textid')

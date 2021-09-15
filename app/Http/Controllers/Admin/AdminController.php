@@ -66,9 +66,13 @@ class AdminController extends Controller
     }
 
     public function editInicialScreen(){
+        
+        $currentInformation = AdminHandler::getInfoPageInitial();
+        
         return view('admin/editInicialScreen',[
             'user' => $this->loggedAdmin,
-            'selected' => 'pages'
+            'selected' => 'pages',
+            'currentInformation' => $currentInformation
         ]);
     }
 
