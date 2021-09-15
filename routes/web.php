@@ -104,6 +104,7 @@ Route::prefix('Painel')->group(function(){
     Route::get('/suportes/ignorados', [AdminController::class, 'supportsIgnored'])->name('Signorado');
     Route::get('/suporte/{id}', [AdminController::class, 'supportOpen']);
     Route::get('/gerenciarNotificações', [AdminController::class, 'manageNotifications']);
+    Route::get('/editarTela/inicial', [AdminController::class, 'editInicialScreen']);
     /*Login*/
     Route::get('/login', [LoginadminController::class, 'login'])->name('loginAdmin');
     Route::post('/login', [LoginadminController::class, 'loginAction']);

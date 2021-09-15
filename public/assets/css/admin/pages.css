@@ -1,0 +1,153 @@
+.note{
+    width: 90%;
+    margin: 50px auto;
+    padding: 20px;
+    -webkit-box-shadow: -1px -2px 15px -4px #000000; 
+    box-shadow: -1px -2px 15px -4px #000000;
+    text-align: center;
+    background-color: rgb(255, 208, 0);
+}
+.note h1{
+    font-weight: lighter;
+    margin-bottom: 10px;
+}
+
+.note h1 i{
+    margin-right: 5px;
+    font-size: 20px;
+}
+
+.title{
+    margin-top: 50px;
+    margin-left: 65px;
+    font-weight: lighter;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    color: rgb(46, 46, 46);
+}
+
+table{
+    margin: 0 auto;
+    margin-top: 10px;
+    width: 90%;
+    text-align: center;
+    border-collapse: collapse;
+    border: 1px solid rgb(168, 168, 168);
+}
+
+th{
+    border-bottom: 1px solid rgb(168, 168, 168);
+    padding: 5px;
+    background-color: rgb(184, 0, 0);
+    color: white;
+}
+
+td{
+    border-bottom: 1px solid rgb(168, 168, 168);
+    padding: 10px 5px;
+    max-width: 300px;
+}
+
+td a{
+    color: rgb(0, 157, 230);
+}
+
+td a:hover{
+    color: rgb(0, 136, 199);
+}
+
+.btn{
+    background: rgb(0, 140, 255);
+    border-radius: 5px;
+    padding: 5px 5px;
+    color: white;
+}
+
+.btn:hover{
+    background: rgb(0, 132, 240);
+    color: rgb(240, 240, 240);
+}
+
+@media screen and (max-width: 1000px){
+    table{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .title{
+        margin-top: 30px;
+        margin-left: 20px;
+        font-size: 18px;
+    }   
+    table{
+        width: 97%;
+        font-size: 9px;
+    } 
+    td{
+        max-width: 150px;
+    }
+    .btn{
+        padding: 2px 4px;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .note{
+        font-size: 12px;
+    }
+    .note h1{
+        font-size: 15px;
+    }
+    .note h1 i{
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 600px){
+    table{
+        font-size: 7px;
+    } 
+}
+
+@media screen and (max-width: 430px){
+    .title{
+        font-size: 13px;
+    }   
+    .note{
+        font-size: 10px;
+    }
+    .note h1{
+        font-size: 13px;
+    }
+    .note h1 i{
+        font-size: 12px;
+    }
+    .btn{
+        font-size: 8px;
+    }
+    table{
+        font-size: 6px;
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 350px){
+    .title{
+        font-size: 12px;
+    }  
+    .note{
+        font-size: 8px;
+    }
+    .note h1{
+        font-size: 11px;
+    }
+    .note h1 i{
+        font-size: 9px;
+    } 
+    .btn,
+    table{
+        font-size: 8px;
+    }
+}

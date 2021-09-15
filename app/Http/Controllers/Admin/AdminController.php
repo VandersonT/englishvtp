@@ -65,6 +65,13 @@ class AdminController extends Controller
         ]);
     }
 
+    public function editInicialScreen(){
+        return view('admin/editInicialScreen',[
+            'user' => $this->loggedAdmin,
+            'selected' => 'pages'
+        ]);
+    }
+
     public function userNotification(){
 
         if($this->loggedAdmin->access < 3){

@@ -28,8 +28,19 @@ class LoginController extends Controller
     }
     
     public function initial(){
+
         $data = LoginHandler::infoPageInitial();
-        return view('initial',['data' => $data]);
+
+        $totalAccounts = LoginHandler::getTotalAccounts();
+        $totalTexts = LoginHandler::getTotalTexts();
+        $totalStudiedTexts = LoginHandler::getTotalStudiedTexts();
+
+        return view('initial',[
+            'data' => $data,
+            'totalAccounts' => $totalAccounts,
+            'totalTexts' => $totalTexts,
+            'totalStudiedTexts' => $totalStudiedTexts
+        ]);
     }
 
     public function login(Request $request){

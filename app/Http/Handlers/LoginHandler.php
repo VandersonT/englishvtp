@@ -6,6 +6,8 @@ namespace App\Http\Handlers;
 use App\Models\Initial;
 use App\Models\User;
 use App\Models\Daily_access;
+use App\Models\Studied_text;
+use App\Models\Text;
 /*-----------------------------------------------------------------------------*/
 
 class LoginHandler{
@@ -13,6 +15,54 @@ class LoginHandler{
     public static function infoPageInitial(){
         $data = Initial::first();
         return $data;
+    }
+
+    public static function getTotalTexts(){
+        $totalText = Text::count();
+
+        if($totalText >= 5000){return '+5k';}
+
+        if($totalText >= 2000){return '+2k';}
+        
+        if($totalText >= 999){return '+999';}
+
+        if($totalText >= 500){return '+500';}
+
+        if($totalText >= 100){return '+100';}
+
+        return $totalText;
+    }
+
+    public static function getTotalAccounts(){
+        $totalAccounts = User::count();
+
+        if($totalAccounts >= 5000){return '+5k';}
+
+        if($totalAccounts >= 2000){return '+2k';}
+        
+        if($totalAccounts >= 999){return '+999';}
+
+        if($totalAccounts >= 500){return '+500';}
+
+        if($totalAccounts >= 100){return '+100';}
+
+        return $totalAccounts;
+    }
+
+    public static function getTotalStudiedTexts(){
+        $totalStudiedText = Studied_text::count();
+
+        if($totalStudiedText >= 5000){return '+5k';}
+
+        if($totalStudiedText >= 2000){return '+2k';}
+        
+        if($totalStudiedText >= 999){return '+999';}
+
+        if($totalStudiedText >= 500){return '+500';}
+
+        if($totalStudiedText >= 100){return '+100';}
+
+        return $totalStudiedText;
     }
 
     public static function checkLogin(){

@@ -172,17 +172,17 @@
 
     <section class="section4">
         <div class="info">
-            <h1>+500</h1>
+            <h1><?=$totalAccounts?></h1>
             <p>Contas criadas</p>
         </div>
 
         <div class="info">
-            <h1>+100</h1>
+            <h1><?=$totalTexts;?></h1>
             <p>Textos+áudios disponiveis</p>
         </div>
 
         <div class="info">
-            <h1>+100 mil</h1>
+            <h1><?=$totalStudiedTexts?></h1>
             <p>Textos estudados pelos usuários</p>
         </div>
     </section>
