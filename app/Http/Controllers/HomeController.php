@@ -366,6 +366,16 @@ class HomeController extends Controller{
 
     public function viewSupport(Request $request){
 
+        $page = 1;
+        if(!empty($_GET['pg'])){
+            $page = addslashes($_GET['pg']);
+        }
+        $perPage = 20;
+
+        $totalReplysSupports = HomeHandler::getTotalReplysSupport($this->loggedUser->id, $request->id);
+
+        $totalPages = ceil($totalReplysSupports / $perPage);
+
         $error = '';
         if(!empty($_SESSION['error'])){
             $error = $_SESSION['error'];
@@ -386,7 +396,7 @@ class HomeController extends Controller{
 
         $supportInfo = HomeHandler::getSupportSingle($request->id, $this->loggedUser->id);
 
-        $replys = HomeHandler::getSupportReplys($supportInfo['id']);
+        $replys = HomeHandler::getSupportReplys($supportInfo['id'], $page, $perPage);
 
         if(!$supportInfo){
             redirect()->route('404')->send();
@@ -400,7 +410,9 @@ class HomeController extends Controller{
             'replys' => $replys,
             'error' => $error,
             'exiled' => $exiled,
-            'success' => $success
+            'success' => $success,
+            'totalPages' => $totalPages,
+            'page' => $page
         ]);
     }
 

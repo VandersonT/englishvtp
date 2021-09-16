@@ -107,3 +107,48 @@
     text-transform: uppercase;
     color: var(--select);
 }
+
+/***/
+.box-pagination{
+    background-color: var(--border3);
+    border: 1px solid var(--border);
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 5px;
+}
+
+.box-pagination li{
+    background-color: rgb(255, 255, 255);
+    width: 30px;
+    height: 30px;
+    text-align:  center;
+    line-height: 30px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.box-pagination li:hover:not(.paginationSelected){
+    background-color: rgb(218, 218, 218);
+}
+
+.paginationSelected{
+    background-color: #4db2ec!important;
+    color: white;
+}
+
+@media screen and (max-width: 700px){
+    .box-pagination li{
+        width: 17px;
+        height: 17px;
+        font-size: 10px;
+        line-height: 17px;
+        margin-right: 5px;
+        border-radius: 5px;
+    }
+    
+}

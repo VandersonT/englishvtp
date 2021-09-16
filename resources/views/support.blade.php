@@ -72,16 +72,16 @@
         <?php endif; ?>
 
         <?php if($totalPages > 1): ?>
-        <ul class="box-pagination">
-            <?php for($q=1; $q <= $totalPages; $q++): ?>
+            <ul class="box-pagination">
+                <?php for($q=1; $q <= $totalPages; $q++): ?>
 
-                <a href="<?=$base_url;?>/suporte?pg=<?=$q;?>">
-                    <li class="<?=($q == $page) ? 'paginationSelected' : ''?>"><?php echo $q?></li>
-                </a>
+                    <a href="<?=$base_url;?>/suporte?pg=<?=$q;?>">
+                        <li class="<?=($q == $page) ? 'paginationSelected' : ''?>"><?php echo $q?></li>
+                    </a>
 
-            <?php endfor; ?>
-        </ul>
-    <?php endif; ?>
+                <?php endfor; ?>
+            </ul>
+        <?php endif; ?>
 
     </section>
 @endsection
