@@ -321,6 +321,16 @@ class HomeController extends Controller{
 
     public function support(){
 
+        $page = 1;
+        if(!empty($_GET['pg'])){
+            $page = addslashes($_GET['pg']);
+        }
+        $perPage = 30;
+
+        $totalSupports = HomeHandler::getTotalSupports($this->loggedUser->id);
+
+        $totalPages = ceil($totalSupports / $perPage);
+
         $error = '';
         if(!empty($_SESSION['error'])){
             $error = $_SESSION['error'];
@@ -339,7 +349,7 @@ class HomeController extends Controller{
             $_SESSION['exiled'] = '';
         }
 
-        $supports = HomeHandler::getMySupports($this->loggedUser->id);
+        $supports = HomeHandler::getMySupports($this->loggedUser->id, $page, $perPage);
 
         return view('support', [
             'user' => $this->loggedUser,
@@ -348,7 +358,9 @@ class HomeController extends Controller{
             'supports' => $supports,
             'error' => $error,
             'exiled' => $exiled,
-            'success' => $success
+            'success' => $success,
+            'totalPages' => $totalPages,
+            'page' => $page
         ]);
     }
 

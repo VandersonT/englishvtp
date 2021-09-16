@@ -316,6 +316,14 @@ class HomeHandler{
         return $total;
     }
 
+    public static function getTotalSupports($loggedUserId){
+        $total = Support::
+            where('user_id', $loggedUserId)
+        ->count();
+
+        return $total;
+    }
+
     public static function getUserComments($ProfileUserId){
         $userComments = Comment::where('user_id', $ProfileUserId)->count();
         $userSubComments = Subcomment::where('user_id', $ProfileUserId)->count();
@@ -581,9 +589,14 @@ class HomeHandler{
         exit;
     }
 
-    public static function getMySupports($user_id){
+    public static function getMySupports($user_id, $page, $perPage){
+        
+        $offset = ($page - 1) * $perPage;
+
         $supports = Support::
             where('user_id', $user_id)
+            ->offset($offset)
+            ->limit($perPage)
             ->orderByDesc('date')
         ->get();
 
