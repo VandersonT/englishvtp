@@ -3,6 +3,7 @@
 namespace App\Http\Handlers\admin;
 
 /*-----------------------------Models------------------------------------------*/
+use App\Models\Initial;
 use App\Models\User;
 use App\Models\System;
 use App\Models\Banned;
@@ -84,6 +85,31 @@ class ActionAdminHandler{
         $newNot->save();
 
         return false;//there is no error
+    }
+
+    public static function saveScreenInitial($title1, $point1, $point2, $point3, $point4, $title2, $about, $title3, $subtitle1, $content1, $subtitle2, $content2, $subtitle3, $content3, $subtitle4, $content4, $subtitle5, $content5, $title4, $about2){
+        $save = Initial::find(1);
+            $save->title = $title1;
+            $save->point1 = $point1;
+            $save->point2 = $point2;
+            $save->point3 = $point3;
+            $save->point4 = $point4;
+            $save->title2 = $title2;
+            $save->about = $about;
+            $save->title3 = $title3;
+            $save->subTitle1 = $subtitle1;
+            $save->content1 = $content1;
+            $save->subTitle2 = $subtitle2;
+            $save->content2 = $content2;
+            $save->subTitle3 = $subtitle3;
+            $save->content3 = $content3;
+            $save->subTitle4 = $subtitle4;
+            $save->content4 = $content4;
+            $save->subTitle5 = $subtitle5;
+            $save->content5 = $content5;
+            $save->title4 = $title4;
+            $save->about2 = $about2;
+        $save->save();
     }
 
     public static function deleteNotification($notificationId){

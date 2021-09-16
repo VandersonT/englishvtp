@@ -67,12 +67,26 @@ class AdminController extends Controller
 
     public function editInicialScreen(){
         
+        $success = '';
+        if(!empty($_SESSION['success'])){
+            $success = $_SESSION['success'];
+            $_SESSION['success'] = '';
+        }
+
+        $error = '';
+        if(!empty($_SESSION['error'])){
+            $error = $_SESSION['error'];
+            $_SESSION['error'] = '';
+        }
+
         $currentInformation = AdminHandler::getInfoPageInitial();
         
         return view('admin/editInicialScreen',[
             'user' => $this->loggedAdmin,
             'selected' => 'pages',
-            'currentInformation' => $currentInformation
+            'currentInformation' => $currentInformation,
+            'success' => $success,
+            'error' => $error
         ]);
     }
 

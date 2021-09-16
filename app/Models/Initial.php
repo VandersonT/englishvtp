@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Initial extends Model{
     use HasFactory;
+    public $timestamps = false;
 }

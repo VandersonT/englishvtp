@@ -441,4 +441,38 @@ class ActionadminController extends Controller{
         exit;
     }
 
+    public function saveInicialScreen(){
+        $title1 = filter_input(INPUT_POST, 'title1');
+        $point1 = filter_input(INPUT_POST, 'point1');
+        $point2 = filter_input(INPUT_POST, 'point2');
+        $point3 = filter_input(INPUT_POST, 'point3');
+        $point4 = filter_input(INPUT_POST, 'point4');
+        $title2 = filter_input(INPUT_POST, 'title2');
+        $about = filter_input(INPUT_POST, 'about');
+        $title3 = filter_input(INPUT_POST, 'title3');
+        $subtitle1 = filter_input(INPUT_POST, 'subtitle1');
+        $content1 = filter_input(INPUT_POST, 'content1');
+        $subtitle2 = filter_input(INPUT_POST, 'subtitle2');
+        $content2 = filter_input(INPUT_POST, 'content2');
+        $subtitle3 = filter_input(INPUT_POST, 'subtitle3');
+        $content3 = filter_input(INPUT_POST, 'content3');
+        $subtitle4 = filter_input(INPUT_POST, 'subtitle4');
+        $content4 = filter_input(INPUT_POST, 'content4');
+        $subtitle5 = filter_input(INPUT_POST, 'subtitle5');
+        $content5 = filter_input(INPUT_POST, 'content5');
+        $title4 = filter_input(INPUT_POST, 'title4');
+        $about2 = filter_input(INPUT_POST, 'about2');
+
+        if($title1 && $point1 && $point2 && $point3 && $point4 && $title2 && $about && $title3 && $subtitle1 && $content1 && $subtitle2 && $content2 && $subtitle3 && $content3 && $subtitle4 && $content4 && $subtitle5 && $content5 && $title4 && $about2){
+
+            ActionadminHandler::saveScreenInitial($title1, $point1, $point2, $point3, $point4, $title2, $about, $title3, $subtitle1, $content1, $subtitle2, $content2, $subtitle3, $content3, $subtitle4, $content4, $subtitle5, $content5, $title4, $about2);
+            $_SESSION['success'] = 'A tela inicial foi alterada com sucesso.';
+
+        }else{
+            $_SESSION['error'] = 'Não foi possivel concluir a ação, pois você enviou campos em branco.';
+        }
+        return back();
+        exit;
+    }
+
 }
