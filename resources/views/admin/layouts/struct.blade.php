@@ -56,15 +56,18 @@
                     <i class="fas fa-eye"></i>
                     <p>Dashboard</p>
                 </a>
-                <a class="<?= ($selected == 'pages') ? 'selected' : '';?>" href="<?=$base_url;?>/Painel/paginas">
+                <a class="<?= ($selected == 'pages') ? 'selected' : '';?> editPages" href="<?=$base_url;?>/Painel/paginas">
                     <i class="fas fa-file-alt"></i>
                     <p>Páginas</p>
+                    <?php if($user['access'] < 4): ?>  
+                        <i class="fas fa-lock"></i>
+                    <?php endif; ?>
                 </a>
 
                 <a href="<?=$base_url;?>/Painel/notificações" class="<?= ($selected == 'usersNotification') ? 'selected' : '';?> notification">
                     <i class="fas fa-bell"></i>
                     <p>Notificar usuários</p>
-                    <?php if($user['access'] < 4): ?>  
+                    <?php if($user['access'] < 3): ?>  
                         <i class="fas fa-lock"></i>
                     <?php endif; ?>
                 </a>

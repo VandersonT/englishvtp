@@ -67,6 +67,10 @@ class AdminController extends Controller
 
     public function editInicialScreen(){
         
+        if($this->loggedAdmin->access < 4){
+            return redirect()->route('painel')->send();
+        }
+
         $success = '';
         if(!empty($_SESSION['success'])){
             $success = $_SESSION['success'];

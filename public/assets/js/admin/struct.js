@@ -90,3 +90,12 @@ btnNotification.addEventListener('click', function(e){
         alert("Somente moderadores, administradores e donos tem acesso a essa página.");
     }
 })
+
+let btnEditPages = document.querySelector('.editPages');
+
+btnEditPages.addEventListener('click', function(e){
+    if(private < 4){
+        e.preventDefault();
+        alert("Somente administradores e donos tem acesso a essa página.");
+    }
+})
