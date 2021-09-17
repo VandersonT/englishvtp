@@ -414,13 +414,25 @@ class AdminHandler{
         return $texts;
     }
 
-    public static function getAllReports($status){
+    public static function getAllReports($status, $page, $perPage){
+
+        $offset = ($page - 1) * $perPage;
+
         $reports = Report::
             join('users', 'users.id', '=', 'reports.user_id')
             ->select('reports.*', 'users.user_name')
             ->where('status', $status)
+            ->offset($offset)
+            ->limit($perPage)
         ->get();
 
+        return $reports;
+    }
+
+    public static function getTotalReportsType($type){
+        $reports = Report::
+            where('status', $type)
+        ->count();
         return $reports;
     }
 

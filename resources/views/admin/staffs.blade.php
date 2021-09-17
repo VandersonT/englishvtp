@@ -24,8 +24,8 @@
         <?php if($wantedUser == ''):?>
             Membros da staffs
         <?php else: ?>
-            <?='Encontramos '.count($staffs);?>
-            <?=(count($staffs) > 1) ? 'usuários' : 'usuário';?>
+            <?='Encontramos '.$totalStaffs;?>
+            <?=($totalStaffs > 1) ? 'usuários' : 'usuário';?>
             <?=' da staff com "'.$wantedUser.'"';?>
         <?php endif; ?>
     </h1>

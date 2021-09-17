@@ -24,8 +24,8 @@
         <?php if($wantedUser == ''):?>
             Todos os usuários cadastrados
         <?php else: ?>
-            <?='Encontramos '.count($users);?>
-            <?=(count($users) > 1) ? 'usuários' : 'usuário';?>
+            <?='Encontramos '.$totalUsers;?>
+            <?=($totalUsers > 1) ? 'usuários' : 'usuário';?>
             <?=' com "'.$wantedUser.'"';?>
         <?php endif; ?>
     </h1>

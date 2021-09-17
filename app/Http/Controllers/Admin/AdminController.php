@@ -165,7 +165,7 @@ class AdminController extends Controller
         if(!empty($_GET['pg'])){
             $page = addslashes($_GET['pg']);
         }
-        $perPage = 1;
+        $perPage = 100;
 
         $wantedUser = '';
         if($_GET){
@@ -185,7 +185,8 @@ class AdminController extends Controller
             'users' => $users,
             'wantedUser' => $wantedUser,
             'totalPages' => $totalPages,
-            'page' => $page
+            'page' => $page,
+            'totalUsers' => $totalUsers
         ]);
     }
 
@@ -215,7 +216,8 @@ class AdminController extends Controller
             'staffs' => $staffs,
             'wantedUser' => $wantedUser,
             'totalPages' => $totalPages,
-            'page' => $page
+            'page' => $page,
+            'totalStaffs' => $totalStaffs
         ]);
     }
 
@@ -465,34 +467,70 @@ class AdminController extends Controller
 
     public function reportsPendents(){
         
-        $reports = AdminHandler::getAllReports('pendente');
+        $page = 1;
+        if(!empty($_GET['pg'])){
+            $page = addslashes($_GET['pg']);
+        }
+        $perPage = 100;
+
+        $totalReportsPendents = AdminHandler::getTotalReportsType('pendente');
+
+        $totalPages = ceil($totalReportsPendents / $perPage);
+
+        $reports = AdminHandler::getAllReports('pendente', $page, $perPage);
 
         return view('admin/reportsP',[
             'user' => $this->loggedAdmin,
             'selected' => 'reportsP',
-            'reports' => $reports
+            'reports' => $reports,
+            'totalPages' => $totalPages,
+            'page' => $page
         ]);
     }
 
     public function reportsResolved(){
         
-        $reports = AdminHandler::getAllReports('resolvido');
+        $page = 1;
+        if(!empty($_GET['pg'])){
+            $page = addslashes($_GET['pg']);
+        }
+        $perPage = 100;
+
+        $totalReportsResolved = AdminHandler::getTotalReportsType('resolvido');
+
+        $totalPages = ceil($totalReportsResolved / $perPage);
+
+        $reports = AdminHandler::getAllReports('resolvido', $page, $perPage);
 
         return view('admin/reportsR',[
             'user' => $this->loggedAdmin,
             'selected' => 'reportsR',
-            'reports' => $reports
+            'reports' => $reports,
+            'totalPages' => $totalPages,
+            'page' => $page
         ]);
     }
 
     public function reportsIgnored(){
         
-        $reports = AdminHandler::getAllReports('ignorado');
+        $page = 1;
+        if(!empty($_GET['pg'])){
+            $page = addslashes($_GET['pg']);
+        }
+        $perPage = 100;
+
+        $totalReportsIgnored = AdminHandler::getTotalReportsType('ignorado');
+
+        $totalPages = ceil($totalReportsIgnored / $perPage);
+
+        $reports = AdminHandler::getAllReports('ignorado', $page, $perPage);
 
         return view('admin/reportsI',[
             'user' => $this->loggedAdmin,
             'selected' => 'reportsI',
-            'reports' => $reports
+            'reports' => $reports,
+            'totalPages' => $totalPages,
+            'page' => $page
         ]);
     }
 

@@ -18,7 +18,7 @@
     <div class="note">
         <h1><i class="far fa-sticky-note"></i>Aviso:</h1>
         <p>
-            Esta página já tem a sua pré-definido, sendo assim a unica coisa que é permitido alterar é a tela inicial do sistema.
+            Esta página já tem a sua 'cara' pré-definido, sendo assim a unica coisa que é permitido alterar é a tela inicial do sistema.
             <br/>Se acaso queira modificar as demais telas, a alteração só é possivel ser feita pelo dono do sistema, tendo em posse os codigos fontes de todo o sistema.
         </p>
     </div>
