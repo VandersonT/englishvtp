@@ -616,6 +616,16 @@ class AdminController extends Controller
 
     public function supportOpen(Request $request){
 
+        $page = 1;
+        if(!empty($_GET['pg'])){
+            $page = addslashes($_GET['pg']);
+        }
+        $perPage = 20;
+
+        $totalReplysSupports = AdminHandler::getTotalReplysSupport($request->id, $this->loggedAdmin->id);
+
+        $totalPages = ceil($totalReplysSupports / $perPage);
+
         $success = '';
         if(!empty($_SESSION['success'])){
             $success = $_SESSION['success'];
@@ -629,7 +639,7 @@ class AdminController extends Controller
         }
 
         $support = AdminHandler::getSupport($request->id);
-        $supportReplys = AdminHandler::getSupportReplys($request->id);
+        $supportReplys = AdminHandler::getSupportReplys($request->id, $page, $perPage);
 
         if($support['status'] == 'pendente'){
             $selected = 'supportsP';
@@ -647,7 +657,9 @@ class AdminController extends Controller
             'support' => $support,
             'supportReplys' => $supportReplys,
             'success' => $success,
-            'error' => $error
+            'error' => $error,
+            'totalPages' => $totalPages,
+            'page' => $page
         ]);
     }
 

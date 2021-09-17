@@ -50,33 +50,46 @@
     <h1 class="title"><?=$support['title'];?></h1>
 
     <section class="box-comment">
-    <div class="commentSingle">
-        <div class="box-info">
-            <img src="<?=$base_url?>/media/avatars/<?=$support['photo'];?>" />
-            <div class="infouser">
-                <p><?=$support['user_name'];?></p>
-                <span><?=date('d/m/Y H:i', $support['date']);?></span>
-            </div>
-        </div>
-        <p>
-            <?=str_replace('&#13;', '<br/>', $support['content']);?>
-        </p>
-    </div>
-
-    <?php if(count($supportReplys) > 0): ?>
-        <?php foreach($supportReplys as $supportReply): ?>
-            <div class="commentSingle">
-                <div class="box-info">
-                    <img src="<?=$base_url?>/media/avatars/<?=$supportReply['photo']?>" />
-                    <div class="infouser">
-                        <p><?=$supportReply['user_name']?></p>
-                        <span><?=date('d/m/Y H:i',$supportReply['date']);?></span>
-                    </div>
+        <div class="commentSingle">
+            <div class="box-info">
+                <img src="<?=$base_url?>/media/avatars/<?=$support['photo'];?>" />
+                <div class="infouser">
+                    <p><?=$support['user_name'];?></p>
+                    <span><?=date('d/m/Y H:i', $support['date']);?></span>
                 </div>
-                <p><?=str_replace('&#13;', '<br/>', $supportReply['comment']);?></p>
             </div>
-        <?php endforeach; ?>
-    <?php endif; ?>
+            <p>
+                <?=str_replace('&#13;', '<br/>', $support['content']);?>
+            </p>
+        </div>
+
+        <?php if(count($supportReplys) > 0): ?>
+            <?php foreach($supportReplys as $supportReply): ?>
+                <div class="commentSingle">
+                    <div class="box-info">
+                        <img src="<?=$base_url?>/media/avatars/<?=$supportReply['photo']?>" />
+                        <div class="infouser">
+                            <p><?=$supportReply['user_name']?></p>
+                            <span><?=date('d/m/Y H:i',$supportReply['date']);?></span>
+                        </div>
+                    </div>
+                    <p><?=str_replace('&#13;', '<br/>', $supportReply['comment']);?></p>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+
+        <?php if($totalPages > 1): ?>
+            <ul class="box-pagination">
+                <?php for($q=1; $q <= $totalPages; $q++): ?>
+
+                    <a href="<?=$base_url;?>/Painel/suporte/<?=$support['id'];?>?pg=<?=$q;?>">
+                        <li class="<?=($q == $page) ? 'paginationSelected' : ''?>"><?php echo $q?></li>
+                    </a>
+
+                <?php endfor; ?>
+            </ul>
+        <?php endif; ?>
+
     </section>
 
     <section class="box-writeAReply">

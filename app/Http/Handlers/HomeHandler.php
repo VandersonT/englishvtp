@@ -627,7 +627,7 @@ class HomeHandler{
         return false;
     }
 
-    public static function getTotalReplysSupport($support_id, $user_id){
+    public static function getTotalReplysSupport($user_id, $support_id){
         $total = Support_comment::
             where('user_id', $user_id)
             ->where('support_id', $support_id)

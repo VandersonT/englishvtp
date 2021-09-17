@@ -494,11 +494,24 @@ class AdminHandler{
         return $support;
     }
 
-    public static function getSupportReplys($supportId){
+    public static function getTotalReplysSupport($support_id, $user_id){
+        $total = Support_comment::
+            where('user_id', $user_id)
+            ->where('support_id', $support_id)
+        ->count();
+        return $total;
+    }
+
+    public static function getSupportReplys($supportId, $page, $perPage){
+        
+        $offset = ($page - 1) * $perPage;
+        
         $supportReplys = Support_comment::
             join('users', 'users.id', '=', 'support_comments.user_id')
             ->select('support_comments.*', 'users.user_name', 'users.photo')
             ->where('support_id', $supportId)
+            ->offset($offset)
+            ->limit($perPage)
         ->get();
 
         return $supportReplys;
