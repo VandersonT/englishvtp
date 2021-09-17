@@ -149,7 +149,15 @@ class ActionController extends Controller
         if($alreadySaved){
             ActionHandler::removeTextSaved($request->textid, $this->loggedUser->id);
         }else{
-            ActionHandler::addTextSaved($request->textid, $this->loggedUser->id);
+
+            $reachedTheLimit = ActionHandler::checkIfReachedTheLimit($this->loggedUser->id);
+
+            if($reachedTheLimit >= 10){
+                $_SESSION['error'] = 'Você só pode salvar 10 textos, remova algum antes de salvar novamente.';
+            }else{
+                ActionHandler::addTextSaved($request->textid, $this->loggedUser->id);
+            }
+
         }
         return back();
         exit;

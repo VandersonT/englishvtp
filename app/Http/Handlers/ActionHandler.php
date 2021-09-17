@@ -229,6 +229,13 @@ class ActionHandler{
         return false;
     }
 
+    public static function checkIfReachedTheLimit($user_id){
+        $data = Saved_text::
+            where('user_id', $user_id)
+        ->count();
+        return $data;
+    }
+
     public static function removeTextSaved($textid, $user_id){
         $studiedText = Saved_text::
             where('user_id', $user_id)
