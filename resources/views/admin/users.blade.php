@@ -46,23 +46,23 @@
             </th>
         </tr>
         <?php if(count($users) > 0):?>
-            <?php foreach($users as $user): ?>
+            <?php foreach($users as $userSingle): ?>
                 <tr>
                     <td>
-                        <?=$user['id'];?>
+                        <?=$userSingle['id'];?>
                     </td>
                     <td>
-                        <a href="<?=$base_url;?>/Painel/perfil/<?=$user['id'];?>"><?=$user['user_name'];?></a>
+                        <a href="<?=$base_url;?>/Painel/perfil/<?=$userSingle['id'];?>"><?=$userSingle['user_name'];?></a>
                     </td>
                     <td>
-                        <?=($user['access'] == 1) ? 'Usuário' : '';?>
-                        <?=($user['access'] == 2) ? 'Ajudante' : '';?>
-                        <?=($user['access'] == 3) ? 'Moderador' : '';?>
-                        <?=($user['access'] == 4) ? 'Administrador' : '';?>
-                        <?=($user['access'] == 5) ? 'Dono' : '';?>
+                        <?=($userSingle['access'] == 1) ? 'Usuário' : '';?>
+                        <?=($userSingle['access'] == 2) ? 'Ajudante' : '';?>
+                        <?=($userSingle['access'] == 3) ? 'Moderador' : '';?>
+                        <?=($userSingle['access'] == 4) ? 'Administrador' : '';?>
+                        <?=($userSingle['access'] == 5) ? 'Dono' : '';?>
                     </td>
                     <td>
-                        <a class="btn" href="<?=$base_url;?>/Painel/perfil/<?=$user['id'];?>">Ver perfil</a>
+                        <a class="btn" href="<?=$base_url;?>/Painel/perfil/<?=$userSingle['id'];?>">Ver perfil</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
