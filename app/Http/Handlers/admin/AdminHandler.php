@@ -271,10 +271,28 @@ class AdminHandler{
         return $user;
     }
 
-    public static function getAllUserBan(){
+    public static function getTotalUserBan(){
+        $total = Banned::count();
+        return $total;
+    }
+
+    public static function getTotalUserBanWanted($wantedUser){
+        $total = Banned::
+            join('users', 'users.id', 'banned.user_id')
+            ->where('user_name', 'like', $wantedUser.'%')
+        ->count();
+        return $total;
+    }
+
+    public static function getAllUserBan($page, $perPage){
+
+        $offset = ($page - 1) * $perPage;
+
         $users = Banned::
             join('users', 'users.id', 'banned.user_id')
             ->select('banned.*', 'users.user_name')
+            ->offset($offset)
+            ->limit($perPage)
         ->get();
 
         foreach($users as $user){
@@ -288,11 +306,16 @@ class AdminHandler{
         return $users;
     }
 
-    public static function getWantedUserBan($wantedUser){
+    public static function getWantedUserBan($wantedUser, $page, $perPage){
+
+        $offset = ($page - 1) * $perPage;
+
         $users = Banned::
             join('users', 'users.id', '=', 'banned.user_id')
             ->where('user_name', 'like', $wantedUser.'%')
             ->select('banned.*', 'users.user_name')
+            ->offset($offset)
+            ->limit($perPage)
             ->orderByDesc('access')
         ->get();
 

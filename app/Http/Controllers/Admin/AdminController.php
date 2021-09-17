@@ -252,6 +252,12 @@ class AdminController extends Controller
 
     public function bans(){
 
+        $page = 1;
+        if(!empty($_GET['pg'])){
+            $page = addslashes($_GET['pg']);
+        }
+        $perPage = 50;
+
         $flash = '';
         if(!empty($_SESSION['flash'])){
             $flash = $_SESSION['flash'];
@@ -261,17 +267,23 @@ class AdminController extends Controller
         $wantedUser = '';
         if($_GET){
             $wantedUser = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS);
-            $users = AdminHandler::getWantedUserBan($wantedUser);
+            $users = AdminHandler::getWantedUserBan($wantedUser, $page, $perPage);
+            $totalUserBan = AdminHandler::getTotalUserBanWanted($wantedUser);
         }else{
-            $users = AdminHandler::getAllUserBan();
+            $users = AdminHandler::getAllUserBan($page, $perPage);
+            $totalUserBan = AdminHandler::getTotalUserBan();
         }
+
+        $totalPages = ceil($totalUserBan / $perPage);
 
         return view('admin/bans',[
             'user' => $this->loggedAdmin,
             'selected' => 'bans',
             'wantedUser' => $wantedUser,
             'users' => $users,
-            'flash' => $flash
+            'flash' => $flash,
+            'totalPages' => $totalPages,
+            'page' => $page
         ]);
     }
 
