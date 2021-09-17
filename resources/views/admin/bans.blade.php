@@ -31,8 +31,8 @@
         <?php if($wantedUser == ''):?>
         Usuários Banidos
         <?php else: ?>
-            <?='Encontramos '.count($users);?>
-            <?=(count($users) > 1) ? 'usuários banidos' : 'usuário banido';?>
+            <?='Encontramos '.$totalUserBan;?>
+            <?=($totalUserBan > 1) ? 'usuários banidos' : 'usuário banido';?>
             <?=' com "'.$wantedUser.'"';?>
         <?php endif; ?>
     </h1>

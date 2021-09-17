@@ -31,8 +31,8 @@
         <?php if($wantedUser == ''):?>
         Usuários Exilados
         <?php else: ?>
-            <?='Encontramos '.count($users);?>
-            <?=(count($users) > 1) ? 'usuários exilados' : 'usuário exilado';?>
+            <?='Encontramos '.$totalUserExiled;?>
+            <?=($totalUserExiled > 1) ? 'usuários exilados' : 'usuário exilado';?>
             <?=' com "'.$wantedUser.'"';?>
         <?php endif; ?>
     </h1>
@@ -99,6 +99,19 @@
             <?=($wantedUser == '') ? 'Nenhum usuário foi exilado até agora' : 'Não encontramos nenhum usuário com esse filtro';?>
         </h1>
     <?php endif; ?>
+
+    <?php if($totalPages > 1): ?>
+        <ul class="box-pagination">
+            <?php for($q=1; $q<=$totalPages; $q++): ?>
+                <a href="/Painel/exilio?<?php 
+                $currentUrl = $_GET;
+                $currentUrl['pg'] = $q;
+                echo http_build_query($currentUrl);
+                ?>"><li class="<?=($q == $page) ? 'paginationSelected' : ''?>"> <?=$q?> </li></a>
+            <?php endfor; ?>
+        </ul>
+    <?php endif; ?>
+
 @endsection
 
 <!--Scripts-->

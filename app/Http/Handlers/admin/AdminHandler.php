@@ -221,7 +221,9 @@ class AdminHandler{
     }
 
     public static function getTotalStaffs(){
-        $total = User::count();
+        $total = User::
+            where('access', '>', 1)
+        ->count();
         return $total;
     }
 
@@ -316,7 +318,6 @@ class AdminHandler{
             ->select('banned.*', 'users.user_name')
             ->offset($offset)
             ->limit($perPage)
-            ->orderByDesc('access')
         ->get();
 
         foreach($users as $user){
@@ -330,10 +331,28 @@ class AdminHandler{
         return $users;
     }
 
-    public static function getAllUserExile(){
+    public static function getTotalUserExiled(){
+        $total = Exile::count();
+        return $total;
+    }
+
+    public static function getTotalUserExiledWanted($wantedUser){
+        $total = Exile::
+            join('users', 'users.id', 'exile.user_id')
+            ->where('user_name', 'like', $wantedUser.'%')
+        ->count();
+        return $total;
+    }
+
+    public static function getAllUserExile($page, $perPage){
+
+        $offset = ($page - 1) * $perPage;
+
         $users = Exile::
             join('users', 'users.id', 'exile.user_id')
             ->select('exile.*', 'users.user_name')
+            ->offset($offset)
+            ->limit($perPage)
         ->get();
 
         foreach($users as $user){
@@ -347,12 +366,16 @@ class AdminHandler{
         return $users;
     }
 
-    public static function getWantedUserExile($wantedUser){
+    public static function getWantedUserExile($wantedUser, $page, $perPage){
+        
+        $offset = ($page - 1) * $perPage;
+
         $users = Exile::
             join('users', 'users.id', '=', 'exile.user_id')
             ->where('user_name', 'like', $wantedUser.'%')
             ->select('exile.*', 'users.user_name')
-            ->orderByDesc('access')
+            ->offset($offset)
+            ->limit($perPage)
         ->get();
 
         foreach($users as $user){

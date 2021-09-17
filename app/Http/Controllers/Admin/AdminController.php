@@ -165,7 +165,7 @@ class AdminController extends Controller
         if(!empty($_GET['pg'])){
             $page = addslashes($_GET['pg']);
         }
-        $perPage = 50;
+        $perPage = 1;
 
         $wantedUser = '';
         if($_GET){
@@ -195,10 +195,10 @@ class AdminController extends Controller
         if(!empty($_GET['pg'])){
             $page = addslashes($_GET['pg']);
         }
-        $perPage = 50;
+        $perPage = 100;
 
         $wantedUser = '';
-        if($_GET){
+        if(!empty($_GET['search'])){
             $wantedUser = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS);
             $staffs = AdminHandler::getWantedStaff($wantedUser, $page, $perPage);
             $totalStaffs = AdminHandler::getTotalStaffsWanted($wantedUser);
@@ -256,7 +256,7 @@ class AdminController extends Controller
         if(!empty($_GET['pg'])){
             $page = addslashes($_GET['pg']);
         }
-        $perPage = 50;
+        $perPage = 100;
 
         $flash = '';
         if(!empty($_SESSION['flash'])){
@@ -265,7 +265,7 @@ class AdminController extends Controller
         }
 
         $wantedUser = '';
-        if($_GET){
+        if(!empty($_GET['search'])){
             $wantedUser = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS);
             $users = AdminHandler::getWantedUserBan($wantedUser, $page, $perPage);
             $totalUserBan = AdminHandler::getTotalUserBanWanted($wantedUser);
@@ -283,7 +283,8 @@ class AdminController extends Controller
             'users' => $users,
             'flash' => $flash,
             'totalPages' => $totalPages,
-            'page' => $page
+            'page' => $page,
+            'totalUserBan' => $totalUserBan
         ]);
     }
 
@@ -311,6 +312,12 @@ class AdminController extends Controller
 
     public function exile(){
 
+        $page = 1;
+        if(!empty($_GET['pg'])){
+            $page = addslashes($_GET['pg']);
+        }
+        $perPage = 100;
+
         $flash = '';
         if(!empty($_SESSION['flash'])){
             $flash = $_SESSION['flash'];
@@ -318,19 +325,26 @@ class AdminController extends Controller
         }
 
         $wantedUser = '';
-        if($_GET){
+        if(!empty($_GET['search'])){
             $wantedUser = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS);
-            $users = AdminHandler::getWantedUserExile($wantedUser);
+            $users = AdminHandler::getWantedUserExile($wantedUser, $page, $perPage);
+            $totalUserExiled = AdminHandler::getTotalUserExiledWanted($wantedUser);
         }else{
-            $users = AdminHandler::getAllUserExile();
+            $users = AdminHandler::getAllUserExile($page, $perPage);
+            $totalUserExiled = AdminHandler::getTotalUserExiled();
         }
+
+        $totalPages = ceil($totalUserExiled / $perPage);
 
         return view('admin/exile',[
             'user' => $this->loggedAdmin,
             'selected' => 'exile',
             'wantedUser' => $wantedUser,
             'users' => $users,
-            'flash' => $flash
+            'flash' => $flash,
+            'totalPages' => $totalPages,
+            'page' => $page,
+            'totalUserExiled' => $totalUserExiled
         ]);
     }
 
