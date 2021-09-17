@@ -191,19 +191,31 @@ class AdminController extends Controller
 
     public function staffs(){
 
+        $page = 1;
+        if(!empty($_GET['pg'])){
+            $page = addslashes($_GET['pg']);
+        }
+        $perPage = 50;
+
         $wantedUser = '';
         if($_GET){
             $wantedUser = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS);
-            $staffs = AdminHandler::getWantedStaff($wantedUser);
+            $staffs = AdminHandler::getWantedStaff($wantedUser, $page, $perPage);
+            $totalStaffs = AdminHandler::getTotalStaffsWanted($wantedUser);
         }else{
-            $staffs = AdminHandler::getAllStaffs();
+            $staffs = AdminHandler::getAllStaffs($page, $perPage);
+            $totalStaffs = AdminHandler::getTotalStaffs();
         }
+
+        $totalPages = ceil($totalStaffs / $perPage);
 
         return view('admin/staffs',[
             'user' => $this->loggedAdmin,
             'selected' => 'staffs',
             'staffs' => $staffs,
-            'wantedUser' => $wantedUser
+            'wantedUser' => $wantedUser,
+            'totalPages' => $totalPages,
+            'page' => $page
         ]);
     }
 

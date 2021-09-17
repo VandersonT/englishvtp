@@ -220,19 +220,42 @@ class AdminHandler{
         return $users;
     }
 
-    public static function getAllStaffs(){
+    public static function getTotalStaffs(){
+        $total = User::count();
+        return $total;
+    }
+
+    public static function getTotalStaffsWanted($wantedUser){
+        $total = User::
+            where('user_name', 'like', $wantedUser.'%')
+            ->where('access', '>', 1)
+        ->count();
+        return $total;
+    }
+
+    public static function getAllStaffs($page, $perPage){
+
+        $offset = ($page - 1) * $perPage;
+
         $users = User::
             where('access', '>', 1)
+            ->offset($offset)
+            ->limit($perPage)
             ->orderByDesc('access')
         ->get();
 
         return $users;
     }
 
-    public static function getWantedStaff($wantedUser){
+    public static function getWantedStaff($wantedUser, $page, $perPage){
+        
+        $offset = ($page - 1) * $perPage;
+
         $users = User::
             where('user_name', 'like', $wantedUser.'%')
             ->where('access', '>', 1)
+            ->offset($offset)
+            ->limit($perPage)
             ->orderByDesc('access')
         ->get();
 
