@@ -161,19 +161,31 @@ class AdminController extends Controller
 
     public function users(Request $request){
 
+        $page = 1;
+        if(!empty($_GET['pg'])){
+            $page = addslashes($_GET['pg']);
+        }
+        $perPage = 50;
+
         $wantedUser = '';
         if($_GET){
             $wantedUser = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS);
-            $users = AdminHandler::getWantedUser($wantedUser);
+            $users = AdminHandler::getWantedUser($wantedUser, $page, $perPage);
+            $totalUsers = AdminHandler::getTotalUsersWanted($wantedUser);
         }else{
-            $users = AdminHandler::getAllUsers();
+            $users = AdminHandler::getAllUsers($page, $perPage);
+            $totalUsers = AdminHandler::getTotalUsers();
         }
+
+        $totalPages = ceil($totalUsers / $perPage);
         
         return view('admin/users',[
             'user' => $this->loggedAdmin,
             'selected' => 'users',
             'users' => $users,
-            'wantedUser' => $wantedUser
+            'wantedUser' => $wantedUser,
+            'totalPages' => $totalPages,
+            'page' => $page
         ]);
     }
 

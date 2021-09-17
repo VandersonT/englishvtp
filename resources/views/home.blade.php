@@ -104,15 +104,15 @@
     </section>
 
     <?php if($totalPage > 1): ?>
-    <ul class="box-pagination">
-        <?php for($q=1; $q<=$totalPage; $q++): ?>
-        <a href="/?<?php 
-        $currentUrl = $_GET;
-        $currentUrl['pg'] = $q;
-        echo http_build_query($currentUrl);
-        ?>"><li class="<?=($q == $page) ? 'paginationSelected' : ''?>"> <?=$q?> </li></a>
-        <?php endfor; ?>
-    </ul>
+        <ul class="box-pagination">
+            <?php for($q=1; $q<=$totalPage; $q++): ?>
+            <a href="/?<?php 
+            $currentUrl = $_GET;
+            $currentUrl['pg'] = $q;
+            echo http_build_query($currentUrl);
+            ?>"><li class="<?=($q == $page) ? 'paginationSelected' : ''?>"> <?=$q?> </li></a>
+            <?php endfor; ?>
+        </ul>
     <?php endif; ?>
 
     <div class="btnAssistent">

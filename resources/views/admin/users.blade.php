@@ -75,6 +75,20 @@
         </h1>
     <?php endif; ?>
 
+    
+
+    <?php if($totalPages > 1): ?>
+        <ul class="box-pagination">
+            <?php for($q=1; $q<=$totalPages; $q++): ?>
+                <a href="/Painel/usuarios?<?php 
+                $currentUrl = $_GET;
+                $currentUrl['pg'] = $q;
+                echo http_build_query($currentUrl);
+                ?>"><li class="<?=($q == $page) ? 'paginationSelected' : ''?>"> <?=$q?> </li></a>
+            <?php endfor; ?>
+        </ul>
+    <?php endif; ?>
+
 @endsection
 
 <!--Scripts-->

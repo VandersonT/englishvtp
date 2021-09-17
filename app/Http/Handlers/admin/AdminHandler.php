@@ -183,15 +183,38 @@ class AdminHandler{
 
     }
 
-    public static function getAllUsers(){
-        $users = User::get();
+    public static function getTotalUsers(){
+        $total = User::count();
+        return $total;
+    }
+
+    public static function getTotalUsersWanted($wantedUser){
+        $total = User::
+            where('user_name', 'like', $wantedUser.'%')
+        ->count();
+        return $total;
+    }
+
+    public static function getAllUsers($page, $perPage){
+
+        $offset = ($page - 1) * $perPage;
+
+        $users = User::
+            offset($offset)
+            ->limit($perPage)
+        ->get();
 
         return $users;
     }
 
-    public static function getWantedUser($wantedUser){
+    public static function getWantedUser($wantedUser, $page, $perPage){
+
+        $offset = ($page - 1) * $perPage;
+
         $users = User::
             where('user_name', 'like', $wantedUser.'%')
+            ->offset($offset)
+            ->limit($perPage)
         ->get();
 
         return $users;
