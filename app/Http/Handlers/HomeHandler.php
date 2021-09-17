@@ -412,11 +412,22 @@ class HomeHandler{
         return false;
     }
 
-    public static function getAllTextsStudies($user_id){
+    public static function getTotalStudiedText($loggedUserId){
+        $total = Studied_text::where('user_id', $loggedUserId)->count();
+
+        return $total;
+    }
+
+    public static function getAllTextsStudies($user_id, $page, $perPage){
+        
+        $offset = ($page - 1) * $perPage;
+        
         $texts = Studied_text::
             where('user_id', $user_id)
             ->join('texts', 'studied_texts.textid', '=', 'texts.id')
             ->select('textid', 'image', 'english_title', 'level')
+            ->offset($offset)
+            ->limit($perPage)
             ->orderByDesc('studied_texts.date')
         ->get();
 

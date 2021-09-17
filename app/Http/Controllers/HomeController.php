@@ -225,7 +225,18 @@ class HomeController extends Controller{
 
     public function mytexts(){
 
-        $textsStudies = HomeHandler::getAllTextsStudies($this->loggedUser->id);
+        $page = 1;
+        if(!empty($_GET['pg'])){
+            $page = addslashes($_GET['pg']);
+        }
+        $perPage = 20;
+
+        $totalStudiedText = HomeHandler::getTotalStudiedText($this->loggedUser->id);
+
+        $totalPages = ceil($totalStudiedText / $perPage);
+
+        $textsStudies = HomeHandler::getAllTextsStudies($this->loggedUser->id, $page, $perPage);
+
         $textsSaveds = HomeHandler::getAllTextsSaved($this->loggedUser->id);
 
         return view('mytexts',[
@@ -233,7 +244,9 @@ class HomeController extends Controller{
             'notifications' => $this->notifications,
             'selected' => 'mytexts',
             'textsStudies' => $textsStudies,
-            'textsSaveds' => $textsSaveds
+            'textsSaveds' => $textsSaveds,
+            'totalPages' => $totalPages,
+            'page' => $page
         ]);
     }
 
