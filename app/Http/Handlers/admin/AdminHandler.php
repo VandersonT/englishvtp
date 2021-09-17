@@ -462,14 +462,26 @@ class AdminHandler{
         return $report;
     }
 
-    public static function getAllSupports($status){
+    public static function getAllSupports($status, $page, $perPage){
+        
+        $offset = ($page - 1) * $perPage;
+        
         $supports = Support::
             join('users', 'users.id', '=', 'supports.user_id')
             ->select('supports.*', 'users.user_name')
             ->where('status', $status)
+            ->offset($offset)
+            ->limit($perPage)
         ->get();
 
         return $supports;
+    }
+
+    public static function getTotalSupportsType($type){
+        $reports = Support::
+            where('status', $type)
+        ->count();
+        return $reports;
     }
 
     public static function getSupport($supportId){

@@ -547,34 +547,70 @@ class AdminController extends Controller
 
     public function supportsPendents(){
 
-        $supports = AdminHandler::getAllSupports('pendente');
+        $page = 1;
+        if(!empty($_GET['pg'])){
+            $page = addslashes($_GET['pg']);
+        }
+        $perPage = 100;
+
+        $totalSupportsPendents = AdminHandler::getTotalSupportsType('pendente');
+
+        $totalPages = ceil($totalSupportsPendents / $perPage);
+
+        $supports = AdminHandler::getAllSupports('pendente', $page, $perPage);
 
         return view('admin/supportsP',[
             'user' => $this->loggedAdmin,
             'selected' => 'supportsP',
-            'supports' => $supports
+            'supports' => $supports,
+            'totalPages' => $totalPages,
+            'page' => $page
         ]);
     }
 
     public function supportsResolved(){
 
-        $supports = AdminHandler::getAllSupports('resolvido');
+        $page = 1;
+        if(!empty($_GET['pg'])){
+            $page = addslashes($_GET['pg']);
+        }
+        $perPage = 100;
+
+        $totalSupportsResolved = AdminHandler::getTotalSupportsType('resolvido');
+
+        $totalPages = ceil($totalSupportsResolved / $perPage);
+
+        $supports = AdminHandler::getAllSupports('resolvido', $page, $perPage);
 
         return view('admin/supportsR',[
             'user' => $this->loggedAdmin,
             'selected' => 'supportsR',
-            'supports' => $supports
+            'supports' => $supports,
+            'totalPages' => $totalPages,
+            'page' => $page
         ]);
     }
 
     public function supportsIgnored(){
 
-        $supports = AdminHandler::getAllSupports('ignorado');
+        $page = 1;
+        if(!empty($_GET['pg'])){
+            $page = addslashes($_GET['pg']);
+        }
+        $perPage = 100;
+
+        $totalSupportsIgnored = AdminHandler::getTotalSupportsType('ignorado');
+
+        $totalPages = ceil($totalSupportsIgnored / $perPage);
+
+        $supports = AdminHandler::getAllSupports('ignorado', $page, $perPage);
 
         return view('admin/supportsI',[
             'user' => $this->loggedAdmin,
             'selected' => 'supportsI',
-            'supports' => $supports
+            'supports' => $supports,
+            'totalPages' => $totalPages,
+            'page' => $page
         ]);
     }
 
