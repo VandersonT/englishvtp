@@ -88,6 +88,12 @@ class ActionadminController extends Controller{
             exit;
         }
 
+        if($request->id == $this->loggedAdmin->id){
+            $_SESSION['error'] = "Você não pode alterar seu próprio cargo.";
+            return back();
+            exit; 
+        }
+
         if($this->loggedAdmin->access < 5 && $request->newAccess >= $this->loggedAdmin->access){
             $_SESSION['error'] = 'Você só pode dar cargos que sejam menores que o seu.';
             return back();
@@ -97,7 +103,7 @@ class ActionadminController extends Controller{
         $userToChangePosition = ActionadminHandler::getUserAccess($request->id);
 
         if($userToChangePosition >= 4 && $this->loggedAdmin->access < 5 ){
-            $_SESSION['error'] = 'Somente os donos do sistema podem alterar o cargo de um administrador/dono.';
+            $_SESSION['error'] = 'Somente os donos do sistema pode alterar o cargo de um administrador/dono.';
             return back();
             exit;
         }
@@ -139,6 +145,12 @@ class ActionadminController extends Controller{
         $time = filter_input(INPUT_POST, 'time', FILTER_SANITIZE_SPECIAL_CHARS);
 
         if($idToBan && $reason && $formTime){
+
+            if($idToBan == $this->loggedAdmin->id){
+                $_SESSION['error'] = "Calma ae, você não pode banir você mesmo.";
+                return back();
+                exit; 
+            }
 
             if(!$time && $formTime != 'Eterno'){
                 $_SESSION['error'] = "Ocorreu um erro inesperado durante o banimento.";
@@ -190,6 +202,12 @@ class ActionadminController extends Controller{
         $time = filter_input(INPUT_POST, 'time', FILTER_SANITIZE_SPECIAL_CHARS);
 
         if($idToExile && $reason && $formTime){
+
+            if($idToExile == $this->loggedAdmin->id){
+                $_SESSION['error'] = "Calma ae, você não pode exilar você mesmo.";
+                return back();
+                exit; 
+            }
 
             if(!$time && $formTime != 'Eterno'){
                 $_SESSION['error'] = "Ocorreu um erro inesperado durante o exilio.";

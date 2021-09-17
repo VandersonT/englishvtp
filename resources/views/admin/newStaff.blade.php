@@ -74,6 +74,14 @@
                 <?=$userFound['email'];?>
             </p>
             <p>
+                <b>Cargo:</b>
+                <?=($userFound['access'] == 1) ? 'Usuário' : '';?>
+                <?=($userFound['access'] == 2) ? 'Ajudante' : '';?>
+                <?=($userFound['access'] == 3) ? 'Moderador' : '';?>
+                <?=($userFound['access'] == 4) ? 'Administrador' : '';?>
+                <?=($userFound['access'] == 5) ? 'Dono' : '';?>
+            </p>
+            <p>
                 <b>Level:</b>
                 <?=($userFound['level'] != NULL) ? $userFound['level'] : 'Desconhecido';?>
             </p>
