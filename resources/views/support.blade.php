@@ -16,7 +16,7 @@
     <?php if($exiled): ?>
     <div class="backgroundDark">
         <div class="flash2">
-            <h1 class="error">Você esta exilado</h1>
+            <h1 class="error">Você está exilado</h1>
             <p><?=$exiled;?></p>
             <button class="close2 btn">Fechar</button>
         </div>
@@ -47,7 +47,7 @@
                 <p><?=$flash;?></p>
             </div>
         <?php endif; ?>
-        <input required type="text" name="title" placeholder="Titulo"/>
+        <input required type="text" name="title" placeholder="Título"/>
        <textarea name="content" required placeholder="Digite a sua dúvida"></textarea>
         <button>Enviar</button>
     </form>

@@ -48,13 +48,13 @@
                     <i class="fas fa-play-circle"></i>
                     Envie o aúdio:
                 </label>
-                <input name="audio" type="file" id="audio"/>
+                <input name="audio" type="file" id="audio" required/>
 
                 <label for="image" class="subTitle">
                     <i class="fas fa-images"></i>
                     Envie uma imagem:
                 </label>
-                <input name="image" type="file" id="image"/>
+                <input name="image" type="file" id="image" required/>
             </div>
 
             <div  class="div2">
@@ -62,7 +62,7 @@
                     <i class="fas fa-level-up-alt"></i>
                     Nivel do inglês:
                 </label>
-                <select name="englishLevel">
+                <select name="englishLevel" required>
                     <option value="básico">Básico</option>
                     <option value="intermediário">Intermediário</option>
                     <option value="avançado">Avançado</option>
@@ -73,7 +73,18 @@
                     <i class="fas fa-calculator"></i>
                     Pontos que o texto vale:
                 </label>
-                <input min="0" type="number" id="points" name="points"/>
+                <input min="0" type="number" id="points" name="points" required/>
+                
+                <a class="helpme"><i class="fas fa-question"></i>Ajuda escolher</a>
+
+                <div class="help">
+                    <h1><i class="fas fa-dragon"></i>Tabela de pontos</h1>
+                    <p><b>Básico:</b> 0 - 999</p>
+                    <p><b>Intermediario:</b> 1000 - 2999</p>
+                    <p><b>Avançado:</b> 3000 - 9999</p>
+                    <p><b>SuperAvançado:</b> 10000 - ∞</p>
+                    <a class="btnClose">Fechar</a>
+                </div>
 
                 <label for="image" class="subTitle">
                     <i class="fas fa-globe-americas"></i>
@@ -90,12 +101,12 @@
 
         <section class="secondSection">
             <div class="box1">
-                <input type="text" placeholder="Titulo em inglês" name="englishTitle"/>
-                <textarea name="englishContent" placeholder="Escreva o texto em inglês"></textarea>
+                <input type="text" placeholder="Titulo em inglês" name="englishTitle" required/>
+                <textarea name="englishContent" placeholder="Escreva o texto em inglês" required></textarea>
             </div>
             <div class="box2">
-                <input type="text" placeholder="Titulo em português" name="portugueseTitle"/>
-                <textarea name="portugueseContent" placeholder="Escreva o texto em português"></textarea>
+                <input type="text" placeholder="Titulo em português" name="portugueseTitle" required/>
+                <textarea name="portugueseContent" placeholder="Escreva o texto em português" required></textarea>
             </div>
         </section>
 
@@ -107,4 +118,5 @@
 <!--Scripts-->
 @section('scripts')
     <script src="<?=$base_url;?>/assets/js/admin/flash.js"></script>
+    <script src="<?=$base_url;?>/assets/js/admin/newText.js"></script>
 @endsection

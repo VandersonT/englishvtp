@@ -13,6 +13,13 @@
 
 <!--Content-->
 @section('content')
+
+    <?php 
+        if($infoProfile['id'] == $user['id']){
+            $selected = 'profile';
+        }
+    ?>
+
     <section class="view">
         <h1 class="title">
             <i class="fas fa-id-card-alt"></i>
@@ -63,7 +70,9 @@
                         <i class="fas fa-level-up-alt"></i>
                         Nivel:
                     </h1>
-                    <p>A1</p>
+                    <p>
+                        <?=($infoProfile['level']) ? $infoProfile['level'] : 'Desconhecido' ;?>
+                    </p>
                 </div>
                 <a  target="_blank" href="<?=$base_url;?>/perfil/<?=$infoProfile['id'];?>" class="button">
                     Ver perfil no sistema

@@ -154,7 +154,7 @@ class AdminController extends Controller
         
         return view('admin/profile',[
             'user' => $this->loggedAdmin,
-            'selected' => 'profile',
+            'selected' => 'none',
             'infoProfile' => $infoProfile
         ]);
     }
