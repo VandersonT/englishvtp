@@ -119,4 +119,5 @@
 @section('scripts')
     <script src="<?=$base_url;?>/assets/js/admin/flash.js"></script>
     <script src="<?=$base_url;?>/assets/js/admin/newText.js"></script>
+    <script src="<?=$base_url;?>/assets/js/admin/confirmToExit.js"></script>
 @endsection
