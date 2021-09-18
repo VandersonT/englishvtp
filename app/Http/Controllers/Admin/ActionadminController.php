@@ -421,13 +421,18 @@ class ActionadminController extends Controller{
         $portugueseContent = filter_input(INPUT_POST, 'portugueseContent');
         $textToUpdate = filter_input(INPUT_POST, 'textToUpdate'); 
         
+        $textInfo = ActionadminHandler::getText($textToUpdate);
+
         if($englishLevel && $points && $englishType && $englishTitle && $englishContent && $portugueseTitle && $portugueseContent){
             
             /*Save audio to system*/
             $nameAudio = '';
             if($audioUpdated){
                 $nameAudio = md5(time().rand(0,9999)).'.mp3';
+                //add new audio
                 move_uploaded_file($_FILES['audio']['tmp_name'], 'media/audio/'.$nameAudio);
+                //delete old audio
+                unlink('media/audio/'.$textInfo['audio']);
             }
             /***/
 
@@ -435,7 +440,10 @@ class ActionadminController extends Controller{
             $nameImage = '';
             if($imageUpdated){
                 $nameImage = md5(time().rand(0,9999)).'.jpg';
+                //add new image
                 move_uploaded_file($_FILES['image']['tmp_name'], 'media/textCover/'.$nameImage);
+                //delete old image
+                unlink('media/textCover/'.$textInfo['image']);
             }
             /***/
 
