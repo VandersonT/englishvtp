@@ -478,10 +478,10 @@ class HomeHandler{
 
         switch($user['level']){
             case 'A1':
-                $userSkills = 0;
+                $userSkills = $userSkills + 0;
                 break;
             case 'A2':
-                $userSkills = $userSkills + 3000;
+                $userSkills = $userSkills + 5000;
                 break;
             case 'B1':
                 $userSkills = $userSkills + 15000;
@@ -497,7 +497,7 @@ class HomeHandler{
                 break;
         }
         
-        if($userSkills >= 0 && $userSkills < 3000){
+        if($userSkills >= 0 && $userSkills < 5000){
 
             $appropriateAmericanTexts = Text::
                 select('id', 'english_title')
@@ -517,7 +517,7 @@ class HomeHandler{
                 ->inRandomOrder()
             ->first();
 
-        }else if($userSkills >= 3000 && $userSkills < 15000){
+        }else if($userSkills >= 5000 && $userSkills < 15000){
 
             $appropriateAmericanTexts = Text::
                 select('id', 'english_title')    
