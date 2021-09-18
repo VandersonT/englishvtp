@@ -214,9 +214,9 @@
     <?php if(count($mostStudiedTexts) >= 3): ?>
         <script>
             /*info studied texts*/
-            let studiedName1 = '<?=$mostStudiedTexts[0]["english_title"];?>';
-            let studiedName2 = '<?=$mostStudiedTexts[1]["english_title"];?>';
-            let studiedName3 = '<?=$mostStudiedTexts[2]["english_title"];?>';
+            let studiedName1 = "<?=$mostStudiedTexts[0]["english_title"];?>";
+            let studiedName2 = "<?=$mostStudiedTexts[1]["english_title"];?>";
+            let studiedName3 = "<?=$mostStudiedTexts[2]["english_title"];?>";
 
             let studiedValue1 = '<?=$mostStudiedTexts[0]["total"];?>';
             let studiedValue2 = '<?=$mostStudiedTexts[1]["total"];?>';
