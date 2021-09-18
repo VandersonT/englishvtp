@@ -88,6 +88,7 @@ class HomeHandler{
     }
 
     public static function getAllTextWithFilter($filter){
+
         $data = Text::where('type_english', $filter['type'])
             ->where(function($query) use ($filter){
                 $query->where('texts.level', $filter['levels'][0])
@@ -116,6 +117,32 @@ class HomeHandler{
         $texts = [];
 
         $offset = ($page - 1) * $perPage;
+
+        if($filter['type'] == 'todos'){
+            $dataTexts = Text::join('users', 'users.id', '=', 'texts.created_by_id')
+                ->select('texts.id', 'english_title', 'image', 'texts.level', 'user_name')
+                ->where(function($query) use ($filter){
+                    $query->where('texts.level', $filter['levels'][0])
+                    ->orWhere('texts.level', $filter['levels'][1])
+                    ->orWhere('texts.level', $filter['levels'][2])
+                    ->orWhere('texts.level', $filter['levels'][3]);
+                })
+                ->offset($offset)
+                ->limit($perPage)
+            ->get();
+
+            foreach($dataTexts as $dataText){
+                $texts[] = array (
+                    'id' => $dataText['id'],
+                    'title' => $dataText['english_title'],
+                    'image' => $dataText['image'],
+                    'level' => $dataText['level'],
+                    'creator' => $dataText['user_name']
+                );
+            }
+    
+            return $texts;
+        }
 
         $dataTexts = Text::join('users', 'users.id', '=', 'texts.created_by_id')
             ->select('texts.id', 'english_title', 'image', 'texts.level', 'user_name')

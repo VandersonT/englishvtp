@@ -27,11 +27,11 @@
                 <div class="field">
                     <h1>Inglês</h1>
 
-                    <!--<label>
+                    <label>
                         <input <?= ($filter['type'] == 'todos') ? 'checked' : '' ?> name="type" type="radio" value="todos" />
                         Todos
                     </label>
-                    <br/>-->
+                    <br/>
                     <label>
                         <input <?= ($filter['type'] == 'americano') ? 'checked' : '' ?> name="type" type="radio" value="americano" />
                         Americano

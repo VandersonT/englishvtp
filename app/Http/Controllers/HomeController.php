@@ -68,7 +68,7 @@ class HomeController extends Controller{
         TrophiesHandler::studiousTrophy($this->loggedUser->id);
 
         /*--------------------------------TEXTS_FILTER-------------------------------------------------*/
-        $filter['type'] = 'americano';
+        $filter['type'] = 'todos';
         $filter['levels'] = array('básico','intermediário','avançado','superavançado');
 
         if($_GET){
