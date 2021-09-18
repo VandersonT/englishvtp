@@ -247,6 +247,11 @@ class ActionAdminHandler{
         $newText->save();
     }
 
+    public static function getText($textId){
+        $text = Text::where('id', $textId)->first();
+        return $text;
+    }
+
     public static function deleteText($textId){
         $delText = Text::
             where('id', $textId)

@@ -354,7 +354,15 @@ class ActionadminController extends Controller{
             exit;
         }
 
+        $textInfo = ActionadminHandler::getText($request->id);
+        
+        //delete audio
+        unlink('media/audio/'.$textInfo['audio']);
+        //delete image
+        unlink('media/textCover/'.$textInfo['image']);
+
         ActionadminHandler::deleteText($request->id);
+
         $_SESSION['success'] = 'O texto de id '.$request->id.' foi deletado com sucesso. Não é mais possivel desfazer essa ação.';
         return back();
         exit;

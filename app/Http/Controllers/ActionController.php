@@ -195,6 +195,11 @@ class ActionController extends Controller
                 //if that's ok
                 $namePhoto = md5(time().rand(0,9999)).'.jpg';
                 move_uploaded_file($_FILES['photo']['tmp_name'], 'media/avatars/'.$namePhoto);
+
+                //apaga a antiga se ele teve um antiga ne
+                if($this->loggedUser->photo != 'no-picture2.png'){
+                    unlink('media/avatars/'.$this->loggedUser->photo);
+                }
             }
 
 
