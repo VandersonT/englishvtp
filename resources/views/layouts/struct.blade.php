@@ -97,7 +97,7 @@
                         Meus textos
                     </li></a>
 
-                    <a href="<?=$base_url;?>/meustextos"><li  class="<?= ($selected == 'mytexts') ? 'selectedMobile' : '';?>">
+                    <a href="<?=$base_url;?>/suporte"><li  class="<?= ($selected == 'support') ? 'selectedMobile' : '';?>">
                         Suporte
                     </li></a>
 

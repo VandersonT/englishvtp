@@ -24,48 +24,35 @@
         <form method="GET">
 
             <div class="box-filter">
-                <div class="field">
-                    <h1>Inglês</h1>
-
-                    <label>
-                        <input <?= ($filter['type'] == 'todos') ? 'checked' : '' ?> name="type" type="radio" value="todos" />
-                        Todos
-                    </label>
-                    <br/>
-                    <label>
-                        <input <?= ($filter['type'] == 'americano') ? 'checked' : '' ?> name="type" type="radio" value="americano" />
-                        Americano
-                    </label>
-                    <br/>
-                    <label>
-                        <input <?= ($filter['type'] == 'britanico') ? 'checked' : '' ?>  name="type" type="radio" value="britanico" />
-                        Britânico
-                    </label>
-
-                </div>
 
                 <div class="field">
-                    <h1>Nivel</h1>
-                    <label>
-                        <input <?= ($filter['levels'][0] == 'básico') ? 'checked' : '' ?> name="level1" type="checkbox" value="básico" />
-                        Básico
-                    </label>
-                    <br/>
-                    <label>
-                        <input <?= ($filter['levels'][1] == 'intermediário') ? 'checked' : '' ?> name="level2" type="checkbox" value="intermediário" />
-                        Intermediário
-                    </label>
-                    <br/>
-                    <label>
-                        <input <?= ($filter['levels'][2] == 'avançado') ? 'checked' : '' ?> name="level3" type="checkbox" value="avançado" />
-                        Avançado
-                    </label>
-                    <br/>
-                    <label>
-                        <input <?= ($filter['levels'][3] == 'superavançado') ? 'checked' : '' ?> name="level4" type="checkbox" value="superavançado" />
-                        SuperAvançado
-                    </label>
+                    <h1>
+                        <i class="fab fa-connectdevelop"></i>
+                        Escolha o Nivel
+                    </h1>
+                    <div>
+                        <label>
+                            <input <?= ($filter['levels'][0] == 'básico') ? 'checked' : '' ?> name="level1" type="checkbox" value="básico" />
+                            Básico
+                        </label>
+                        <br/>
+                        <label>
+                            <input <?= ($filter['levels'][1] == 'intermediário') ? 'checked' : '' ?> name="level2" type="checkbox" value="intermediário" />
+                            Intermediário
+                        </label>
+                        <br/>
+                        <label>
+                            <input <?= ($filter['levels'][2] == 'avançado') ? 'checked' : '' ?> name="level3" type="checkbox" value="avançado" />
+                            Avançado
+                        </label>
+                        <br/>
+                        <label>
+                            <input <?= ($filter['levels'][3] == 'superavançado') ? 'checked' : '' ?> name="level4" type="checkbox" value="superavançado" />
+                            SuperAvançado
+                        </label>
+                    </div>
                 </div>
+
             </div>
 
             <div class="btnFilter">
@@ -74,7 +61,7 @@
             
         </form>
     </section>
-    
+
     <h1 class="manTitle">
         <i class="fas fa-align-justify"></i>
         Com esse filtro temos <?=$availableTexts;?> <?= ($availableTexts > 1) ? 'textos disponiveis' : 'texto disponivel' ?>
@@ -129,32 +116,14 @@
             </p>
         <?php else: ?>
 
-            <?php if(empty($americanTextRecommendation) && empty($britishTextRecommendation)): ?>
-                <p>Neste momento eu não sou capaz de te indicar nenhum texto, me desculpa :(</p>
-            <?php else: ?>
-
-                <?php if($americanTextRecommendation): ?>
-                    <p>
-                        Se você procura um texto americano, eu recomendaria neste momento o 
-                        <a class="recomendation" href="<?=$base_url;?>/texto/<?=$americanTextRecommendation['id'];?>">
-                            "<?=$americanTextRecommendation['english_title'];?>"
-                        </a>
-                    </p>
-                <?php else: ?>
-                    <p>Se você procura um texto americano, neste momento não consigo te indicar nenhum.</p>
-                <?php endif; ?>
-
-                <?php if($britishTextRecommendation): ?>
-                    <p>Por outro lado, se você procura um texto britânico, eu recomendaria neste momento o
-                        <a class="recomendation" href="<?=$base_url;?>/texto/<?=$britishTextRecommendation['id'];?>">
-                            "<?=$britishTextRecommendation['english_title'];?>"
-                        </a>
-                    </p>
-                <?php else: ?>
-                    <p>Se você procura um texto britanico, neste momento não consigo te indicar nenhum.</p>
-                <?php endif; ?>
-
-            <?php endif; ?>
+        <?php if(empty($textRecommendation)): ?>
+            <p>Neste momento eu não sou capaz de te indicar nenhum texto, me desculpa :(</p>
+        <?php else: ?>
+            <p>
+                Então, <?=$user->name;?>, analizando os textos que você já leu e o nivel que você disse que possuia no seu perfil, acho que o texto ideial para você agora seria o
+                <a class="recomendation" href="<?=$base_url;?>/texto/<?=$textRecommendation['id'];?>">"<?=$textRecommendation['english_title'];?>"</a>
+            </p>
+        <?php endif; ?>
         <?php endif; ?>
     </div>
 @endsection

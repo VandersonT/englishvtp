@@ -68,17 +68,14 @@ class HomeController extends Controller{
         TrophiesHandler::studiousTrophy($this->loggedUser->id);
 
         /*--------------------------------TEXTS_FILTER-------------------------------------------------*/
-        $filter['type'] = 'todos';
         $filter['levels'] = array('básico','intermediário','avançado','superavançado');
 
         if($_GET){
-            $type = filter_input(INPUT_GET, 'type');
             $level1 = filter_input(INPUT_GET, 'level1');
             $level2 = filter_input(INPUT_GET, 'level2');
             $level3 = filter_input(INPUT_GET, 'level3');
             $level4 = filter_input(INPUT_GET, 'level4');
 
-            $filter['type'] = $type;
             $filter['levels'] = array($level1,$level2,$level3,$level4);
         }
         /*---------------------------------------------------------------------------------------------*/
@@ -96,9 +93,7 @@ class HomeController extends Controller{
 
         $totalPage = ceil($totalTextsWithFilter / $perPage);
 
-        $americanTextRecommendation = HomeHandler::getAssistentRecomendation($this->loggedUser, 'american');
-
-        $britishTextRecommendation = HomeHandler::getAssistentRecomendation($this->loggedUser, 'british');
+        $textRecommendation = HomeHandler::getAssistentRecomendation($this->loggedUser);
 
         $notificationOnScreen = HomeHandler::getThisUserNotification($this->loggedUser->id);
 
@@ -111,8 +106,7 @@ class HomeController extends Controller{
             'page' => $page,
             'totalPage' => $totalPage,
             'availableTexts' => $totalTextsWithFilter,
-            'americanTextRecommendation' => $americanTextRecommendation,
-            'britishTextRecommendation' => $britishTextRecommendation,
+            'textRecommendation' => $textRecommendation,
             'notificationOnScreen' => $notificationOnScreen
         ]);
 

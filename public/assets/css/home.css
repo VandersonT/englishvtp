@@ -46,11 +46,20 @@ body{
     text-align:left;
     margin-top: 20px;
     padding: 5px 0;
-    padding-right: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .field h1{
+    width: max-content;
     margin-bottom: 10px;
+    text-align: center;
+    font-weight: lighter;
+}
+
+.field h1 i{
+    margin-right: 5px;
 }
 
 .field:nth-child(2){
@@ -83,10 +92,11 @@ body{
 }
 
 @media screen and (max-width: 600px){
+    .field h1,
     .manTitle{
         font-size: 20px;
     }
-    
+
     .manTitle i{
         font-size: 18px;
     }
@@ -111,15 +121,13 @@ body{
     }
 }
 
-@media screen and (max-width: 410px){
-    .manTitle{
-        font-size: 14px;
-    }
-    
-    .manTitle i{
-        font-size: 12px;
+@media screen and (max-width: 350px){
+    .btnFilter button{
+        width: 100px;
+        height: 40px;
     }
 }
+
 /***/
 
 .boxContent{
@@ -180,16 +188,11 @@ body{
 
 @media screen and (max-width: 600px) {
     .textSingle{
-        width: 300px;
+        width: 250px;
     }
-    .boxTexts{
-        justify-content: center;
-    }
-}
-
-@media screen and (max-width: 560px){
     .boxTexts{
         width: 100%;
+        justify-content: center;
     }
 }
 
@@ -259,10 +262,10 @@ body{
 }
 
 .recomendation{
-    color: #4db2ec;
+    color: #007ac0;
 }
 .recomendation:hover{
-    color: #338cc0;
+    color: #0097ee;
 }
 
 @media screen and (max-width: 350px){

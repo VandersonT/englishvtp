@@ -13,6 +13,10 @@ body{
     color: var(--defaultColor);
 }
 
+.title i{
+    margin-right: 5px;
+}
+
 .savedTexts{
     width: 95vw;
     max-width: 95%;
@@ -101,6 +105,9 @@ body{
 @media screen and (max-width: 600px) {
     .textsStudied{
         justify-content: space-around;
+    }
+    .title{
+        font-size: 19px;
     }
 }
 /***/

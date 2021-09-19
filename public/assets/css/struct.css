@@ -244,6 +244,9 @@ a{
         margin: 0 auto;
         inset: 42px 0 0 0;
     }
+    .noNotification{
+        font-size: 15px;
+    }
 }
 
 @media screen and (max-width: 400px){
@@ -260,6 +263,9 @@ a{
     .notificationSingle img{
         width: 40px;
         height: 40px;
+    }
+    .noNotification{
+        font-size: 11px;
     }
 }
 

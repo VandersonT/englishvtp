@@ -89,8 +89,8 @@ class HomeHandler{
 
     public static function getAllTextWithFilter($filter){
 
-        $data = Text::where('type_english', $filter['type'])
-            ->where(function($query) use ($filter){
+        $data = Text::
+                where(function($query) use ($filter){
                 $query->where('texts.level', $filter['levels'][0])
                 ->orWhere('texts.level', $filter['levels'][1])
                 ->orWhere('texts.level', $filter['levels'][2])
@@ -118,35 +118,8 @@ class HomeHandler{
 
         $offset = ($page - 1) * $perPage;
 
-        if($filter['type'] == 'todos'){
-            $dataTexts = Text::join('users', 'users.id', '=', 'texts.created_by_id')
-                ->select('texts.id', 'english_title', 'image', 'texts.level', 'user_name')
-                ->where(function($query) use ($filter){
-                    $query->where('texts.level', $filter['levels'][0])
-                    ->orWhere('texts.level', $filter['levels'][1])
-                    ->orWhere('texts.level', $filter['levels'][2])
-                    ->orWhere('texts.level', $filter['levels'][3]);
-                })
-                ->offset($offset)
-                ->limit($perPage)
-            ->get();
-
-            foreach($dataTexts as $dataText){
-                $texts[] = array (
-                    'id' => $dataText['id'],
-                    'title' => $dataText['english_title'],
-                    'image' => $dataText['image'],
-                    'level' => $dataText['level'],
-                    'creator' => $dataText['user_name']
-                );
-            }
-    
-            return $texts;
-        }
-
         $dataTexts = Text::join('users', 'users.id', '=', 'texts.created_by_id')
             ->select('texts.id', 'english_title', 'image', 'texts.level', 'user_name')
-            ->where('type_english', $filter['type'])
             ->where(function($query) use ($filter){
                 $query->where('texts.level', $filter['levels'][0])
                 ->orWhere('texts.level', $filter['levels'][1])
@@ -472,7 +445,7 @@ class HomeHandler{
         return $texts;
     }
 
-    public static function getAssistentRecomendation($user, $english_type){
+    public static function getAssistentRecomendation($user){
         
         $userSkills = $user['points'];
 
@@ -499,19 +472,9 @@ class HomeHandler{
         
         if($userSkills >= 0 && $userSkills < 5000){
 
-            $appropriateAmericanTexts = Text::
+            $appropriateTexts = Text::
                 select('id', 'english_title')
                 ->whereNotIn('id', Studied_Text::select('textid')->where('user_id', $user['id'])->get())
-                ->where('type_english', 'americano')
-                ->where('levels_points', '>=' ,0)
-                ->where('levels_points', '<' ,70)
-                ->inRandomOrder()
-            ->first();
-
-            $appropriateBritishTexts = Text::
-                select('id', 'english_title')
-                ->whereNotIn('id', Studied_Text::select('textid')->where('user_id', $user['id'])->get())
-                ->where('type_english', 'britanico')
                 ->where('levels_points', '>=' ,0)
                 ->where('levels_points', '<' ,70)
                 ->inRandomOrder()
@@ -519,19 +482,9 @@ class HomeHandler{
 
         }else if($userSkills >= 5000 && $userSkills < 15000){
 
-            $appropriateAmericanTexts = Text::
+            $appropriateTexts = Text::
                 select('id', 'english_title')    
                 ->whereNotIn('id', Studied_Text::select('textid')->where('user_id', $user['id'])->get())
-                ->where('type_english', 'americano')
-                ->where('levels_points', '>=' ,70)
-                ->where('levels_points', '<' ,100)
-                ->inRandomOrder()
-            ->first();
-
-            $appropriateBritishTexts = Text::
-                select('id', 'english_title')
-                ->whereNotIn('id', Studied_Text::select('textid')->where('user_id', $user['id'])->get())
-                ->where('type_english', 'britanico')
                 ->where('levels_points', '>=' ,70)
                 ->where('levels_points', '<' ,100)
                 ->inRandomOrder()
@@ -539,19 +492,9 @@ class HomeHandler{
 
         }else if($userSkills >= 15000 && $userSkills < 90000){
 
-            $appropriateAmericanTexts = Text::
+            $appropriateTexts = Text::
                 select('id', 'english_title')
                 ->whereNotIn('id', Studied_Text::select('textid')->where('user_id', $user['id'])->get())
-                ->where('type_english', 'americano')
-                ->where('levels_points', '>=' ,100)
-                ->where('levels_points', '<' ,1500)
-                ->inRandomOrder()
-            ->first();
-
-            $appropriateBritishTexts = Text::
-                select('id', 'english_title')
-                ->whereNotIn('id', Studied_Text::select('textid')->where('user_id', $user['id'])->get())
-                ->where('type_english', 'britanico')
                 ->where('levels_points', '>=' ,100)
                 ->where('levels_points', '<' ,1500)
                 ->inRandomOrder()
@@ -559,19 +502,9 @@ class HomeHandler{
 
         }else if($userSkills >= 90000 && $userSkills < 200000){
 
-            $appropriateAmericanTexts = Text::
+            $appropriateTexts = Text::
                 select('id', 'english_title')
                 ->whereNotIn('id', Studied_Text::select('textid')->where('user_id', $user['id'])->get())
-                ->where('type_english', 'americano')
-                ->where('levels_points', '>=' ,1500)
-                ->where('levels_points', '<' ,3000)
-                ->inRandomOrder()
-            ->first();
-
-            $appropriateBritishTexts = Text::
-                select('id', 'english_title')    
-                ->whereNotIn('id', Studied_Text::select('textid')->where('user_id', $user['id'])->get())
-                ->where('type_english', 'britanico')
                 ->where('levels_points', '>=' ,1500)
                 ->where('levels_points', '<' ,3000)
                 ->inRandomOrder()
@@ -579,19 +512,9 @@ class HomeHandler{
 
         }else if($userSkills >= 200000 && $userSkills < 500000){
 
-            $appropriateAmericanTexts = Text::
+            $appropriateTexts = Text::
                 select('id', 'english_title')
                 ->whereNotIn('id', Studied_Text::select('textid')->where('user_id', $user['id'])->get())
-                ->where('type_english', 'americano')
-                ->where('levels_points', '>=' ,3000)
-                ->where('levels_points', '<' ,10000)
-                ->inRandomOrder()
-            ->first();
-
-            $appropriateBritishTexts = Text::
-                select('id', 'english_title')    
-                ->whereNotIn('id', Studied_Text::select('textid')->where('user_id', $user['id'])->get())
-                ->where('type_english', 'britanico')
                 ->where('levels_points', '>=' ,3000)
                 ->where('levels_points', '<' ,10000)
                 ->inRandomOrder()
@@ -599,31 +522,16 @@ class HomeHandler{
 
         }else if($userSkills >= 500000){
 
-            $appropriateAmericanTexts = Text::
+            $appropriateTexts = Text::
                 select('id', 'english_title')
                 ->whereNotIn('id', Studied_Text::select('textid')->where('user_id', $user['id'])->get())
-                ->where('type_english', 'americano')
-                ->where('levels_points', '>=' ,10000)
-                ->inRandomOrder()
-            ->first();
-
-            $appropriateBritishTexts = Text::
-                select('id', 'english_title')
-                ->whereNotIn('id', Studied_Text::select('textid')->where('user_id', $user['id'])->get())
-                ->where('type_english', 'britanico')
                 ->where('levels_points', '>=' ,10000)
                 ->inRandomOrder()
             ->first();
 
         }
 
-        if($english_type == 'american'){
-            return $appropriateAmericanTexts;
-        }
-        if($english_type == 'british'){
-            return $appropriateBritishTexts;
-        }
-        echo "|ERROR| O tipo de inglês enviado não esta disponivel.";
+        return $appropriateTexts;
         exit;
     }
 

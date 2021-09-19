@@ -12,7 +12,7 @@
 <!--Content-->
 @section('content')
         
-    <h1 class="title">Textos Salvos</h1>
+    <h1 class="title"><i class="far fa-save"></i>Textos Salvos</h1>
     <section class="savedTexts">
         
         <div class="showcase">
@@ -38,7 +38,7 @@
 
     </section>
 
-    <h1 class="title">Textos estudados</h1>
+    <h1 class="title"><i class="fab fa-studiovinari"></i>Textos estudados</h1>
 
     <section class="textsStudied">
 
