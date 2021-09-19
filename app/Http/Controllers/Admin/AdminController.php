@@ -178,7 +178,7 @@ class AdminController extends Controller
         }
 
         $totalPages = ceil($totalUsers / $perPage);
-        
+        $users = [];
         return view('admin/users',[
             'user' => $this->loggedAdmin,
             'selected' => 'users',
@@ -209,7 +209,7 @@ class AdminController extends Controller
         }
 
         $totalPages = ceil($totalStaffs / $perPage);
-
+        
         return view('admin/staffs',[
             'user' => $this->loggedAdmin,
             'selected' => 'staffs',

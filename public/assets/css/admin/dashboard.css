@@ -256,6 +256,24 @@ body{
     .guide h4{
         font-size: 12px;
     }
+    .guide h4 i{
+        font-size: 12px;
+    }
+    .boxUsers th{
+        font-size: 12px;
+    }
+    .boxUsers td{
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 350px){
+    .boxUsers th{
+        font-size: 10px;
+    }
+    .boxUsers td{
+        font-size: 8px;
+    }
 }
 /****/
 .box-controls{

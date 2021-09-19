@@ -33,7 +33,7 @@
     <h1 class="title">
         <i class="fas fa-users-cog"></i>
         <?php if($wantedNotification == ''):?>
-        Usuários Banidos
+        Usuários Notificados
         <?php else: ?>
             <?='Encontramos '.count($notifications);?>
             <?=(count($notifications) > 1) ? 'avisos' : 'aviso';?>

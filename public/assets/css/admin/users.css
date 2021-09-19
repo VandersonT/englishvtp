@@ -127,6 +127,10 @@ td a:hover{
 }
 
 @media screen and (max-width: 700px){
+    .empty{
+        width: 97%;
+        font-size: 12px;
+    }
     .title{
         margin-top: 30px;
         margin-left: 20px;
@@ -148,6 +152,11 @@ td a:hover{
         width: max-content;
         padding: 8px 8px;
     }
+    .registerNew{
+        font-size: 13px;
+        padding: 10px;
+        margin-left: 10px;
+    }
 }
 
 @media screen and (max-width: 430px){
@@ -165,15 +174,24 @@ td a:hover{
     .search button{
         font-size: 10px;
     }
+    .registerNew{
+        font-size: 10px;
+    }
 }
 
 @media screen and (max-width: 350px){
+    .empty{
+        font-size: 10px;
+    }
     .title{
         font-size: 12px;
     }   
     .btn,
     table{
         font-size: 8px;
+    }
+    .registerNew{
+        margin-left: 5px;
     }
 }
 
