@@ -61,8 +61,8 @@ class AdminHandler{
     }
 
     public static function getTotalAccess(){
-        $data = Daily_access::count();
-        return $data;
+        $data = Daily_access::first();
+        return $data['access'];
     }
 
     public static function getTotalTexts(){

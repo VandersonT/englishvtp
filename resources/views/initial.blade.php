@@ -171,9 +171,10 @@
     </section>
 
     <section class="section4">
+
         <div class="info">
-            <h1><?=$totalAccounts?></h1>
-            <p>Contas criadas</p>
+            <h1><?=$totalAccess?></h1>
+            <p>Acessos</p>
         </div>
 
         <div class="info">

@@ -65,6 +65,46 @@ class LoginHandler{
         return $totalStudiedText;
     }
 
+    public static function getTotalAccess(){
+        $data = Daily_access::first();
+
+        if($data['access'] > 100000){return '+100k';}
+
+        if($data['access'] > 50000){return '+50k';}
+
+        if($data['access'] > 20000){return '+20k';}
+
+        if($data['access'] > 15000){return '+15k';}
+
+        if($data['access'] > 10000){return '+10k';}
+
+        if($data['access'] > 5000){return '+5k';}
+
+        if($data['access'] > 2000){return '+2k';}
+        
+        if($data['access'] > 999){return '+999';}
+
+        if($data['access'] > 800){return '+800';}
+
+        if($data['access'] > 700){return '+700';}
+        
+        if($data['access'] > 600){return '+600';}
+
+        if($data['access'] > 500){return '+500';}
+
+        if($data['access'] > 400){return '+400';}
+
+        if($data['access'] > 300){return '+100';}
+
+        if($data['access'] > 200){return '+100';}
+
+        if($data['access'] > 100){return '+100';}
+
+        if($data['access'] > 50){return '+50';}
+
+        return $data['access'];
+    }
+
     public static function checkLogin(){
        
         if(!empty($_SESSION['token'])){

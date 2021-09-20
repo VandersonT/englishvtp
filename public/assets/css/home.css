@@ -73,10 +73,10 @@ body{
 }
 
 .btnFilter button{
-    width: 200px;
+    width: 100px;
     height: 40px;
     background-color: green;
-    border-radius: 10px;
+    border-radius: 7px;
     cursor: pointer;
     outline: 0;
     border: 0;
@@ -118,13 +118,6 @@ body{
     .field{
         width: 130px;
         padding-right: 0;
-    }
-}
-
-@media screen and (max-width: 350px){
-    .btnFilter button{
-        width: 100px;
-        height: 40px;
     }
 }
 

@@ -31,15 +31,17 @@ class LoginController extends Controller
 
         $data = LoginHandler::infoPageInitial();
 
-        $totalAccounts = LoginHandler::getTotalAccounts();
+        //$totalAccounts = LoginHandler::getTotalAccounts();
         $totalTexts = LoginHandler::getTotalTexts();
         $totalStudiedTexts = LoginHandler::getTotalStudiedTexts();
-
+        $totalAccess = LoginHandler::getTotalAccess();
+        
         return view('initial',[
             'data' => $data,
             'totalAccounts' => $totalAccounts,
             'totalTexts' => $totalTexts,
-            'totalStudiedTexts' => $totalStudiedTexts
+            'totalStudiedTexts' => $totalStudiedTexts,
+            'totalAccess' => $totalAccess
         ]);
     }
 

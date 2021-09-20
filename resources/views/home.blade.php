@@ -28,7 +28,7 @@
                 <div class="field">
                     <h1>
                         <i class="fab fa-connectdevelop"></i>
-                        Escolha o Nivel
+                        Escolha os Niveis
                     </h1>
                     <div>
                         <label>

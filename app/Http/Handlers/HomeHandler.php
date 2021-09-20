@@ -128,6 +128,7 @@ class HomeHandler{
             })
             ->offset($offset)
             ->limit($perPage)
+            ->orderByDesc('texts.id')
         ->get();
 
         foreach($dataTexts as $dataText){
@@ -587,8 +588,10 @@ class HomeHandler{
     }
 
     public static function sendAccessToDb(){
-        $newAccess = new Daily_access;
-            $newAccess->access = time();
+        $info = Daily_access::first();
+        
+        $newAccess = Daily_access::find($info['id']);
+            $newAccess->access = $info['access'] + 1;
         $newAccess->save();
     }
 
