@@ -45,8 +45,8 @@
       <?php if($wantedText == ''):?>
       Todos os textos
       <?php else: ?>
-          <?='Encontramos '.count($texts);?>
-          <?=(count($texts) > 1) ? ' textos' : ' texto';?>
+          <?='Encontramos '.$totalTexts;?>
+          <?=($totalTexts > 1) ? ' textos' : ' texto';?>
           <?=' com "'.$wantedText.'"';?>
       <?php endif; ?>
   </h1>
@@ -71,7 +71,21 @@
             </h1>
          </div>
       <?php endif; ?>
+
    </section>
+
+   <?php if($totalPages > 1): ?>
+        <ul class="box-pagination">
+            <?php for($q=1; $q<=$totalPages; $q++): ?>
+            <a href="/Painel/editarTextos?<?php 
+            $currentUrl = $_GET;
+            $currentUrl['pg'] = $q;
+            echo http_build_query($currentUrl);
+            ?>"><li class="<?=($q == $page) ? 'paginationSelected' : ''?>"> <?=$q?> </li></a>
+            <?php endfor; ?>
+        </ul>
+      <?php endif; ?>
+
 @endsection
 
 <!--Scripts-->

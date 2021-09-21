@@ -65,6 +65,21 @@ class AdminHandler{
         return $data['access'];
     }
 
+    public static function getTotalWantedText($wantedText, $page, $perPage){
+
+        $offset = ($page - 1) * $perPage;
+
+        $texts = Text::
+            where('english_title', 'like', '%'.$wantedText.'%')
+            ->select('image', 'english_title', 'id')
+            ->offset($offset)
+            ->limit($perPage)
+            ->orderByDesc('id')
+        ->count();
+
+        return $texts;
+    }
+
     public static function getTotalTexts(){
         $data = Text::count();
         return $data;
@@ -389,19 +404,29 @@ class AdminHandler{
         return $users;
     }
 
-    public static function getAllTexts(){
+    public static function getAllTexts($page, $perPage){
+
+        $offset = ($page - 1) * $perPage;
+
         $texts = Text::
             select('image', 'english_title', 'id')
+            ->offset($offset)
+            ->limit($perPage)
             ->orderByDesc('id')
         ->get();
 
         return $texts;
     }
 
-    public static function getWantedText($wantedText){
+    public static function getWantedText($wantedText, $page, $perPage){
+
+        $offset = ($page - 1) * $perPage;
+
         $texts = Text::
             where('english_title', 'like', '%'.$wantedText.'%')
             ->select('image', 'english_title', 'id')
+            ->offset($offset)
+            ->limit($perPage)
             ->orderByDesc('id')
         ->get();
 

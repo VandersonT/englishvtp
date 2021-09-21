@@ -406,6 +406,13 @@ class AdminController extends Controller
             exit;
         }
 
+        $page = 1;
+        if(!empty($_GET['pg'])){
+            $page = addslashes($_GET['pg']);
+        }
+        
+        $perPage = 36;
+
         $success = '';
         if(!empty($_SESSION['success'])){
             $success = $_SESSION['success'];
@@ -419,12 +426,16 @@ class AdminController extends Controller
         }
 
         $wantedText = '';
-        if($_GET){
+        if(!empty($_GET['search'])){
             $wantedText = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS);
-            $texts = AdminHandler::getWantedText($wantedText);
+            $texts = AdminHandler::getWantedText($wantedText, $page, $perPage);
+            $totalTexts = AdminHandler::getTotalWantedText($wantedText, $page, $perPage);
         }else{
-            $texts = AdminHandler::getAllTexts();
+            $texts = AdminHandler::getAllTexts($page, $perPage);
+            $totalTexts = AdminHandler::getTotalTexts($page, $perPage);
         }
+
+        $totalPages = ceil($totalTexts / $perPage);
 
         return view('admin/editTexts',[
             'user' => $this->loggedAdmin,
@@ -432,7 +443,10 @@ class AdminController extends Controller
             'wantedText' => $wantedText,
             'texts' => $texts,
             'success' => $success,
-            'error' => $error
+            'error' => $error,
+            'totalPages' => $totalPages,
+            'page' => $page,
+            'totalTexts' => $totalTexts
         ]);
     }
 
