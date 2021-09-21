@@ -1,4 +1,15 @@
+let needConfirm = true;
+
+let formText = document.querySelector('.formText button');
+
+formText.addEventListener('click', function(){
+    needConfirm = false;
+})
+
 window.onbeforeunload = confirmExit;
 function confirmExit(){
-    return "Deseja realmente sair desta página?";
+    if(needConfirm){
+        return "Deseja realmente sair desta página?";
+    }
+    needConfirm = true;
 }

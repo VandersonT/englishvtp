@@ -363,7 +363,7 @@ class ActionadminController extends Controller{
 
         ActionadminHandler::deleteText($request->id);
 
-        $_SESSION['success'] = 'O texto de id '.$request->id.' foi deletado com sucesso. Não é mais possivel desfazer essa ação.';
+        $_SESSION['success'] = 'O texto foi deletado com sucesso. Não é mais possivel desfazer essa ação.';
         return back();
         exit;
     }
