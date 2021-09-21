@@ -283,8 +283,8 @@ class ActionadminController extends Controller{
             echo "<script>history.go(-1)</script>";
             exit;
         }
-        if($_FILES['audio']['size'] > 10000000){
-            $_SESSION['error'] = 'O aúdio enviado é muito grande. (maximo 5MB)';
+        if($_FILES['audio']['size'] > 15000000){
+            $_SESSION['error'] = 'O aúdio enviado é muito grande. (maximo 15MB)';
             return back();
             exit;
         }
@@ -381,8 +381,8 @@ class ActionadminController extends Controller{
 
         /*Audio verify*/
         if(!empty($_FILES['audio']['name'])){
-            if($_FILES['audio']['size'] > 10000000){
-                $_SESSION['error'] = 'O aúdio enviado é muito grande. (maximo 5MB)';
+            if($_FILES['audio']['size'] > 15000000){
+                $_SESSION['error'] = 'O aúdio enviado é muito grande. (maximo 15MB)';
                 return back();
                 exit;
             }
