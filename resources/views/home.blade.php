@@ -79,7 +79,7 @@
                         
                         <b>Nivel:</b> <?=$text['level'];?>
                         <br/>
-                        <b>Por:</b> <?=$text['creator'];?>
+                        <b>Modificado:</b> <?=$text['last_update'];?>
                     </a>
                 <?php endforeach; ?>
             <?php else: ?>

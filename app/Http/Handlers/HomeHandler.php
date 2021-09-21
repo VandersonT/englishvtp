@@ -119,7 +119,7 @@ class HomeHandler{
         $offset = ($page - 1) * $perPage;
 
         $dataTexts = Text::join('users', 'users.id', '=', 'texts.created_by_id')
-            ->select('texts.id', 'english_title', 'image', 'texts.level', 'user_name')
+            ->select('texts.id', 'english_title', 'image', 'texts.level', 'user_name', 'last_update')
             ->where(function($query) use ($filter){
                 $query->where('texts.level', $filter['levels'][0])
                 ->orWhere('texts.level', $filter['levels'][1])
@@ -128,7 +128,7 @@ class HomeHandler{
             })
             ->offset($offset)
             ->limit($perPage)
-            ->orderByDesc('texts.id')
+            ->orderByDesc('last_update')
         ->get();
 
         foreach($dataTexts as $dataText){
@@ -137,7 +137,8 @@ class HomeHandler{
                 'title' => $dataText['english_title'],
                 'image' => $dataText['image'],
                 'level' => $dataText['level'],
-                'creator' => $dataText['user_name']
+                'creator' => $dataText['user_name'],
+                'last_update' => date('d/m/Y H:i', $dataText['last_update'])
             );
         }
 
@@ -166,6 +167,7 @@ class HomeHandler{
                 "translatedTitle" => $data['translated_title'],
                 "translatedContent" => $data['translated_content'],
                 "created" => $data['created'],
+                "last_update" => $data['last_update'],
                 "creatorName" => $creatorName,
                 "audio" => $data['audio'],
             ];

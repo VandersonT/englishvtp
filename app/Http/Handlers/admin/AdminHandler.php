@@ -409,10 +409,10 @@ class AdminHandler{
         $offset = ($page - 1) * $perPage;
 
         $texts = Text::
-            select('image', 'english_title', 'id')
+            select('image', 'english_title', 'id', 'last_update')
             ->offset($offset)
             ->limit($perPage)
-            ->orderByDesc('id')
+            ->orderByDesc('last_update')
         ->get();
 
         return $texts;
@@ -424,10 +424,10 @@ class AdminHandler{
 
         $texts = Text::
             where('english_title', 'like', '%'.$wantedText.'%')
-            ->select('image', 'english_title', 'id')
+            ->select('image', 'english_title', 'id', 'last_update')
             ->offset($offset)
             ->limit($perPage)
-            ->orderByDesc('id')
+            ->orderByDesc('last_update')
         ->get();
 
         return $texts;

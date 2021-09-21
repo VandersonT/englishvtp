@@ -63,8 +63,12 @@ EnglishVtp - <?=$text['englishTitle'];?>
                 <?= date('d/m/Y', $text['created']);?>
             </p>
             <p>
-                <b>By:</b>
+                <b>por:</b>
                 <?=$text['creatorName'];?>
+            </p>
+            <p>
+                <b>Ultima edição:</b>
+                <?= date('d/m/Y', $text['last_update']);?>
             </p>
         </div>
     </section>
