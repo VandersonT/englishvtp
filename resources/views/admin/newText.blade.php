@@ -8,7 +8,7 @@
 
 <!--Links-->
 @section('links')
-    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/newText.css" />
+    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/text.css" />
     <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/flash.css" />
 @endsection
 
@@ -118,6 +118,6 @@
 <!--Scripts-->
 @section('scripts')
     <script src="<?=$base_url;?>/assets/js/admin/flash.js"></script>
-    <script src="<?=$base_url;?>/assets/js/admin/newText.js"></script>
+    <script src="<?=$base_url;?>/assets/js/admin/text.js"></script>
     <script src="<?=$base_url;?>/assets/js/admin/confirmToExit.js"></script>
 @endsection

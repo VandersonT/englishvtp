@@ -8,7 +8,7 @@
 
 <!--Links-->
 @section('links')
-    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/newText.css" />
+    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/text.css" />
     <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/flash.css" />
 @endsection
 
@@ -75,6 +75,17 @@
                 </label>
                 <input min="0" type="number" id="points" name="points" value="<?=$text['levels_points'];?>"/>
 
+                <a class="helpme"><i class="fas fa-question"></i>Ajuda escolher</a>
+
+                <div class="help">
+                    <h1><i class="fas fa-dragon"></i>Tabela de pontos</h1>
+                    <p><b>Básico:</b> 0 - 999</p>
+                    <p><b>Intermediario:</b> 1000 - 2999</p>
+                    <p><b>Avançado:</b> 3000 - 9999</p>
+                    <p><b>SuperAvançado:</b> 10000 - ∞</p>
+                    <a class="btnClose">Fechar</a>
+                </div>
+
                 <label for="image" class="subTitle">
                     <i class="fas fa-globe-americas"></i>
                     Escolha o tipo de inglês:
@@ -107,5 +118,6 @@
 <!--Scripts-->
 @section('scripts')
     <script src="<?=$base_url;?>/assets/js/admin/flash.js"></script>
+    <script src="<?=$base_url;?>/assets/js/admin/text.js"></script>
     <script src="<?=$base_url;?>/assets/js/admin/confirmToExit.js"></script>
 @endsection
