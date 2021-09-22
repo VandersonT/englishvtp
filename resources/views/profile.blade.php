@@ -24,12 +24,22 @@ EnglishVtp - perfil de <?=$infoProfile['user_name'];?>
     <section class="boxProfile">
         <div class="photoProfile">
             <img src="<?= $base_url;?>/media/avatars/<?= $infoProfile['photo'];?>" />
+            <?php if($infoProfile['access'] == 5): ?>
+                <p class="owner">Proprietário</p>
+            <?php elseif($infoProfile['access'] == 4): ?>
+                <p class="adm">Administrador</p>
+            <?php elseif($infoProfile['access'] == 3): ?>
+                <p class="mod">Moderador</p>
+            <?php elseif($infoProfile['access'] == 2): ?>
+                <p class="helper">Ajudante</p>
+            <?php elseif($infoProfile['access'] == 1): ?>
+                <p class="user">Usuário</p>
+            <?php endif; ?>
         </div>
         <div class="boxInfoProfile">
             <div class="infoProfile">
                 <h3>Nome:</h3> 
                 <p><?= $infoProfile['user_name']?></p>
-                
                 <?php if($infoProfile['id'] == $user['id']): ?>
                     <a href="<?=$base_url;?>/editar/perfil" class="btn btnConfig" href="#">
                         <i class="fas fa-tools"></i>

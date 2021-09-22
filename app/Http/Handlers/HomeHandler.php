@@ -286,7 +286,7 @@ class HomeHandler{
     }
 
     public static function getInfoProfile($idProfile){
-        $infoProfile = User::select('id', 'user_name', 'photo')
+        $infoProfile = User::select('id', 'user_name', 'photo', 'access')
             ->where('id', $idProfile)
         ->first();
 

@@ -17,9 +17,10 @@ body{
     width: 200px;
     height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 0 10px;
 }
 
 .photoProfile img{
@@ -28,6 +29,19 @@ body{
     border-radius: 200px;
     padding: 10px;
 }
+
+.photoProfile p{
+    color: white;
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.user{background-color: rgb(34, 103, 143);}
+.helper{background-color: rgb(207, 152, 0);}
+.adm{background-color: #0082d9;}
+.mod{background-color: #aa0000;}
+.owner{background-color: #3b00df;}
 
 .boxInfoProfile{
     width: max-content;
@@ -52,7 +66,7 @@ body{
 .btn{
     color: white;
     padding: 4px 10px;
-    border-radius: 10px;
+    border-radius: 5px;
     font-weight: bold;
     margin-right: 10px;
 }
