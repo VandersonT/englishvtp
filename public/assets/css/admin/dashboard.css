@@ -200,9 +200,18 @@ body{
     color: white;
 }
 
-.boxUsers th, td {
+.boxUsers th, td{
     padding: 5px;
     text-align: center;
+}
+
+.boxUsers a{
+    color: #0091ff;
+}
+
+
+.boxUsers a:hover{
+    color: #006bbd;
 }
 
 /***/

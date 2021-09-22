@@ -81,7 +81,7 @@ class TrophiesHandler{
             where('to_user', $user_id)
         ->count();
 
-        if($followers > 1){
+        if($followers > 1000){
             $alreadyHaveThisTrophy = Trophie::
                 where('user_id', $user_id)
                 ->where('trophie_name', 'Famosinho')

@@ -117,7 +117,7 @@
                 <?php foreach ($usersOn as $userOn): ?>
                     <tr>
                         <td><?=$userOn['user_id'];?></td>
-                        <td><?=$userOn['user_name'];?></td>
+                        <td><a href="<?=$base_url;?>/Painel/perfil/<?=$userOn['user_id'];?>"><?=$userOn['user_name'];?></a></td>
                         <td><?=date('H:i', $userOn['last_action']);?></td>
                     </tr>
                 <?php endforeach; ?>
