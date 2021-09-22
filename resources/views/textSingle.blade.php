@@ -8,8 +8,8 @@ EnglishVtp - <?=$text['englishTitle'];?>
 
 <!--Links-->
 @section('links')
-    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/flash.css" />
-    <link rel="stylesheet" href="{{url('assets/css/textReading.css')}}" />
+    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/flash.min.css" />
+    <link rel="stylesheet" href="{{url('assets/css/textReading.min.css')}}" />
 @endsection
 
 <!--Content-->
@@ -258,7 +258,7 @@ EnglishVtp - <?=$text['englishTitle'];?>
 
 <!--Scripts-->
 @section('scripts')
-    <script src="<?=$base_url;?>/assets/js/admin/flash.js"></script>
-    <script src="{{url('assets/js/textReading.js')}}"></script>
-    <script src="{{url('assets/js/commentsInfo.js')}}"></script>
+    <script src="<?=$base_url;?>/assets/js/admin/flash.min.js"></script>
+    <script src="{{url('assets/js/textReading.min.js')}}"></script>
+    <script src="{{url('assets/js/commentsInfo.min.js')}}"></script>
 @endsection

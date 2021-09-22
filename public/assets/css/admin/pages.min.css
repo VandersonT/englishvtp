@@ -1,0 +1,16 @@
+.note{width:90%;margin:50px auto;padding:20px;-webkit-box-shadow:-1px -2px 15px -4px #000;box-shadow:-1px -2px 15px -4px #000;text-align:center;background-color:#ffd000}
+.note h1{font-weight:lighter;margin-bottom:10px}.note h1 i{margin-right:5px;font-size:20px}
+.title{margin-top:50px;margin-left:65px;font-weight:lighter;font-family:'Lato',sans-serif;text-align:center;color:#2e2e2e}
+table{margin:0 auto;margin-top:10px;width:90%;text-align:center;border-collapse:collapse;border:1px solid #a8a8a8}
+th{border-bottom:1px solid #a8a8a8;padding:5px;background-color:#b80000;color:white}
+td{border-bottom:1px solid #a8a8a8;padding:10px 5px;max-width:300px}td a{color:#009de6}
+td a:hover{color:#0088c7}.btn{background:#008cff;border-radius:5px;padding:5px 5px;color:white}
+.btn:hover{background:#0084f0;color:#f0f0f0}@media screen and (max-width:1000px){table{font-size:12px}
+}@media screen and (max-width:700px){.title{margin-top:30px;margin-left:20px;font-size:18px}
+table{width:97%;font-size:9px}td{max-width:150px}.btn{padding:2px 4px;font-size:12px}
+}@media screen and (max-width:700px){.note{font-size:12px}.note h1{font-size:15px}
+.note h1 i{font-size:15px}}@media screen and (max-width:600px){table{font-size:7px}
+}@media screen and (max-width:430px){.title{font-size:13px}.note{font-size:10px}.note h1{font-size:13px}
+.note h1 i{font-size:12px}.btn{font-size:8px}table{font-size:6px;margin-top:0}}@media screen and (max-width:350px){.title{font-size:12px}
+.note{font-size:8px}.note h1{font-size:11px}.note h1 i{font-size:9px}.btn,table{font-size:8px}
+}

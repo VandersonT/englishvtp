@@ -1,0 +1,7 @@
+.screen{width:100vw;max-width:100%;height:100vh;max-height:100%;background-image:url('../images/background1.jpg');display:flex;flex-direction:column;justify-content:center;align-items:center}
+.boxInfo{width:max-content;max-width:500px;text-align:center;font-family:'Lato',sans-serif}
+.boxInfo h1{margin-bottom:50px;color:#00a2ff;font-size:22px}.boxInfo h2{margin-bottom:50px;color:#0084ff;font-size:17px}
+.close{background-color:#2323b6;color:white;padding:10px 18px;border-radius:10px;text-transform:uppercase;font-size:12px}
+.close:hover{background-color:#2121af;color:#f0f0f0}@media screen and (max-width:750px){.boxInfo{max-width:80%}
+.boxInfo h1{font-size:19px}.boxInfo h2{font-size:15px}}@media screen and (max-width:400px){.boxInfo{max-width:80%}
+.boxInfo h1{font-size:15px}.boxInfo h2{font-size:12px}}

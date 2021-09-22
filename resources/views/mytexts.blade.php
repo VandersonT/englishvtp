@@ -6,7 +6,7 @@
 
 <!--Links-->
 @section('links')
-    <link rel="stylesheet" href="assets/css/myTexts.css" />
+    <link rel="stylesheet" href="assets/css/myTexts.min.css" />
 @endsection
 
 <!--Content-->

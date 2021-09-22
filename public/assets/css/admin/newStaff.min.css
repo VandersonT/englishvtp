@@ -1,0 +1,22 @@
+body{margin-bottom:50px}.mainTitle{text-align:center;font-weight:lighter;font-family:'Lato',sans-serif;color:#fff;background-color:blue;padding:10px;margin-top:10px;-webkit-box-shadow:0 0 15px -4px #000;box-shadow:0 0 15px -4px #000}
+.empty{width:90%;margin:0 auto;text-align:center;font-size:18px;font-weight:lighter;color:#141414;border:1px solid #a8a8a8;border-top:0;padding:5px}
+.title2{color:#303030;font-weight:lighter}.search{display:flex;flex-direction:column;align-items:center;margin-top:70px;margin-bottom:30px;padding-bottom:30px;border-bottom:1px solid #a8a8a8}
+.search input{width:80px;padding:8px;text-align:center;border:1px solid #c5c5c5;outline:0;border-radius:5px;font-size:17px}
+.search button{background-color:#001aff;color:white;padding:10px;border:0;outline:0;margin-top:10px;border-radius:5px;cursor:pointer}
+.search button i{margin-right:5px}.search button:hover{background-color:#0018f3;color:#f3f3f3}
+.title{margin-left:65px;font-weight:lighter;font-family:'Lato',sans-serif;text-align:center;color:#2e2e2e}
+.title2{text-align:center;font-weight:lighter;font-size:21px;color:#000;padding:5px 20px;border-radius:7px}
+.ciano{background-color:#00ffd5}.registerNew{padding:10px 20px;background-color:#ff9100;margin-left:65px;border-radius:5px;color:#fff;font-weight:bold}
+.registerNew:hover{background-color:#f58b00;color:#f8f8f8}.registerNew i{margin-right:5px}
+@media screen and (max-width:700px){.title{margin-top:30px;margin-left:20px;font-size:18px}
+table{width:97%;font-size:12px}.btn{padding:2px 4px;font-size:12px}.search input{font-size:12px}
+.search button{font-size:12px;width:max-content;padding:8px 8px}}@media screen and (max-width:430px){.title{font-size:13px}
+.btn,table{font-size:10px}.search input{width:90%;font-size:10px}.search button{font-size:10px}
+}@media screen and (max-width:350px){.title{font-size:12px}.btn,table{font-size:8px}
+}.userFound{width:100%;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.photo{width:100px;height:100px;margin-bottom:20px;border:1px solid #9b9b9b;border-radius:10px}
+.info p{margin-bottom:5px}.userFound select{width:230px;padding:5px 10px;border-radius:5px;margin-top:20px;outline:0;border:1px solid gray}
+.saveInfo{display:flex;flex-direction:column}.box-btn{display:flex;justify-content:center;align-items:center;margin-top:10px}
+.saveInfo button,.saveInfo a{width:100px;height:40px;outline:0;border:1px solid #9b9b9b;border-radius:10px;cursor:pointer;color:white;font-weight:bold;text-transform:uppercase;font-size:12px;text-align:center;margin-right:5px;display:flex;justify-content:center;align-items:center}
+.saveInfo button{background-color:#00aeff;color:#f3f3f3}.saveInfo button:hover{background-color:#00a4f0;color:#f3f3f3}
+.saveInfo a{background-color:#616161;color:#f3f3f3}.saveInfo a:hover{background-color:#535353;color:#f3f3f3}

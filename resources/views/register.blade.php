@@ -15,8 +15,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="shortcut icon" type="image-x/png" href="{{url('icon.png')}}">
-    <link rel="stylesheet" href="{{url('assets/css/style.css')}}" />
-    <link rel="stylesheet" href="{{url('assets/css/register.css')}}" />
+    <link rel="stylesheet" href="{{url('assets/css/style.min.css')}}" />
+    <link rel="stylesheet" href="{{url('assets/css/register.min.css')}}" />
 
     <script src="https://kit.fontawesome.com/90bf9437da.js" crossorigin="anonymous"></script>
 </head>
@@ -68,6 +68,6 @@
     </section>
 
 
-    <script src="{{url('assets/js/register.js')}}"></script>
+    <script src="{{url('assets/js/register.min.js')}}"></script>
 </body>
 </html>

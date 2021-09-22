@@ -8,7 +8,7 @@
 
 <!--Links-->
 @section('links')
-    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/supports.css" />
+    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/supports.min.css" />
 @endsection
 
 <!--Content-->

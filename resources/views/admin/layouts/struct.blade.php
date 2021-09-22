@@ -13,8 +13,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="shortcut icon" type="image-x/png" href="{{url('iconAdmin.ico')}}">
-    <link rel="stylesheet" href="<?=$base_url?>/assets/css/style.css" />
-    <link rel="stylesheet" href="<?=$base_url?>/assets/css/admin/struct.css" />
+    <link rel="stylesheet" href="<?=$base_url?>/assets/css/style.min.css" />
+    <link rel="stylesheet" href="<?=$base_url?>/assets/css/admin/struct.min.css" />
     @yield('links')
 
     <script src="https://kit.fontawesome.com/90bf9437da.js" crossorigin="anonymous"></script>
@@ -183,7 +183,7 @@
         let base_url = '<?=$base_url;?>';
         let private = '<?=$user["access"];?>3203700';
     </script>
-    <script src="<?=$base_url;?>/assets/js/admin/struct.js"></script>
+    <script src="<?=$base_url;?>/assets/js/admin/struct.min.js"></script>
     @yield('scripts')
 </body>
 </html>

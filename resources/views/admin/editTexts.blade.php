@@ -8,8 +8,8 @@
 
 <!--Links-->
 @section('links')
-    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/editTexts.css" />
-    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/flash.css" />
+    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/editTexts.min.css" />
+    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/flash.min.css" />
 @endsection
 
 <!--Content-->
@@ -90,5 +90,5 @@
 
 <!--Scripts-->
 @section('scripts')
-   <script src="<?=$base_url;?>/assets/js/admin/flash.js"></script>
+   <script src="<?=$base_url;?>/assets/js/admin/flash.min.js"></script>
 @endsection

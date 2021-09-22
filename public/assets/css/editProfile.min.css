@@ -1,0 +1,16 @@
+.flash{background-color:red;width:100%;padding:10px;margin:5px 0;border-radius:10px;font-weight:bold;color:#fff}
+.success{background-color:#1ac004}.error{background-color:#af0909}.boxEditProfile{width:500px;border:1px solid var(--border);background-color:var(--defaultBackground2);text-align:center;padding:10px 10px 40px 10px;border-radius:10px;margin:2% auto}
+.boxEditProfile img{width:100px;height:100px;border-radius:10px;margin-bottom:10px}
+.boxEditProfile form{width:100%;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.boxEditProfile form input:not(input[type=file]):not(input[type=radio]){width:80%;padding:5px;border-radius:5px;outline:0;border:1px solid var(--border);box-shadow:0,0,0,0;margin-bottom:10px;font-size:16px;color:#0f0f0f}
+.boxEditProfile form input[type=file]{font-size:15px;margin-bottom:20px}.boxBtns{display:flex}
+.boxBtns a,.boxBtns button{padding:10px 50px;margin-right:10px;outline:0;box-shadow:0,0,0,0;border:1px solid black;border-radius:10px;color:white;cursor:pointer}
+.return{background-color:#861515}.return:hover{background-color:#741212}.save{background-color:blue;color:#d4d4d4}
+.save:hover{background-color:#1010ca;color:#d4d4d4}.titleField{font-size:17px;color:var(--select);font-weight:900}
+.boxInputRadio{display:flex;margin-bottom:10px}.inputRadio{display:flex;margin-right:20px;display:flex;align-items:center}
+.inputRadio input[type=radio]{margin-right:5px}select{width:80%;padding:5px;border-radius:10px;outline:0;font-size:18px;color:#464646;margin-bottom:10px}
+@media screen and (max-width:520px){.boxEditProfile{width:100%;border:0;padding:0;background-color:transparent}
+.boxBtns a,.boxBtns button{padding:10px 20px}.boxEditProfile form input:not(input[type=file]):not(input[type=radio]){padding:8px 15px}
+select{width:90%}.boxEditProfile form input:not(input[type=file]):not(input[type=radio]){width:90%}
+.boxEditProfile form input[type=file]{font-size:13px}}@media screen and (max-width:350px){.boxEditProfile form input[type=file]{padding-left:100px}
+}

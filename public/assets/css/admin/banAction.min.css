@@ -1,0 +1,11 @@
+body{margin-bottom:30px}.title{text-align:center;background-color:#c70000;margin-top:10px;padding:10px;color:#dadada}
+.formBan{display:flex;flex-direction:column;align-items:center;margin-top:50px;padding:10px 0;-webkit-box-shadow:5px 0 9px -4px #000;box-shadow:5px 0 9px -4px #000}
+.formBan label{font-size:20px;margin-bottom:5px;color:#585858}.formBan .getId{width:50px;height:30px;outline:0;padding:2px;border-radius:5px;margin-bottom:10px;border:1px solid gray;text-align:center;font-size:17px}
+.formBan .getId:nth-of-type(1){margin-bottom:20px}.formBan textarea{resize:none;width:400px;height:200px;outline:0;border:1px solid gray;border-radius:10px;padding:10px;margin-bottom:20px}
+.formBan select{border:1px solid gray;padding:4px;outline:0;border-radius:5px}.box-btn{display:flex;justify-content:center;align-items:center}
+.formBan a,.formBan button{width:100px;height:30px;padding:10px;border-radius:5px;font-size:10px;outline:0;text-align:center;border:1px solid gray;cursor:pointer;color:white;text-transform:uppercase;font-weight:bold}
+.formBan button{background-color:brown}.formBan button:hover{background-color:#962525}
+.formBan a{background-color:#7e7e7e;margin-right:10px}.formBan a:hover{background-color:#747474}
+@media screen and (max-width:600px){.title{font-size:18px}.formBan label{font-size:16px}
+.formBan button{font-size:10px;padding:10px 20px}.formBan select{font-size:13px}.formBan textarea{width:80%}
+}@media screen and (max-width:450px){.formBan textarea{width:90%}}

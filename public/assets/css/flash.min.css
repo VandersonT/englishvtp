@@ -1,0 +1,10 @@
+.backgroundDark{position:fixed;top:0;left:0;width:100vw;max-width:100%;height:100%;background-color:rgba(0,0,0,0.6);display:flex;justify-content:center;align-items:center;z-index:999}
+.flash2{width:500px;word-break:normal;padding-top:20px;padding-bottom:20px;border-radius:5px;background-color:#fff;-webkit-box-shadow:0 0 15px -4px #000;box-shadow:0 0 15px -4px #000;display:flex;flex-direction:column;align-items:center}
+.success{background-color:#00e700;color:#252525}.error{background-color:#e70000;color:white}
+.normal{background-color:#23466e;color:white}.green{background-color:#00e700;color:#252525}
+.blue{background-color:#0066c5;color:white}.yellow{background-color:#d0e700;color:#252525}
+.red{background-color:#e70000;color:white}.flash2 h1{width:100%;padding:5px;text-align:center;font-weight:lighter}
+.flash2 p{padding:10px;text-align:center}.close2{background-color:#00a2ff;border:0;outline:0;padding:7px 10px;border-radius:5px;margin:0 auto;cursor:pointer;color:white}
+.close2:hover{background-color:#0098f0}.open{background-color:#ff9100;color:black;margin-right:10px}
+.open:hover{background-color:#eb8500}.box-btns{margin-top:10px}@media screen and (max-width:580px){.flash2{max-width:90%;font-size:13px}
+}

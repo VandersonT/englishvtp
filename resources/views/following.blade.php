@@ -8,7 +8,7 @@ EnglishVtp - quem <?=$infoProfile['user_name'];?> segue
 
 <!--Links-->
 @section('links')
-    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/relations.css" />
+    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/relations.min.css" />
 @endsection
 
 <!--Content-->

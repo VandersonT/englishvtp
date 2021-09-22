@@ -15,8 +15,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="shortcut icon" type="image-x/png" href="{{url('icon.png')}}">
-    <link rel="stylesheet" href="{{url('assets/css/style.css')}}" />
-    <link rel="stylesheet" href="{{url('assets/css/struct.css')}}" />
+    <link rel="stylesheet" href="{{url('assets/css/style.min.css')}}" />
+    <link rel="stylesheet" href="{{url('assets/css/struct.min.css')}}" />
     @yield('links')
 
     <script src="https://kit.fontawesome.com/90bf9437da.js" crossorigin="anonymous"></script>
@@ -124,7 +124,7 @@
         let theme = "<?=$user['theme'];?>";
         let base_url = '<?=$base_url;?>';
     </script>
-    <script src="{{url('assets/js/darkMode.js')}}"></script>
-    <script src="{{url('assets/js/struct.js')}}"></script>
+    <script src="{{url('assets/js/darkMode.min.js')}}"></script>
+    <script src="{{url('assets/js/struct.min.js')}}"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@ EnglishVtp - perfil de <?=$infoProfile['user_name'];?>
 
 <!--Links-->
 @section('links')
-    <link rel="stylesheet" href="{{url('assets/css/profile.css')}}" />
+    <link rel="stylesheet" href="{{url('assets/css/profile.min.css')}}" />
 @endsection
 
 <!--Content-->

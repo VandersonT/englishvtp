@@ -2,8 +2,8 @@
 @section('title', 'EnglishVtp - Textos')
 
 @section('links')
-    <link rel="stylesheet" href="{{url('assets/css/home.css')}}" />
-    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/flash.css" />
+    <link rel="stylesheet" href="{{url('assets/css/home.min.css')}}" />
+    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/flash.min.css" />
 @endsection
 
 @section('content')
@@ -129,6 +129,6 @@
 @endsection
 
 @section('scripts')
-    <script src="{{url('assets/js/home.js')}}"></script>
-    <script src="<?=$base_url;?>/assets/js/notificationSeen.js"></script>
+    <script src="{{url('assets/js/home.min.js')}}"></script>
+    <script src="<?=$base_url;?>/assets/js/notificationSeen.min.js"></script>
 @endsection

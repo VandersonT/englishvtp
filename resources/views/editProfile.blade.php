@@ -6,7 +6,7 @@
 
 <!--Links-->
 @section('links')
-    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/editProfile.css" />
+    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/editProfile.min.css" />
 @endsection
 
 <!--Content-->
@@ -31,7 +31,7 @@
         <form method="POST" action="<?=$base_url;?>/atualizaperfil" enctype="multipart/form-data">
             @csrf
             <input maxlength="100" name="name" type="text" placeholder="Nome" value="<?=$user['name'];?>"/>
-            <input maxlength="100" name="email" type="text" placeholder="E-mail" value="<?=$user['email'];?>"/>
+            <input disabled maxlength="100" name="email" type="text" placeholder="E-mail" value="<?=$user['email'];?>"/>
             <p class="titleField">Foto de perfil:</p>
             <input name="photo" type="file" />
 

@@ -8,7 +8,7 @@
 
 <!--Links-->
 @section('links')
-    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/exile.css" />
+    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/exile.min.css" />
 @endsection
 
 <!--Content-->
@@ -116,5 +116,5 @@
 
 <!--Scripts-->
 @section('scripts')
-    <script src="<?=$base_url;?>/assets/js/admin/accessVerification.js"></script>
+    <script src="<?=$base_url;?>/assets/js/admin/accessVerification.min.js"></script>
 @endsection

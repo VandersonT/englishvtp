@@ -1,0 +1,4 @@
+:root{--defaultColor:#121214}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+a{text-decoration:none}li{list-style:none}::-webkit-scrollbar{width:10px;height:10px;background-color:var(--border3)}
+::-webkit-scrollbar-track{background-color:var(--menuBackground2)}::-webkit-scrollbar-button{background-color:var(--select);display:none}
+::-webkit-scrollbar-thumb{background-color:#3d3d3d;border-radius:5px}

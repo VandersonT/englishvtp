@@ -1,0 +1,35 @@
+body{padding-bottom:50px}.boxProfile{width:100vw;max-width:100%;height:auto;background-color:var(--defaultBackground2);border-bottom:1px solid var(--border);display:flex;justify-content:center;padding-bottom:20px}
+.photoProfile{width:200px;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:0 10px}
+.photoProfile img{width:130px;height:130px;border-radius:200px;padding:10px}.photoProfile p{color:white;padding:4px 10px;border-radius:5px;font-weight:bold}
+.user{background-color:#22678f}.helper{background-color:#cf9800}.adm{background-color:#0082d9}
+.mod{background-color:#a00}.owner{background-color:#3b00df}.boxInfoProfile{width:max-content}
+.infoProfile{width:100%;height:50%;display:flex;align-items:flex-end}.infoProfile h3{margin-right:5px}
+.infoProfile p{margin-right:15px;font-size:18px}.btn{color:white;padding:4px 10px;border-radius:5px;font-weight:bold;margin-right:10px}
+.followColor{background-color:#1515bd}.btnConfig{color:var(--menuBackground);background-color:#008cff}
+.btnConfig:hover{background-color:#0382e9}.btnFollow:hover{background-color:#0101dd;color:#e9e9e9}
+.infoProfile2{width:100%;height:50%;display:flex;align-items:center;justify-content:center}
+.info2Single{text-align:center;margin-right:20px}.info2Single a:hover{color:#535353}
+@media screen and (max-width:730px){.infoProfile h3{font-size:16px}.infoProfile p{font-size:16px}
+.infoProfile a{font-size:12px}.infoProfile2{font-size:16px}.photoProfile img{width:100px;height:100px;padding:0}
+.photoProfile{width:120px;justify-content:flex-start}}@media screen and (max-width:600px){.boxProfile{flex-direction:column}
+.photoProfile{width:100%;justify-content:center}.photoProfile img{width:130px;height:130px;padding:10px}
+.boxInfoProfile{width:100%;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.infoProfile{width:90%;padding:10px;flex-direction:column;align-items:center}.infoProfile p{margin-bottom:20px}
+.infoProfile a{border-radius:2px;margin-bottom:10px}}@media screen and (max-width:340px){.infoProfile h3{font-size:14px}
+.infoProfile p{font-size:14px}.infoProfile a{font-size:12px !important}.infoProfile2{font-size:14px;width:100%}
+.photoProfile{padding:0}.photoProfile img{width:100px;height:100px}}.boxTrophies{width:100vw;max-width:100%;background-color:var(--border3);padding-top:10px;display:flex;flex-wrap:wrap;justify-content:space-around;padding:10px}
+.ThophieSingle{max-width:100px;text-align:center;margin-right:10px;margin-bottom:10px;padding:5px}
+.ThophieSingle img{width:50px;height:40px;cursor:pointer}.boxActions{width:100vw;max-width:100%;padding-bottom:20px}
+.box1{width:100%;max-width:100%;background-color:#11367a;text-align:center;padding:10px;text-transform:uppercase;color:#fff;font-weight:bold;border-top:1px solid var(--defaultBackground2)}
+.empty1{text-align:center;color:var(--select);font-size:17px;padding:40px 0}.empty2{text-align:center;color:var(--border);margin-top:20px;font-size:20px}
+.box2{width:100%;max-width:100%;border:1px solid var(--border);padding:10px;display:flex;justify-content:center;background-color:var(--defaultBackground2);padding:20px 10px;margin-top:10px}
+.box2:hover{background-color:var(--defaultBackgroundContent)}.box2 img{width:40px;height:40px;margin-right:10px}
+.box2Info{max-width:600px}.box2Info h4{margin-bottom:5px}.box2Info p{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:400px}
+@media screen and (max-width:750px){.box2Info p{max-width:400px}}@media screen and (max-width:632px){.box1{font-size:12px}
+}@media screen and (max-width:585px){.box2Info p{max-width:200px}.box2Info h4{font-size:14px}
+.empty1{font-size:15px}.empty2{font-size:15px}}@media screen and (max-width:400px){.empty1{font-size:12px}
+.empty2{font-size:10px;padding:0 10px}}.box-pagination{background-color:var(--border3);border:1px solid var(--border);border-top:0;width:100%;display:flex;justify-content:center;align-items:center;margin:0 auto;padding:5px}
+.box-pagination li{background-color:#fff;width:30px;height:30px;text-align:center;line-height:30px;margin-right:10px;border-radius:5px;cursor:pointer;font-weight:bold}
+.box-pagination li:hover:not(.paginationSelected){background-color:#dadada}.paginationSelected{background-color:#4db2ec !important;color:white}
+@media screen and (max-width:700px){.box-pagination li{width:17px;height:17px;font-size:10px;line-height:17px;margin-right:5px;border-radius:5px}
+}

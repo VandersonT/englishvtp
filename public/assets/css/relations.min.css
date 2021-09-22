@@ -1,0 +1,21 @@
+.menu{width:100vw;max-width:100%;height:70px;background-color:var(--form);border-bottom:1px solid var(--border2);display:flex;align-items:center;justify-content:center}
+.returnBtn{font-size:27px;border-radius:10px;position:absolute;left:15px}.aboutProfile{display:flex;justify-content:center;align-items:center}
+.aboutProfile img{width:50px;height:50px;border-radius:50px;margin-right:10px;border:1px solid var(--border)}
+.aboutProfile a{font-size:20px;color:#0078bd;font-weight:bold}.aboutProfile a:hover{color:#006dac}
+.mainTitle{color:#0078bd;text-align:center;margin-top:40px;margin-bottom:5px;font-size:25px}
+.screen{width:90vw;max-width:100%;border:1px solid var(--border3);padding:50px;margin:0 auto;display:flex;justify-content:space-around;flex-wrap:wrap}
+.person{width:600px;height:80px;background-color:var(--defaultBackground2);border:1px solid var(--border2);margin-right:10px;margin-bottom:10px;border-radius:10px;display:flex;align-items:center;padding-left:10px}
+.info{width:60%;height:100%;display:flex;align-items:center}.person img{width:60px;height:80%;border-radius:50px;border:1px solid var(--border2);margin-right:10px}
+.infoPerson{margin-right:40px;display:flex;flex-direction:column}.infoPerson a{color:#0078bd;font-size:18px;cursor:pointer;font-weight:bold}
+.actions{width:40%;height:100%;display:flex;align-items:center;justify-content:flex-end;padding-right:10px}
+.btnChat{font-size:22px;color:#0078bd;margin-right:10px;cursor:pointer}.btnChat:hover{color:#006ead}
+.btn{background-color:#0078bd;padding:5px;border-radius:10px;color:white;cursor:pointer}
+.btn:hover{background-color:#006ead}.noPerson{color:gray;font-size:20px}@media screen and (max-width:550px){.person img{width:60px;height:70%}
+.infoPerson{margin-right:0}.infoPerson a{font-size:15px}.infoPerson b{font-size:13px}
+.info{width:max-content;padding-right:5px}.person{width:90%;justify-content:space-around;padding:0 5px}
+.btn{font-size:14px}.screen{width:100%;padding:0;padding-top:10px}}@media screen and (max-width:350px){.infoPerson a{font-size:12px}
+.infoPerson b{font-size:11px}}.box-pagination{background-color:var(--border3);border:1px solid var(--border);width:90%;display:flex;justify-content:center;align-items:center;margin:0 auto;padding:5px}
+.box-pagination li{background-color:#fff;width:30px;height:30px;text-align:center;line-height:30px;margin-right:10px;border-radius:5px;cursor:pointer;font-weight:bold}
+.box-pagination li:hover:not(.paginationSelected){background-color:#dadada}.paginationSelected{background-color:#4db2ec !important;color:white}
+@media screen and (max-width:700px){.box-pagination li{width:17px;height:17px;font-size:10px;line-height:17px;margin-right:5px;border-radius:5px}
+}@media screen and (max-width:560px){.box-pagination{width:100%}}

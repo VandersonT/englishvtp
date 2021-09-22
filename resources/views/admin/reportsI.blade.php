@@ -8,7 +8,7 @@
 
 <!--Links-->
 @section('links')
-    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/reports.css" />
+    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/reports.min.css" />
 @endsection
 
 <!--Content-->
@@ -86,5 +86,5 @@
 
 <!--Scripts-->
 @section('scripts')
-    <script src="<?=$base_url;?>/assets/js/admin/reports.js"></script>
+    <script src="<?=$base_url;?>/assets/js/admin/reports.min.js"></script>
 @endsection

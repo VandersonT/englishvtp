@@ -8,7 +8,7 @@
 
 <!--Links-->
 @section('links')
-    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/dashboard.css" />
+    <link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/dashboard.min.css" />
 @endsection
 
 <!--Content-->
@@ -249,6 +249,6 @@
         </script>
     <?php endif; ?>
     
-    <script src="<?=$base_url;?>/assets/js/admin/chart.js"></script>
-    <script src="<?=$base_url;?>/assets/js/admin/home.js"></script>
+    <script src="<?=$base_url;?>/assets/js/admin/chart.min.js"></script>
+    <script src="<?=$base_url;?>/assets/js/admin/home.min.js"></script>
 @endsection

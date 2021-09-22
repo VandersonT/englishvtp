@@ -9,7 +9,7 @@
 <!--Links-->
 @section('links')
     
-<link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/pages.css" />
+<link rel="stylesheet" href="<?=$base_url;?>/assets/css/admin/pages.min.css" />
 @endsection
 
 <!--Content-->

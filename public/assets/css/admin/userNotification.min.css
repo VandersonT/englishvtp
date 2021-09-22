@@ -1,0 +1,14 @@
+.view{width:100vw;max-width:100%;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center}
+form{width:400px;padding:10px;display:flex;flex-direction:column;background-color:#aaa;-webkit-box-shadow:-1px -2px 15px -4px #000;box-shadow:-1px -2px 15px -4px #000}
+label{text-align:center;font-size:18px;margin-top:10px;margin-bottom:5px}form input[type=number]{width:20%;margin:0 auto;padding:5px;border-radius:5px;outline:0;border:1px solid #818181}
+form input[type=text]{width:80%;margin:0 auto;padding:8px;border-radius:5px;outline:0;border:1px solid #818181}
+form select{width:50%;margin:0 auto;padding:3px;border-radius:5px;outline:0;border:1px solid #818181}
+form select option{color:white}form textarea{width:80%;height:100px;margin:0 auto;outline:0;border:1px solid gray;border-radius:5px;resize:none;padding:10px}
+form button{width:120px;height:35px;margin:0 auto;border:1px solid #424242;border-radius:5px;padding:7px;cursor:pointer;margin-top:20px}
+form button:hover{background-color:#e6e6e6}.blue{background-color:#0063f7}.green{background-color:#06be00}
+.yellow{background-color:#ecc900}.red{background-color:#ec0000}.config{background-color:#757575;padding:7px;color:#dadada;border-radius:10px;margin-top:20px;font-weight:bold;position:fixed;right:20px;bottom:20px;font-size:25px}
+.config:hover{background-color:#636363;font-size:26px}@media screen and (max-width:500px){form button{font-size:12px}
+label{font-size:15px}input{font-size:12px}}@media screen and (max-width:430px){form{width:90%}
+}@media screen and (max-height:430px){form{background-color:transparent;-webkit-box-shadow:none;box-shadow:none}
+form button{font-size:10px}label{font-size:14px}input{font-size:10px}form textarea{height:70px}
+}@media screen and (max-height:315px){.view{margin:30px 0 50px 0}}
