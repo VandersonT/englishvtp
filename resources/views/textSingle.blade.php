@@ -75,8 +75,10 @@ EnglishVtp - <?=$text['englishTitle'];?>
 
     <section class="boxAudio">
         <h1 class="title">Aúdio do texto</h1>
-        <audio controls>
-            <source src="<?= $base_url;?>/media/audio/<?=$text['audio'];?>" type="audio/mp3">
+
+        <audio controls preload>
+            <source src="<?= $base_url;?>/media/audio/<?=$text['audio'];?>" type="audio/mp3"/>
+            Seu navegador não possui suporte ao elemento audio
         </audio>
     </section>
 
