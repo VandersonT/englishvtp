@@ -15,7 +15,7 @@ use App\Models\Studied_text;
 class TrophiesHandler{
 
     public static function primordialTrophy($user_id){
-        if($user_id < 100){
+        if($user_id < 10000){
             $alreadyHaveThisTrophy = Trophie::
                 where('user_id', $user_id)
                 ->where('trophie_name', 'Primordial')
