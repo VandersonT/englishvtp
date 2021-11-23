@@ -38,7 +38,7 @@ class LoginController extends Controller
         
         return view('initial',[
             'data' => $data,
-            'totalAccounts' => $totalAccounts,
+            //'totalAccounts' => $totalAccounts,
             'totalTexts' => $totalTexts,
             'totalStudiedTexts' => $totalStudiedTexts,
             'totalAccess' => $totalAccess
@@ -71,7 +71,8 @@ class LoginController extends Controller
                 $_SESSION['token'] = $token;
 
                 if($keepConnected){
-                    $expiration = time() + (86400*30);
+                    //$expiration = time() + (86400*30);
+                    $expiration = time() + (60 * 60 * 24 * 30);
                     setcookie('token', $token, $expiration);
                 }
 

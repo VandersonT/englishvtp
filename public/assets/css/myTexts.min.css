@@ -8,7 +8,7 @@ body{margin-bottom:60px}.title{text-align:center;margin-top:30px;margin-bottom:1
 .btnsGroup{display:flex;flex-direction:column;justify-content:center;align-items:center;margin-top:20px}
 .btnsGroup a{padding:5px 10px;width:max-content;margin-bottom:5px;border-radius:5px;color:#d4d4d4;font-weight:bold;font-size:14px}
 .openText{background-color:#007de4}.deleteText{background-color:#830a0a}.noText{text-align:center;margin:10px;font-size:20px}
-.textsStudied .noText{width:100%}@media screen and (max-width:600px){.textsStudied{justify-content:space-around}
+.textsStudied .noText{width:100%}@media screen and (max-width:600px){.noText{font-size:16px;}.textsStudied{justify-content:space-around}
 .title{font-size:19px}}.box-pagination{background-color:var(--border3);border:1px solid var(--border);border-top:0;width:95%;display:flex;justify-content:center;align-items:center;margin:0 auto;padding:5px}
 .box-pagination li{background-color:#fff;width:30px;height:30px;text-align:center;line-height:30px;margin-right:10px;border-radius:5px;cursor:pointer;font-weight:bold}
 .box-pagination li:hover:not(.paginationSelected){background-color:#dadada}.paginationSelected{background-color:#4db2ec !important;color:white}

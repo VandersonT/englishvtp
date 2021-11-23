@@ -21,7 +21,7 @@ class HomeController extends Controller{
         $this->loggedUser = LoginHandler::checkLogin();
 
         if(!$this->loggedUser){
-            redirect()->route('login')->send();
+            redirect()->route('initial')->send();
             exit;
         }else{
             $maxNotPerUser = 100;

@@ -109,6 +109,9 @@ body{
     .title{
         font-size: 19px;
     }
+    .noText{
+        font-size: 15px;
+    }
 }
 /***/
 .box-pagination{

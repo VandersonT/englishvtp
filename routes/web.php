@@ -22,7 +22,7 @@ use App\Http\Controllers\Admin\ActionadminController;
 */
 
 /*----------------------------------LOGIN-------------------------------------------*/
-Route::get('/inicio', [LoginController::class, 'initial']);
+Route::get('/inicio', [LoginController::class, 'initial'])->name('initial');
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'loginAction']);
 Route::get('/cadastrar', [LoginController::class, 'register'])->name('register');

@@ -26,7 +26,7 @@ class TrophiesHandler{
                     $newTrophy->user_id = $user_id;
                     $newTrophy->trophie_name = 'Primordial';
                     $newTrophy->trophie_icon = 'primordial.png';
-                    $newTrophy->trophie_description = 'Faz parte dos primeiros 100 usuários a se juntarem a nós';
+                    $newTrophy->trophie_description = 'Faz parte dos primeiros 10000 usuários a se juntarem a nós';
                 $newTrophy->save();
             }
             

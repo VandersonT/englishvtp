@@ -20,7 +20,7 @@ class ActionController extends Controller
         $this->loggedUser = LoginHandler::checkLogin();
 
         if(!$this->loggedUser){
-            redirect()->route('login')->send();
+            redirect()->route('initial')->send();
         }
 
         HomeHandler::updateLastAction($this->loggedUser->id);
